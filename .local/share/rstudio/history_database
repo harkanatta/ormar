@@ -3116,3 +3116,184 @@
 1731493535713:height = 10,     # Increased height
 1731493535713:dpi = 300,       # Higher resolution
 1731493535713:bg = "white")
+1731599597636:# Example data for two stations
+1731599597636:station1 <- data.frame(
+1731599597636:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacti", "nematoda", "krabba lirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "spionidae"),
+1731599597636:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731599597637:)
+1731599599945:station1
+1731599808547:# Example data for two stations
+1731599808547:station1 <- data.frame(
+1731599808547:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "spionidae"),
+1731599808547:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731599808548:) %>% filter(species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa","amphipoda"))
+1731599813272:station1
+1731599825226:# Example data for two stations
+1731599825227:station1 <- data.frame(
+1731599825227:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "spionidae"),
+1731599825227:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731599825227:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa","amphipoda"))
+1731599828545:station1
+1731599863266:station2 <- data.frame(
+1731599863266:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731599863266:count = c(42, 2, 18, 1)
+1731599863266:)
+1731600226435:# Add station labels
+1731600226435:station1$station <- "st1"
+1731600226726:station2$station <- "st2"
+1731600227298:# Add total_area and adjusted count
+1731600227299:station1$total_area <- total_area
+1731600227534:station1$adjusted_count <- station1$count / total_area
+1731600242388:total_area <- 0.0225 * 3
+1731600244162:# Add total_area and adjusted count
+1731600244162:station1$total_area <- total_area
+1731600244413:station1$adjusted_count <- station1$count / total_area
+1731600244854:station2$total_area <- total_area
+1731600245246:station2$adjusted_count <- station2$count / total_area
+1731600245651:# Combine both stations into a single long-format data frame
+1731600245651:long_format_df <- rbind(station1, station2)
+1731600246156:# Reorder columns for clarity
+1731600246156:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731600246957:# Display the long-format data frame
+1731600246957:print(long_format_df)
+1731600428499:# various Benthic Biotic Indices (BBI) for different years and stations. It then creates heatmaps to visualize these indices. This provides a good overview of the ecological status of the benthic communities over time and across different sampling sites.
+1731600428499:library(BBI)
+1731600430379:library(gplots)
+1731600433402:# Calculate Benthic Biotic Indices (BBI) for each year and station
+1731600433402:calculate_biotic_indices <- function(data) {
+1731600433402:# Validate input data
+1731600433402:required_cols <- c("year", "station", "species", "adjusted_density")  # Changed from count to adjusted_density
+1731600433402:stopifnot(
+1731600433403:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731600433403:"No data provided" = nrow(data) > 0,
+1731600433403:"Negative density values found" = all(data$adjusted_density >= 0),
+1731600433403:"Missing values found" = !any(is.na(data$adjusted_density))
+1731600433403:)
+1731600433404:# Define target stations
+1731600433404:target_stations <- c("C4", "A7", "B5", "B8", "E4", "E3")
+1731600433404:# Initialize lists to store results
+1731600433404:indices_list <- list()
+1731600433405:# Calculate indices for each year
+1731600433405:for (current_year in sort(unique(data$year))) {
+1731600433405:# Prepare data for BBI calculation using density values
+1731600433405:year_data <- data %>%
+1731600433405:filter(year == current_year,
+1731600433405:station %in% target_stations) %>%
+1731600433406:group_by(station, species) %>%
+1731600433406:summarise(density = sum(adjusted_density), .groups = 'drop') %>%  # Using adjusted_density
+1731600433406:pivot_wider(names_from = station,
+1731600433406:values_from = density,
+1731600433406:values_fill = 0)
+1731600433407:# Calculate BBI indices
+1731600433407:bbi_results <- BBI(year_data)
+1731600433407:# Store results
+1731600433408:indices_list[[as.character(current_year)]] <- list(
+1731600433408:indices = as.data.frame(cbind(bbi_results$BBI, year = current_year)),
+1731600433408:classification = bbi_results$BBIclass,
+1731600433408:normalized = as.data.frame(nEQR(bbi_results$BBI)[1])
+1731600433408:)
+1731600433409:}
+1731600433409:return(indices_list)
+1731600433409:}
+1731600444993:result
+1731600482869:calculate_biotic_indices(long_format_df)
+1731600605595:library(dplyr)
+1731600606155:library(tidyr)
+1731600607206:# Custom function for calculating biotic indices, adjusted to your data
+1731600607206:calculate_biotic_indices_krokurinn <- function(data) {
+1731600607206:# Check for required columns in the provided data
+1731600607207:required_cols <- c("station", "species", "adjusted_count")
+1731600607207:stopifnot(
+1731600607207:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731600607207:"No data provided" = nrow(data) > 0,
+1731600607207:"Negative density values found" = all(data$adjusted_count >= 0),
+1731600607208:"Missing values found" = !any(is.na(data$adjusted_count))
+1731600607208:)
+1731600607208:# Initialize list to store results
+1731600607208:indices_list <- list()
+1731600607208:# Prepare data by grouping by station and species
+1731600607209:biotic_data <- data %>%
+1731600607209:group_by(station, species) %>%
+1731600607209:summarise(adjusted_density = sum(adjusted_count), .groups = 'drop') %>%
+1731600607209:pivot_wider(names_from = station, values_from = adjusted_density, values_fill = 0)
+1731600607209:# Placeholder for biotic index calculations (replace BBI with your actual formula)
+1731600607210:# For example purposes, we’ll assume a simple calculation.
+1731600607210:# Replace this with the actual BBI calculation logic
+1731600607210:bbi_results <- list(
+1731600607210:BBI = rowMeans(biotic_data[, -1]),  # Simple example: taking the mean adjusted density across stations
+1731600607210:BBIclass = ifelse(rowMeans(biotic_data[, -1]) > 10, "High", "Low"),  # Example classification based on arbitrary threshold
+1731600607211:nEQR = rowMeans(biotic_data[, -1]) / max(rowMeans(biotic_data[, -1]))  # Normalized example based on max value
+1731600607211:)
+1731600607211:# Store results
+1731600607211:indices_list <- list(
+1731600607212:indices = as.data.frame(cbind(biotic_data$species, BBI = bbi_results$BBI)),
+1731600607212:classification = as.data.frame(cbind(biotic_data$species, BBIclass = bbi_results$BBIclass)),
+1731600607212:normalized = as.data.frame(cbind(biotic_data$species, nEQR = bbi_results$nEQR))
+1731600607212:)
+1731600607213:return(indices_list)
+1731600607213:}
+1731600609347:# Example of running the function
+1731600609348:biotic_indices <- calculate_biotic_indices_krokurinn(long_format_df)
+1731600612858:# Display the result
+1731600612859:print(biotic_indices)
+1731600693946:normalized_eqr <- do.call(rbind, lapply(biotic_indices, function(x) x$normalized))
+1731600709808:normalized_eqr
+1731600868169:# Custom function for calculating biotic indices, adjusted to your data
+1731600868170:calculate_biotic_indices_krokurinn <- function(data) {
+1731600868170:# Check for required columns in the provided data
+1731600868170:required_cols <- c("station", "species", "adjusted_count")
+1731600868170:stopifnot(
+1731600868170:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731600868170:"No data provided" = nrow(data) > 0,
+1731600868170:"Negative density values found" = all(data$adjusted_count >= 0),
+1731600868171:"Missing values found" = !any(is.na(data$adjusted_count))
+1731600868171:)
+1731600868171:# Initialize list to store results
+1731600868171:indices_list <- list()
+1731600868171:# Prepare data by grouping by station and species
+1731600868172:biotic_data <- data %>%
+1731600868172:group_by(station, species) %>%
+1731600868172:summarise(adjusted_density = sum(adjusted_count), .groups = 'drop') %>%
+1731600868172:pivot_wider(names_from = station, values_from = adjusted_density, values_fill = 0)
+1731600868172:# Placeholder for biotic index calculations (replace BBI with your actual formula)
+1731600868173:# For example purposes, we’ll assume a simple calculation.
+1731600868173:# Replace this with the actual BBI calculation logic
+1731600868173:bbi_results <- list(
+1731600868173:BBI = rowMeans(biotic_data[, -1]),  # Simple example: taking the mean adjusted density across stations
+1731600868173:BBIclass = ifelse(rowMeans(biotic_data[, -1]) > 10, "High", "Low"),  # Example classification based on arbitrary threshold
+1731600868173:nEQR = rowMeans(biotic_data[, -1]) / max(rowMeans(biotic_data[, -1]))  # Normalized example based on max value
+1731600868174:)
+1731600868174:# Store results
+1731600868174:indices_list <- list(
+1731600868174:indices = as.data.frame(cbind(biotic_data$species, BBI = bbi_results$BBI)),
+1731600868175:classification = as.data.frame(cbind(biotic_data$species, BBIclass = bbi_results$BBIclass)),
+1731600868175:normalized = as.data.frame(cbind(biotic_data$species, nEQR = bbi_results$nEQR))
+1731600868175:)
+1731600868175:return(indices_list)
+1731600868176:}
+1731600869986:# Example of running the function
+1731600869986:biotic_indices <- calculate_biotic_indices_krokurinn(long_format_df)
+1731600871049:# Display the result
+1731600871050:print(biotic_indices)
+1731600876723:# Display the result
+1731600876723:print(biotic_indices)
+1731600896737:indices_list
+1731600901178:biotic_data
+1731600916194:biotic_data <- long_format_df %>%
+1731600916194:group_by(station, species) %>%
+1731600916194:summarise(adjusted_density = sum(adjusted_count), .groups = 'drop') %>%
+1731600916194:pivot_wider(names_from = station, values_from = adjusted_density, values_fill = 0)
+1731600918713:biotic_data
+1731600957667:long_format_df
+1731600975796:bbi_results <- list(
+1731600975796:BBI = rowMeans(biotic_data[, -1]),  # Simple example: taking the mean adjusted density across stations
+1731600975796:BBIclass = ifelse(rowMeans(biotic_data[, -1]) > 10, "High", "Low"),  # Example classification based on arbitrary threshold
+1731600975796:nEQR = rowMeans(biotic_data[, -1]) / max(rowMeans(biotic_data[, -1]))  # Normalized example based on max value
+1731600975796:)
+1731600980676:bbi_results
+1731601019833:indices_list <- list(
+1731601019834:indices = as.data.frame(cbind(biotic_data$species, BBI = bbi_results$BBI)),
+1731601019834:classification = as.data.frame(cbind(biotic_data$species, BBIclass = bbi_results$BBIclass)),
+1731601019834:normalized = as.data.frame(cbind(biotic_data$species, nEQR = bbi_results$nEQR))
+1731601019834:)
+1731601022655:indices_list
