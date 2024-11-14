@@ -1,0 +1,9 @@
+help/library/vegan/html/rarefy.html,R: Rarefaction Species Richness
+help/library/BBI/html/nEQR.html,R: nEQR
+help/library/gplots/html/heatmap.2.html,R: Enhanced Heat Map
+help/library/base/html/sample.html,R: Random Samples and Permutations
+help/library/benthos/html/ambi.html,R: AZTI Marine Biotic Index (AMBI)
+help/library/BBI/html/BBI.html,R: BBI
+help/library/utils/html/combn.html,"R: Generate All Combinations of n Elements, Taken m at a Time"
+help/library/ggrepel/html/geom_text_repel.html,R: Repulsive textual annotations.
+help/library/ggplot2/html/stat_ellipse.html,R: Compute normal data ellipses

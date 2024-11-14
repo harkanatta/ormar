@@ -1,0 +1,1 @@
+Dollan "týnt úr fyrir skráningu" var með grjóti með dauðum hrúðurkörlum og brotinni pectinariapúpu. Ekkert talið nema 7 nematoda sem slæddust með.

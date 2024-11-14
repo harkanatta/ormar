@@ -1,0 +1,178 @@
+"Kingdom","Phylum","Class","Subclass","Infraclass","Subterclass","Superorder","Order","Superfamily","Family","Genus","Species","Subfamily","Tribe","Subphylum","Suborder","Superclass","Subgenus","Infraorder","Parvorder","Subspecies","Section","Subsection","Flokkun","id","N","Artal","skipting","stod","Nu","gamalt","A","worms","Nfm"
+"Animalia","Cnidaria","Anthozoa","","","","","","","","","","","","","","","","","","","","","Anthozoa","E3A",1,2014,1,"E3",1,"Anthozoa","1292",1292,8
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","E3C",96,2014,1,"E3",96,"Balanus","106122",106122,800
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","E4A",180,2017,1,"E4",180,"Balanus nýsestir","106122",106122,1500
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","E4A",4,2017,1,"E4",4,"Balanus","106122",106122,33
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","E3B",96,2014,1,"E3",96,"Balanus","106122",106122,800
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","E3A",172,2014,1,"E3",172,"Balanus","106122",106122,1433
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus","C4B",100,2015,1,"C4",100,"Balanus","106122",106122,833
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Balanomorpha","Balanoidea","Balanidae","Balanus","Balanus balanus","Balaninae","","Crustacea","","Multicrustacea","","","","","","","Balanus balanus","E4B",1,2016,1,"E4",1,"Balanus balanus","106213",106213,8
+"Animalia","Bryozoa","","","","","","","","","","","","","","","","","","","","","","Bryozoa","E3A",2,2014,1,"E3",2,"Bryozoa","146142",146142,17
+"Animalia","Bryozoa","","","","","","","","","","","","","","","","","","","","","","Bryozoa","E3B",1,2014,1,"E3",1,"Bryozoa","146142",146142,8
+"Animalia","Cnidaria","Hydrozoa","Hydroidolina","","","","Leptothecata","","Campanulariidae","","","","","","","","","","","","","","Campanulariidae","E4B",1,2016,4,"E4",4,"Campanulariidae","1606",1606,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4A",26,2017,4,"E4",104,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,867
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2C",6,2013,1,"U2",6,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,50
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4B",2,2013,1,"E4",2,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3A",5,2013,1,"E3",5,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,42
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4C",1,2013,8,"E4",8,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4A",6,2017,4,"C4",24,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,200
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2C",22,2013,8,"U2",176,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,1467
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4C",1,2017,4,"C4",4,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2B",2,2013,1,"U2",2,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2B",7,2013,8,"U2",56,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,467
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4B",4,2016,1,"E4",4,"Oligochaeta","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4A",3,2015,4,"C4",12,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,100
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3C",4,2017,4,"E3",16,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,133
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",1,2016,1,"E3",1,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",3,2013,1,"E3",3,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,25
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3C",6,2015,4,"E3",24,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,200
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B5C",1,2016,4,"B5",4,"Oligochaeta","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",3,2017,4,"E3",12,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,100
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4B",9,2016,4,"C4",36,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,300
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4B",2,2013,8,"C4",16,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,133
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3A",2,2016,4,"E3",8,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B0C",9,2013,1,"B0",9,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,75
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4C",1,2015,4,"C4",4,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4B",2,2015,4,"C4",8,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3A",5,2015,4,"E3",20,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,167
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4",27,1999,1,"E4",27,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,1200
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4C",3,2016,1,"E4",3,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,25
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2A",18,2013,1,"U2",18,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,150
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",19,2013,2,"E3",38,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,317
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B8B",1,2016,1,"B8",1,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4A",1,2013,1,"E4",1,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4A",13,2016,4,"E4",52,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,433
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4B",7,2013,8,"E4",56,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,467
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4A",12,2016,4,"C4",48,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,400
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B5B",1,2016,4,"B5",4,"Oligochaeta","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U1C",2,2013,4,"U1",8,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3",179,1999,1,"E3",179,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,7956
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","U2A",13,2013,8,"U2",104,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,867
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",1,2016,4,"E3",4,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4B",12,2015,4,"E4",48,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,400
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4C",9,2016,4,"E4",36,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,300
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4B",5,2016,4,"E4",20,"Oligochaeta","Error : (206) Partial Content - Oligochaeta
+",2036,167
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3C",6,2016,4,"E3",24,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,200
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B8B",1,2016,4,"B8",4,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","B8",1,1999,1,"B8",1,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,44
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4B",2,2016,1,"C4",2,"Oligochaeta sp","Error : (206) Partial Content - Oligochaeta
+",2036,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E4A",5,2013,8,"E4",40,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,333
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","C4A",2,2013,1,"C4",2,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","","","","","","","","","","","","","","","","","Oligochaeta","E3B",1,2015,4,"E3",4,"Oligochaeta sp.","Error : (206) Partial Content - Oligochaeta
+",2036,33
+"Animalia","Arthropoda","Ostracoda","","","","","","","","","","","","Crustacea","","Oligostraca","","","","","","","ostracoda","B8A",3,2016,4,"B8",12,"Ostracoda","1078",1078,100
+"Animalia","Arthropoda","Ostracoda","","","","","","","","","","","","Crustacea","","Oligostraca","","","","","","","ostracoda","B8A",4,2016,1,"B8",4,"Ostracoda","1078",1078,33
+"Animalia","Arthropoda","Ostracoda","Myodocopa","","","","Myodocopida","Sarsielloidea","Philomedidae","Philomedes","Philomedes globosus","Philomedinae","","Crustacea","","Oligostraca","","","","","","","Philomedes globosus","E3",3,1999,1,"E3",3,"Philomedes globosus","127719",127719,133
+"Animalia","Arthropoda","Ostracoda","Myodocopa","","","","Myodocopida","Sarsielloidea","Philomedidae","Philomedes","Philomedes globosus","Philomedinae","","Crustacea","","Oligostraca","","","","","","","Philomedes globosus","U1A",5,2013,1,"U1",5,"Philomedes globosus","127719",127719,42
+"Animalia","Arthropoda","Ostracoda","Myodocopa","","","","Myodocopida","Sarsielloidea","Philomedidae","Philomedes","Philomedes globosus","Philomedinae","","Crustacea","","Oligostraca","","","","","","","Philomedes globosus","U1B",1,2013,8,"U1",8,"Philomedes globosus","127719",127719,67
+"Animalia","Arthropoda","Ostracoda","Myodocopa","","","","Myodocopida","Sarsielloidea","Philomedidae","Philomedes","Philomedes globosus","Philomedinae","","Crustacea","","Oligostraca","","","","","","","Philomedes globosus","C4",2,1999,1,"C4",2,"Philomedes globosus","127719",127719,89
+"Animalia","Platyhelminthes","","","","","","","","","","","","","","","","","","","","","","Platyhelminthes","C4A",1,2016,4,"C4",4,"Platyhelminthes","793",793,33
+"Animalia","Annelida","","","","","","Sipuncula","","","","","","","","","","","","","","","","Sipuncula","E4A",1,2016,4,"E4",4,"Sipuncula","1268",1268,33
+"Animalia","Annelida","","","","","","Sipuncula","","Sipunculidae","","","","","","","","","","","","","","Sipunculidae","B5C",2,2017,4,"B5",8,"Sipunculidea/sipunculidae","1648",1648,67
+"Animalia","Annelida","","","","","","Sipuncula","","","","","","","","Sipuncula incertae sedis","","","Sipunculidea","","","","","Sipunculidea","C4A",1,2014,1,"C4",1,"Sipunculidea","1296",1296,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E3C",25,2014,4,"E3",100,"Tubificidae","2040",2040,833
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E4C",29,2014,4,"E4",116,"Tubificidae","2040",2040,967
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E4A",44,2014,1,"E4",44,"Tubificidae","2040",2040,367
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E3A",13,2014,4,"E3",52,"Tubificidae","2040",2040,433
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E4B",56,2014,1,"E4",56,"Tubificidae","2040",2040,467
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Tubificidae","","","","","","Tubificina","","","","","","","","Tubificidae","E3B",1,2017,4,"E3",4,"Tubificidae","2040",2040,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","B0C",15,2014,1,"B0",15,"Tubificoides benedi","137571",137571,125
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4B",1,2015,4,"C4",4,"Tubificoides benedict","137571",137571,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","U1C",1,2013,1,"U1",1,"Tubicoides benedi","137571",137571,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4C",2,2017,4,"C4",8,"Terebellides benedi","137571",137571,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4C",1,2013,8,"C4",8,"Tubicoides benedi","137571",137571,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","B5B",1,2017,4,"B5",4,"Terebellides benedi","137571",137571,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4A",1,2014,1,"C4",1,"Tubificoides benedi","137571",137571,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4",2,1999,1,"C4",2,"Tubificoides benedii","137571",137571,89
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","B5A",2,2017,4,"B5",8,"Terebellides benedi","137571",137571,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","B0A",4,2014,1,"B0",4,"Tubificoides benedi","137571",137571,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides benedii","Tubificinae","","","Tubificina","","","","","","","","Tubificoides benedii","C4A",2,2015,4,"C4",8,"Tubificoides benedict","137571",137571,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B5C",1,2013,8,"B5",8,"Tubicoides kozloffi","137580",137580,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2A",9,2013,8,"U2",72,"Tubicoides kozloffi","137580",137580,600
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E4C",1,2014,4,"E4",4,"Tubificoides kozloffi","137580",137580,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U1C",2,2013,4,"U1",8,"Tubicoides kozloffi","137580",137580,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4C",1,2015,4,"C4",4,"Tubificoides kozloffi","137580",137580,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E3A",16,2013,1,"E3",16,"Tubicoides kozloffi","137580",137580,133
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B5B",1,2017,4,"B5",4,"Terribellides kozloffi","137580",137580,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E4B",2,2014,1,"E4",2,"Tubificoides kozloffi","137580",137580,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2A",22,2013,1,"U2",22,"Tubicoides kozloffi","137580",137580,183
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B0C",1,2013,8,"B0",8,"Tubicoides kozloffi","137580",137580,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2C",5,2013,8,"U2",40,"Tubicoides kozloffi","137580",137580,333
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4C",1,2013,8,"C4",8,"Tubicoides kozloffi","137580",137580,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4A",2,2015,4,"C4",8,"Tubificoides kozloffi","137580",137580,67
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B0B",2,2013,1,"B0",2,"Tubicoides kozloffi","137580",137580,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B0B",4,2014,4,"B0",16,"Tubificoides kozloffi","137580",137580,133
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E3B",28,2014,4,"E3",112,"Tubificoides kozloffi","137580",137580,933
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E3C",3,2014,4,"E3",12,"Tubificoides kozloffi","137580",137580,100
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4C",1,2017,4,"C4",4,"Terribellides kozloffi","137580",137580,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2C",2,2013,1,"U2",2,"Tubicoides kozloffi","137580",137580,17
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U1C",3,2013,1,"U1",3,"Tubicoides kozloffi","137580",137580,25
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B5A",1,2013,1,"B5",1,"Tubicoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B0C",7,2013,1,"B0",7,"Tubicoides kozloffi","137580",137580,58
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U1B",2,2013,8,"U1",16,"Tubicoides kozloffi","137580",137580,133
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E4B",1,2016,1,"E4",1,"Tubificoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4C",3,2014,4,"C4",12,"Tubificoides kozloffi","137580",137580,100
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E3A",12,2014,4,"E3",48,"Tubificoides kozloffi","137580",137580,400
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E4B",1,2015,4,"E4",4,"Tubificoides kozloffi","137580",137580,33
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2B",9,2013,1,"U2",9,"Tubicoides kozloffi","137580",137580,75
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4C",1,2013,1,"C4",1,"Tubicoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U2B",9,2013,8,"U2",72,"Tubicoides kozloffi","137580",137580,600
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B0C",1,2014,1,"B0",1,"Tubificoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","C4B",1,2014,1,"C4",1,"Tubificoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","E4A",1,2014,1,"E4",1,"Tubificoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","B5B",1,2014,1,"B5",1,"Tubificoides kozloffi","137580",137580,8
+"Animalia","Annelida","Clitellata","Oligochaeta","","","","Tubificida","","Naididae","Tubificoides","Tubificoides kozloffi","Tubificinae","","","Tubificina","","","","","","","","Tubificoides kozloffi","U1C",1,2013,8,"U1",8,"Tubicoides kozloffi","137580",137580,67
+"Animalia","Platyhelminthes","Turbellaria","","","","","","","","","","","","","","","","","","","","","Turbellaria","E3A",1,2014,4,"E3",4,"Turbellaria","794",794,33
+"Animalia","Platyhelminthes","Turbellaria","","","","","","","","","","","","","","","","","","","","","Turbellaria","E4A",1,2017,4,"E4",4,"Turbellaria","794",794,33
+"Animalia","Platyhelminthes","Turbellaria","","","","","","","","","","","","","","","","","","","","","Turbellaria","B0A",1,2014,1,"B0",1,"Turbellaria","794",794,8
+"Animalia","Platyhelminthes","Turbellaria","","","","","","","","","","","","","","","","","","","","","Turbellaria","E3A",1,2014,1,"E3",1,"Turbellaria","794",794,8
+"Animalia","Platyhelminthes","Turbellaria","","","","","","","","","","","","","","","","","","","","","Turbellaria","E3C",1,2014,4,"E3",4,"Turbellaria","794",794,33
+"Animalia","Arthropoda","Thecostraca","Cirripedia","Thoracica","","Thoracicalcarea","Verrucomorpha","","Verrucidae","Verruca","Verruca stroemia","","","Crustacea","","Multicrustacea","","","","","","","Verruca stroemia","B8B",1,2014,4,"B8",4,"Verruca stroemia","106257",106257,33

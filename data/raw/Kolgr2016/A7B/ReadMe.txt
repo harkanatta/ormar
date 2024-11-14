@@ -1,0 +1,1 @@
+#K2016 A7B týnt úr fyrir skiptingu: Nokkrar tómar Macoma calcarea og kúfskeljar. Ótalið: skeljar.

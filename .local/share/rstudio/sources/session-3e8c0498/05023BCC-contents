@@ -1,0 +1,1095 @@
+---
+title: "KFData"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: flatly
+    code_folding: hide
+date: "2024-04-11"
+---
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+.figure {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.table {
+  margin: 20px 0;
+}
+</style>
+
+
+Overall, this R Markdown document presents a comprehensive analysis of benthic community data, including data preparation, calculation of various ecological indices, and visualization of results. The use of multiple indices (BBI, AMBI) and consideration of sediment characteristics provides a well-rounded assessment of the ecological status of the studied areas.
+
+```{r pakkar, message=FALSE, warning=FALSE, include=FALSE}
+#This initial chunk sets up the R environment by loading necessary packages and setting global options for the document. It's a good practice to keep these setup operations at the beginning of the document.
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      out.width = "100%",
+                      class.message = 'foldable fold-hide',
+                      class.warning = 'foldable fold-hide')
+
+Rpakkar <- c("benthos", "BBI","tidyverse", "diagram", "vegan", "ggrepel", "gplots", "betareg", "dunn.test", "kableExtra")
+
+load_packages <- function(package_vector) {
+  for (package in package_vector) {
+    library(package, character.only = TRUE)
+  }
+}
+
+#install.packages('pacman')
+pacman::p_load(Rpakkar, character.only = TRUE)
+#Sys.setlocale("LC_ALL", "Icelandic") # `Sys.setlocale` er hér fyrir íslenskar dagsetningar.
+```
+
+
+# Innlestur á frumgögnum 
+
+Innlestur á frumgögnum og hreinsun á heitum. Lirfur og fleira tekið út, súbbun og flatarmál notað til að fá út fjölda á fermetra og svoleiðis.
+
+```{r innlesturallt, message=FALSE, warning=FALSE, include=FALSE}
+
+#Innlestur á frumgögnum og hreinsun á heitum. Lirfur og fleira tekið út.
+
+# Read the CSV file
+allartalningar <- readRDS("allartalningar.rds")
+
+# Create a copy of the original data
+df <- allartalningar
+
+# Capitalize the first letter of each word in the 'Flokkun' column
+df <- df %>%
+  mutate(Flokkun = str_to_sentence(Flokkun))
+
+# Create a 'gamalt' column with the original 'Flokkun' values
+df <- df %>%
+  mutate(gamalt = Flokkun)
+
+# Clean the 'Flokkun' column by removing specific patterns
+df <- df %>%
+  mutate(Flokkun = str_remove_all(Flokkun, 
+    " kemur líka Heteromastus filiformis| Sipunculidea/|\\.|
+     TUNICATA EÐA FLEIRI?| nýsestir| ungviði| ungv\\.| ungv| juv| sp\\.| sp| ath"
+  ))
+
+df <- df %>% mutate(Flokkun = case_when(
+  str_detect(Flokkun, "Campanulariidae sp") ~ "Campanulariidae",
+  str_detect(Flokkun, "Cycloterus lumpus") ~ "Cyclopterus lumpus",
+  str_detect(Flokkun, "Götungar") ~ "Foraminifera",
+  str_detect(Flokkun, "Möttuldýr?" ) ~ "Tunicata",
+  str_detect(Flokkun, "Nephtiydae" ) ~ "Nephtyidae",
+  str_detect(Flokkun, "Phyllodoce maculata" ) ~ "Phyllodoce maculata",
+  str_detect(Flokkun, "Polynoida" ) ~ "Polynoidae",
+  str_detect(Flokkun, "Sternapsis scutata") ~ "Sternaspis scutata",
+  str_detect(Flokkun, "Terribellides stroemi") ~ "Terebellides stroemii",
+  str_detect(Flokkun, "Tubificoides benedict") ~ "Tubificoides benedii",
+  str_detect(Flokkun, "Clinocardium cillaturn" ) ~ "Ciliatocardium ciliatum ciliatum",
+  str_detect(Flokkun, "Gattyana cirrosa" ) ~ "Gattyana cirrhosa",
+  str_detect(Flokkun, "Möttuldýr" ) ~ "Tunicata",
+  str_detect(Flokkun, "Nemertea=nemertina" ) ~ "Nemertea",
+  str_detect(Flokkun, "Nudibranch"  ) ~ "Nudibranchia",
+  #str_detect(Flokkun,"Polydora"  ) ~ "Spionidae", #mjög margir
+  str_detect(Flokkun, "Priapulus candatus" ) ~ "Priapulus caudatus",
+  str_detect(Flokkun, "Priapulus camelus" ) ~ "Priapulus caudatus",
+  str_detect(Flokkun, "Sipunculidea/Sipunculidae") ~ "Sipunculidae",
+  str_detect(Flokkun, "Terribellides kozloffi" ) ~ "Tubificoides kozloffi", #líklegast
+  str_detect(Flokkun, "Tubicoides kozloffi" ) ~ "Tubificoides kozloffi",
+  str_detect(Flokkun, "Tubificoides benedict" ) ~ "Tubificoides benedii",
+  str_detect(Flokkun, "Tubificoides benedi" ) ~ "Tubificoides benedii",
+  str_detect(Flokkun, "Terebellides benedi" ) ~ "Tubificoides benedii", #líklegast
+  str_detect(Flokkun, "Astartidae borealis" ) ~ "Astarte borealis",
+  str_detect(Flokkun, "Cerastoderma ovale") ~ "Parvicardium pinnulatum",
+  str_detect(Flokkun, "Exogone verrugera") ~ "Exogone verugera",
+  str_detect(Flokkun, "Nuculana tenuis" ) ~ "Ennucula tenuis",
+  str_detect(Flokkun, "Opistobranchia") ~ "Opisthobranchia",
+  str_detect(Flokkun, "Serripes groenlandica") ~ "Serripes groenlandicus",
+  str_detect(Flokkun, "Cardidae"   ) ~ "Cardiidae",
+  str_detect(Flokkun, "Henricia sanguinolenta") ~ "Henricia sanguinolenta", # kannski setja id 123974 í DF$worms
+  str_detect(Flokkun, "Macoma calcaria" ) ~ "Macoma calcarea",
+  str_detect(Flokkun, "Ophryotrocha cf Cosmetandra") ~ "Ophryotrocha cosmetandra",
+  str_detect(Flokkun, "Praxillella m"  ) ~ "Praxillella", # id 129360  í DF$worms
+  str_detect(Flokkun, "Ranaormur"  ) ~ "Nemertea",
+  str_detect(Flokkun, "Terebellidae"  ) ~ "Terebellidae", # id 982 í DF$worms
+  str_detect(Flokkun, "Terebellides benedi"  ) ~ "Terebellides", 
+  str_detect(Flokkun, "Tubicoides benedi" ) ~ "Tubificoides benedii",
+  str_detect(Flokkun, "Cardidae" ) ~ "Cardiidae", 
+  str_detect(Flokkun, "Corophium bonellii" ) ~ "Crassicorophium bonellii", #á eftir að keyra þetta einu sinni enn með þessum
+  str_detect(Flokkun, "Corophium bonnellii" ) ~ "Crassicorophium bonellii",
+  str_detect(Flokkun, "Plergonium spinosum" ) ~ "Pleurogonium spinosissimum",
+  str_detect(Flokkun, "spio" ) ~ "Spio",
+  str_detect(Flokkun, "Skeljar" ) ~ "Bivalvia",
+  TRUE ~ Flokkun
+))
+
+# Hér er búið að fækka einstaka heitum úr 250 í 230
+#table(benthos::is_accepted(df, taxon = unique(Flokkun)))
+#FALSE  TRUE 
+#   76   150 
+
+  remove_list <- paste(c("—Ssekkt",
+                         "—ßekkt",
+                         "Foraminifera",
+                         "Götungar",
+                         "Harpacticoida",
+                         "Hydrozoa",
+                         "Lirfur",
+                         "lirfur",
+                         "lirfa",
+                         "Skordýr",
+                         "Ranaormur",
+                         "Lirfurogdrasl",
+                         "Bandormur",
+                         "Lirfa",
+                         "egg",
+                         "Óþekkt",
+                         "Nematoda",
+                         "Nemertea",
+                         "Möttuldýr?",
+                         "Porifera",
+                         "Plerugoniumnosissum",
+                         "Terebellides benedi",
+                         "Plergoniumnosum",
+                         "egg/lirfur",
+                         "Ostracoda",
+                         "Copepoda",
+                         "Collembola",
+                         "Cyclopterus lumpus"
+                         ), collapse = '|')
+  
+  
+  remove_ind <- lapply(strsplit(remove_list , "\\|")[[1]] , \(x) grep(x , df$Flokkun , fixed = T)) |> 
+    unlist() |> 
+    unique()
+  df <- df[-remove_ind,]  #Öll heiti í remove_list tekin úr 'df'
+
+  
+  ### Nokkur atriði sem voru fyrir aftan heitin í greiningunum hans GVH og við hendum út.
+   remove_list <- paste(c(
+     "nýsestir",
+     "ungviði",
+     "ungv",
+     "ungv.",
+     "juv",
+     "harpacticoida"
+   ), collapse = '|') 
+   
+   remove_ind <- lapply(strsplit(remove_list , "\\|")[[1]] , \(x) grep(x , df$gamalt , fixed = T)) |> 
+     unlist() |> 
+     unique()
+   
+   df <- df[-remove_ind,] 
+
+
+# heildarfjöldi út frá súbbun og flatarmáli sýna
+
+allartalningar <- df %>%
+  rename(
+    species = Flokkun,
+    sample_id = id,
+    year = Artal,
+    station = stod,
+    subdivision = skipting,
+    count = N,
+    density = Nu
+  )
+
+result <- allartalningar %>%
+  # First, apply the subdivision to the count
+  mutate(adjusted_count = count * subdivision) %>%
+  
+  # Calculate the correct number of samples and total area for each station-year combination
+  group_by(station, year) %>%
+  mutate(
+    n_samples = n_distinct(sample_id),
+    grab_area = case_when(
+      year == 1999 ~ 0.0225,
+      TRUE ~ 0.04
+    ),
+    total_area = grab_area * n_samples
+  ) %>%
+  ungroup() %>%
+  
+  # Now group by station, year, and species to get total counts
+  group_by(station, year, species) %>%
+  summarise(
+    original_total_count = sum(count),
+    adjusted_total_count = sum(adjusted_count),
+    n_samples = first(n_samples),  # Use the previously calculated n_samples
+    total_area = first(total_area),  # Use the previously calculated total_area
+    .groups = 'keep'
+  ) %>%
+  
+  # Calculate densities
+  mutate(
+    original_density = original_total_count / total_area,
+    adjusted_density = adjusted_total_count / total_area,
+    density_difference = adjusted_density - original_density,
+    density_ratio = adjusted_density / original_density
+  ) %>%
+  
+  # Ungroup
+  ungroup()
+
+
+### summary statistic
+
+# Calculate the statistics
+stats <- result %>%
+    filter(!year == 1999 & station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>% 
+    group_by(station, year) %>%
+    summarise(
+        n_taxa = n_distinct(species),
+        total_density = sum(adjusted_density),
+        .groups = 'drop'
+    )
+
+min_taxa_info <- stats %>% 
+    filter(n_taxa == min(n_taxa)) %>% 
+    slice(1)  # In case there are multiple stations with the same minimum
+
+max_taxa_info <- stats %>% 
+    filter(n_taxa == max(n_taxa)) %>% 
+    slice(1)  # In case there are multiple stations with the same maximum
+
+min_density_info <- stats %>% 
+    filter(total_density == min(total_density)) %>% 
+    slice(1)
+
+max_density_info <- stats %>% 
+    filter(total_density == max(total_density)) %>% 
+    slice(1)
+
+# Print the results
+print(min_taxa_info)
+print(max_taxa_info)
+print(min_density_info)
+print(max_density_info)
+
+```
+
+
+
+```{r innlestur, message=FALSE, warning=FALSE, include=FALSE}
+# Umbreytingar á gögnum fyrir greiningu. Setsýni líka.
+#This chunk focuses on data preparation. It reads in the data, performs some data cleaning and transformation operations. The operations include filtering out certain taxa, grouping data, and standardizing taxonomic names. This is crucial for ensuring data quality and consistency before analysis.
+
+read_csv(file("KolgrTaxa.csv", encoding = "UTF-8"), na = "empty")
+taxa_to_remove <- c(
+  "Foraminifera",
+  "Nematoda",
+  "Cirripedia",
+  "Porifera",
+  "Cnidaria",
+  "Bryozoa",
+  "Sipuncula",
+  "Platyhelminthes",
+  "Nemertea",
+  "Oligochaeta",
+  "Ostracoda"
+)
+
+# Filter out the specified taxa using if_all()
+KolgrTaxa <- KolgrTaxa %>%
+  filter(if_all(where(is.character), ~ !. %in% taxa_to_remove))
+   
+   remove_list <- paste(c(
+     "nýsestir",
+     "ungviði",
+     "ungv",
+     "ungv.",
+     "juv",
+     "harpacticoida"
+   ), collapse = '|') 
+   
+   remove_ind <- lapply(strsplit(remove_list , "\\|")[[1]] , \(x) grep(x , KolgrTaxa$gamalt , fixed = T)) |> 
+     unlist() |> 
+     unique()
+   
+   ekkiungvidi <- KolgrTaxa[-remove_ind,] 
+   
+df <- ekkiungvidi %>% 
+  mutate(Artal = factor(Artal)) %>% 
+  dplyr::filter(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>% 
+  group_by(Artal, stod, Flokkun) %>%
+  summarise(N = sum(Nfm), .groups = "drop") %>% 
+  arrange(N)
+   
+   jorundur <- df %>% 
+     filter(!Flokkun %in% c("harpacticoida", "Campanulariidae")) %>% 
+     mutate(
+       Flokkun = case_when(
+         Flokkun == "Spionida" ~ "Spionidae",
+         Flokkun == "Terebellides stroemi" ~ "Terebellides stroemii",
+         Flokkun == "Ampharetinae" ~ "Ampharetidae",
+         Flokkun == "ostracoda" ~ "Ostracoda",
+         Flokkun == "Sabellidae" ~ "Sabellida",
+         Flokkun == "scalibregma inflatum" ~ "Scalibregma inflatum",
+         Flokkun == "sipunculida" ~ "Sipuncula",
+         Flokkun == "sipunculidae" ~ "Sipuncula",
+         Flokkun == "sipunculidea" ~ "Sipuncula",
+         Flokkun == "Nephtys" ~ "Nephthys",
+         Flokkun == "Nepthys" ~ "Nephthys",
+Artal == "1999" & Flokkun == "Ampharete acutifrons" ~ "Ampharetinae",
+Artal == "1999" & Flokkun == "Bivalvia" ~ "NA"        ,
+Artal == "2013" & Flokkun == "Harmothoe" ~ "Harmothoe extenuata"       ,
+Artal == "2013" & Flokkun == "Polynoidae" ~ "Harmothoe extenuata" ,
+Artal == "2014" & Flokkun == "Praxillella" ~ "Praxillella praetermissa",
+Artal == "2014" & Flokkun == "Syllidae" ~ "Syllis cornuta"             ,
+Artal == "2015" & Flokkun == "Syllidae" ~ "Syllis cornuta",
+Artal == "2015" & Flokkun == "Mya" ~ "Mya arenaria"        ,     
+Artal == "2015" & Flokkun == "Mytilidae" ~ "Mytilus edulis",
+Artal == "2015" & Flokkun == "Ampharetidae" ~ "NA"          ,
+Artal == "2016" & Flokkun == "Aricidea" ~ "Amphitrite cirrata"      ,
+Artal == "2016" & Flokkun == "Capitellidae" ~ "Capitella capitata"   ,  
+Artal == "2016" & Flokkun == "Cirratulidae" ~ "Cirratulus cirratus",
+Artal == "2016" & Flokkun == "Cossuridae" ~ "Cossura longocirrata",
+Artal == "2016" & Flokkun == "Nephtyidae" ~ "Nephthys"      ,
+Artal == "2016" & Flokkun == "Pectinariidae" ~ "Pectinaria koreni"     ,
+Artal == "2016" & Flokkun == "Phyllodocida" ~ "Phyllodoce maculata",
+Artal == "2016" & Flokkun == "Spio" ~ "Spio filicornis"            ,
+Artal == "2016" & Flokkun == "Spionidae" ~ "Spio filicornis",
+Artal == "2016" & Flokkun == "Syllidae" ~ "Syllis"           ,          
+Artal == "2016" & Flokkun == "Cardiidae" ~ "Cardium"          ,         
+Artal == "2016" & Flokkun == "Cardiidae" ~ "Cardium"           ,        
+Artal == "2017" & Flokkun == "Mya" ~ "Mya arenaria"  ,
+Artal == "2017" & Flokkun == "Maldanidae" ~ "Praxillella praetermissa",
+Artal == "1999" & Flokkun == "Ampharetinae" ~ "Ampharetidae",
+Artal == "2017" & Flokkun == "Ampharete" ~ "Ampharetidae"    ,
+Artal == "2017" & Flokkun == "Ampharete acutifrons" ~ "Ampharetidae",
+Artal == "2016" & Flokkun == "Lumbrineridae" ~ "Lumbrineris",
+Artal == "2015" & Flokkun == "Pholoe" ~ "Pholoe minuta"      ,          
+Artal == "2016" & Flokkun == "Pholoe" ~ "Pholoe minuta"       ,         
+Artal == "2017" & Flokkun == "Pholoe" ~ "Pholoe minuta"        ,    
+Artal == "1999" & Flokkun == "Musculus discors" ~ "Musculus",
+Artal == "2014" & Flokkun == "Mya" ~ "Mya arenaria"          ,   
+Artal == "2014" & Flokkun == "Mytilus edulis" ~ "Mytilidae",
+Artal == "2014" & Flokkun == "Nephtyidae" ~ "Nephthys"       ,
+Artal == "2014" & Flokkun == "Amphipoda" ~ "Protomedeia fasciata"    ,
+Artal == "2014" & Flokkun == "Tubificidae" ~ "Tubificoides kozloffi",
+Artal == "2014" & Flokkun == "Harmothoe" ~ "Harmothoe extenuata"     ,  
+Artal == "2015" & Flokkun == "Harmothoe" ~ "Harmothoe extenuata"      , 
+Artal == "2015" & Flokkun == "Amphipoda" ~ "Protomedeia fasciata",
+Artal == "2016" & Flokkun == "Balanus balanus" ~ "Balanus"       ,
+Artal == "2016" & Flokkun == "priapulidae" ~ "Priapulus caudatus" ,     
+Artal == "2016" & Flokkun == "Priapulidae" ~ "Priapulus caudatus"  ,    
+Artal == "2017" & Flokkun == "Harmothoe" ~ "Harmothoe extenuata"    ,   
+Artal == "1999" & Flokkun == "Leucon acutirostris" ~ "Cumacea"       ,  
+Artal == "1999" & Flokkun == "Eudorella emarginata" ~ "Cumacea",
+       TRUE ~ Flokkun)) %>% 
+     drop_na() 
+
+   
+# Setsýni:
+   
+kornast_organic_tap_dypi <- structure(list(stod = c("A7", "A7", "A7", "A7", "A7", "B5", "B5", 
+"B5", "B5", "B5", "B8", "B8", "B8", "B8", "B8", "C4", "C4", "C4", 
+"C4", "C4", "E3", "E3", "E3", "E3", "E3", "E4", "E4", "E4", "E4", 
+"E4"), Artal = c("2013", "2014", "2015", "2016", "2017", "2013", 
+"2014", "2015", "2016", "2017", "2013", "2014", "2015", "2016", 
+"2017", "2013", "2014", "2015", "2016", "2017", "2013", "2014", 
+"2015", "2016", "2017", "2013", "2014", "2015", "2016", "2017"
+), `20um` = c(0.628496042216359, 0.343339587242026, 0.453474676089517, 
+0.390734265734266, 0.643465909090909, 0.386002120890774, 0.321766561514196, 
+0.386792452830189, 0.19559585492228, 0.546637744034707, 0.592529025744573, 
+0.515981735159817, 0.369913686806412, 0.424997544719429, 0.221565731166913, 
+0.332928794917986, 0.153116531165312, 0.234791889007471, 0.190773067331671, 
+0.152190051967335, 0.385025817555938, 0.211453744493392, 0.157303370786517, 
+0.0827048768225239, 0.247269116186693, 0.426682936750051, 0.406354515050167, 
+0.214331413947537, 0.0125582337451894, 0.286830357142857), `63um` = c(0.350395778364116, 
+0.24577861163227, 0.215547703180212, 0.215909090909091, 0.151988636363636, 
+0.52661717921527, 0.342271293375394, 0.304245283018868, 0.348445595854922, 
+0.31236442516269, 0.317491166077739, 0.23972602739726, 0.276202219482121, 
+0.278886610994081, 0.282127031019202, 0.306115483075756, 0.276422764227642, 
+0.257203842049093, 0.17643391521197, 0.197475872308834, 0.379173838209983, 
+0.177679882525698, 0.143392188336009, 0.0935143288084465, 0.200595829195631, 
+0.438071995118975, 0.29933110367893, 0.211772232885477, 0.0256734859226251, 
+0.266741071428571), `125um` = c(0.0100263852242744, 0.315196998123827, 
+0.267373380447585, 0.284965034965035, 0.177556818181818, 0.0752916224814422, 
+0.32807570977918, 0.295990566037736, 0.399611398963731, 0.134490238611714, 
+0.0261736496718829, 0.237442922374429, 0.327990135635019, 0.240590007791825, 
+0.370753323485968, 0.319370437091116, 0.485094850948509, 0.44076840981857, 
+0.350997506234414, 0.528582034149963, 0.207194492254733, 0.281938325991189, 
+0.173354735152488, 0.283810960281549, 0.201588877855015, 0.104535285743339, 
+0.249163879598662, 0.19065898912348, 0.0339781243670245, 0.280133928571429
+), `250um` = c(0.0058047493403694, 0.0956848030018762, 0.0459363957597173, 
+0.0734265734265734, 0.00852272727272727, 0.00742311770943797, 
+0.00788643533123028, 0.0129716981132075, 0.0518134715025907, 
+0.00650759219088937, 0.0553003533568905, 0.00684931506849315, 
+0.0135635018495684, 0.0384999321551487, 0.0782865583456425, 0.0337347112923107, 
+0.0569105691056911, 0.0448239060832444, 0.180174563591022, 0.0972531551596139, 
+0.0236660929432013, 0.0558002936857562, 0.0358480470840021, 0.0834590246354952, 
+0.041708043694141, 0.0213544844417328, 0.0133779264214047, 0.0300703774792067, 
+0.00212679765039498, 0.0223214285714286), `1000um` = c(0.00527704485488127, 
+0, 0.0176678445229682, 0.034965034965035, 0.0184659090909091, 
+0.00466595970307529, 0, 0, 0.00453367875647668, 0, 0.00850580514891469, 
+0, 0.0123304562268804, 0.0170259043395175, 0.0472673559822747, 
+0.00785057362283114, 0.0284552845528455, 0.0224119530416222, 
+0.101620947630923, 0.0244988864142539, 0.00493975903614458, 0.273127753303965, 
+0.490101658640984, 0.456510809451986, 0.30883813306852, 0.00935529794590197, 
+0.0317725752508361, 0.353166986564299, 0.925663358314766, 0.143973214285714
+), tap = c(0.181515414138913, 0.117573294968505, 0.118865354458575, 
+0.10855175801997, 0.144215480661367, 0.174146595044186, 0.119127447894571, 
+0.124407020872865, 0.105198658268468, 0.115848718019756, 0.178503108560497, 
+0.12940849965294, 0.117179453375411, 0.111245191819955, 0.116370341491164, 
+0.142787808192584, 0.113006923837784, 0.132290387475618, 0.0969106601341345, 
+0.10220582768636, 0.215412621359223, 0.101006035443262, 0.090402518790167, 
+0.0885715142546809, 0.0796504565039956, 0.135196812364163, 0.126232974506719, 
+0.103923910552975, 0.092065868263473, 0.101525813669742), sd = c(0.00544534378975074, 
+0.000976059208807937, 0.00105675176697187, 0.00129099190584701, 
+0.010280862872346, 0.00245055200549895, 0.000348361831630225, 
+0.00083859912379809, 0.001823914492673, 0.000495255850064288, 
+0.010990421037094, 0.000600243017338078, 0.00277626938387639, 
+0.000420021748488332, 0.0014744503375705, 0.0199049666612412, 
+0.00034970661779751, 0.00314117917812511, 0.000215745910008022, 
+0.000435189983246506, 0.127862755335917, 0.000119010118739825, 
+0.00226462935582809, 0.00132600786385895, 0.00243540659124004, 
+0.0118334943096431, 0.000449569977393725, 0.000285425329099763, 
+0.00246993386642007, 0.000814994916882806), dypi = c(16.6, 16.6, 
+16.6, 16.6, 16.6, 24.5, 24.5, 24.5, 24.5, 24.5, 16.6, 16.6, 16.6, 
+16.6, 16.6, 34, 34, 34, 34, 34, 11.2, 11.2, 11.2, 11.2, 11.2, 
+11, 11, 11, 11, 11), `Síld 2013` = c(0L, 0L, 0L, 0L, 0L, 1L, 
+1L, 1L, 1L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L)), row.names = c(NA, -30L), class = "data.frame")
+```
+
+
+## Benthic Biotic Indices
+```{r BBIindexar, echo=FALSE, message=FALSE, warning=FALSE}
+# This chunk calculates various Benthic Biotic Indices (BBI) for different years and stations. It then creates heatmaps to visualize these indices. This provides a good overview of the ecological status of the benthic communities over time and across different sampling sites.
+
+
+  BBIlisti <- list()
+   BBIastand <- list()
+   nEQR <- list()
+   for (i in unique(jorundur$Artal)) {
+     my_BBI <- jorundur %>%
+        filter(Artal == i) %>%
+        filter(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+        group_by(Artal, stod, Flokkun) %>%
+        summarise(N = sum(N), .groups = 'drop') %>%
+        select(-Artal) %>% 
+        pivot_wider(names_from = stod, values_from = N) %>% BBI()
+     # calculating nEQR values and ecological quality status
+     BBIlisti[[i]] <- as.data.frame(cbind(my_BBI$BBI, Artal=i))
+     BBIastand[[i]] <- my_BBI$BBIclass
+     nEQR[[i]] <- as.data.frame(nEQR(my_BBI$BBI)[1])
+   }
+   
+   rass <- do.call(rbind,plyr::compact(nEQR))
+   names(rass) <- c("nAMBI","nISI","nNSI","nNQI1","nShannon","nEQR")
+   mm <- as.matrix(rass, ncol = 7)
+   
+   #heatmap.2(x = mm, Rowv = FALSE, Colv = FALSE, dendrogram = "none",
+   #          cellnote = mm, notecol = "black", notecex = .51,
+   #          trace = "none", key = FALSE, srtCol=0,   adjCol = c(0.5,1))
+   
+   #heatmap.2(mm,dendrogram = "row", srtCol=0,   adjCol = c(0.5,1))
+   
+   
+    myind <- rass %>% 
+     dplyr::select(nAMBI, nISI, nNSI, nNQI1, nShannon, nEQR) %>% 
+     #dplyr::select(nNQI1, nAMBI, nShannon) %>% 
+     #dplyr::select(nNQI1, nEQR, nISI) %>%
+     #dplyr::select(nNQI1) %>%
+     as.matrix() 
+     myind %>% 
+     heatmap.2(dendogram = "row", srtCol=0,   adjCol = c(0.5,1)) 
+
+# data_long <- myind %>%
+# tibble::rownames_to_column("Site_Year") %>%
+# tidyr::separate(Site_Year, into = c("Year", "Site"), sep = "\\.") %>%
+# tidyr::pivot_longer(cols = c(nNQI1, nAMBI, nShannon), names_to = "Index", values_to = "Value")     
+#      
+# ggplot(data_long %>% dplyr::filter(Index == "nNQI1"), 
+#        aes(x = Year, y = Value, color = Site, group = Site, shape = Site)) +
+#   geom_line() +
+#   geom_point(size = 3) +
+#   theme_minimal() +
+#   labs(title = "nNQI1 Index Over Time by Sampling Site",
+#        y = "nNQI1 Value",
+#        color = "Sampling Site",
+#        shape = "Sampling Site") +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+#   scale_shape_manual(values = c(16, 17, 18, 15, 19, 8)) +
+#   scale_color_brewer(palette = "Set2")
+     
+```
+
+```{r nAMBI_ind, eval=FALSE, fig.height=8, fig.width=10, include=FALSE}
+
+
+# Reshape rass to long format
+rass_long <- rass %>%
+    tibble::rownames_to_column("row_name") %>%
+    tidyr::separate(row_name, into = c("Artal", "stod"), sep = "\\.") %>%
+    tidyr::pivot_longer(cols = c(nAMBI, nISI, nNSI, nNQI1, nShannon, nEQR),
+                        names_to = "index",
+                        values_to = "Skor")
+
+# Convert Artal to factor with the same levels as in jorundur
+rass_long$Artal <- factor(rass_long$Artal, levels = levels(jorundur$Artal))
+
+# Reorder columns to match tafla structure
+rass_long <- rass_long %>%
+    dplyr::select(Artal, stod, index, Skor)
+
+# Extract AMBI data
+AMBI_data <- rass_long[rass_long$index == "nAMBI",]
+
+# Function to categorize AMBI values 
+categorize_AMBI <- function(value) {
+  case_when(
+    value >= 0.58 ~ "Very good",
+    value >= 0.45 ~ "Good",
+    value >= 0.4 ~ "Moderate",
+    value >= 0.2 ~ "Poor",
+    TRUE ~ "Bad"
+  )
+}
+
+# Categorize AMBI values
+AMBI_data$Category <- categorize_AMBI(AMBI_data$Skor)
+
+# Create a matrix of categories
+stations <- unique(AMBI_data$stod)
+years <- sort(unique(AMBI_data$Artal))
+category_matrix <- matrix(NA,
+                          nrow = length(stations),
+                          ncol = length(years),
+                          dimnames = list(stations, years))
+
+for(i in 1:nrow(AMBI_data)) {
+  category_matrix[AMBI_data$stod[i], as.character(AMBI_data$Artal[i])] <- AMBI_data$Category[i]
+}
+
+# Define color palette for categories
+category_colors <- c("Very good" = "darkgreen", "Good" = "lightgreen", 
+                     "Moderate" = "yellow", "Poor" = "orange", "Bad" = "red")
+
+# Create numeric matrix for coloring
+numeric_matrix <- matrix(match(category_matrix, names(category_colors)),
+                         nrow = nrow(category_matrix), ncol = ncol(category_matrix))
+
+# Set up the PNG device
+#png("AMBI_heatmap.png", width = 800, height = 600, units = "px", res = 100)
+
+# Create the heatmap
+par(mar = c(5, 6, 4, 4) + 0.1)  # Increase margin size
+image(1:ncol(numeric_matrix), 1:nrow(numeric_matrix), t(numeric_matrix),
+      col = category_colors, xlab = "", ylab = "",
+      axes = FALSE, main = "Ecological Status Based on nAMBI")
+
+# Add axes and labels
+axis(1, at = 1:ncol(category_matrix), labels = colnames(category_matrix), las = 2)
+axis(2, at = 1:nrow(category_matrix), labels = rownames(category_matrix), las = 2)
+mtext("Year", side = 1, line = 3.5)
+mtext("Sampling Station", side = 2, line = 4.5)
+
+# Add categories to cells
+for(i in 1:nrow(category_matrix)) {
+  for(j in 1:ncol(category_matrix)) {
+    if(!is.na(category_matrix[i,j])) {
+      text(j, i, category_matrix[i,j], col = "black", cex = 0.7)
+    }
+  }
+}
+
+# Add legend
+# legend("bottom", legend = names(category_colors), 
+#        fill = category_colors, horiz = TRUE, cex = 0.8)
+
+# Add annotation
+mtext("AMBI: Higher values indicate poorer ecological status", side = 1, line = 4.5, cex = 0.8)
+
+# Close the PNG device
+#dev.off()
+
+# Print the data for inspection
+print(AMBI_data)
+```
+     
+### AMBI Index
+```{r AMBImynd, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+# This chunk focuses on calculating and visualizing the AMBI (AZTI Marine Biotic Index), which is another important indicator of the ecological quality status of soft-bottom marine benthic communities. The heatmap created here allows for easy comparison of ecological status across different sampling stations and years.
+
+tafla <- jorundur %>%
+  # Uncomment the next line if you need to filter specific stations
+  # filter(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+  group_by(Artal, stod) %>%
+  summarize(
+    Nn = total_abundance(count = N),
+    S = species_richness(taxon = Flokkun, count = N),
+    D_Margalef = margalef(taxon = Flokkun, count = N),
+    SN_Rygg = rygg(taxon = Flokkun, count = N),
+    SNa_Rygg = rygg(taxon = Flokkun, count = N, adjusted = TRUE),
+    H = shannon(taxon = Flokkun, count = N),
+    AMBI = ambi(taxon = Flokkun, count = N),
+    .groups = 'drop'  # This ensures that the result is not grouped
+  ) %>%
+  pivot_longer(cols = c(Nn, S, D_Margalef, SN_Rygg, SNa_Rygg, H, AMBI),
+               names_to = "index", values_to = "Skor")
+
+# Extract AMBI data
+AMBI_data <- tafla[tafla$index == "AMBI",]
+
+# Function to categorize AMBI values
+categorize_AMBI <- function(value) {
+  case_when(
+    value <= 1.2 ~ "High",
+    value <= 3.3 ~ "Good",
+    value <= 4.3 ~ "Moderate",
+    value <= 5.5 ~ "Poor",
+    TRUE ~ "Bad"
+  )
+}
+
+# Categorize AMBI values
+AMBI_data$Category <- categorize_AMBI(AMBI_data$Skor)
+
+# Create a matrix of categories
+stations <- unique(AMBI_data$stod)
+years <- unique(AMBI_data$Artal)
+category_matrix <- matrix(NA,
+                          nrow = length(stations),
+                          ncol = length(years),
+                          dimnames = list(stations, years))
+
+for(i in 1:nrow(AMBI_data)) {
+  category_matrix[AMBI_data$stod[i], as.character(AMBI_data$Artal[i])] <- AMBI_data$Category[i]
+}
+
+# Define color palette for categories
+category_colors <- c("High" = "darkgreen", "Good" = "lightgreen", 
+                     "Moderate" = "yellow", "Poor" = "orange", "Bad" = "red")
+
+# Create numeric matrix for coloring
+numeric_matrix <- matrix(match(category_matrix, names(category_colors)),
+                         nrow = nrow(category_matrix), ncol = ncol(category_matrix))
+
+# Set up the PNG device
+#png("AMBI_heatmap.png", width = 800, height = 600, units = "px", res = 100)
+
+# Create the heatmap
+par(mar = c(5, 6, 4, 4) + 0.1)  # Increase margin size
+image(1:ncol(numeric_matrix), 1:nrow(numeric_matrix), t(numeric_matrix),
+      col = category_colors, xlab = "", ylab = "",
+      axes = FALSE, main = "Ecological Status Based on AMBI")
+
+# Add axes and labels
+axis(1, at = 1:ncol(category_matrix), labels = colnames(category_matrix), las = 2)
+axis(2, at = 1:nrow(category_matrix), labels = rownames(category_matrix), las = 2)
+mtext("Year", side = 1, line = 3.5)
+mtext("Sampling Station", side = 2, line = 4.5)
+
+# Add categories to cells
+for(i in 1:nrow(category_matrix)) {
+  for(j in 1:ncol(category_matrix)) {
+    if(!is.na(category_matrix[i,j])) {
+      text(j, i, category_matrix[i,j], col = "black", cex = 0.7)
+    }
+  }
+}
+
+# Add legend
+# legend("bottom", legend = names(category_colors), 
+#        fill = category_colors, horiz = TRUE, cex = 0.8)
+
+# Add annotation
+mtext("AMBI: Higher values indicate poorer ecological status", side = 1, line = 4.5, cex = 0.8)
+
+# Close the PNG device
+#dev.off()
+
+# Print the data for inspection
+print(AMBI_data)
+
+```
+
+## Sediment Analysis
+### Grain Size Distribution
+```{r setgerd}
+#This chunk appears to be working with sediment data, calculating proportions of different particle sizes and total variance. The resulting plot  shows the sediment composition across different sampling stations, which can be important for understanding the habitat characteristics that influence benthic communities.
+
+result <- kornast_organic_tap_dypi %>%
+    dplyr::select(-tap, -sd, -`Síld 2013`, -dypi) %>%
+    group_by(stod) %>%
+    summarise(across(c(`20um`, `63um`, `125um`, `250um`, `1000um`), 
+                     list(mean = mean, var = var), .names = "{.col}_{.fn}")) %>%
+    mutate(across(ends_with("_mean"), 
+                  ~ . / rowSums(dplyr::select(cur_data(), ends_with("_mean"))), 
+                  .names = "{.col}_prop")) %>%
+    mutate(total_variance = rowSums(dplyr::select(., ends_with("_var"))))
+
+
+plot_data <- result %>%
+    dplyr::select(stod, dplyr::ends_with("_prop"), total_variance) %>%
+    tidyr::pivot_longer(cols = dplyr::ends_with("_prop"), 
+                        names_to = "particle_size", 
+                        values_to = "proportion",
+                        names_pattern = "(.+)_mean_prop") %>%
+    mutate(particle_size = factor(particle_size, 
+                                  levels = c("20um", "63um", "125um", "250um", "1000um"),
+                                  ordered = TRUE))
+
+# Create the plot
+ggplot(plot_data) +
+    geom_col(aes(x = stod, y = proportion, fill = particle_size)) +
+    geom_line(aes(x = stod, y = total_variance / max(total_variance), group = 1), 
+              data = plot_data %>% distinct(stod, .keep_all = TRUE), color = "red") +
+    geom_point(aes(x = stod, y = total_variance / max(total_variance)), 
+               data = plot_data %>% distinct(stod, .keep_all = TRUE), color = "red", size = 3) +
+    scale_fill_viridis_d(direction = -1) +  # Use viridis color palette
+    scale_y_continuous(name = "Proportion", 
+                       sec.axis = sec_axis(~.*max(plot_data$total_variance), name = "Total Variance")) +
+    labs(title = "Particle Size Distribution and Total Variance by Station",
+         x = "Station", fill = "Particle Size") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1),
+          legend.position = "bottom")
+#ggsave("ParticleSizeVar.png", width = 10, height = 8, dpi = 300, bg="white")
+```
+### Grain Size Comparison for E3 and E4
+```{r setgerdE}
+#This chunk focuses on analyzing and visualizing grain size distributions for two specific stations, E3 and E4. It creates a faceted bar plot showing the proportion of different grain sizes over the years for these two stations. This visualization helps in understanding how sediment composition varies between these stations and how it changes over time, which can be crucial for interpreting benthic community changes.
+plot_data <- kornast_organic_tap_dypi %>%
+    dplyr::filter(stod %in% c("E3", "E4")) %>%
+    dplyr::select(stod, Artal, `20um`, `63um`, `125um`, `250um`, `1000um`) %>%
+    tidyr::pivot_longer(cols = c(`20um`, `63um`, `125um`, `250um`, `1000um`), 
+                 names_to = "grain_size", 
+                 values_to = "proportion")
+plot <- ggplot(plot_data, aes(x = Artal, y = proportion, fill = stod)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~grain_size, scales = "free_y", nrow = 2) +
+  scale_fill_manual(values = c("E3" = "#1b9e77", "E4" = "#d95f02")) +
+  labs(title = "Grain Size Proportions in Stations E3 and E4",
+       x = "Year",
+       y = "Proportion",
+       fill = "Station") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.background = element_rect(fill = "lightgrey"),
+        strip.text = element_text(face = "bold")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+
+print(plot)
+```
+
+### Beta Regression Analysis
+
+```{r setgerdBReg, class.output="fold-show", comment="Beta Regression Results"}
+#This chunk performs beta regression analysis for each grain size category. Beta regression is particularly suitable for analyzing proportional data, which is the case with grain size distributions. The analysis aims to understand how the proportion of each grain size is influenced by the year and sampling station. This statistical approach can reveal significant trends or differences in sediment composition over time or between stations, providing a more rigorous complement to the visual analysis in the previous chunk.
+# Function to run beta regression for each grain size
+run_beta_regression <- function(grain_size) {
+    # Prepare data
+    data <- kornast_organic_tap_dypi %>%
+        dplyr::select(stod, Artal, !!grain_size) %>%
+        dplyr::rename(proportion = !!grain_size)
+    
+    # Adjust proportions to avoid 0 and 1
+    data$prop_adj <- (data$proportion * (nrow(data) - 1) + 0.5) / nrow(data)
+    
+    # Run beta regression
+    model <- betareg(prop_adj ~ Artal + stod, data = data)
+    
+    return(model)
+}
+
+# Run beta regression for each grain size
+grain_sizes <- c("20um", "63um", "125um", "250um", "1000um")
+models <- lapply(grain_sizes, run_beta_regression)
+
+# Print summaries
+for (i in seq_along(grain_sizes)) {
+    cat("\nBeta Regression for", grain_sizes[i], "\n")
+    print(summary(models[[i]]))
+    cat("\n-----------------------------------\n")
+}
+```
+
+### Organic Matter Content
+
+```{r LOI, class.output="fold-show", comment="Kruskal-Wallis and Dunn's Test Results"}
+# This chunk focuses on analyzing the organic matter content (Loss on Ignition, LOI) across different years and stations. It uses non-parametric statistical tests (Kruskal-Wallis and Dunn's test) to identify significant differences in organic matter content between years and between stations. The analysis is complemented by boxplots that visually represent the distribution of organic matter content across years and stations. This analysis is crucial for understanding how organic enrichment varies temporally and spatially, which can have significant implications for benthic community structure and function.
+
+# Kruskal-Wallis test for years
+kruskal_year <- kruskal.test(tap ~ Artal, data = kornast_organic_tap_dypi)
+print("Kruskal-Wallis test results for years:")
+print(kruskal_year)
+
+# Dunn's test for years if Kruskal-Wallis is significant
+if(kruskal_year$p.value < 0.05) {
+    dunn_year <- dunn.test(kornast_organic_tap_dypi$tap, kornast_organic_tap_dypi$Artal, 
+                           method="bonferroni")
+    print("Dunn's test results for years:")
+    print(dunn_year)
+}
+
+# Calculate and print median values for each year
+median_year <- tapply(kornast_organic_tap_dypi$tap, kornast_organic_tap_dypi$Artal, median)
+print("Median values for each year:")
+print(median_year)
+
+# Kruskal-Wallis test for stations
+kruskal_station <- kruskal.test(tap ~ stod, data = kornast_organic_tap_dypi)
+print("Kruskal-Wallis test results for stations:")
+print(kruskal_station)
+
+# Dunn's test for stations if Kruskal-Wallis is significant
+if(kruskal_station$p.value < 0.05) {
+    dunn_station <- dunn.test(kornast_organic_tap_dypi$tap, kornast_organic_tap_dypi$stod, 
+                              method="bonferroni")
+    print("Dunn's test results for stations:")
+    print(dunn_station)
+}
+
+# Calculate and print median values for each station
+median_station <- tapply(kornast_organic_tap_dypi$tap, kornast_organic_tap_dypi$stod, median)
+print("Median values for each station:")
+print(median_station)
+
+# Boxplot for visual comparison
+#png("organic_matter_boxplots.png", width = 10, height = 5, units = "in", res = 300)
+
+# Set up the plotting area
+par(mfrow=c(1,2), mar = c(5, 4, 4, 2) + 0.1)
+
+# Create the boxplots
+boxplot(tap ~ Artal, data = kornast_organic_tap_dypi, main="Organic Matter by Year", 
+        xlab="Year", ylab="Organic Matter Content",
+        cex.axis = 0.8, cex.lab = 0.9, cex.main = 1)
+boxplot(tap ~ stod, data = kornast_organic_tap_dypi, main="Organic Matter by Station", 
+        xlab="Station", ylab="Organic Matter Content",
+        cex.axis = 0.8, cex.lab = 0.9, cex.main = 1)
+
+# Close the PNG device
+#dev.off()
+
+```
+
+### Multivariate analysis (Year and station)
+
+```{r multivariate_analysis}
+# Fix station names in dendrogram
+# Properly summarize the data
+species_data <- jorundur %>%
+  filter(Artal != 1999) %>%
+  dplyr::group_by(stod, Artal, Flokkun) %>%
+  dplyr::summarise(N = sum(N), .groups = "drop") %>%
+  tidyr::pivot_wider(names_from = Flokkun, values_from = N, values_fill = 0) %>%
+  mutate(
+    Station = factor(stod, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
+    Year = factor(Artal)
+  ) %>%
+  dplyr::select(-stod, -Artal)  # Remove the original stod and Artal columns
+
+# Create year_group
+species_data$year_group <- factor(ifelse(species_data$Year %in% c("2013", "2014"), "Early", 
+                                         ifelse(species_data$Year %in% c("2016", "2017"), "Late", NA)))
+
+# Separate environmental variables and species data
+env_data <- species_data %>% dplyr::select(Station, Year, year_group)
+species_matrix <- species_data %>% dplyr::select(-Station, -Year, -year_group) %>% as.matrix()
+
+# 1. PERMANOVA
+permanova <- adonis2(species_matrix ~ Station + Year, data = env_data, permutations = 999, method = "bray")
+print(permanova)
+
+# 2. NMDS
+nmds <- metaMDS(species_matrix, distance = "bray")
+
+# Extract site scores
+site_scores <- as.data.frame(scores(nmds, display = "sites"))
+site_scores$Station <- env_data$Station
+site_scores$Year <- env_data$Year
+
+# Extract species scores
+species_scores <- as.data.frame(scores(nmds, display = "species"))
+
+# Plot NMDS
+nmds_plot <- ggplot() +
+    geom_point(data = site_scores, aes(x = NMDS1, y = NMDS2, color = Station, shape = Year), size = 3) +
+    geom_text(data = species_scores, aes(x = NMDS1, y = NMDS2, label = rownames(species_scores)), 
+              size = 3, alpha = 0.5) +
+    theme_minimal() +
+    labs(title = "NMDS of Community Composition")
+
+print(nmds_plot)
+
+# 3. SIMPER
+simper_data <- species_matrix[!is.na(env_data$year_group), ]
+simper_group <- env_data$year_group[!is.na(env_data$year_group)]
+
+simper_result <- simper(simper_data, group = simper_group, permutations = 999)
+print(summary(simper_result))
+
+simper_data <- data.frame(
+    Species = c("Capitella capitata", "Ophelina acuminata", "Polydora", "Macoma calcarea", 
+                "Scalibregma inflatum", "Spio filicornis", "Scoloplos armiger", "Spionidae", 
+                "Tubificoides kozloffi", "Eteone longa", "Chaetozone setosa", 
+                "Mediomastus fragilis", "Oligochaeta"),
+    Avg_Abundance_Early = c(6580, 1, 19, 35, 0, 0, 21, 481, 413, 311, 256, 45, 119),
+    Avg_Abundance_Late = c(27.6, 1192, 1420, 735.6, 498.9, 595.7, 490.8, 101.1, 6.2, 121.3, 252.6, 255.5, 285.2),
+    Contribution = c(30.52, 8.28, 6.29, 5.08, 4.24, 3.57, 3.38, 2.69, 2.47, 2.30, 2.27, 1.83, 1.71),
+    Cumulative = c(32.4, 41.2, 47.9, 53.3, 57.8, 61.5, 65.1, 68.0, 70.6, 73.1, 75.5, 77.4, 79.2)
+)
+simper_data <- simper_data %>%
+    mutate(across(where(is.numeric), ~round(., 2)))
+table <- kbl(simper_data, 
+             caption = "SIMPER analysis results showing species contributing to approximately 80% of the cumulative difference between early (2013-2014) and late (2016-2017) periods.",
+             col.names = c("Species", "Early Avg. Abundance", "Late Avg. Abundance", "Contribution (%)", "Cumulative (%)"),
+             align = c("l", "r", "r", "r", "r"),
+             booktabs = TRUE,
+             longtable = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"),
+                  full_width = FALSE) %>%
+    column_spec(1, italic = TRUE) %>%
+   kableExtra::footnote(general = "Species are listed in order of their contribution to the overall dissimilarity.",
+             general_title = "Note:",
+             threeparttable = TRUE)
+
+# 4. Trajectory Analysis
+trajectory_plot <- ggplot(site_scores, aes(x = NMDS1, y = NMDS2, color = Station, label = Year)) +
+    geom_point(size = 3) +
+    geom_path(aes(group = Station)) +
+    geom_text(nudge_x = 0.05, nudge_y = 0.05) +
+    theme_minimal() +
+    labs(title = "Community Trajectory Over Years by Station")
+
+print(trajectory_plot)
+
+# 5. Species Richness and Diversity Indices
+richness <- specnumber(species_matrix)
+shannon <- diversity(species_matrix, index = "shannon")
+simpson <- diversity(species_matrix, index = "simpson")
+
+diversity_df <- data.frame(
+    Station = env_data$Station,
+    Year = env_data$Year,
+    Richness = richness,
+    Shannon = shannon,
+    Simpson = simpson
+)
+
+# Plot diversity indices
+richness_plot <- ggplot(diversity_df, aes(x = Year, y = Richness, color = Station, group = Station)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "Species Richness Over Time by Station")
+
+shannon_plot <- ggplot(diversity_df, aes(x = Year, y = Shannon, color = Station, group = Station)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "Shannon Diversity Over Time by Station")
+
+print(richness_plot)
+print(shannon_plot)
+
+# 6. Cluster Analysis
+cluster_analysis <- hclust(vegdist(species_matrix, method = "bray"), method = "average")
+plot(cluster_analysis, main = "Cluster Analysis of Samples", xlab = "Samples", ylab = "Bray-Curtis Dissimilarity")
+```
+
+### Multivariate analysis (Years as stations 1999 included )
+
+```{r multivariate_analysis_years}
+library(dplyr)
+library(tidyr)
+library(vegan)
+library(ggplot2)
+
+# First, let's identify which columns are numeric
+numeric_columns <- sapply(species_data, is.numeric)
+
+# Aggregate data across all stations for each year, summing only numeric columns
+aggregated_data <- species_data %>%
+    group_by(Year) %>%
+    summarise(across(where(is.numeric), sum, na.rm = TRUE)) %>%
+    ungroup()
+
+# Separate year and species data
+years <- aggregated_data$Year
+species_matrix <- aggregated_data %>% select(-Year) %>% as.matrix()
+
+# 2. NMDS
+nmds <- metaMDS(species_matrix, distance = "bray")
+
+# Extract site scores
+site_scores <- as.data.frame(scores(nmds, display = "sites"))
+site_scores$Year <- years
+
+# Extract species scores
+species_scores <- as.data.frame(scores(nmds, display = "species"))
+
+# Plot NMDS
+nmds_plot <- ggplot() +
+    geom_point(data = site_scores, aes(x = NMDS1, y = NMDS2, color = Year), size = 4) +
+    geom_text(data = species_scores, aes(x = NMDS1, y = NMDS2, label = rownames(species_scores)), 
+              size = 3, alpha = 0.5) +
+    theme_minimal() +
+    labs(title = "NMDS of Community Composition Over Years")
+
+print(nmds_plot)
+
+# 3. SIMPER (comparing early vs late years)
+early_years <- c("2013", "2014")
+late_years <- c("2016", "2017")
+
+simper_data <- species_matrix[years %in% c(early_years, late_years), ]
+simper_group <- factor(ifelse(years[years %in% c(early_years, late_years)] %in% early_years, "Early", "Late"))
+
+simper_result <- simper(simper_data, group = simper_group, permutations = 999)
+print(summary(simper_result))
+
+# 4. Trajectory Analysis is not applicable
+
+# 5. Species Richness and Diversity Indices
+richness <- specnumber(species_matrix)
+shannon <- diversity(species_matrix, index = "shannon")
+simpson <- diversity(species_matrix, index = "simpson")
+
+diversity_df <- data.frame(
+    Year = years,
+    Richness = richness,
+    Shannon = shannon,
+    Simpson = simpson
+)
+
+# Plot diversity indices
+richness_plot <- ggplot(diversity_df, aes(x = Year, y = Richness, group = 1)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "Species Richness Over Time")
+
+shannon_plot <- ggplot(diversity_df, aes(x = Year, y = Shannon, group = 1)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "Shannon Diversity Over Time")
+
+print(richness_plot)
+print(shannon_plot)
+
+# 6. Cluster Analysis
+cluster_analysis <- hclust(vegdist(species_matrix, method = "bray"), method = "average")
+plot(cluster_analysis, main = "Cluster Analysis of Years", xlab = "Years", ylab = "Bray-Curtis Dissimilarity")
+
+```
+

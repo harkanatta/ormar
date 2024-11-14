@@ -1,0 +1,202 @@
+Ecosystem recovery by benthic invertebrates after a sudden hypoxia caused by massive fish death
+Mass fish death causes low-oxygen event with an ecosystem vipeout; the recovery of the benthic invertebrates
+What happens when mass fish kill wipes out an ecosystem in a marine embayment?
+Benthic marine ecosystem recovery after a massive hypoxia and eutrophication events
+The consequences of a massive hypoxic eutrophication events for marine benthic invertebrates and the following ecosystem recovery
+The consequences of a serious hypoxia and eutrophication event for marine benthic invertebrates and the following ecosystem recovery
+
+The muddy bottom of Kolgrafafjörður:  from tons of dead herring to hypoxia (a la) Capitella, and the subsequent rise of the benthic macroinvertebrates.
+
+Jón Einar Jónsson 1, Róbert A. Stefánsson 2, Valtýr Sigurðsson 3,4 Menja von Schmalensee 2, Árni Ásgeirsson 1 og Jörundur Svavarsson 5.  
+
+1 University of Iceland’s Research Center at Snæfellsnes, Hafnargata 3, 340 Stykkishólmur, Iceland
+2 West Iceland Nature Research Centre, Hafnargata 3, 340 Stykkishólmur, Iceland
+3,4 Biopol Biotechnology, Einbúastíg 2, 545 Skagaströnd, Iceland; and Northwest Iceland Nature Research Centre, Aðalgötu 2, 550 Sauðárkrókur, Iceland
+5 University of Iceland, Faculty of Life and Environmental Sciences, Sturlugata 7, 102 Reykjavík, Iceland.
+
+Target rit: 
+Marine Biology 
+
+Lykil orð (leitarorð):
+hypoxia (benthic invertebrates) “permanent hypoxia”, “coastal hypoxia”
+bæta “sediment” við leitirnar. mældur umhverfisparameter með gögnunum.
+Organic pollution (benthic invertebrates)
+Marine, benthos, secondary succession
+
+Introduction
+Oxygen concentrations vary within ecosystems, but hypoxic conditions are a growing problem worldwide, and such events can occur at seasonal, local, and even at global and geological scales (Rabalais et al. 2001, 2010, Diaz & Rosenberg 2008, Levin et al. 2009, Zhang et al. 2010, Caswell & Frid 2017, Alosairi et al. 2021). Hypoxic conditions in aquatic systems most often arise as a consequence ofbecause of anthropogenic eutrophication (Malone and Newton 2020), where an ecosystem becomes overflowed in nutrient stressors (sewage, waste, fertilizer, or other organic material). The subsequent usage of nutrients such as nitrogen and phosphorus by macrophytes, phytoplankton and bacteria in biological processes may require more oxygen than the system can supply, leading to hypoxic (or anoxic) conditions which are lethal or sub-lethal to pelagic and benthic organisms and other metazoans. Ecosystem recovery can take years, even decades or longer (Ærtebjerg et al. 2003, Diaz & Rosenberg 2008, Jones & Schmitz 2009, Borja et al. 2010, Malone and Newton 2020, Le Moal, Gascuel-Odoux et al. 2019).
+Three main types of hypoxic conditions have been described: seasonal, episodic (“following flooding”) and permanent (Levin et al. 2009). Hypoxic conditions commonly occur when water columns become stratified, which prevents oxygenated surface waters from mixing with lower-oxygen water near the bottom. Various taxa display differing thresholds for tolerance of low oxygen conditions (Vaquer-Sunyer & Duarte 2008, Belley et al. 2010), but such responses also depend on size of the affected area and duration of exposure (Levin et al. 2009). Wijnhoven et al. 2010 defined hypoxia (low oxygen) as O2<3 mg/l but anoxia (no oxygen) at O2<0.5 mg/l, whereas Rabalais et al. (2010) defined hypoxic conditions as O2<2 mg/l. Vaquer-Sunyer & Duarte (2008) found in a comparative study that the common definition of 2 mg O2/l as hypoxic was below empirical sub-lethal and lethal O2 thresholds for 50% the species tested, which implied that past, present and future distribution of hypoxic impacts on marine life generally have been underestimated. Hypoxic conditions can be permanent, which makes it difficult for benthic animals to re-establish (Wijnhoven et al. 2010, Belley et al. 2010, Raman et al. 2015) but can also occur seasonally in water bodies which are largely land-locked or have relatively narrow outlets relative to their volume. Examples include estuaries, fjords, lagoons, or even land-locked oceans (e.g. Baltic and Black seas) which have relatively limited water exchange with sources of oxygenated water and relatively long residence times (Levin et al. 2009). To date, many of the fjord-like hypoxic ecosystems studied so far with respect to benthic fauna are estuaries with seasonal hypoxia, i.e. transition zones where freshwater from land and seawater mix with the occasional hyper abundance of fresh or saline conditions leading to stratifications (with seasonal nutrient or salinity overflows) and subsequent oxygen depletion, but also periods of recovery in between the seasonal stress (Leon-Morales & Vargas 1998, Como & Magni 2009, Yoshino et al. 2010, Díaz-Asencio et al. 2015). Studies of one-time hypoxic events (one-time hypoxic conditions with subsequent recovery for years without repeated hypoxic stressors), are relatively rare   for marine/saline fjords, especially in the Northern Hemisphere (Micaroni et al. 2021). They are commonly associated with anthropogenic eutrophication although such events might also arise due to natural phases of seasonal cycles (Josefson & Widbom 1988, Fallesen et al. 2000, Nilsson & Rosenberg 2000, Hansen et al. 2002).
+In the winter 2012-2013, a massive hypoxic event of catastrophic proportions occurred in Kolgrafafjörður fjord, West-Iceland (Fig.1). Approximately 300 thousand tonnes (70% of the Icelandic spawning stock) of herring (Clupea harengus) entered the semi-enclosed 6 km long fjord as part of their natural overwintering behaviour (Óskarsson et al. 2018, Jónsson et al. 2009). A combination of oxygen consumption by the colossal quantity of herring in the 0.2 km3 fjord (this amount of herring in the fjord might lower the oxygen concentrations to hypoxic levels in a few hours (Óskarsson et al. 2018)), unusually calm and cold weather and surface ice formation limiting oxygen exchange with the air, along with the semi-enclosed nature of the fjord caused a mass hypoxic fish kill of a cumulative total 55 thousand tonnes of herring in two separate occasions six weeks apart. The full volume of dead herring in Kolgrafafjörður in winter 2012-2013, equating to 180 million individuals, was of similar magnitude as Iceland’s entire allowable herring catch in the 2012-2013 fishing season (Óskarsson et al. 2018, Jónsson et al. 2019). Measurements of oxygen saturation in the fjord in the days following the mass fish kill incidents clearly showed hypoxic environmental conditions with as low oxygen levels as 1.1 ml/L near the bottom (Óskarsson et al. 2018).
+The magnitude of the fish death was clearly visible, as approximately 7 thousand tons of herring washed ashore during the later incident (Fig. 2). The immediate consequences for the benthic fauna were less clear, although numerous dead invertebrates of diverse taxa also washed ashore along with the dead herring (Stefánsson & von Schmalensee 2013). Given the low oxygen levels near the bottom of the fjord during the hypoxic events that led to the fish kills (Óskarsson et al. 2018), it is likely that the benthic fauna was also influenced at that time. In the weeks and months that followed, the benthic ecosystem experienced additional environmental stress, as thousands of tons of decomposing herring caused eutrophication and probably further hypoxia in the fjord, at least near the bottom.
+The hypoxia event and following eutrophication in Kolgrafafjörður in winter 2012-2013 was a one-time incident, as no further fish kills has occurred there since. The herring death thus presented a unique opportunity to follow the recovery of the benthic ecosystem in the years after the event. Mass fish kills are increasing worldwide, with numerous negative consequences (La & Cooke 2011, Alosairi et al. 2021). Understanding the effects such events can have on other species is therefore of the utmost importance.   
+Benthic invertebrates in soft sediments are used as indicators of ecological quality measured with indices such as AMBI (A Marine Biotic Index, Borja et al. 2000), NQI1  ((Norwegian Quality Index 1, Rygg and Norling 2013) eða NQI1 - Rygg, 2006) and more. 
+This project began in the summer immediately after the herring deaths and sampling ran six years from 2013-2017. The project goal was twofold: 1) Estimate the effects of the hypoxia and eutrophication event on the benthos of Kolgrafafjörður, by comparing our data from 2013-2017 to a dataset using the same sampling stations from 1999 (Ingólfsson 1999); 2) Quantify how species composition and number of individual macrofauna recover after the environmental shock event and estimate the time period needed until full recovery. Specifically, we looked at the emergence of species capable of decomposing the herring mass under eutrophic and hypoxic conditions and subsequently how they were replaced by pioneer species that normally live in undisturbed conditions.  Species sensitive to low oxygen levels were also given special attention.
+Study area
+Kolgrafafjörður is a semi-enclosed fjord which opens north to the Breiðafjörður bay in West Iceland (Fig. 1). It has a surface area of ~10 km2, volume 0.2 km3, and maximum depth of 42 m (Óskarsson et al. 2018). A 230 m long bridge with a 150 m effective opening and a causeway was built in 2004 at the mouth of the fjord. That narrowed the opening of the fjord, but the design allowed for an approximately the same exchange of water under the bridge as before the construction. Measurements after the construction confirmed that the amplitude and timing of the tides are similar inside and outside of the bridge (Mannvit 2011), with the tide inside of Kolgrafafjörður delayed by 18 minutes relative to the outside waters of Urthvalafjörður. The exchange of seawater in Kolgrafafjörður is almost exclusively driven by the tides, with minor effects of e.g. wind and air pressure (Jónsson et al. 2019). There is a strong tidal current of up to at least 7 knots (3.6 m/s) under the bridge between low and high tide (Óskarsson et al. 2018). The main direction of the current inside Kolgrafafjörður is south along the west side of the fjord and out towards the bridge along the middle and east coast. Estimated flushing time of the fjord is 2.6 days at spring tide and 6.7 days at neap tide. Freshwater inflow to the fjord is at least two orders of magnitude smaller than the flow under the bridge. Generally, stratification in Kolgrafafjörður is not expected to be common or important, although during calm and cold weather conditions, the freshwater runoff to Kolgrafafjörður can create a less dense and colder surface layer, which may facilitate the formation of a thin layer of sea ice and hence limit the ocean-atmosphere exchange of oxygen (Jónsson et al. 2019). Anthropogenic influence on nutrients in the fjord are considered insignificant, as this is a rural area and only two small farms are situated at the fjord. The fjord is saline despite freshwater input from nearby mountains.
+Following the mass herring death in the winter 2012/2013, considerable effort was put into research to try to understand the role of different physical parameters in the events, including measurements of currents, wind, sea-level, temperature, salinity and oxygen at various positions and depths (see Óskarsson et al. 2018 and Jónsson et al. 2019). 
+  
+Fig. 1. Location of the sampling stations
+
+
+2 Materials and methods
+This study investigates the long-term changes in benthic polychaete communities and sediment characteristics in Kolgrafafjörður, Iceland, from 2013 to 2017, with a comparative reference to a 1999 baseline survey. Our methodology encompasses four main components: (1) a sampling design that aligns with selected stations from a previous 1999 environmental assessment, allowing for potential long-term comparisons; (2) detailed protocols for polychaete sampling, processing, and identification; (3) sediment analysis for grain size and organic matter content; and (4) comprehensive data processing and statistical analyses. We used field sampling, laboratory analyses, and statistical methods to examine spatial and temporal patterns in polychaete communities and sediment characteristics. This approach allows us to investigate ecosystem dynamics (2013-2017) while also providing context for potential long-term changes since 1999.
+2.1 Sampling design
+2.1.1 Baseline sampling in 1999
+In the year 1999 an environmental assessment was done by Agnar Ingólfsson with an extensive sampling campaign of soft bottom fauna in the fjord. A single sample was collected from multiple stations in a grid-like pattern over the fjord with a small Ekman grab (0.0225 m2). 
+2.1.2 Sampling effort 2013-2017
+Six of these stations were selected for this study, the reason being their homogenous species composition, relative high diversity, and their similar sediment characteristics,  allowing for fair comparison with later sampling. Research expeditions were in June/July each year.
+2.2 Polychaete sampling strategy and analyses
+2.2.1 Field sampling
+Sediment samples for benthic fauna were collected at each station using a Shipek© grab (0.04 m² sampling surface; three replicates). The samples were sieved with seawater onboard through a 0.5 mm mesh to retain macrozoobenthic organisms. The retained organisms were immediately preserved in a formaldehyde solution (5% v/v, neutralized with borax). Within a week, the samples were transferred to 70% ethanol. An additional sample was collected at each station for sediment analysis and preserved in 70% ethanol.
+2.2.2 Laboratory processing
+In the laboratory, the benthic macrofauna was sorted and identified. Each sample was dyed with Bengal Rose to facilitate sorting. Sub-sampling was employed to manage the collected samples effectively. After removing the largest organisms visible under a magnifying glass, the samples were divided using an Endecotts sample divider, splitting each sample into two parts, repeated three times, to ensure a representative subset for detailed analysis. The macrofauna was identified to species, when possible, otherwise to xxxx taxonomic levels. 
+2.2.3 Species identification and quality assurance
+For quality assurance, the same person  verified all annelid identifications in both this study and Ingólfsson (1999).
+2.3. Sediment characteristics
+2.3.1. Sediment sampling and grain-size analysis
+Sediment grain-size and organic matter content were assessed at each station. Sediments were sampled using the Shipek grab sampler and used for grain-size analysis. Small pebbles and shell fragments were separated from the sand and mud fractions by hand. Samples were dried at 60°C for 24 hours and sieved. To prevent clotting, the samples were stirred 2-3 times during the drying process and gently tapped with a spoon during sieving. The dried samples were sieved using a series of mesh sizes (4000, 2000, 1000, 250, 125, and 63 µm). Each size fraction was then weighed to determine the proportion of sediment in each particle size group. 
+2.3.2. Organic matter content analysis
+The organic matter content of sediment samples was estimated by using loss on ignition (Heiri et al. 2001). Triplicate of subsamples of (2±0.05 g) were weighed directly in porcelain melting pots and burned at 475 °C for 2 hours. Only the fraction <63 µm was used for the analysis of organic content. 
+
+2.4 Data processing and analysis
+2.4.1
+Raw count data were imported and adjusted for sub-sampling and sampling area. Counts were scaled to individuals per square meter based on the bottom grab size (0.04 m² for 2013-2017, 0.0225 m² for 1999). Species names and taxonomic classifications were standardized using the World Register of Marine Species (WoRMS) database via the 'worrms' R package (Chamberlain, 2023). Data cleaning involved removing entries related to newly settled individuals, juveniles, and specific taxa to focus on established adult populations.
+Prior  to multivariate analyses, a taxonomic harmonization process was performed to ensure consistency across samples and minimize artificial inflation of diversity. This involved standardizing taxonomic classifications and merging some lower taxonomic groups into higher taxa when inconsistencies were found. Data was summarized to year, station and species and merged with the environmental variables such as depth, percentage organic material in sediment, and grain size proportion in sediment. This integration allows for the exploration of how environmental factors influence species distribution, abundance, and community structure.
+2.4.2 Assessment of Benthic Ecological Quality 
+To assess the ecological quality of benthic communities, we employed a normalized version of the Norwegian Quality Index (nNQI1   ) which combines AMBI with Shannon-Wiener diversity index. and was calculated using the BBI package (Cordier et al., 2021) in R (R Core Team, 2023).
+The Norwegian Quality Index (NQI1) is a composite index that combines the AMBI index with diversity measures, providing sensitivity to both disturbance and biodiversity changes (Rygg, 2006). The AZTI Marine Biotic Index (AMBI) classifies species into ecological groups based on their sensitivity to pollution stress (Borja et al., 2000). The Shannon diversity index accounts for both abundance and evenness of species in the community (Shannon, 1948).
+The index was normalized to Ecological Quality Ratios (EQRs) ranging from 0 to 1, following the procedure outlined in Borja et al. (2007). This normalization allows for standardized comparison across indices and ecosystems.
+2.4.3 Multivariate analysis
+We analyzed benthic community composition data using standardized, untransformed count data across 148 harmonized taxonomic categories. Using the vegan package in R (Oksanen, 2024 ) we employed three complementary multivariate techniques: Permutational Multivariate Analysis of Variance (PERMANOVA), Non-metric Multidimensional Scaling (NMDS), and Similarity Percentage analysis (SIMPER).
+PERMANOVA tested for significant differences in community composition across space and time using the 'adonis2' function with 999 permutations and Bray-Curtis dissimilarity. The model included station and year as factors. NMDS visualized community composition patterns using the 'metaMDS' function, with results plotted using ggplot2 (Wickham).
+SIMPER analysis identified species contributing most to dissimilarity between early (2013-2014) and late (2016-2017) periods using the 'simper' function. We created a trajectory analysis plot using NMDS scores to visualize community change for each station over time.
+These analyses collectively assess spatial and temporal variability in benthic community composition, identify key species driving changes, and visualize community change trajectories at each sampling station.
+2.4.4 Sediment statistical analysis
+2.4.4.1 Grain size
+To analyze the temporal and spatial patterns in sediment grain size distribution, we employed beta regression models using the betareg package in R (Cribari-Neto & Zeileis,  2010). Beta regression is appropriate for analyzing proportional data that are bounded between 0 and 1. Separate models were fitted for each grain size category (20 μm, 63 μm, 125 μm, 250 μm, and 1000 μm), with sampling year and station as predictors.
+2.4.4.2 Organic Matter
+We analyzed the variation in organic matter content across years and sampling stations using non-parametric statistical methods due to potential violations of normality assumptions in our data. We employed two separate Kruskal-Wallis tests: one to assess significant differences among years, and another to evaluate differences among sampling stations.
+Following a significant result from the Kruskal-Wallis test for years, we conducted Dunn's test for post-hoc pairwise comparisons to identify specific differences between years. We applied the Bonferroni correction to the Dunn's test results to control for multiple comparisons and reduce the likelihood of Type I errors.   
+This approach allowed us to examine how organic matter content varied across both temporal (years) and spatial (stations) dimensions while addressing potential violations of parametric test assumptions.
+
+# 3. Results 
+A total of 149 taxa of were found at 6 stations over the 5 year period. The number of taxa per station-year ranged from 2 (station A7, 2013) to 49 (station E3, 2017). Total organism density varied from 500 individuals/m² (station A7, 2013) to 27,392 individuals/m² (station E3, 2013). The proportion of organic content in the sediment declined significantly after the initial samples in 2013 and remained relatively steady for the rest of the study period, aligning with the expected decomposition and dispersal of organic matter from the herring die-off. The number of individuals per m² dropped drastically in the first two years, then increased and seemed to stabilize by the last year of the study. The number of species indicates a gradual recovery over the study period, starting at a low level in 2013 and reaching a threefold count by 2017.
+## 3.1 Temporal Changes in Benthic Biotic Indices
+Normalized biotic indices pooled across all stations in Kolgrafafjörður revealed clear temporal patterns during 1999-2017 (Table 1). The pre-mortality period (1999) showed good ecological status with relatively low variance between stations (nAMBI: 0.67 ± 0.05, nNQI1: 0.54 ± 0.04, nShannon: 0.68 ± 0.02). The 2013 mass mortality event resulted in severe community degradation, with indices dropping to their lowest values (nAMBI: 0.08 ± 0.11, nNQI1: 0.21 ± 0.09, nShannon: 0.09 ± 0.13). Recovery began in 2014, marked by high variability between stations (nAMBI: 0.40 ± 0.22), reflecting asynchronous recovery patterns, particularly evident in station C4 which showed minimal recovery (nAMBI = 0.00) while stations E4 and B8 approached pre-mortality conditions. By 2015, the community had largely recovered to good status with reduced between-station variability (nAMBI: 0.66 ± 0.02, nNQI1: 0.52 ± 0.04, nShannon: 0.65 ± 0.04), maintaining similar conditions in 2017.
+Mean normalized benthic indices (± SD) across all stations showing temporal changes in Kolgrafafjörður fjord from 1999 to 2017.
+Year	nAMBI	nNQI1	nShannon	Ecological Status
+1999	0.67 ± 0.05	0.54 ± 0.04	0.68 ± 0.03	Good
+2013	0.08 ± 0.11	0.21 ± 0.09	0.09 ± 0.13	Bad
+2014	0.4 ± 0.22	0.39 ± 0.12	0.44 ± 0.25	Moderate
+2015	0.66 ± 0.02	0.52 ± 0.04	0.65 ± 0.04	Good
+2016	0.64 ± 0.02	0.52 ± 0.03	0.65 ± 0.04	Good
+2017	0.63 ± 0.04	0.52 ± 0.05	0.66 ± 0.07	Good
+
+Figure X. Sýndist þetta vera þróaðri NMDS myndin. Þarf að skýra ásana og hvað er að gerast. NMDS analysis of no of individuals by species from grab samples in Kolgrafafjörður 2013-2017. The first two axes explained a cumulative xx% of the total variance. Data points represent species or operational taxonomic units (OTU), with only those that included at least 1% of total are included.
+
+# 3.3 Sediment analysis
+# 3.3.1 Particle size
+
+Figure 3. Ambi index by station.... ? No year? Hvað þýðir rauða línan? Figure 3. Proportions of dry weight of particle size groups in Kolgrafafjörður grab sample stations from 2013 (left y-axis). Red line shows total variance of xxxx (right y-axis).
+# 3.3.2 Organic content
+While organic content showed some variation among stations (ranging from 11.2% to 13.4%), post-hoc analysis (Dunn's test with Bonferroni correction) revealed no significant differences between any station pairs (all p > 0.05). This suggests that organic content was relatively homogeneous across the study area, despite the slight tendency for higher values at station A7 (13.4% ±3.0 SD) compared to other stations.
+
+
+## 3.2 Multivariate Analysis Results
+
+
+
+## 3.3 Multivariate Analysis Results
+### 3.3.1 PERMANOVA Results
+### 3.3.2 NMDS Ordination
+### 3.3.3 SIMPER Analysis
+
+### 3.3.4 Community Change Trajectories
+
+## 3.4 Sediment Characteristics
+### 3.4.1 Grain Size Distribution
+#### 3.4.1.1 Temporal Trends in Grain Size 
+ Myndatexti.
+
+
+#### 3.4.1.2 Spatial Patterns in Grain Size
+### 3.4.2 Organic Matter Content
+#### 3.4.2.1 Temporal Trends in Organic Matter
+#### 3.4.2.2 Spatial Patterns in Organic Matter
+
+## 3.5 Relationships Between Environmental Factors and Benthic Communities
+The proportion of organic content in the sediment declined significally after the initial samples in 2013 and remained steady for the rest of the study period, aligning with the expected decomposition and dispersal of organic matter from the herring death. The number of individuals per m2 dropped drastically in the first two years, then increased and seemed to stabilize by the last year. The number of species indicates a gradual recovery over the study period, starting at a low level in 2013 and reaching a threefold count by 2017.
+
+ 
+Figure 1 Figure 1 . Changes in the proportion of organic material in the sediment (% Organic), the number of species, and the number of individuals in Kolgrafafjörður from 2013 to 2017. The red line with error bars represents the percentage of organic material, the green dotted line indicates the number of species, and the blue line shows the number of individuals. The data illustrates the initial impact of the hypoxic event and subsequent recovery trends in species diversity and individual abundance over the 4-year study period.
+
+3.1 Sediment
+3.1.1Carbon content of sediment
+Organic matter content differed significantly among years (Kruskal-Wallis: χ² = 16.83, p = 0.002), but not among stations (χ² = 6.14, p = 0.293). Dunn's test revealed significantly higher content in 2013 compared to 2016 (p = 0.0005) and 2017 (p = 0.0128). Median values decreased notably after 2013 (2013: 0.1763; 2014-2017 range: 0.1011-0.1184), remaining relatively stable from 2014 onwards. Station medians ranged from 0.0904 to 0.1191. Boxplots corroborated these findings, showing clear temporal differences but less pronounced spatial variations.
+
+   
+Figure 2 Organic matter content distribution in Kolgrafafjörður. (A) Variation by year (2013-2017), showing significant decrease after 2013 (Kruskal-Wallis, p = 0.002) , with levels remaining relatively stable from 2014 to 2017. (B) Distribution across sampling stations, with no significant differences (p = 0.293).
+These results indicate a significant shift in organic matter content between 2013 and subsequent years, particularly 2016 and 2017, while spatial differences were not statistically significant. This pattern suggests a potential environmental change or event occurring between 2013 and 2014 that influenced organic matter levels across the entire study area.
+3.1.2
+
+
+
+
+
+
+
+References
+Aloisairi, Y., Al-Ragum, A., & Al-Houti, D. (2021) Environmental mechanisms associated with fish kill in a semi-enclosed water body: An integrated numerical modeling approach. Ecotoxicology and Environmental Safety 217: 112238.
+Belley, R., Archambault, P., Sundby, B., Gilbert, F., & Gagnon, J.-M. l.  (2010) Effects of hypoxia on benthic macrofauna and bioturbation in the Estuary and Gulf of St. Lawrence, Canada. Continental Shelf Research 30:  1302–1313.
+Borja, Á., Dauer, D. M., Elliott, M., & Simenstad, C. A. (2010). Medium-and long-term recovery of estuarine and coastal ecosystems: patterns, rates and restoration effectiveness. Estuaries and Coasts, 33(6), 1249-1260.
+Caswell, B.A., & Frid, C. L. J. (2017) Marine ecosystem resilience during extreme deoxygenation: the Early Jurassic oceanic anoxic event. Oecologia 183: 275–290. DOI 10.1007/s00442-016-3747-6
+Como, S., & Magni, P. (2009) Temporal changes of a macrobenthic assemblage in harsh lagoon sediments. Estuarine, Coastal and Shelf Science 83: 638–646. 
+Diaz, R. J., & Rosenberg, R. (2008). Spreading dead zones and consequences for marine ecosystems. Science, 321(5891), 926-929. 
+Diaz, R. J., & Rosenberg, R. (2011). Introduction to environmental and economic consequences of hypoxia. Water Resources Development, 27, 71-82.
+Díaz-Asencio, L., Helguera, Y., Fernández-Garcés, R., Gómez-Batista, M., Rosell, G., Hernández, Y, Pulido, A., & Armenteros, A. (2015). Revista Biología Tropical 64: 177-188. 
+Fallesen, G., Andersen, F., & Larsen, B. (2000). Life, death and revival of the hypertrophic Mariager Fjord, Denmark. Journal of Marine Systems 25: 313-321.
+Gamenick, I., Vismann, B., Griehaber, M. K., & Giere, O. (1998). Ecophysiological differentiation of Capitella capitata (Polychaeta). Sibling species from different sulfidic habitats. Mar. Ecol. Prog. Ser., 175, 155-166.
+Hansen, B. W., Stenalt, E., Petersen, J. K., & Ellegaard, C. (2002) Invertebrate re-colonization in Mariager Fjord (Denmark) after severe hypoxia. I. Zooplankton and settlement. Ophelia 56: 197-213.
+Heiri, O., Lotter, A. F., & Lemcke, G. (2001) Loss on ignition as a method for estimating organic and carbonate content in sediments: reproducibility and comparability of results. Journal of Paleolimnology 25: 101-110.
+Ingólfsson, A. 1999. Rannsóknir á lífríki í Kolgrafafirði. Fuglar, fjörur, og sjávarbotn. [Research of biota in Kolgrafafjörður. Birds, beaches and benthos] Institute of Biology, University of Iceland, report nr. 47 (In Icelandic).
+Jones HP, Schmitz OJ (2009) Rapid Recovery of Damaged Ecosystems. PLoS ONE 4(5): e5653. https://doi.org/10.1371/journal.pone.0005653
+Jónsson, S., et al. (2019). Water exchange, circulation and oxygen in a small fjord in Iceland in relation to events of massive herring mortality. Regional Studies in Marine Science 32.
+Josefson, A. B., & Widbom, B. (1988) Differential response of benthic macrofauna and meiofauna to hypoxia in the Gullmar Fjord basin. Marine Biology 100, 31-40.
+La, V. T. and S. J. Cooke (2011). "Advancing the Science and Practice of Fish Kill Investigations." Reviews in Fisheries Science 19(1): 21-33.
+Le Moal, M., et al. (2019). "Eutrophication: A new wine in an old bottle?" Science of the Total Environment 651: 1-11.
+Leon-Morales, R., & Vargas, J. A. (1998) Macroinfauna of a tropical fjord-like embayment: Golfo Dulce, Costa Rica. Revista Biología Tropical 46 Suppl 6: 81-90.
+Levin, L. A., Ekau, W., Gooday, A. J., Jorissen, F., Middelburg, J. J., Naqvi, S. W. A., Neira, C., Rabalais, N. N., & Zhang, J. (2009) Effects of natural and human-induced hypoxia on coastal benthos. Biogeosciences, 6, 2063–2098.
+Malone, T. C. and A. Newton (2020). "The Globalization of Cultural Eutrophication in the Coastal Ocean: Causes and Consequences." Frontiers in Marine Science 7.
+Mannvit 2011. Sjávarfallamælingar í Kolgrafafirði og Dýrafirði. A report for The Icelandic Road and Coastal Administration (IRCA). 7 pp. [In Icelandic].
+Micaroni, V., McAllen, R., Turner, J., Strano, F., Morrow, C., Picton, B., Harman, L., Bell, J.J. (2021). Vulnerability of Temperate Mesophotic Ecosystems (TMEs) to environmental impacts: Rapid ecosystemchanges at Lough HyneMarine Nature Reserve, Ireland. Science of the total environment 789: 147708
+Nilsson, H. C., & Rosenberg, R. (2000) Succession in marine benthic habitats and fauna in response to oxygen deficiency: analysed by sediment profile-imaging and by grab samples. Marine Ecology Progress Series 197: 139-149.
+Oug, E., Lein, T. E., Küfner, R. og Falk-Petersen, I. B. (1991) Environmental effects of a herring mass mortality in northern Norway. Impact on and recovery of rockyshore and soft-bottom biotas. Sarsia, 76(3):195-207.
+Óskarsson, G. J., Guðmundsdóttir, Á., & Sigurðsson, T. (2009) Variation in spatial distribution and migration of Icelandic summer-spawning herring. ICES Journal of Marine Science: Journal du Conseil, 66(8):1762-1767.
+Óskarsson, G. J., Ólafsdóttir, S. R., Sigurðsson Þ., & Valdimarsson, H. (2018) Observation and quantification of two incidents of mass fish kill of Icelandic summer spawning herring Clupea harengus) in the winter 2012/2013 Fisheries Oceanography, 27: 302–311.
+Pétursson, GS, Sveinn Óli Pálmarsson, Helgi Gunnar Gunnarsson (2015). Kolgrafafjörður. Rannsókn á umhverfisaðstæðum og súrefnisbúskap við síldargöngur. Skýrsla nr. 15.11 unnin fyrir Vegagerðina. Verkfræðistofan Vatnaskil. 276 bls. (In Icelandic)
+Raman, A. V., Damodaran, R., Levin, L. A., Ganesh, T., Rao, Y. K. V., Nanduri, S. & Madhusoodhanan, S. (2015) Macrobenthos relative to the oxygen minimum zone on the East Indian margin, Bay of Bengal. Marine Ecology 36 (2015) 679–700. 
+Rabalais,N.N.,Turner,R.E.(Eds.), 2001 Coastal hypoxia: consequences for Living Resources and Ecosystems. American Geophysical Union,Washington,pp.211–240. 
+Rabalais, N. N., Diaz, R. J., Levin, L. A., Turner, R. E., Gilbert, D., & Zhang, J. (2010). Dynamics and distribution of natural and human-caused hypoxia. Biogeosciences, 7, 585-619.
+Stefánsson, R.A., & von Schmalensee, M. (2013). Síld og fuglar í Kolgrafafirði. [Herring and birdlife in Kolgrafafjörður] Fuglar 9: 36-43. (In Icelandic)
+Sigurðsson, V. (2015). Áhrif lífrænnar mengunar á lífríki sjávarbotns í Breiðafirði. M.S. ritgerð við Líf- og umhverfisvísindadeild Háskóla Íslands. 63 bls. http://hdl.handle.net/1946/21894.
+Wijnhoven, S., Escarvage, V., Daemen, E., & Hummel, H. (2010) The Decline and Restoration of a Coastal Lagoon (Lake Veere) in the Dutch Delta. Estuaries and Coasts (2010) 33: 1261–1278.
+Vaquer-Sunyer, R., & Duarte, C. M. (2008) Thresholds of hypoxia for marine biodiversity. PNAS 105: 15452–15457.
+Zhang, J., Gilbert, D., Gooday, A. J., Levin, L. A., Naqvi, S. W. A., Middelburg, J. J., Scranton, M., Ekau, W., Peña, A., Dewitte, B., Oguz, T., Monteiro, P. M. S., Urban, E. R., Rabalais, N. N., Ittekkot, V., Kemp, W. M., Ulloa, O., Elmgren, R., Escobar-Briones, E., & Van der Plas, A. K. (2010). Natural and human induced hypoxia and consequences for coastal areas: synthesis and future development. Biogeosciences, 7, 1443-1467.
+Ærtebjerg, G., Andersen, J. H., & Hansen, O. S. (2003). Nutrients and eutrophication in Danish marine waters. Report, Danish Environmental Protection Agency & National Environmental Research Institute. 66 pages 
+Yoshino, K., Hamada, T., Yamamoto, K., Hayami, Y., Yamaguch, S., & Ohgushi, K. (2010) Effects of hypoxia and organic enrichment on estuarine macrofauna in the inner part of Ariake Bay. Hydrobiologia (2010) 652:23–38.
+
+Acknowledgements
+This manuscript is dedicated to our late colleague Guðmundur Víðir Helgason, who was responsible for identifying most of the invertebrates to taxa in this study and that of the late Agnar Ingólfsson (1999), whom we acknowledge for his earlier work in Kolgrafafjörður.
+We thank the crews of our three research vessels 2013-2017 for their invaluable help: Ásmundur Skeggjason, Skeggi Gunnarsson of Álfur, Símon Sturluson of Ronja, Álfgeir Marínósson and Páll Aðalsteinsson of Anna Karín. We thank Hreiðar Þór Valtýsson at Akureyri University for loan of the Shipek grab sampler. We thank Rakel Dawn Hanson, Sara Róbertsdóttir, Ísól Róbertsdóttir and Aron A. Þorvarðarson for their support with sample processing and various assistance. This project was supported by the University of Iceland, the Icelandic Road and Coastal Administration’s research fund. 
+
+
+
+List of tables
+
+
+List of figures
+Figure 1 Map of Kolgrafafjörður
+Figure 2 Photograph from Kolgrafafjörður, showing the surroundings and the bridge and associated causeway
+Figure 3 Glæðitaps mynd (úr niðurstöðum).
+
+

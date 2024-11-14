@@ -1,0 +1,7 @@
+{
+    "new-shiny-application": {
+        "name": "henda",
+        "type": "type_single_file",
+        "dir": "~"
+    }
+}

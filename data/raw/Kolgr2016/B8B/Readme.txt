@@ -1,0 +1,1 @@
+Bivalvia saman, Nemertea ekki nákvæmt, Polydora saman, Amphipoda saman og Harpacticoida.

@@ -1,0 +1,1 @@
+Bivalvia dýr komin úr skel. Allt frekar mjúkt. Fixeringin hefur eitthvað farið úrskeiðis. Mikið af tómum skeljum, aðallega af tegund (skelB5C.tif). Tvær kúfskeljar, sæmilega stórar (5-7 cm á breidd)

@@ -1,0 +1,1 @@
+Reif hausinn af einum polydora og henti. Setti líkið samt í túbúna og skráði.

@@ -1,0 +1,171 @@
+# Define data preparation function
+prepare_data <- function(data) {
+  # Check if required columns are present
+  required_columns <- c("station", "year", "species", "adjusted_density")
+  missing_columns <- setdiff(required_columns, names(data))
+  if (length(missing_columns) > 0) {
+    stop("The following required columns are missing from df_result: ", paste(missing_columns, collapse = ", "))
+  }
+  
+  # Summarize and reshape data
+  species_data <- data %>%
+    group_by(station, year, species) %>%
+    summarise(N = sum(adjusted_density), .groups = "drop") %>%
+    pivot_wider(names_from = species, values_from = N, values_fill = 0)
+  
+  # Separate environmental and species data
+  env_data <- data.frame(
+    Station = factor(species_data$station, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
+    Year = factor(species_data$year)
+  )
+  
+  # Create species matrix (only numeric columns)
+  species_matrix <- species_data %>% 
+    select(-station, -year) %>% 
+    as.matrix()
+  
+  return(list(species_data = species_data, env_data = env_data, species_matrix = species_matrix))
+}
+
+# Run data preparation
+prepared_data <- prepare_data(df_result)
+
+# Extract prepared data elements for use
+species_data <- prepared_data$species_data
+env_data <- prepared_data$env_data
+species_matrix <- prepared_data$species_matrix
+
+
+
+# Function to summarize one comparison without adding ecological group
+summarize_comparison <- function(comparison_data, df_result, year1, year2) {
+  
+  # Extract cumulative contributions from comparison_data$cusum
+  cumulative_contributions <- as.numeric(unlist(comparison_data$cusum))
+  species_names <- names(cumulative_contributions)
+  
+  # Ensure cumulative_contributions is numeric
+  if (!is.numeric(cumulative_contributions)) {
+    stop("cumulative_contributions is not numeric; check data structure.")
+  }
+  
+  # Calculate individual contributions as differences in cumulative contributions
+  individual_contributions <- c(cumulative_contributions[1], diff(cumulative_contributions))
+  
+  # Debugging: Print species names and cumulative contributions
+  cat("Species Names:\n")
+  print(species_names)
+  cat("Cumulative Contributions:\n")
+  print(cumulative_contributions)
+  
+  # Calculate abundance changes between years
+  abundance_changes <- sapply(species_names, function(species) {
+    abundance_year1 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year1])
+    abundance_year2 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year2])
+    change <- abundance_year2 - abundance_year1
+    return(change)
+  })
+  
+  # Create data frame without ecological group
+  df <- data.frame(
+    Species = species_names,
+    Cumulative_Percent = cumulative_contributions * 100,
+    Individual_Percent = individual_contributions * 100,
+    Abundance_Change = abundance_changes
+  )
+  
+  # Debugging: Print the data frame after summarization
+  print(df)
+  
+  return(df)
+}
+
+
+# Process sequential comparisons with debugging information
+# Process sequential comparisons with debugging information
+print("Sequential Year Comparisons:")
+for (i in seq_along(sequential_simper)) {
+  comparison_name <- names(sequential_simper)[i]
+  years <- unlist(strsplit(comparison_name, "_"))
+  year1 <- as.numeric(years[1])
+  year2 <- as.numeric(years[2])
+  
+  cat(sprintf("\nComparison: %s\n", comparison_name))
+  
+  # Step 1: Summarize the comparison without ecological group
+  summary_data <- summarize_comparison(sequential_simper[[i]], df_result, year1, year2)
+  
+  # Step 2: Add ecological group information from species_groups
+  summary_data_with_groups <- add_ecological_group(summary_data, species_groups)
+  
+  # Step 3: Filter and display the results
+  filtered_summary <- summary_data_with_groups %>%
+    filter(Cumulative_Percent <= 70)
+  
+  # Debugging: Check if filtered summary is empty
+  if (nrow(filtered_summary) == 0) {
+    cat("No rows meet the Cumulative_Percent filter threshold for this comparison.\n")
+  } else {
+    print(kableExtra::kbl(filtered_summary,
+                          caption = sprintf("Species contributions for %s", comparison_name),
+                          digits = 2))
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+henda <- read_csv(
+  "data/processed/hendaB.csv",
+  col_types = cols(
+    Year = col_integer(),
+    Flokkun = col_character(),  # Ensure Flokkun is read as character
+    A7 = col_integer(),
+    B5 = col_integer(),
+    B8 = col_integer(),
+    C4 = col_integer(),
+    E3 = col_integer(),
+    E4 = col_integer()
+  ),
+  na = c("", "NA")
+) %>%
+  mutate(across(where(is.numeric), ~ replace_na(., 0)))  %>% # Replace NA with 0 for numeric columns
+  select(Flokkun:last_col()) 
+
+
+
+
+
+
+library(dplyr)
+library(stringr)
+
+# Remove " sp." from species names
+henda_long_cleaned <- henda_long %>%
+  mutate(species = str_replace(species, " sp\\.", ""))
+
+# Print a few rows to verify the changes
+print(henda_long_cleaned, n = 20)
+
+
+

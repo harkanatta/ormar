@@ -1,0 +1,1 @@
+K2016 A7A týnt úr fyrir skiptingu: Nokkrar tómar skeljar.

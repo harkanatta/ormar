@@ -1,0 +1,92 @@
+General Principles:
+- Keep It Simple: Write code that does the job without unnecessary complexity (KISS). Avoid overengineering or adding extra features unless absolutely necessary (YAGNI).
+- Do One Thing Well: Each function or script should have a single clear goal. Avoid making a script or function handle multiple unrelated tasks (Curly's Law).
+- Reproducibility is Key: Always ensure your results can be easily reproduced by others. Use R Markdown for reproducible workflows and document data sources, script functionality, and results clearly.
+- Don't apologize, collaborate: If you need further instructions or if you need more information, please ask.
+- Keep in mind that I'm not always right even if I tell you I am, so please debate and discuss.
+
+Project Structure:
+- Simple Directory Structure: Organize your project into clear folders like `data/`, `scripts/`, and `output/`. Avoid clutter or creating too many folders.
+  - `/data/`: Raw and cleaned data.
+  - `/scripts/`: Separate scripts for different tasks (e.g., `clean_data.R`, `analyze_data.R`).
+  - `/output/`: Results like graphs, tables, and summary reports.
+- Minimal Dependencies: Only install and load the libraries necessary for your work. Use built-in functions when possible.
+
+Writing and Formatting Code:
+- Clean and Readable Code: Avoid unnecessary complexity. Code should be easy to follow without extensive comments (Don’t Make Me Think).
+- No Code Duplication: Reuse code by creating functions for tasks that are repeated (DRY). Keep each function focused on a single task.
+- Consistent Naming: Use clear, consistent names for variables and functions that describe their purpose. Avoid abbreviations.
+
+Data and Statistical Analysis:
+- Use Appropriate Tools: Stick to core R packages and specialized libraries for your biological research (e.g., `vegan` for ecological analysis, `ggplot2` for visualization).
+- Validate Data: Ensure data is cleaned and validated before analysis. Use simple checks (e.g., `stopifnot()`) to ensure data consistency.
+
+Reproducibility:
+- R Markdown: Combine code and narrative in R Markdown files to ensure that your analysis is reproducible. Embed code and outputs directly in your report.
+- Docker: Use Docker for environment consistency. Ensure that anyone using your code can replicate your environment with minimal setup.
+
+Version Control and Backup:
+- Use Git: Track changes with Git but focus on key files (scripts and reports). Avoid adding large data files unless necessary. Keep commit messages clear and focused.
+
+Testing and Error Handling:
+- Simple Error Handling: Use basic error handling (`try()` or `stop()`) when necessary but avoid overcomplicating. The goal is to keep your research flowing without unnecessary interruptions.
+
+Documentation:
+- Document as You Go: Include inline comments to explain key steps but avoid over-documenting obvious code. Make sure others can understand the code without needing extensive notes.
+
+Focus on Results:
+- Publication-Ready Visuals: Use `ggplot2` to create clear, professional-quality graphs. Avoid overly complex visualizations unless needed for your specific analysis.
+- Summarize Effectively: Provide clear summaries of results. Your analysis should speak directly to your research questions without unnecessary detours.
+
+Project-Specific Rules for the Journal Article:
+1. Maintain a Clean and Focused Directory Structure:
+  - Data: Store raw and cleaned datasets in `/data/`. Ensure any transformations are done within the script and outputs saved separately.
+  - Scripts: Use `/scripts/` to hold R scripts that clean, analyze, and visualize data.
+  - Reports: Write your main text and any supplementary documents in `/reports/`. Keep your R Markdown files here (e.g., `kfj.Rmd`).
+  - Outputs: Save tables, figures, and model outputs in `/output/` to maintain separation between code and results.
+2. Efficient and Reproducible Data Handling:
+  - Raw Data Integrity: Always load raw data from `/data/` and use scripts to clean or transform data without overwriting the raw files.
+  - Data Wrangling: Use `dplyr` and `tidyr` to clean and prepare data, ensuring all operations are clear and efficient.
+  - Versioning: Track versions of datasets using a simple naming scheme (e.g., `data_cleaned_v1.csv`). Avoid cluttering the directory with unnecessary intermediate datasets.
+3. Clear, Modular Scripts for Analysis:
+  - R Markdown Structure: For each part of your analysis (e.g., data cleaning, statistical models), write separate, clear chunks in `kfj.Rmd`.
+    - Keep one section for data import and cleaning.
+    - One for descriptive statistics and exploratory analysis.
+    - One for each analysis method (e.g., NMDS, PERMANOVA, SIMPER).
+  - Reusability: Write simple functions to reuse across the script (e.g., for calculating AMBI indices). Avoid duplication of code wherever possible (DRY principle).
+  - Document Your Work: Use comments in code sparingly but where necessary, such as to explain any complex transformations or model outputs.
+4. Results and Visualization for the Article:
+  - Reproducible Figures: All figures for the article (like NMDS, PERMANOVA, and SIMPER results) should be generated within the R script and saved in `/output/` with clear filenames (e.g., `nmds_plot.png`).
+  - `ggplot2` for Publication-Quality Visuals: Use `ggplot2` for creating all publication figures. Ensure that axis labels and legends are descriptive and appropriate for a non-specialist audience. Make sure that the background is white.
+  - Summarize Key Metrics: Summarize the number of species, diversity indices, or ecological quality assessments using clear tables in R Markdown.
+5. Use Statistical Methods Suited to Your Research:
+  - Ecological Indices: Ensure AMBI and Norwegian Quality Indices (nNQI1) are calculated consistently using the `BBI` package and report results in the text and figures.
+  - Statistical Analysis: Run non-parametric tests (Kruskal-Wallis, Dunn's test) for sediment grain-size and organic matter variation as appropriate. Document each test clearly in `kfj.Rmd`.
+  - Multivariate Analysis: Use `vegan` for NMDS, PERMANOVA, and SIMPER analysis. Ensure code for community composition analysis (as seen in `henda.txt`) is clean, and results are saved in human-readable form.
+6. Minimize Complexity While Maximizing Reproducibility:
+  - Focus on the Essentials: Avoid unnecessary packages or overly complex statistical models unless required by the research.
+  - Keep Docker Simple: Ensure that the Docker environment is focused only on the necessary dependencies (e.g., base R, `vegan`, `BBI`, `ggplot2`). This will make the environment portable and easy for collaborators or reviewers to use.
+  - Document Environment: Make sure your Dockerfile and any package requirements (e.g., `renv` or `packrat`) are well-documented so others can replicate the exact analysis environment.
+7. Regular Backups and Version Control:
+  - Git: Commit regularly using Git and track changes to R scripts and Markdown files. Avoid adding large raw datasets to version control.
+  - Commit Messages: Use clear commit messages focused on specific changes (e.g., "Add NMDS analysis section" or "Fix grain-size analysis script").
+
+Collaboration and Writing:
+1. Collaboration and Continuity:
+  - Follow Existing Structure: Ensure that any additions or changes made are consistent with the existing structure of the document. The sections should follow a logical flow as outlined in the original manuscript.
+  - Write in Alignment with the Author’s Voice: Maintain consistency with the tone and style already established in the article. Use clear, concise language that aligns with the journal Marine Biology's requirements.
+2. Contributions to Analysis and Results:
+  - Adhere to Analytical Approach: When contributing to the data analysis (e.g., NMDS, SIMPER), ensure that you are using the exact statistical methods and packages that have already been defined (e.g., `vegan`, `BBI` for ecological indices).
+  - Reproducibility: Make sure any code or analysis steps you write are easily replicable. Always verify that all code runs correctly in the Docker environment, and document any assumptions or transformations.
+3. Writing and Referencing:
+  - Maintain Accuracy in Scientific Writing: When drafting new sections or expanding on existing parts, ensure that all references are correctly cited (using the same citation style as in `henda.txt`). All data points should be verified against the raw datasets or established sources.
+  - Clear and Focused Language: Contribute concise and focused text that supports the main arguments of the article. Avoid jargon that might be unclear to readers from related but different disciplines.
+4. Figure and Table Preparation:
+  - Publication-Quality Figures: If creating or editing figures, ensure they are of publication quality using `ggplot2` for consistency. Any new figures should be added to the `/output/` directory with clear filenames and descriptions.
+  - Consistency in Data Representation: All tables and figures should use consistent scales, labels, and legends. Coordinate with the lead author to ensure all visualizations match the style already established in the draft.
+5. Version Control and Documentation:
+  - Use Git for Collaboration: Make incremental changes and commit them regularly with clear, descriptive messages. Always pull the latest version of the repository before making edits to avoid conflicts.
+  - Document Any Assumptions: If any assumptions or decisions are made during data analysis or manuscript writing, document them clearly in the R scripts or in the manuscript draft to ensure transparency and clarity.
+6. Editing and Reviewing:
+  - Peer Review Readiness: When editing the draft, focus on clarity and precision. Make sure that each section logically follows from the previous one, and that the results are clearly explained and linked back to the research questions posed in the introduction.
+  - Final Proofreading: Prior to submission, thoroughly proofread all sections for consistency in terminology, formatting, and citation style. Ensure that all figures and tables are properly referenced in the text.

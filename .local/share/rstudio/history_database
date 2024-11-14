@@ -1,0 +1,3118 @@
+1731408205913:# Combine all reversed plots
+1731408205913:combined_plot_reversed <- wrap_plots(pca_plots_reversed, ncol = 2) +
+1731408205913:plot_annotation(
+1731408205913:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731408205913:subtitle = "Species shown as points, stations as arrows",
+1731408205913:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731408205913:)
+1731408214511:ggsave("output/pca_biplots_reversed_all_years.png",
+1731408214511:combined_plot_reversed,
+1731408214512:width = 20, height = 15,
+1731408214512:dpi = 300,
+1731408214512:bg = "white")
+1731408666832:format_species_names <- function(species_names) {
+1731408666833:# Split each name into words
+1731408666833:formatted_names <- sapply(species_names, function(name) {
+1731408666833:words <- unlist(strsplit(name, "(?<=[a-z])(?=[A-Z])", perl = TRUE))
+1731408666833:if (length(words) == 1) {
+1731408666833:# If it's a single word, add "sp."
+1731408666833:paste0(words, " sp.")
+1731408666834:} else {
+1731408666834:# If it's multiple words, leave as is
+1731408666834:paste(words, collapse = " ")
+1731408666834:}
+1731408666834:})
+1731408666834:return(formatted_names)
+1731408666835:}
+1731408667992:# PCA plot function
+1731408667992:create_year_pca <- function(year_data, year, important_species) {
+1731408667993:# Perform PCA for this year
+1731408667993:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731408667993:# Extract scores
+1731408667993:site_scores <- data.frame(
+1731408667993:scores(species_pca, display = "sites"),
+1731408667993:Station = year_data$station_temp
+1731408667994:)
+1731408667994:species_loadings <- data.frame(
+1731408667994:scores(species_pca, display = "species"),
+1731408667994:Species = rownames(scores(species_pca, display = "species"))
+1731408667994:) %>%
+1731408667995:filter(Species %in% important_species) %>%
+1731408667995:mutate(Species = format_species_names(Species))  # Format species names
+1731408667995:# Calculate variance explained
+1731408667995:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731408667996:# Create PCA biplot
+1731408667996:pca_plot <- ggplot() +
+1731408667996:# Add site scores
+1731408667996:geom_point(data = site_scores,
+1731408667996:aes(x = PC1, y = PC2, color = Station),
+1731408667996:size = 3) +
+1731408667997:# Add species arrows
+1731408667997:geom_segment(data = species_loadings,
+1731408667997:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731408667997:arrow = arrow(length = unit(0.2, "cm"))) +
+1731408667997:# Add species labels
+1731408667998:geom_text_repel(data = species_loadings,
+1731408667998:aes(x = PC1, y = PC2, label = Species),
+1731408667998:size = 3) +
+1731408667998:theme_bw() +
+1731408667998:labs(
+1731408667999:title = paste("PCA of benthic community composition -", year),
+1731408667999:x = paste0("PC1 (", var_explained[1], "%)"),
+1731408667999:y = paste0("PC2 (", var_explained[2], "%)"),
+1731408667999:subtitle = "Arrows show species with >1% relative abundance"
+1731408667999:)
+1731408668000:return(pca_plot)
+1731408668000:}
+1731408669958:# Create PCA plots for each year
+1731408669959:years <- sort(unique(species_matrix_all$year_temp))
+1731408671022:pca_plots <- list()
+1731408671790:for(year in years) {
+1731408671790:year_data <- species_matrix_all %>%
+1731408671790:filter(year_temp == year)
+1731408671791:pca_plots[[as.character(year)]] <- create_year_pca(
+1731408671791:year_data,
+1731408671791:year,
+1731408671791:dominant_species$species
+1731408671792:)
+1731408671792:ggsave(
+1731408671792:paste0("output/pca_biplot_", year, ".png"),
+1731408671792:pca_plots[[as.character(year)]],
+1731408671792:width = 10, height = 8,
+1731408671793:dpi = 300,
+1731408671793:bg = "white"
+1731408671793:)
+1731408671793:}
+1731408840765:important_species
+1731408902872:format_species_names <- function(species_names) {
+1731408902873:formatted_names <- sapply(species_names, function(name) {
+1731408902873:# If there's a space, it's already formatted (species name or family), leave it as is
+1731408902873:if (grepl(" ", name)) {
+1731408902873:return(name)
+1731408902873:}
+1731408902873:# If it's a single word, add "sp."
+1731408902873:paste0(name, " sp.")
+1731408902874:})
+1731408902874:return(formatted_names)
+1731408902874:}
+1731408913222:format_species_names(important_species)
+1731408959512:# PCA plot function
+1731408959512:create_year_pca <- function(year_data, year, important_species) {
+1731408959512:# Perform PCA for this year
+1731408959512:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731408959512:# Extract scores
+1731408959512:site_scores <- data.frame(
+1731408959513:scores(species_pca, display = "sites"),
+1731408959513:Station = year_data$station_temp
+1731408959513:)
+1731408959513:species_loadings <- data.frame(
+1731408959514:scores(species_pca, display = "species"),
+1731408959514:Species = rownames(scores(species_pca, display = "species"))
+1731408959514:) %>%
+1731408959514:filter(Species %in% important_species) %>%
+1731408959514:mutate(Species = format_species_names(Species))  # Format species names
+1731408959514:# Calculate variance explained
+1731408959515:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731408959515:# Create PCA biplot
+1731408959515:pca_plot <- ggplot() +
+1731408959515:# Add site scores
+1731408959515:geom_point(data = site_scores,
+1731408959516:aes(x = PC1, y = PC2, color = Station),
+1731408959516:size = 3) +
+1731408959516:# Add species arrows
+1731408959516:geom_segment(data = species_loadings,
+1731408959516:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731408959517:arrow = arrow(length = unit(0.2, "cm"))) +
+1731408959517:# Add species labels
+1731408959517:geom_text_repel(data = species_loadings,
+1731408959517:aes(x = PC1, y = PC2, label = Species),
+1731408959518:size = 3) +
+1731408959518:theme_bw() +
+1731408959518:labs(
+1731408959518:title = paste("PCA of benthic community composition -", year),
+1731408959518:x = paste0("PC1 (", var_explained[1], "%)"),
+1731408959519:y = paste0("PC2 (", var_explained[2], "%)"),
+1731408959519:subtitle = "Arrows show species with >1% relative abundance"
+1731408959519:)
+1731408959519:return(pca_plot)
+1731408959519:}
+1731408961457:# Create PCA plots for each year
+1731408961457:years <- sort(unique(species_matrix_all$year_temp))
+1731408961658:pca_plots <- list()
+1731408962623:for(year in years) {
+1731408962623:year_data <- species_matrix_all %>%
+1731408962623:filter(year_temp == year)
+1731408962624:pca_plots[[as.character(year)]] <- create_year_pca(
+1731408962624:year_data,
+1731408962624:year,
+1731408962624:dominant_species$species
+1731408962624:)
+1731408962625:ggsave(
+1731408962625:paste0("output/pca_biplot_", year, ".png"),
+1731408962625:pca_plots[[as.character(year)]],
+1731408962625:width = 10, height = 8,
+1731408962625:dpi = 300,
+1731408962625:bg = "white"
+1731408962626:)
+1731408962626:}
+1731409121090:# PCA plot function
+1731409121090:create_year_pca <- function(year_data, year, important_species) {
+1731409121090:# Perform PCA for this year
+1731409121091:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409121091:# Extract scores
+1731409121091:site_scores <- data.frame(
+1731409121091:scores(species_pca, display = "sites"),
+1731409121091:Station = year_data$station_temp
+1731409121091:)
+1731409121092:species_loadings <- data.frame(
+1731409121092:scores(species_pca, display = "species"),
+1731409121092:Species = rownames(scores(species_pca, display = "species"))
+1731409121092:) %>%
+1731409121092:filter(Species %in% important_species) %>%
+1731409121092:mutate(Species = format_species_names(Species))  # Format species names
+1731409121093:# Calculate variance explained
+1731409121093:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409121093:# Create PCA biplot
+1731409121093:pca_plot <- ggplot() +
+1731409121094:# Add site scores
+1731409121094:geom_text_repel(data = site_scores,
+1731409121094:aes(x = PC1, y = PC2, label = Station),
+1731409121094:size = 3) +
+1731409121094:# Add species arrows
+1731409121094:geom_segment(data = species_loadings,
+1731409121095:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409121095:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409121095:# Add species labels
+1731409121095:geom_text_repel(data = species_loadings,
+1731409121095:aes(x = PC1, y = PC2, label = Species),
+1731409121096:size = 3) +
+1731409121096:theme_bw() +
+1731409121096:labs(
+1731409121096:title = paste("PCA of benthic community composition -", year),
+1731409121096:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409121097:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409121097:subtitle = "Arrows show species with >1% relative abundance"
+1731409121097:)
+1731409121097:return(pca_plot)
+1731409121098:}
+1731409122289:# Create PCA plots for each year
+1731409122289:years <- sort(unique(species_matrix_all$year_temp))
+1731409122543:pca_plots <- list()
+1731409123487:for(year in years) {
+1731409123488:year_data <- species_matrix_all %>%
+1731409123488:filter(year_temp == year)
+1731409123488:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409123488:year_data,
+1731409123488:year,
+1731409123488:dominant_species$species
+1731409123488:)
+1731409123489:ggsave(
+1731409123489:paste0("output/pca_biplot_", year, ".png"),
+1731409123489:pca_plots[[as.character(year)]],
+1731409123489:width = 10, height = 8,
+1731409123489:dpi = 300,
+1731409123490:bg = "white"
+1731409123490:)
+1731409123490:}
+1731409127122:# Combine all plots
+1731409127122:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1731409127122:plot_annotation(
+1731409127122:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731409127123:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731409127123:)
+1731409128727:ggsave("output/pca_biplots_all_years.png",
+1731409128727:combined_plot,
+1731409128727:width = 20, height = 15,
+1731409128727:dpi = 300,
+1731409128727:bg = "white")
+1731409187109:?geom_text_repel
+1731409274264:# PCA plot function
+1731409274264:create_year_pca <- function(year_data, year, important_species) {
+1731409274264:# Perform PCA for this year
+1731409274264:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409274264:# Extract scores
+1731409274265:site_scores <- data.frame(
+1731409274265:scores(species_pca, display = "sites"),
+1731409274265:Station = year_data$station_temp
+1731409274265:)
+1731409274265:species_loadings <- data.frame(
+1731409274265:scores(species_pca, display = "species"),
+1731409274266:Species = rownames(scores(species_pca, display = "species"))
+1731409274266:) %>%
+1731409274266:filter(Species %in% important_species) %>%
+1731409274266:mutate(Species = format_species_names(Species))  # Format species names
+1731409274266:# Calculate variance explained
+1731409274266:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409274267:# Create PCA biplot
+1731409274267:pca_plot <- ggplot() +
+1731409274267:# Add site scores
+1731409274267:geom_text_repel(
+1731409274267:aes(label = Station),
+1731409274267:size = 5,                       # Stærri stærð fyrir áberandi texta
+1731409274268:fontface = "bold",              # Þykkari texti
+1731409274268:box.padding = 0.5,              # Aukið bil frá punktum
+1731409274268:point.padding = 0.3,            # Bil frá endapunkti línunnar að texta
+1731409274268:max.overlaps = Inf,             # Leyfir alla merkimiða að vera sýnilega
+1731409274268:segment.color = "grey50",       # Þykkri lína til að tengja texta og punkta
+1731409274269:segment.size = 0.5,             # Þykkri lína fyrir betri sýnileika
+1731409274269:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409274269:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409274269:) +
+1731409274269:# Add species arrows
+1731409274269:geom_segment(data = species_loadings,
+1731409274270:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409274270:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409274270:# Add species labels
+1731409274270:geom_text_repel(data = species_loadings,
+1731409274270:aes(x = PC1, y = PC2, label = Species),
+1731409274271:size = 3) +
+1731409274271:theme_bw() +
+1731409274271:labs(
+1731409274271:title = paste("PCA of benthic community composition -", year),
+1731409274271:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409274271:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409274272:subtitle = "Arrows show species with >1% relative abundance"
+1731409274272:)
+1731409274272:return(pca_plot)
+1731409274272:}
+1731409275239:# Create PCA plots for each year
+1731409275239:years <- sort(unique(species_matrix_all$year_temp))
+1731409275744:pca_plots <- list()
+1731409276049:for(year in years) {
+1731409276049:year_data <- species_matrix_all %>%
+1731409276050:filter(year_temp == year)
+1731409276050:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409276050:year_data,
+1731409276050:year,
+1731409276050:dominant_species$species
+1731409276050:)
+1731409276051:ggsave(
+1731409276051:paste0("output/pca_biplot_", year, ".png"),
+1731409276051:pca_plots[[as.character(year)]],
+1731409276051:width = 10, height = 8,
+1731409276051:dpi = 300,
+1731409276052:bg = "white"
+1731409276052:)
+1731409276052:}
+1731409357367:# PCA plot function
+1731409357367:create_year_pca <- function(year_data, year, important_species) {
+1731409357367:# Perform PCA for this year
+1731409357367:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409357367:# Extract scores
+1731409357368:site_scores <- data.frame(
+1731409357368:scores(species_pca, display = "sites"),
+1731409357368:Station = year_data$station_temp
+1731409357368:)
+1731409357368:species_loadings <- data.frame(
+1731409357368:scores(species_pca, display = "species"),
+1731409357369:Species = rownames(scores(species_pca, display = "species"))
+1731409357369:) %>%
+1731409357369:filter(Species %in% important_species) %>%
+1731409357369:mutate(Species = format_species_names(Species))  # Format species names
+1731409357369:# Calculate variance explained
+1731409357370:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409357370:# Create PCA biplot
+1731409357370:pca_plot <- ggplot() +
+1731409357370:# Add site scores
+1731409357370:geom_text_repel(
+1731409357371:data = site_scores,
+1731409357371:aes(x = PC1, y = PC2, label = Station),
+1731409357371:size = 5,                       # Stærri stærð fyrir áberandi texta
+1731409357371:fontface = "bold",              # Þykkari texti
+1731409357371:box.padding = 0.5,              # Aukið bil frá punktum
+1731409357371:point.padding = 0.3,            # Bil frá endapunkti línunnar að texta
+1731409357372:max.overlaps = Inf,             # Leyfir alla merkimiða að vera sýnilega
+1731409357372:segment.color = "grey50",       # Þykkri lína til að tengja texta og punkta
+1731409357372:segment.size = 0.5,             # Þykkri lína fyrir betri sýnileika
+1731409357372:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409357372:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409357373:) +
+1731409357373:# Add species arrows
+1731409357373:geom_segment(data = species_loadings,
+1731409357373:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409357373:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409357374:# Add species labels
+1731409357374:geom_text_repel(data = species_loadings,
+1731409357374:aes(x = PC1, y = PC2, label = Species),
+1731409357374:size = 3) +
+1731409357374:theme_bw() +
+1731409357375:labs(
+1731409357375:title = paste("PCA of benthic community composition -", year),
+1731409357375:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409357375:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409357375:subtitle = "Arrows show species with >1% relative abundance"
+1731409357376:)
+1731409357376:return(pca_plot)
+1731409357376:}
+1731409358167:# Create PCA plots for each year
+1731409358168:years <- sort(unique(species_matrix_all$year_temp))
+1731409358434:pca_plots <- list()
+1731409358761:for(year in years) {
+1731409358761:year_data <- species_matrix_all %>%
+1731409358761:filter(year_temp == year)
+1731409358761:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409358762:year_data,
+1731409358762:year,
+1731409358762:dominant_species$species
+1731409358762:)
+1731409358762:ggsave(
+1731409358762:paste0("output/pca_biplot_", year, ".png"),
+1731409358763:pca_plots[[as.character(year)]],
+1731409358763:width = 10, height = 8,
+1731409358763:dpi = 300,
+1731409358763:bg = "white"
+1731409358763:)
+1731409358763:}
+1731409428470:# PCA plot function
+1731409428470:create_year_pca <- function(year_data, year, important_species) {
+1731409428471:# Perform PCA for this year
+1731409428471:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409428471:# Extract scores
+1731409428471:site_scores <- data.frame(
+1731409428471:scores(species_pca, display = "sites"),
+1731409428472:Station = year_data$station_temp
+1731409428472:)
+1731409428472:species_loadings <- data.frame(
+1731409428472:scores(species_pca, display = "species"),
+1731409428472:Species = rownames(scores(species_pca, display = "species"))
+1731409428472:) %>%
+1731409428473:filter(Species %in% important_species) %>%
+1731409428473:mutate(Species = format_species_names(Species))  # Format species names
+1731409428473:# Calculate variance explained
+1731409428473:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409428474:# Create PCA biplot
+1731409428474:pca_plot <- ggplot() +
+1731409428474:# Add site scores
+1731409428474:geom_text_repel(
+1731409428474:data = site_scores,
+1731409428475:aes(x = PC1, y = PC2, label = Station),
+1731409428475:size = 4,                       # Stærri stærð fyrir áberandi texta
+1731409428475:fontface = "bold",              # Þykkari texti
+1731409428475:box.padding = 0.5,              # Aukið bil frá punktum
+1731409428476:point.padding = 0.3,            # Bil frá endapunkti línunnar að texta
+1731409428476:segment.size = 0.5,             # Þykkri lína fyrir betri sýnileika
+1731409428476:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409428476:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409428476:) +
+1731409428476:# Add species arrows
+1731409428477:geom_segment(data = species_loadings,
+1731409428477:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409428477:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409428477:# Add species labels
+1731409428477:geom_text_repel(data = species_loadings,
+1731409428477:aes(x = PC1, y = PC2, label = Species),
+1731409428478:size = 3) +
+1731409428478:theme_bw() +
+1731409428478:labs(
+1731409428478:title = paste("PCA of benthic community composition -", year),
+1731409428478:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409428479:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409428479:subtitle = "Arrows show species with >1% relative abundance"
+1731409428479:)
+1731409428479:return(pca_plot)
+1731409428480:}
+1731409429999:# Create PCA plots for each year
+1731409430000:years <- sort(unique(species_matrix_all$year_temp))
+1731409430192:pca_plots <- list()
+1731409430560:for(year in years) {
+1731409430561:year_data <- species_matrix_all %>%
+1731409430561:filter(year_temp == year)
+1731409430561:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409430561:year_data,
+1731409430561:year,
+1731409430561:dominant_species$species
+1731409430561:)
+1731409430562:ggsave(
+1731409430562:paste0("output/pca_biplot_", year, ".png"),
+1731409430562:pca_plots[[as.character(year)]],
+1731409430562:width = 10, height = 8,
+1731409430562:dpi = 300,
+1731409430562:bg = "white"
+1731409430562:)
+1731409430563:}
+1731409456965:# Create PCA biplot
+1731409456965:pca_plot <- ggplot() +
+1731409456965:# Add site scores
+1731409456966:geom_text_repel(
+1731409456966:data = site_scores,
+1731409456966:aes(x = PC1, y = PC2, label = Station),
+1731409456966:size = 4,                       # Stærri stærð fyrir áberandi texta
+1731409456966:fontface = "bold",              # Þykkari texti
+1731409456966:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409456966:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409456966:) +
+1731409456967:# Add species arrows
+1731409456967:geom_segment(data = species_loadings,
+1731409456967:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409456967:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409456967:# Add species labels
+1731409456967:geom_text_repel(data = species_loadings,
+1731409456968:aes(x = PC1, y = PC2, label = Species),
+1731409456968:size = 3) +
+1731409456968:theme_bw() +
+1731409456968:labs(
+1731409456968:title = paste("PCA of benthic community composition -", year),
+1731409456969:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409456969:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409456969:subtitle = "Arrows show species with >1% relative abundance"
+1731409456969:)
+1731409458696:# PCA plot function
+1731409458696:create_year_pca <- function(year_data, year, important_species) {
+1731409458696:# Perform PCA for this year
+1731409458696:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409458696:# Extract scores
+1731409458697:site_scores <- data.frame(
+1731409458697:scores(species_pca, display = "sites"),
+1731409458697:Station = year_data$station_temp
+1731409458697:)
+1731409458697:species_loadings <- data.frame(
+1731409458697:scores(species_pca, display = "species"),
+1731409458697:Species = rownames(scores(species_pca, display = "species"))
+1731409458698:) %>%
+1731409458698:filter(Species %in% important_species) %>%
+1731409458698:mutate(Species = format_species_names(Species))  # Format species names
+1731409458698:# Calculate variance explained
+1731409458698:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409458699:# Create PCA biplot
+1731409458699:pca_plot <- ggplot() +
+1731409458699:# Add site scores
+1731409458699:geom_text_repel(
+1731409458699:data = site_scores,
+1731409458700:aes(x = PC1, y = PC2, label = Station),
+1731409458700:size = 4,                       # Stærri stærð fyrir áberandi texta
+1731409458700:fontface = "bold",              # Þykkari texti
+1731409458700:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409458700:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409458701:) +
+1731409458701:# Add species arrows
+1731409458701:geom_segment(data = species_loadings,
+1731409458701:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409458701:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409458702:# Add species labels
+1731409458702:geom_text_repel(data = species_loadings,
+1731409458702:aes(x = PC1, y = PC2, label = Species),
+1731409458702:size = 3) +
+1731409458702:theme_bw() +
+1731409458703:labs(
+1731409458703:title = paste("PCA of benthic community composition -", year),
+1731409458703:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409458703:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409458703:subtitle = "Arrows show species with >1% relative abundance"
+1731409458704:)
+1731409458704:return(pca_plot)
+1731409458704:}
+1731409460503:# Create PCA plots for each year
+1731409460503:years <- sort(unique(species_matrix_all$year_temp))
+1731409460746:pca_plots <- list()
+1731409461057:for(year in years) {
+1731409461057:year_data <- species_matrix_all %>%
+1731409461057:filter(year_temp == year)
+1731409461058:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409461058:year_data,
+1731409461058:year,
+1731409461058:dominant_species$species
+1731409461058:)
+1731409461058:ggsave(
+1731409461058:paste0("output/pca_biplot_", year, ".png"),
+1731409461058:pca_plots[[as.character(year)]],
+1731409461059:width = 10, height = 8,
+1731409461059:dpi = 300,
+1731409461059:bg = "white"
+1731409461059:)
+1731409461059:}
+1731409587246:# PCA plot function
+1731409587246:create_year_pca <- function(year_data, year, important_species) {
+1731409587246:# Perform PCA for this year
+1731409587246:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731409587247:# Extract scores
+1731409587247:site_scores <- data.frame(
+1731409587247:scores(species_pca, display = "sites"),
+1731409587247:Station = year_data$station_temp
+1731409587247:)
+1731409587248:species_loadings <- data.frame(
+1731409587248:scores(species_pca, display = "species"),
+1731409587248:Species = rownames(scores(species_pca, display = "species"))
+1731409587248:) %>%
+1731409587248:filter(Species %in% important_species) %>%
+1731409587248:mutate(Species = format_species_names(Species))  # Format species names
+1731409587248:# Calculate variance explained
+1731409587249:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731409587249:# Create PCA biplot
+1731409587249:pca_plot <- ggplot() +
+1731409587249:# Add site scores
+1731409587249:geom_text_repel(
+1731409587250:data = site_scores,
+1731409587250:aes(x = PC1, y = PC2, label = Station),
+1731409587250:size = 4,                       # Stærri stærð fyrir áberandi texta
+1731409587250:fontface = "bold",              # Þykkari texti
+1731409587250:bg.color = "white",             # Bakgrunnur undir texta fyrir betri skerpu
+1731409587251:bg.r = 0.2                      # Smá umferð á bakgrunninn fyrir mýkt
+1731409587251:) +
+1731409587251:# Add species arrows
+1731409587251:geom_segment(data = species_loadings,
+1731409587251:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731409587251:arrow = arrow(length = unit(0.2, "cm"))) +
+1731409587252:# Add species labels
+1731409587252:geom_text_repel(data = species_loadings,
+1731409587252:aes(x = PC1, y = PC2, label = Species),
+1731409587252:size = 3,
+1731409587252:fontface = "italic") +
+1731409587253:theme_bw() +
+1731409587253:labs(
+1731409587253:title = paste("PCA of benthic community composition -", year),
+1731409587253:x = paste0("PC1 (", var_explained[1], "%)"),
+1731409587253:y = paste0("PC2 (", var_explained[2], "%)"),
+1731409587254:subtitle = "Arrows show species with >1% relative abundance"
+1731409587254:)
+1731409587254:return(pca_plot)
+1731409587254:}
+1731409588495:# Create PCA plots for each year
+1731409588495:years <- sort(unique(species_matrix_all$year_temp))
+1731409589563:pca_plots <- list()
+1731409589904:for(year in years) {
+1731409589904:year_data <- species_matrix_all %>%
+1731409589904:filter(year_temp == year)
+1731409589905:pca_plots[[as.character(year)]] <- create_year_pca(
+1731409589905:year_data,
+1731409589905:year,
+1731409589905:dominant_species$species
+1731409589905:)
+1731409589905:ggsave(
+1731409589906:paste0("output/pca_biplot_", year, ".png"),
+1731409589906:pca_plots[[as.character(year)]],
+1731409589906:width = 10, height = 8,
+1731409589906:dpi = 300,
+1731409589906:bg = "white"
+1731409589906:)
+1731409589907:}
+1731409656168:# Combine all plots
+1731409656169:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1731409656169:plot_annotation(
+1731409656169:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731409656169:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731409656169:)
+1731409657310:ggsave("output/pca_biplots_all_years.png",
+1731409657311:combined_plot,
+1731409657311:width = 20, height = 15,
+1731409657311:dpi = 300,
+1731409657311:bg = "white")
+1731410215808:# Function to create reversed PCA biplot
+1731410215808:create_year_pca_reversed <- function(year_data, year, important_species) {
+1731410215808:# Perform PCA
+1731410215808:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731410215809:# Extract scores - note the reversed roles
+1731410215809:species_scores <- data.frame(
+1731410215809:scores(species_pca, display = "species"),
+1731410215809:Species = rownames(scores(species_pca, display = "species"))
+1731410215809:) %>%
+1731410215809:mutate(Species = format_species_names(Species))  # Format species names
+1731410215810:station_loadings <- data.frame(
+1731410215810:scores(species_pca, display = "sites"),
+1731410215810:Station = year_data$station_temp
+1731410215810:)
+1731410215811:# Calculate variance explained
+1731410215811:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731410215811:# Create reversed PCA biplot
+1731410215811:pca_plot <- ggplot() +
+1731410215811:# Add species points
+1731410215812:geom_point(data = species_scores,
+1731410215812:aes(x = PC1, y = PC2),
+1731410215812:size = 3) +
+1731410215812:# Add station arrows
+1731410215812:geom_segment(data = station_loadings,
+1731410215813:aes(x = 0, y = 0, xend = PC1, yend = PC2, color = Station),
+1731410215813:arrow = arrow(length = unit(0.2, "cm"))) +
+1731410215813:# Add species labels
+1731410215813:geom_text_repel(data = species_scores,
+1731410215813:aes(x = PC1, y = PC2, label = Species),
+1731410215813:size = 3) +
+1731410215814:theme_bw() +
+1731410215814:labs(
+1731410215814:title = paste("PCA of benthic community composition -", year),
+1731410215814:subtitle = "Species shown as points, stations as arrows",
+1731410215814:x = paste0("PC1 (", var_explained[1], "%)"),
+1731410215815:y = paste0("PC2 (", var_explained[2], "%)")
+1731410215815:)
+1731410215815:return(pca_plot)
+1731410215816:}
+1731410217072:# Create reversed PCA plots for each year
+1731410217072:years <- sort(unique(species_matrix_all$year_temp))
+1731410217458:pca_plots_reversed <- list()
+1731410218000:for(year in years) {
+1731410218000:year_data <- species_matrix_all %>%
+1731410218000:filter(year_temp == year)
+1731410218000:pca_plots_reversed[[as.character(year)]] <- create_year_pca_reversed(
+1731410218000:year_data,
+1731410218000:year,
+1731410218001:dominant_species$species
+1731410218001:)
+1731410218001:ggsave(
+1731410218001:paste0("output/pca_biplot_reversed_", year, ".png"),
+1731410218001:pca_plots_reversed[[as.character(year)]],
+1731410218001:width = 10, height = 8,
+1731410218001:dpi = 300,
+1731410218001:bg = "white"
+1731410218001:)
+1731410218001:}
+1731410381990:# Function to create reversed PCA biplot
+1731410381990:create_year_pca_reversed <- function(year_data, year, important_species) {
+1731410381990:# Perform PCA
+1731410381990:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731410381991:# Extract scores - note the reversed roles
+1731410381991:species_scores <- data.frame(
+1731410381991:scores(species_pca, display = "species"),
+1731410381991:Species = rownames(scores(species_pca, display = "species"))
+1731410381991:) %>%
+1731410381991:mutate(Species = format_species_names(Species))  # Format species names
+1731410381992:station_loadings <- data.frame(
+1731410381992:scores(species_pca, display = "sites"),
+1731410381992:Station = year_data$station_temp
+1731410381992:)
+1731410381992:# Calculate variance explained
+1731410381992:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731410381993:# Create reversed PCA biplot
+1731410381993:pca_plot <- ggplot() +
+1731410381993:# Add species points - make them more distinct
+1731410381993:geom_point(data = species_scores,
+1731410381993:aes(x = PC1, y = PC2),
+1731410381994:size = 3,
+1731410381994:shape = 19,  # Solid circle
+1731410381994:color = "black") +  # Consistent color for all points
+1731410381994:# Add station arrows with colorblind-friendly palette and labels
+1731410381994:geom_segment(data = station_loadings,
+1731410381994:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731410381995:arrow = arrow(length = unit(0.2, "cm"))) +
+1731410381995:# Add station labels directly
+1731410381995:geom_text_repel(data = station_loadings,
+1731410381995:aes(x = PC1, y = PC2, label = Station),
+1731410381995:size = 3,
+1731410381995:fontface = "bold") +
+1731410381996:# Add species labels
+1731410381996:geom_text_repel(data = species_scores,
+1731410381997:aes(x = PC1, y = PC2, label = Species),
+1731410381997:size = 3,
+1731410381997:color = "grey30") +  # Slightly muted text for better contrast
+1731410381998:theme_bw() +
+1731410381998:theme(
+1731410381998:panel.grid.minor = element_blank(),  # Remove minor grid lines
+1731410381999:panel.grid.major = element_line(color = "grey90"),  # Lighten major grid lines
+1731410381999:axis.text = element_text(color = "black"),  # Ensure axis text is clearly visible
+1731410381999:plot.title = element_text(size = 12, face = "bold"),
+1731410382000:plot.subtitle = element_text(size = 10)
+1731410382000:) +
+1731410382000:labs(
+1731410382000:title = paste("PCA of benthic community composition -", year),
+1731410382000:subtitle = "Species shown as points, stations as arrows",
+1731410382000:x = paste0("PC1 (", var_explained[1], "%)"),
+1731410382001:y = paste0("PC2 (", var_explained[2], "%)")
+1731410382001:)
+1731410382001:return(pca_plot)
+1731410382002:}
+1731410382871:# Create reversed PCA plots for each year
+1731410382871:years <- sort(unique(species_matrix_all$year_temp))
+1731410383104:pca_plots_reversed <- list()
+1731410383362:for(year in years) {
+1731410383362:year_data <- species_matrix_all %>%
+1731410383362:filter(year_temp == year)
+1731410383363:pca_plots_reversed[[as.character(year)]] <- create_year_pca_reversed(
+1731410383363:year_data,
+1731410383363:year,
+1731410383363:dominant_species$species
+1731410383363:)
+1731410383363:ggsave(
+1731410383364:paste0("output/pca_biplot_reversed_", year, ".png"),
+1731410383364:pca_plots_reversed[[as.character(year)]],
+1731410383364:width = 10, height = 8,
+1731410383364:dpi = 300,
+1731410383364:bg = "white"
+1731410383364:)
+1731410383365:}
+1731410484909:# Function to create reversed PCA biplot
+1731410484909:create_year_pca_reversed <- function(year_data, year, important_species) {
+1731410484909:# Perform PCA
+1731410484910:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731410484910:# Extract scores - note the reversed roles
+1731410484910:species_scores <- data.frame(
+1731410484910:scores(species_pca, display = "species"),
+1731410484910:Species = rownames(scores(species_pca, display = "species"))
+1731410484910:) %>%
+1731410484910:mutate(Species = format_species_names(Species))  # Format species names
+1731410484911:station_loadings <- data.frame(
+1731410484911:scores(species_pca, display = "sites"),
+1731410484911:Station = year_data$station_temp
+1731410484911:)
+1731410484911:# Calculate variance explained
+1731410484911:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731410484912:# Create reversed PCA biplot
+1731410484912:pca_plot <- ggplot() +
+1731410484912:# Add species points - make them more distinct
+1731410484912:geom_point(data = species_scores,
+1731410484912:aes(x = PC1, y = PC2),
+1731410484912:size = 3,
+1731410484913:shape = 19,  # Solid circle
+1731410484913:color = "black") +  # Consistent color for all points
+1731410484913:# Add station arrows with colorblind-friendly palette and labels
+1731410484913:geom_segment(data = station_loadings,
+1731410484913:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731410484913:arrow = arrow(length = unit(0.2, "cm"))) +
+1731410484914:# Add station labels directly
+1731410484914:geom_text_repel(data = station_loadings,
+1731410484914:aes(x = PC1, y = PC2, label = Station),
+1731410484914:size = 4,
+1731410484914:fontface = "bold") +
+1731410484914:# Add species labels
+1731410484915:geom_text_repel(data = species_scores,
+1731410484915:aes(x = PC1, y = PC2, label = Species),
+1731410484915:size = 3,
+1731410484915:fontface = "italic",
+1731410484915:color = "grey30") +  # Slightly muted text for better contrast
+1731410484916:theme_bw() +
+1731410484916:theme(
+1731410484916:panel.grid.minor = element_blank(),  # Remove minor grid lines
+1731410484916:panel.grid.major = element_line(color = "grey90"),  # Lighten major grid lines
+1731410484916:axis.text = element_text(color = "black"),  # Ensure axis text is clearly visible
+1731410484917:plot.title = element_text(size = 12, face = "bold"),
+1731410484917:plot.subtitle = element_text(size = 10)
+1731410484917:) +
+1731410484917:labs(
+1731410484918:title = paste("PCA of benthic community composition -", year),
+1731410484918:subtitle = "Species shown as points, stations as arrows",
+1731410484918:x = paste0("PC1 (", var_explained[1], "%)"),
+1731410484918:y = paste0("PC2 (", var_explained[2], "%)")
+1731410484918:)
+1731410484919:return(pca_plot)
+1731410484919:}
+1731410485654:# Create reversed PCA plots for each year
+1731410485655:years <- sort(unique(species_matrix_all$year_temp))
+1731410485850:pca_plots_reversed <- list()
+1731410486217:for(year in years) {
+1731410486218:year_data <- species_matrix_all %>%
+1731410486218:filter(year_temp == year)
+1731410486218:pca_plots_reversed[[as.character(year)]] <- create_year_pca_reversed(
+1731410486218:year_data,
+1731410486218:year,
+1731410486218:dominant_species$species
+1731410486219:)
+1731410486219:ggsave(
+1731410486219:paste0("output/pca_biplot_reversed_", year, ".png"),
+1731410486219:pca_plots_reversed[[as.character(year)]],
+1731410486219:width = 10, height = 8,
+1731410486219:dpi = 300,
+1731410486219:bg = "white"
+1731410486220:)
+1731410486220:}
+1731410504871:# Combine all reversed plots
+1731410504871:combined_plot_reversed <- wrap_plots(pca_plots_reversed, ncol = 2) +
+1731410504872:plot_annotation(
+1731410504872:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731410504872:subtitle = "Species shown as points, stations as arrows",
+1731410504872:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731410504872:)
+1731410506079:ggsave("output/pca_biplots_reversed_all_years.png",
+1731410506079:combined_plot_reversed,
+1731410506080:width = 20, height = 15,
+1731410506080:dpi = 300,
+1731410506080:bg = "white")
+1731410779531:create_year_pca_reversed <- function(year_data, year, important_species) {
+1731410779531:# Perform PCA
+1731410779531:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731410779531:# Extract scores - note the reversed roles
+1731410779531:species_scores <- data.frame(
+1731410779532:scores(species_pca, display = "species"),
+1731410779532:Species = rownames(scores(species_pca, display = "species"))
+1731410779532:) %>%
+1731410779532:mutate(Species = format_species_names(Species))  # Format species names
+1731410779532:station_loadings <- data.frame(
+1731410779533:scores(species_pca, display = "sites"),
+1731410779533:Station = year_data$station_temp
+1731410779533:)
+1731410779533:# Calculate variance explained
+1731410779533:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731410779534:# Set consistent axis limits across all plots
+1731410779534:axis_limits <- max(abs(c(
+1731410779534:species_scores$PC1, species_scores$PC2,
+1731410779534:station_loadings$PC1, station_loadings$PC2
+1731410779535:))) * 1.2  # Add 20% padding
+1731410779535:# Create reversed PCA biplot
+1731410779535:pca_plot <- ggplot() +
+1731410779535:# Add species points
+1731410779536:geom_point(data = species_scores,
+1731410779536:aes(x = PC1, y = PC2),
+1731410779536:size = 2,
+1731410779536:shape = 19,
+1731410779536:color = "black") +
+1731410779536:# Add station arrows
+1731410779537:geom_segment(data = station_loadings,
+1731410779537:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731410779537:arrow = arrow(length = unit(0.2, "cm")),
+1731410779537:color = "darkgrey") +
+1731410779537:# Add station labels
+1731410779538:geom_text_repel(data = station_loadings,
+1731410779538:aes(x = PC1, y = PC2, label = Station),
+1731410779538:size = 3.5,
+1731410779538:fontface = "bold",
+1731410779538:box.padding = 0.5,
+1731410779538:point.padding = 0.3) +
+1731410779539:# Add species labels
+1731410779539:geom_text_repel(data = species_scores,
+1731410779539:aes(x = PC1, y = PC2, label = Species),
+1731410779539:size = 2.8,
+1731410779539:fontface = "italic",
+1731410779540:color = "grey30",
+1731410779540:box.padding = 0.5,
+1731410779540:point.padding = 0.3) +
+1731410779540:# Set consistent axis limits
+1731410779540:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731410779541:ylim = c(-axis_limits, axis_limits)) +
+1731410779541:theme_bw() +
+1731410779541:theme(
+1731410779541:panel.grid.minor = element_blank(),
+1731410779542:panel.grid.major = element_line(color = "grey95"),
+1731410779542:axis.text = element_text(color = "black", size = 8),
+1731410779542:axis.title = element_text(size = 10),
+1731410779542:plot.title = element_text(size = 11, face = "bold"),
+1731410779543:plot.subtitle = element_text(size = 9),
+1731410779543:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731410779543:) +
+1731410779543:labs(
+1731410779544:title = paste("PCA of benthic community composition -", year),
+1731410779544:subtitle = "Species shown as points, stations as arrows",
+1731410779544:x = paste0("PC1 (", var_explained[1], "%)"),
+1731410779544:y = paste0("PC2 (", var_explained[2], "%)")
+1731410779545:)
+1731410779545:return(pca_plot)
+1731410779545:}
+1731410787727:# Create reversed PCA plots for each year
+1731410787727:years <- sort(unique(species_matrix_all$year_temp))
+1731410788082:pca_plots_reversed <- list()
+1731410788599:for(year in years) {
+1731410788599:year_data <- species_matrix_all %>%
+1731410788599:filter(year_temp == year)
+1731410788600:pca_plots_reversed[[as.character(year)]] <- create_year_pca_reversed(
+1731410788600:year_data,
+1731410788600:year,
+1731410788600:dominant_species$species
+1731410788600:)
+1731410788601:ggsave(
+1731410788601:paste0("output/pca_biplot_reversed_", year, ".png"),
+1731410788601:pca_plots_reversed[[as.character(year)]],
+1731410788601:width = 10, height = 8,
+1731410788601:dpi = 300,
+1731410788601:bg = "white"
+1731410788602:)
+1731410788602:}
+1731410811968:# Combine all reversed plots
+1731410811969:combined_plot_reversed <- wrap_plots(pca_plots_reversed, ncol = 2) +
+1731410811969:plot_annotation(
+1731410811969:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731410811969:subtitle = "Species shown as points, stations as arrows",
+1731410811969:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731410811969:)
+1731410812624:ggsave("output/pca_biplots_reversed_all_years.png",
+1731410812624:combined_plot_reversed,
+1731410812624:width = 20, height = 15,
+1731410812624:dpi = 300,
+1731410812624:bg = "white")
+1731411027176:create_year_pca <- function(year_data, year, important_species) {
+1731411027177:# Perform PCA for this year
+1731411027177:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731411027177:# Extract scores
+1731411027177:site_scores <- data.frame(
+1731411027177:scores(species_pca, display = "sites"),
+1731411027178:Station = year_data$station_temp
+1731411027178:)
+1731411027178:species_loadings <- data.frame(
+1731411027178:scores(species_pca, display = "species"),
+1731411027179:Species = rownames(scores(species_pca, display = "species"))
+1731411027179:) %>%
+1731411027179:filter(Species %in% important_species) %>%
+1731411027179:mutate(Species = format_species_names(Species))  # Format species names
+1731411027179:# Calculate variance explained
+1731411027179:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731411027180:# Set consistent axis limits across all plots
+1731411027180:axis_limits <- max(abs(c(
+1731411027180:site_scores$PC1, site_scores$PC2,
+1731411027180:species_loadings$PC1, species_loadings$PC2
+1731411027181:))) * 1.2  # Add 20% padding
+1731411027181:# Create PCA biplot
+1731411027181:pca_plot <- ggplot() +
+1731411027182:# Add site scores
+1731411027182:geom_point(data = site_scores,
+1731411027182:aes(x = PC1, y = PC2),
+1731411027182:size = 2,
+1731411027182:shape = 19,
+1731411027183:color = "black") +
+1731411027183:# Add site labels
+1731411027183:geom_text_repel(
+1731411027183:data = site_scores,
+1731411027184:aes(x = PC1, y = PC2, label = Station),
+1731411027184:size = 3.5,
+1731411027184:fontface = "bold",
+1731411027184:box.padding = 0.5,
+1731411027184:point.padding = 0.3
+1731411027185:) +
+1731411027185:# Add species arrows
+1731411027185:geom_segment(data = species_loadings,
+1731411027185:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731411027185:arrow = arrow(length = unit(0.2, "cm")),
+1731411027186:color = "darkgrey") +
+1731411027186:# Add species labels
+1731411027186:geom_text_repel(data = species_loadings,
+1731411027186:aes(x = PC1, y = PC2, label = Species),
+1731411027186:size = 2.8,
+1731411027187:fontface = "italic",
+1731411027187:color = "grey30",
+1731411027187:box.padding = 0.5,
+1731411027187:point.padding = 0.3) +
+1731411027187:# Set consistent axis limits
+1731411027187:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731411027188:ylim = c(-axis_limits, axis_limits)) +
+1731411027188:theme_bw() +
+1731411027188:theme(
+1731411027188:panel.grid.minor = element_blank(),
+1731411027189:panel.grid.major = element_line(color = "grey95"),
+1731411027189:axis.text = element_text(color = "black", size = 8),
+1731411027189:axis.title = element_text(size = 10),
+1731411027189:plot.title = element_text(size = 11, face = "bold"),
+1731411027189:plot.subtitle = element_text(size = 9),
+1731411027190:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731411027190:) +
+1731411027190:labs(
+1731411027190:title = paste("PCA of benthic community composition -", year),
+1731411027191:subtitle = "Stations shown as points, species as arrows",
+1731411027191:x = paste0("PC1 (", var_explained[1], "%)"),
+1731411027191:y = paste0("PC2 (", var_explained[2], "%)")
+1731411027191:)
+1731411027192:return(pca_plot)
+1731411027192:}
+1731411039486:# Create PCA plots for each year
+1731411039486:years <- sort(unique(species_matrix_all$year_temp))
+1731411040064:pca_plots <- list()
+1731411040514:for(year in years) {
+1731411040514:year_data <- species_matrix_all %>%
+1731411040514:filter(year_temp == year)
+1731411040514:pca_plots[[as.character(year)]] <- create_year_pca(
+1731411040514:year_data,
+1731411040514:year,
+1731411040515:dominant_species$species
+1731411040515:)
+1731411040515:ggsave(
+1731411040515:paste0("output/pca_biplot_", year, ".png"),
+1731411040515:pca_plots[[as.character(year)]],
+1731411040516:width = 10, height = 8,
+1731411040516:dpi = 300,
+1731411040516:bg = "white"
+1731411040516:)
+1731411040516:}
+1731411212545:# PCA plot function
+1731411212545:create_year_pca <- function(year_data, year, important_species) {
+1731411212545:# Perform PCA for this year
+1731411212545:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731411212546:# Extract scores
+1731411212546:site_scores <- data.frame(
+1731411212546:scores(species_pca, display = "sites"),
+1731411212546:Station = year_data$station_temp
+1731411212546:)
+1731411212547:species_loadings <- data.frame(
+1731411212547:scores(species_pca, display = "species"),
+1731411212547:Species = rownames(scores(species_pca, display = "species"))
+1731411212547:) %>%
+1731411212547:filter(Species %in% important_species) %>%
+1731411212547:mutate(Species = format_species_names(Species))  # Format species names
+1731411212547:# Calculate variance explained
+1731411212548:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731411212548:# Set consistent axis limits across all plots
+1731411212548:axis_limits <- max(abs(c(
+1731411212548:site_scores$PC1, site_scores$PC2,
+1731411212548:species_loadings$PC1, species_loadings$PC2
+1731411212549:))) * 1.2  # Add 20% padding
+1731411212549:# Create PCA biplot
+1731411212549:pca_plot <- ggplot() +
+1731411212549:# Add site scores
+1731411212549:geom_point(data = site_scores,
+1731411212550:aes(x = PC1, y = PC2),
+1731411212550:size = 2,
+1731411212550:shape = 19,
+1731411212550:color = "black") +
+1731411212550:# Add site labels
+1731411212551:geom_text_repel(
+1731411212551:data = site_scores,
+1731411212551:aes(x = PC1, y = PC2, label = Station),
+1731411212551:size = 3.5,
+1731411212551:fontface = "bold",
+1731411212552:box.padding = 0.5,
+1731411212552:point.padding = 0.3
+1731411212552:) +
+1731411212552:# Add species arrows
+1731411212552:geom_segment(data = species_loadings,
+1731411212553:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731411212553:arrow = arrow(length = unit(0.2, "cm")),
+1731411212553:color = "darkgrey") +
+1731411212553:# Add species labels
+1731411212553:geom_text_repel(data = species_loadings,
+1731411212554:aes(x = PC1, y = PC2, label = Species),
+1731411212554:size = 2.8,
+1731411212554:fontface = "italic",
+1731411212554:color = "grey30",
+1731411212554:box.padding = 0.5,
+1731411212555:point.padding = 0.3) +
+1731411212555:# Set consistent axis limits
+1731411212555:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731411212555:ylim = c(-axis_limits, axis_limits)) +
+1731411212556:theme_bw() +
+1731411212556:theme(
+1731411212556:panel.grid.minor = element_blank(),
+1731411212556:panel.grid.major = element_line(color = "grey95"),
+1731411212556:axis.text = element_text(color = "black", size = 8),
+1731411212557:axis.title = element_text(size = 10),
+1731411212557:plot.title = element_text(size = 11, face = "bold"),
+1731411212557:plot.subtitle = element_text(size = 9),
+1731411212557:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731411212558:) +
+1731411212558:labs(
+1731411212558:title = paste("PCA of benthic community composition -", year),
+1731411212558:subtitle = "Stations shown as points, species as arrows",
+1731411212559:x = paste0("PC1 (", var_explained[1], "%)"),
+1731411212559:y = paste0("PC2 (", var_explained[2], "%)")
+1731411212559:)
+1731411212559:return(pca_plot)
+1731411212560:}
+1731411213579:# Create PCA plots for each year
+1731411213579:years <- sort(unique(species_matrix_all$year_temp))
+1731411213818:pca_plots <- list()
+1731411214089:for(year in years) {
+1731411214090:year_data <- species_matrix_all %>%
+1731411214090:filter(year_temp == year)
+1731411214090:pca_plots[[as.character(year)]] <- create_year_pca(
+1731411214090:year_data,
+1731411214090:year,
+1731411214090:dominant_species$species
+1731411214091:)
+1731411214091:ggsave(
+1731411214091:paste0("output/pca_biplot_", year, ".png"),
+1731411214091:pca_plots[[as.character(year)]],
+1731411214091:width = 10, height = 8,
+1731411214092:dpi = 300,
+1731411214092:bg = "white"
+1731411214092:)
+1731411214092:}
+1731411216792:# Combine all plots
+1731411216792:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1731411216792:plot_annotation(
+1731411216792:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731411216793:subtitle = "Stations shown as points, species as arrows",
+1731411216793:caption = "Based on species abundance data. Only species with >1% relative abundance shown.",
+1731411216793:theme = theme(
+1731411216793:plot.title = element_text(size = 14, face = "bold"),
+1731411216793:plot.subtitle = element_text(size = 12),
+1731411216793:plot.caption = element_text(size = 10, hjust = 0)
+1731411216793:)
+1731411216793:)
+1731411216798:ggsave("output/pca_biplots_all_years.png",
+1731411216798:combined_plot,
+1731411216799:width = 20, height = 15,
+1731411216799:dpi = 300,
+1731411216799:bg = "white")
+1731411259280:# Prepare data for NMDS - exclude 1999 data
+1731411259280:species_matrix <- df %>%
+1731411259280:filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731411259280:select(station, year, species, adjusted_density) %>%
+1731411259280:pivot_wider(
+1731411259281:names_from = species,
+1731411259281:values_from = adjusted_density,
+1731411259281:values_fill = 0
+1731411259281:) %>%
+1731411259281:# Store station and year before removing them for NMDS
+1731411259281:mutate(
+1731411259281:station_temp = station,
+1731411259281:year_temp = year
+1731411259282:) %>%
+1731411259282:select(-station, -year)
+1731411261679:# Perform NMDS
+1731411261680:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731411264343:# Extract site scores and add metadata
+1731411264343:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731411264763:site_scores$Station <- species_matrix$station_temp
+1731411265146:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731411265919:# Extract species scores
+1731411265919:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731411266654:# Calculate species contributions (using relative abundance)
+1731411266654:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731411266655:sum(select(species_matrix, -station_temp, -year_temp))
+1731411267774:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731411269127:# Filter species scores to only show important species
+1731411269128:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731411273552:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731411273552:select(station, year,
+1731411273552:organic_content, depth,
+1731411273552:grain_20um, grain_63um, grain_125um,
+1731411273552:grain_250um, grain_1000um) %>%
+1731411273553:distinct()
+1731411275143:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731411275143:as.data.frame() %>%
+1731411275143:mutate(variable = rownames(.)) %>%
+1731411275143:filter(env_fit$vectors$pvals < 0.05)
+1731411277269:# Create the plot
+1731411277269:nmds_plot <- ggplot() +
+1731411277270:# Base NMDS plot elements
+1731411277270:geom_path(data = site_scores,
+1731411277270:aes(x = NMDS1, y = NMDS2, color = Station, group = Station),
+1731411277270:arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+1731411277270:geom_point(data = site_scores,
+1731411277270:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731411277270:size = 3) +
+1731411277271:# Add significant environmental vectors
+1731411277271:geom_segment(data = sig_env_vectors,
+1731411277271:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731411277271:arrow = arrow(length = unit(0.2, "cm")),
+1731411277271:color = "darkgrey") +
+1731411277272:geom_text(data = sig_env_vectors,
+1731411277272:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731411277272:size = 3, color = "darkgrey") +
+1731411277272:theme_bw() +
+1731411277272:theme(panel.background = element_rect(fill = "white")) +
+1731411277272:labs(title = "NMDS of Community Composition (2013-2017)",
+1731411277272:caption = "")
+1731411284527:# Save plot
+1731411284527:ggsave("output/nmds_plot.png", nmds_plot, width = 10, height = 8, bg = "white")
+1731411582225:ggplot() +
+1731411582225:# Add points for sites
+1731411582225:geom_point(data = site_scores,
+1731411582226:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731411582226:size = 3) +
+1731411582226:# Add ellipses around years
+1731411582226:stat_ellipse(data = site_scores,
+1731411582226:aes(x = NMDS1, y = NMDS2, group = Year),
+1731411582227:type = "norm",
+1731411582227:linetype = 2,
+1731411582227:size = 0.5) +
+1731411582227:# Add significant environmental vectors
+1731411582227:geom_segment(data = sig_env_vectors,
+1731411582228:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731411582228:arrow = arrow(length = unit(0.2, "cm")),
+1731411582228:color = "darkgrey") +
+1731411582228:geom_text(data = sig_env_vectors,
+1731411582228:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731411582229:size = 3, color = "darkgrey") +
+1731411582229:theme_bw() +
+1731411582229:theme(panel.background = element_rect(fill = "white")) +
+1731411582229:labs(title = "NMDS of Community Composition (2013-2017)",
+1731411582229:caption = "") +
+1731411582229:guides(color = guide_legend("Station"),
+1731411582230:shape = guide_legend("Year"))
+1731414575726:?stat_ellipse
+1731414727938:nmds_plot <- ggplot() +
+1731414727938:# Add points for sites
+1731414727939:geom_point(data = site_scores,
+1731414727939:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731414727939:size = 3) +
+1731414727939:# Add smaller ellipses around years with solid lines
+1731414727939:stat_ellipse(data = site_scores,
+1731414727939:aes(x = NMDS1, y = NMDS2, group = Year),
+1731414727939:type = "norm",
+1731414727940:level = 0.5,  # Smaller radius (default is 0.95)
+1731414727940:linetype = 1,  # Solid line
+1731414727940:size = 0.5) +
+1731414727940:# Add significant environmental vectors
+1731414727940:geom_segment(data = sig_env_vectors,
+1731414727940:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731414727941:arrow = arrow(length = unit(0.2, "cm")),
+1731414727941:color = "darkgrey") +
+1731414727941:geom_text(data = sig_env_vectors,
+1731414727941:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731414727941:size = 3, color = "darkgrey") +
+1731414727942:theme_bw() +
+1731414727942:theme(panel.background = element_rect(fill = "white")) +
+1731414727942:labs(title = "NMDS of Community Composition (2013-2017)",
+1731414727942:caption = "") +
+1731414727942:guides(color = guide_legend("Station"),
+1731414727942:shape = guide_legend("Year"))
+1731414742280:nmds_plot
+1731414783683:nmds_plot <- ggplot() +
+1731414783683:# Add points for sites
+1731414783684:geom_point(data = site_scores,
+1731414783684:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731414783684:size = 3) +
+1731414783684:# Add smaller ellipses around years with solid lines
+1731414783684:stat_ellipse(data = site_scores,
+1731414783685:aes(x = NMDS1, y = NMDS2, group = Year),
+1731414783685:type = "norm",
+1731414783685:level = 0.6,  # Smaller radius (default is 0.95)
+1731414783685:linetype = 1,  # Solid line
+1731414783685:size = 0.5) +
+1731414783685:# Add significant environmental vectors
+1731414783686:geom_segment(data = sig_env_vectors,
+1731414783686:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731414783686:arrow = arrow(length = unit(0.2, "cm")),
+1731414783686:color = "darkgrey") +
+1731414783687:geom_text(data = sig_env_vectors,
+1731414783687:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731414783687:size = 3, color = "darkgrey") +
+1731414783687:theme_bw() +
+1731414783687:theme(panel.background = element_rect(fill = "white")) +
+1731414783688:labs(title = "NMDS of Community Composition (2013-2017)",
+1731414783688:caption = "") +
+1731414783688:guides(color = guide_legend("Station"),
+1731414783688:shape = guide_legend("Year"));nmds_plot
+1731414801466:nmds_plot <- ggplot() +
+1731414801467:# Add points for sites
+1731414801467:geom_point(data = site_scores,
+1731414801467:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731414801467:size = 3) +
+1731414801467:# Add smaller ellipses around years with solid lines
+1731414801467:stat_ellipse(data = site_scores,
+1731414801468:aes(x = NMDS1, y = NMDS2, group = Year),
+1731414801468:type = "norm",
+1731414801468:level = 0.7,  # Smaller radius (default is 0.95)
+1731414801468:linetype = 1,  # Solid line
+1731414801468:size = 0.5) +
+1731414801468:# Add significant environmental vectors
+1731414801468:geom_segment(data = sig_env_vectors,
+1731414801469:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731414801469:arrow = arrow(length = unit(0.2, "cm")),
+1731414801469:color = "darkgrey") +
+1731414801469:geom_text(data = sig_env_vectors,
+1731414801469:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731414801470:size = 3, color = "darkgrey") +
+1731414801470:theme_bw() +
+1731414801470:theme(panel.background = element_rect(fill = "white")) +
+1731414801470:labs(title = "NMDS of Community Composition (2013-2017)",
+1731414801471:caption = "") +
+1731414801471:guides(color = guide_legend("Station"),
+1731414801471:shape = guide_legend("Year"));nmds_plot
+1731415039825:nmds_plot <- ggplot() +
+1731415039825:# Add points for sites
+1731415039825:geom_point(data = site_scores,
+1731415039825:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731415039825:size = 3) +
+1731415039826:# Add smaller ellipses around years with solid lines
+1731415039826:stat_ellipse(data = site_scores,
+1731415039826:aes(x = NMDS1, y = NMDS2, group = Year),
+1731415039826:type = "norm",
+1731415039826:level = 0.7,
+1731415039826:linetype = 1,
+1731415039826:size = 0.5) +
+1731415039827:# Add significant environmental vectors
+1731415039827:geom_segment(data = sig_env_vectors,
+1731415039827:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731415039827:arrow = arrow(length = unit(0.2, "cm")),
+1731415039827:color = "darkgrey") +
+1731415039827:geom_text(data = sig_env_vectors,
+1731415039828:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731415039828:size = 3, color = "darkgrey") +
+1731415039828:theme_bw() +
+1731415039828:theme(
+1731415039828:panel.background = element_rect(fill = "white"),
+1731415039829:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731415039829:axis.title = element_text(size = 14),                  # Larger axis titles
+1731415039829:legend.text = element_text(size = 12),                 # Larger legend text
+1731415039829:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731415039829:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731415039830:) +
+1731415039830:labs(title = "NMDS of Community Composition (2013-2017)",
+1731415039830:caption = "") +
+1731415039830:guides(color = guide_legend("Station"),
+1731415039831:shape = guide_legend("Year"))
+1731415039850:# Save with higher resolution and size
+1731415039850:ggsave("output/nmds_plot.png",
+1731415039850:nmds_plot,
+1731415039850:width = 12,      # Increased width
+1731415039850:height = 10,     # Increased height
+1731415039850:dpi = 300,       # Higher resolution
+1731415039851:bg = "white")
+1731421857746:# Load cleaned data
+1731421857746:#df_result <- result # just so this won't be accidentally changed
+1731421857746:df <- df_result
+1731421858619:# Prepare data for NMDS - exclude 1999 data
+1731421858619:species_matrix <- df %>%
+1731421858620:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731421858620:select(station, year, species, adjusted_density) %>%
+1731421858620:pivot_wider(
+1731421858620:names_from = species,
+1731421858620:values_from = adjusted_density,
+1731421858620:values_fill = 0
+1731421858620:) %>%
+1731421858620:# Store station and year before removing them for NMDS
+1731421858621:mutate(
+1731421858621:station_temp = station,
+1731421858621:year_temp = year
+1731421858621:) %>%
+1731421858621:select(-station, -year)
+1731421859502:# Perform NMDS
+1731421859503:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731421860908:# Extract site scores and add metadata
+1731421860909:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731421861191:site_scores$Station <- species_matrix$station_temp
+1731421861521:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731421862716:# Extract species scores
+1731421862716:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731421864025:# Calculate species contributions (using relative abundance)
+1731421864025:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731421864026:sum(select(species_matrix, -station_temp, -year_temp))
+1731421865138:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731421866152:# Filter species scores to only show important species
+1731421866152:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731421868418:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731421868418:select(station, year,
+1731421868418:organic_content, depth,
+1731421868418:grain_20um, grain_63um, grain_125um,
+1731421868418:grain_250um, grain_1000um) %>%
+1731421868419:distinct()
+1731421868822:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731421868822:as.data.frame() %>%
+1731421868822:mutate(variable = rownames(.)) %>%
+1731421868822:filter(env_fit$vectors$pvals < 0.05)
+1731421869707:# Create the plot
+1731421869708:nmds_plot <- ggplot() +
+1731421869708:# Base NMDS plot elements
+1731421869708:geom_path(data = site_scores,
+1731421869708:aes(x = NMDS1, y = NMDS2, color = Station, group = Station),
+1731421869708:arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+1731421869708:geom_point(data = site_scores,
+1731421869708:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731421869709:size = 3) +
+1731421869709:# Add significant environmental vectors
+1731421869709:geom_segment(data = sig_env_vectors,
+1731421869709:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731421869709:arrow = arrow(length = unit(0.2, "cm")),
+1731421869709:color = "darkgrey") +
+1731421869710:geom_text(data = sig_env_vectors,
+1731421869710:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731421869710:size = 3, color = "darkgrey") +
+1731421869710:theme_bw() +
+1731421869710:theme(panel.background = element_rect(fill = "white")) +
+1731421869711:labs(title = "NMDS of Community Composition (2013-2017)",
+1731421869711:caption = "")
+1731421897443:# Save plot
+1731421897443:ggsave("output/nmds_plot_1999.png", nmds_plot, width = 10, height = 8, bg = "white")
+1731421973963:nmds_plot <- ggplot() +
+1731421973964:# Add points for sites
+1731421973964:geom_point(data = site_scores,
+1731421973964:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731421973964:size = 3) +
+1731421973964:# Add smaller ellipses around years with solid lines
+1731421973964:stat_ellipse(data = site_scores,
+1731421973965:aes(x = NMDS1, y = NMDS2, group = Year),
+1731421973965:type = "norm",
+1731421973965:level = 0.7,
+1731421973965:linetype = 1,
+1731421973965:size = 0.5) +
+1731421973965:# Add significant environmental vectors
+1731421973966:geom_segment(data = sig_env_vectors,
+1731421973966:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731421973966:arrow = arrow(length = unit(0.2, "cm")),
+1731421973966:color = "darkgrey") +
+1731421973966:geom_text(data = sig_env_vectors,
+1731421973966:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731421973967:size = 3, color = "darkgrey") +
+1731421973967:theme_bw() +
+1731421973967:theme(
+1731421973967:panel.background = element_rect(fill = "white"),
+1731421973967:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731421973968:axis.title = element_text(size = 14),                  # Larger axis titles
+1731421973968:legend.text = element_text(size = 12),                 # Larger legend text
+1731421973968:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731421973968:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731421973969:) +
+1731421973969:labs(title = "NMDS of Community Composition (2013-2017)",
+1731421973969:caption = "") +
+1731421973969:guides(color = guide_legend("Station"),
+1731421973969:shape = guide_legend("Year"))
+1731421973984:# Save with higher resolution and size
+1731421973984:ggsave("output/nmds_plot_1999.png",
+1731421973984:nmds_plot,
+1731421973985:width = 12,      # Increased width
+1731421973985:height = 10,     # Increased height
+1731421973985:dpi = 300,       # Higher resolution
+1731421973985:bg = "white")
+1731422035572:nmds_plot <- ggplot() +
+1731422035572:# Add points for sites
+1731422035573:geom_point(data = site_scores,
+1731422035573:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731422035573:size = 3) +
+1731422035573:# Add smaller ellipses around years with solid lines
+1731422035573:stat_ellipse(data = site_scores,
+1731422035573:aes(x = NMDS1, y = NMDS2, group = Year),
+1731422035574:type = "norm",
+1731422035574:level = 0.7,
+1731422035574:linetype = 1,
+1731422035574:size = 0.5) +
+1731422035575:# Add significant environmental vectors
+1731422035575:#geom_segment(data = sig_env_vectors,
+1731422035575:#            aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731422035575:#           arrow = arrow(length = unit(0.2, "cm")),
+1731422035575:#          color = "darkgrey") +
+1731422035575:geom_text(data = sig_env_vectors,
+1731422035576:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731422035576:size = 3, color = "darkgrey") +
+1731422035576:theme_bw() +
+1731422035576:theme(
+1731422035576:panel.background = element_rect(fill = "white"),
+1731422035577:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731422035577:axis.title = element_text(size = 14),                  # Larger axis titles
+1731422035577:legend.text = element_text(size = 12),                 # Larger legend text
+1731422035577:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731422035577:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731422035578:) +
+1731422035578:labs(title = "NMDS of Community Composition (2013-2017)",
+1731422035578:caption = "") +
+1731422035578:guides(color = guide_legend("Station"),
+1731422035578:shape = guide_legend("Year"))
+1731422035591:# Save with higher resolution and size
+1731422035591:ggsave("output/nmds_plot_1999.png",
+1731422035592:nmds_plot,
+1731422035592:width = 12,      # Increased width
+1731422035592:height = 10,     # Increased height
+1731422035592:dpi = 300,       # Higher resolution
+1731422035592:bg = "white")
+1731422051268:nmds_plot <- ggplot() +
+1731422051268:# Add points for sites
+1731422051269:geom_point(data = site_scores,
+1731422051269:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731422051269:size = 3) +
+1731422051269:# Add smaller ellipses around years with solid lines
+1731422051269:stat_ellipse(data = site_scores,
+1731422051270:aes(x = NMDS1, y = NMDS2, group = Year),
+1731422051270:type = "norm",
+1731422051270:level = 0.7,
+1731422051270:linetype = 1,
+1731422051270:size = 0.5) +
+1731422051271:# Add significant environmental vectors
+1731422051271:#geom_segment(data = sig_env_vectors,
+1731422051271:#            aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731422051271:#           arrow = arrow(length = unit(0.2, "cm")),
+1731422051271:#          color = "darkgrey") +
+1731422051271:#geom_text(data = sig_env_vectors,
+1731422051272:#         aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731422051272:#        size = 3, color = "darkgrey") +
+1731422051272:theme_bw() +
+1731422051272:theme(
+1731422051272:panel.background = element_rect(fill = "white"),
+1731422051272:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731422051273:axis.title = element_text(size = 14),                  # Larger axis titles
+1731422051273:legend.text = element_text(size = 12),                 # Larger legend text
+1731422051273:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731422051273:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731422051273:) +
+1731422051274:labs(title = "NMDS of Community Composition (2013-2017)",
+1731422051274:caption = "") +
+1731422051274:guides(color = guide_legend("Station"),
+1731422051274:shape = guide_legend("Year"))
+1731422051285:# Save with higher resolution and size
+1731422051285:ggsave("output/nmds_plot_1999.png",
+1731422051285:nmds_plot,
+1731422051285:width = 12,      # Increased width
+1731422051285:height = 10,     # Increased height
+1731422051285:dpi = 300,       # Higher resolution
+1731422051285:bg = "white")
+1731422349012:nmds_plot <- ggplot() +
+1731422349012:# Add points for sites
+1731422349012:geom_point(data = site_scores,
+1731422349012:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731422349013:size = 3) +
+1731422349013:# Add smaller ellipses around years with solid lines
+1731422349013:#stat_ellipse(data = site_scores,
+1731422349013:#            aes(x = NMDS1, y = NMDS2, group = Year),
+1731422349013:#           type = "norm",
+1731422349013:#          level = 0.7,
+1731422349014:#         linetype = 1,
+1731422349014:#        size = 0.5) +
+1731422349014:# Add significant environmental vectors
+1731422349014:#geom_segment(data = sig_env_vectors,
+1731422349014:#            aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731422349015:#           arrow = arrow(length = unit(0.2, "cm")),
+1731422349015:#          color = "darkgrey") +
+1731422349015:#geom_text(data = sig_env_vectors,
+1731422349015:#         aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731422349015:#        size = 3, color = "darkgrey") +
+1731422349015:theme_bw() +
+1731422349015:theme(
+1731422349016:panel.background = element_rect(fill = "white"),
+1731422349016:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731422349016:axis.title = element_text(size = 14),                  # Larger axis titles
+1731422349016:legend.text = element_text(size = 12),                 # Larger legend text
+1731422349016:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731422349016:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731422349017:) +
+1731422349017:labs(title = "NMDS of Community Composition (2013-2017)",
+1731422349017:caption = "") +
+1731422349017:guides(color = guide_legend("Station"),
+1731422349017:shape = guide_legend("Year"))
+1731422349026:# Save with higher resolution and size
+1731422349027:ggsave("output/nmds_plot_1999_an-hringja.png",
+1731422349027:nmds_plot,
+1731422349027:width = 12,      # Increased width
+1731422349027:height = 10,     # Increased height
+1731422349027:dpi = 300,       # Higher resolution
+1731422349027:bg = "white")
+1731422621347:nmds_plot <- ggplot() +
+1731422621347:# Add points for sites
+1731422621347:geom_point(data = site_scores,
+1731422621347:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731422621348:size = 3) +
+1731422621348:# Add smaller ellipses around years with solid lines
+1731422621348:stat_ellipse(data = site_scores,
+1731422621348:aes(x = NMDS1, y = NMDS2, group = Year),
+1731422621348:type = "euclid",
+1731422621348:level = 0.7,
+1731422621349:linetype = 1,
+1731422621349:size = 0.5) +
+1731422621349:# Add significant environmental vectors
+1731422621349:#geom_segment(data = sig_env_vectors,
+1731422621349:#            aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731422621349:#           arrow = arrow(length = unit(0.2, "cm")),
+1731422621350:#          color = "darkgrey") +
+1731422621350:#geom_text(data = sig_env_vectors,
+1731422621350:#         aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731422621350:#        size = 3, color = "darkgrey") +
+1731422621350:theme_bw() +
+1731422621351:theme(
+1731422621351:panel.background = element_rect(fill = "white"),
+1731422621351:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731422621351:axis.title = element_text(size = 14),                  # Larger axis titles
+1731422621351:legend.text = element_text(size = 12),                 # Larger legend text
+1731422621352:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731422621352:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731422621352:) +
+1731422621352:labs(title = "NMDS of Community Composition (2013-2017)",
+1731422621352:caption = "") +
+1731422621352:guides(color = guide_legend("Station"),
+1731422621353:shape = guide_legend("Year"))
+1731422621363:# Save with higher resolution and size
+1731422625963:nmds_plot
+1731422889435:search_term <- "sipuncul"
+1731422889435:jorundur %>%
+1731422889435:filter(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731422889435:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731422889435:select(Family, Flokkun, gamalt, Kingdom, Phylum, Class, Genus, Species, N, Artal) %>%
+1731422889436:print(n=1000) %>% distinct(Flokkun,Artal)
+1731422903316:search_term <- "sipuncul"
+1731422903316:df %>%
+1731422903317:filter(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731422903317:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731422903317:select(Family, Flokkun, gamalt, Kingdom, Phylum, Class, Genus, Species, N, Artal) %>%
+1731422903317:print(n=1000) %>% distinct(Flokkun,Artal)
+1731422921221:search_term <- "sipuncul"
+1731422921221:df %>%
+1731422921221:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731422921221:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731422921222:select(Species, N, Artal) %>%
+1731422921222:print(n=1000) %>% distinct(Flokkun,Artal)
+1731422944747:search_term <- "sipuncul"
+1731422944748:df %>%
+1731422944748:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731422944748:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731422944748:select(species,adjusted_density,year) %>%
+1731422944748:print(n=1000)
+1731422951113:df
+1731422972123:df[df$species=="Praxillella"]
+1731422973986:df[df$species=="Praxillella",]
+1731422982515:df[df$species=="Sipuncula",]
+1731423265389:search_term <- "capit"
+1731423265389:df %>%
+1731423265390:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731423265390:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731423265390:select(species,adjusted_density,year) %>%
+1731423265390:print(n=1000)
+1731423407047:# Include 1999 data
+1731423407047:species_matrix_with_1999 <- df %>%
+1731423407047:filter(year >= 1999) %>%  # Include 1999 data
+1731423407047:select(station, year, species, adjusted_density) %>%
+1731423407047:pivot_wider(
+1731423407048:names_from = species,
+1731423407048:values_from = adjusted_density,
+1731423407048:values_fill = 0
+1731423407048:) %>%
+1731423407048:mutate(
+1731423407048:station_temp = station,
+1731423407048:year_temp = year
+1731423407048:) %>%
+1731423407049:select(-station, -year)
+1731423407061:# Perform NMDS with 1999
+1731423407061:nmds_with_1999 <- metaMDS(select(species_matrix_with_1999, -station_temp, -year_temp), distance = "bray")
+1731423407148:# Compare stress values
+1731423407148:stress_original <- nmds$stress
+1731423407148:stress_with_1999 <- nmds_with_1999$stress
+1731423407148:print(paste("Stress without 1999:", round(stress_original, 3)))
+1731423407149:print(paste("Stress with 1999:", round(stress_with_1999, 3)))
+1731423407149:# Compare species composition
+1731423407149:species_comparison <- species_matrix_with_1999 %>%
+1731423407149:group_by(year_temp) %>%
+1731423407149:summarise(across(everything(), sum)) %>%
+1731423407150:pivot_longer(-year_temp, names_to = "species", values_to = "abundance") %>%
+1731423407150:filter(species %in% important_species) %>%
+1731423407150:arrange(year_temp, desc(abundance))
+1731423429886:# Prepare data for NMDS - exclude 1999 data
+1731423429886:species_matrix <- df %>%
+1731423429886:filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731423429886:select(station, year, species, adjusted_density) %>%
+1731423429887:pivot_wider(
+1731423429887:names_from = species,
+1731423429887:values_from = adjusted_density,
+1731423429887:values_fill = 0
+1731423429887:) %>%
+1731423429887:# Store station and year before removing them for NMDS
+1731423429887:mutate(
+1731423429888:station_temp = station,
+1731423429888:year_temp = year
+1731423429888:) %>%
+1731423429888:select(-station, -year)
+1731423431084:# Perform NMDS
+1731423431085:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731423443150:stress_original <- nmds$stress
+1731423443151:stress_with_1999 <- nmds_with_1999$stress
+1731423450995:print(paste("Stress without 1999:", round(stress_original, 3)))
+1731423450996:print(paste("Stress with 1999:", round(stress_with_1999, 3)))
+1731423460986:species_comparison <- species_matrix_with_1999 %>%
+1731423460986:group_by(year_temp) %>%
+1731423460986:summarise(across(everything(), sum)) %>%
+1731423460986:pivot_longer(-year_temp, names_to = "species", values_to = "abundance") %>%
+1731423460986:filter(species %in% important_species) %>%
+1731423460986:arrange(year_temp, desc(abundance))
+1731423467280:rlang::last_trace()
+1731423487592:species_comparison <- species_matrix_with_1999 %>%
+1731423487592:group_by(year_temp) %>%
+1731423487592:summarise(across(where(is.numeric), sum)) %>%  # Only sum numeric columns
+1731423487593:pivot_longer(-year_temp, names_to = "species", values_to = "abundance") %>%
+1731423487593:filter(species %in% important_species) %>%
+1731423487593:arrange(year_temp, desc(abundance))
+1731423487620:print("Species composition comparison:")
+1731423487620:print(species_comparison)
+1731423514013:print(species_comparison, n=1999)
+1731423554350:print(paste("Stress without 1999:", round(stress_original, 3)))
+1731423554350:print(paste("Stress with 1999:", round(stress_with_1999, 3)))
+1731423716273:# Calculate relative abundance for each species by year
+1731423716273:relative_abundance_by_year <- species_matrix_with_1999 %>%
+1731423716274:group_by(year_temp) %>%
+1731423716274:summarise(across(where(is.numeric), sum)) %>%
+1731423716274:pivot_longer(-year_temp, names_to = "species", values_to = "abundance") %>%
+1731423716274:group_by(year_temp) %>%
+1731423716274:mutate(relative_abundance = abundance / sum(abundance)) %>%
+1731423716274:arrange(year_temp, desc(relative_abundance))
+1731423716307:# Print relative abundance for 1999 and compare with other years
+1731423716307:print("Relative Abundance by Year:")
+1731423716308:print(relative_abundance_by_year, n = 50)
+1731423723549:# Calculate relative abundance for each species by year
+1731423723549:relative_abundance_by_year <- species_matrix_with_1999 %>%
+1731423723549:group_by(year_temp) %>%
+1731423723549:summarise(across(where(is.numeric), sum)) %>%
+1731423723549:pivot_longer(-year_temp, names_to = "species", values_to = "abundance") %>%
+1731423723550:group_by(year_temp) %>%
+1731423723550:mutate(relative_abundance = abundance / sum(abundance)) %>%
+1731423723550:arrange(year_temp, desc(relative_abundance))
+1731423723595:# Print relative abundance for 1999 and compare with other years
+1731423723595:print("Relative Abundance by Year:")
+1731423723595:print(relative_abundance_by_year, n = 5000)
+1731423789009:# Compare ordination distances with Bray-Curtis dissimilarities
+1731423789009:ordination_distances <- as.matrix(dist(scores(nmds_with_1999, display = "sites")))
+1731423789010:bray_curtis_distances <- as.matrix(vegdist(select(species_matrix_with_1999, -station_temp, -year_temp), method = "bray"))
+1731423789013:# Calculate correlation between ordination and dissimilarity matrices
+1731423789013:correlation_with_1999 <- cor(ordination_distances, bray_curtis_distances, method = "spearman")
+1731423789017:print(paste("Correlation between ordination and dissimilarity with 1999:", round(correlation_with_1999, 3)))
+1731423789108:# Visualize NMDS with and without 1999
+1731423789108:nmds_plot_with_1999 <- ggplot() +
+1731423789108:geom_point(data = as.data.frame(scores(nmds_with_1999, display = "sites")),
+1731423789109:aes(x = NMDS1, y = NMDS2, color = as.factor(species_matrix_with_1999$year_temp)),
+1731423789109:size = 3) +
+1731423789109:theme_bw() +
+1731423789109:labs(title = "NMDS with 1999 Included")
+1731423789114:nmds_plot_without_1999 <- ggplot() +
+1731423789115:geom_point(data = as.data.frame(scores(nmds, display = "sites")),
+1731423789115:aes(x = NMDS1, y = NMDS2, color = as.factor(species_matrix$year_temp)),
+1731423789115:size = 3) +
+1731423789115:theme_bw() +
+1731423789115:labs(title = "NMDS without 1999")
+1731423789120:# Print plots
+1731423789120:print(nmds_plot_with_1999)
+1731423789341:print(nmds_plot_without_1999)
+1731423799213:nmds_plot_with_1999
+1731423803731:nmds_plot_without_1999
+1731424006243:library(vegan)
+1731424006244:library(ggplot2)
+1731424006245:library(plotly)
+1731424016668:install.packages("plotly")
+1731424033060:library(vegan)
+1731424033061:library(ggplot2)
+1731424033061:library(plotly)
+1731424033279:# Assuming species_matrix_with_1999 is your data frame with species abundance data
+1731424033279:# Run NMDS with 3 dimensions
+1731424033279:nmds_3d <- metaMDS(species_matrix_with_1999, distance = "bray", k = 3, trymax = 100)
+1731424239380:search_term <- "arenaria"
+1731424239380:df %>%
+1731424239381:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731424239381:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731424239381:select(species,adjusted_density,year) %>%
+1731424239381:print(n=1000)
+1731424319836:# Assuming species_matrix_with_1999 is your data frame
+1731424319836:# Select only numeric columns for NMDS
+1731424319837:species_abundance_matrix <- species_matrix_with_1999 %>%
+1731424319837:select(where(is.numeric))
+1731424319840:# Run NMDS with 3 dimensions
+1731424319840:nmds_3d <- metaMDS(species_abundance_matrix, distance = "bray", k = 3, trymax = 100)
+1731424319973:# Print stress value for 3D NMDS
+1731424319973:print(paste("Stress for 3D NMDS:", round(nmds_3d$stress, 3)))
+1731424319974:# Extract scores for plotting
+1731424319974:scores_3d <- scores(nmds_3d, display = "sites")
+1731424319974:# Create a 3D plot using plotly
+1731424319975:plot_3d <- plot_ly(x = ~scores_3d[,1], y = ~scores_3d[,2], z = ~scores_3d[,3],
+1731424319975:color = ~as.factor(species_matrix_with_1999$year_temp),
+1731424319975:colors = c("red", "blue", "green", "purple", "orange", "brown"),
+1731424319975:type = "scatter3d", mode = "markers") %>%
+1731424319975:layout(scene = list(xaxis = list(title = 'NMDS1'),
+1731424319975:yaxis = list(title = 'NMDS2'),
+1731424319976:zaxis = list(title = 'NMDS3')))
+1731424319983:# Print the 3D plot
+1731424319983:plot_3d
+1731424368331:library(dplyr)
+1731424368331:library(stringr)
+1731424368332:# Assuming df is your data frame with columns: species, adjusted_density, year, station
+1731424368332:# Find species present in 1999 but not in other years
+1731424368332:species_1999_only <- df %>%
+1731424368332:filter(year == 1999) %>%
+1731424368332:distinct(species) %>%
+1731424368332:anti_join(df %>% filter(year != 1999) %>% distinct(species), by = "species")
+1731424368341:# Find species present in other years but not in 1999
+1731424368341:species_other_years_only <- df %>%
+1731424368341:filter(year != 1999) %>%
+1731424368341:distinct(species) %>%
+1731424368341:anti_join(df %>% filter(year == 1999) %>% distinct(species), by = "species")
+1731424368346:# Print results
+1731424368346:print("Species present only in 1999:")
+1731424368346:print(species_1999_only, n = 1000)
+1731424368362:print("Species present in other years but not in 1999:")
+1731424368362:print(species_other_years_only, n = 1000)
+1731424414475:search_term <- "tubif"
+1731424414476:df %>%
+1731424414476:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731424414476:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731424414476:select(species,adjusted_density,year) %>%
+1731424414476:print(n=1000)
+1731424446348:search_term <- "fragilis"
+1731424446348:df %>%
+1731424446348:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731424446348:filter(if_any(everything(), ~ str_detect(tolower(.), tolower(search_term)))) %>%
+1731424446349:select(species,adjusted_density,year) %>%
+1731424446349:print(n=1000)
+1731424610283:library(dplyr)
+1731424610284:# Assuming df is your data frame with columns: species, year
+1731424610284:# Find unique species for each year
+1731424610284:unique_species_per_year <- df %>%
+1731424610284:group_by(year) %>%
+1731424610285:distinct(species) %>%
+1731424610285:group_by(species) %>%
+1731424610285:filter(n() == 1) %>%
+1731424610285:ungroup() %>%
+1731424610285:group_by(year) %>%
+1731424610285:summarise(unique_species_count = n(), unique_species = list(species))
+1731424610297:# Print the results
+1731424610297:unique_species_per_year %>%
+1731424610297:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731424610298:select(year, unique_species_count, species_list) %>%
+1731424610298:print(n = Inf)
+1731424614236:rlang::last_trace()
+1731424634144:library(dplyr)
+1731424634145:library(purrr)  # Load the purrr package for map_chr
+1731424634157:# Assuming df is your data frame with columns: species, year
+1731424634157:# Find unique species for each year
+1731424634157:unique_species_per_year <- df %>%
+1731424634157:group_by(year) %>%
+1731424634157:distinct(species) %>%
+1731424634157:group_by(species) %>%
+1731424634158:filter(n() == 1) %>%
+1731424634158:ungroup() %>%
+1731424634158:group_by(year) %>%
+1731424634158:summarise(unique_species_count = n(), unique_species = list(species))
+1731424634170:# Print the results
+1731424634170:unique_species_per_year %>%
+1731424634170:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731424634170:select(year, unique_species_count, species_list) %>%
+1731424634170:print(n = Inf)
+1731424652229:library(dplyr)
+1731424652230:library(purrr)  # Load the purrr package for map_chr
+1731424652230:# Assuming df is your data frame with columns: species, year
+1731424652230:# Find unique species for each year
+1731424652231:unique_species_per_year <- df %>%
+1731424652231:group_by(year) %>%
+1731424652231:distinct(species) %>%
+1731424652231:group_by(species) %>%
+1731424652231:filter(n() == 1) %>%
+1731424652231:ungroup() %>%
+1731424652232:group_by(year) %>%
+1731424652232:summarise(unique_species_count = n(), unique_species = list(species))
+1731424652244:# Print the results
+1731424652244:unique_species_per_year %>%
+1731424652244:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731424652244:select(year, unique_species_count, species_list) %>%
+1731424652244:print(n = Inf)
+1731424688829:library(dplyr)
+1731424688829:library(purrr)
+1731424688829:# Assuming df is your data frame with columns: species, year
+1731424688830:# Find unique species for each year
+1731424688830:unique_species_per_year <- df %>%
+1731424688830:group_by(year) %>%
+1731424688830:distinct(species) %>%
+1731424688830:group_by(species) %>%
+1731424688830:filter(n() == 1) %>%
+1731424688830:ungroup() %>%
+1731424688831:group_by(year) %>%
+1731424688831:summarise(unique_species_count = n(), unique_species = list(species))
+1731424688843:# Convert the list of species to a comma-separated string
+1731424688843:unique_species_per_year <- unique_species_per_year %>%
+1731424688843:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731424688843:select(year, unique_species_count, species_list)
+1731424688845:# Write the results to a CSV file
+1731424688846:write.csv(unique_species_per_year, "unique_species_per_year.csv", row.names = FALSE)
+1731424688851:# Print a message to confirm the export
+1731424688851:print("Unique species per year have been exported to 'unique_species_per_year.csv'.")
+1731424753004:library(dplyr)
+1731424753005:library(purrr)
+1731424753005:library(tidyr)
+1731424753005:# Assuming df is your data frame with columns: species, year
+1731424753006:# Find unique species for each year
+1731424753006:unique_species_per_year <- df %>%
+1731424753006:group_by(year) %>%
+1731424753006:distinct(species) %>%
+1731424753006:group_by(species) %>%
+1731424753006:filter(n() == 1) %>%
+1731424753006:ungroup() %>%
+1731424753007:group_by(year) %>%
+1731424753007:summarise(unique_species_count = n(), unique_species = list(species))
+1731424753019:# Convert the list of species to a comma-separated string
+1731424753019:unique_species_per_year <- unique_species_per_year %>%
+1731424753019:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731424753019:select(year, unique_species_count, species_list)
+1731424753022:# Pivot the data to have years as columns
+1731424753023:unique_species_wide <- unique_species_per_year %>%
+1731424753023:pivot_wider(names_from = year, values_from = c(unique_species_count, species_list))
+1731424753029:# Write the results to a CSV file
+1731424753029:write.csv(unique_species_wide, "unique_species_per_year_wide.csv", row.names = FALSE)
+1731424753034:# Print a message to confirm the export
+1731424753035:print("Unique species per year have been exported to 'unique_species_per_year_wide.csv'.")
+1731424843190:library(dplyr)
+1731424843190:library(tidyr)
+1731424843191:library(purrr)
+1731424843191:# Assuming df is your data frame with columns: species, year
+1731424843191:# Find unique species for each year
+1731424843191:unique_species_per_year <- df %>%
+1731424843192:group_by(year) %>%
+1731424843192:distinct(species) %>%
+1731424843192:group_by(species) %>%
+1731424843192:filter(n() == 1) %>%
+1731424843192:ungroup() %>%
+1731424843192:group_by(year) %>%
+1731424843192:summarise(unique_species = list(species))
+1731424843205:# Reshape the data to have years as columns
+1731424843205:reshaped_data <- unique_species_per_year %>%
+1731424843205:unnest(unique_species) %>%
+1731424843205:pivot_wider(names_from = year, values_from = unique_species, values_fill = list(unique_species = ""))
+1731424846449:rlang::last_trace()
+1731424864366:library(dplyr)
+1731424864367:library(tidyr)
+1731424864367:library(purrr)
+1731424864367:# Assuming df is your data frame with columns: species, year
+1731424864367:# Find unique species for each year
+1731424864367:unique_species_per_year <- df %>%
+1731424864368:group_by(year) %>%
+1731424864368:distinct(species) %>%
+1731424864368:group_by(species) %>%
+1731424864368:filter(n() == 1) %>%
+1731424864368:ungroup() %>%
+1731424864368:group_by(year) %>%
+1731424864368:summarise(unique_species = list(species))
+1731424864380:# Reshape the data to have years as columns
+1731424864380:reshaped_data <- unique_species_per_year %>%
+1731424864380:unnest(unique_species) %>%
+1731424864380:pivot_wider(names_from = year, values_from = unique_species, values_fill = "")
+1731424870814:rlang::last_trace()
+1731424889140:library(dplyr)
+1731424889141:library(tidyr)
+1731424889141:library(purrr)
+1731424889141:# Assuming df is your data frame with columns: species, year
+1731424889142:# Find unique species for each year
+1731424889142:unique_species_per_year <- df %>%
+1731424889142:group_by(year) %>%
+1731424889142:distinct(species) %>%
+1731424889142:group_by(species) %>%
+1731424889142:filter(n() == 1) %>%
+1731424889142:ungroup() %>%
+1731424889143:group_by(year) %>%
+1731424889143:summarise(unique_species = list(species))
+1731424889154:# Reshape the data to have years as columns
+1731424889154:reshaped_data <- unique_species_per_year %>%
+1731424889154:unnest(unique_species) %>%
+1731424889154:pivot_wider(names_from = year, values_from = unique_species, values_fill = list(unique_species = ""))
+1731424940842:str(df)
+1731424951696:# Load necessary libraries
+1731424951696:library(dplyr)
+1731424951696:library(tidyr)
+1731424951697:library(purrr)
+1731424951697:# Assuming df is your data frame with columns: species, year
+1731424951698:# Step 1: Identify species unique to each year
+1731424951698:unique_species_per_year <- df %>%
+1731424951698:group_by(year) %>%                   # Group by each year
+1731424951698:distinct(species) %>%                 # Get unique species per year
+1731424951698:group_by(species) %>%                 # Group by each species
+1731424951698:filter(n() == 1) %>%                  # Retain only species that appear in a single year
+1731424951699:ungroup() %>%
+1731424951699:group_by(year) %>%                    # Re-group by year for summarization
+1731424951699:summarise(unique_species = list(species), .groups = 'drop')  # Create a list of unique species per year
+1731424951709:# Step 2: Reshape data with years as columns
+1731424951710:reshaped_data <- unique_species_per_year %>%
+1731424951710:unnest(unique_species) %>%            # Unnest the species list to separate rows
+1731424951710:pivot_wider(names_from = year, values_from = unique_species, values_fill = list(unique_species = ""))  # Convert to wide format
+1731424974748:unique_species_per_year
+1731424994283:# Convert species to lowercase to avoid case sensitivity issues
+1731424994283:unique_species_per_year <- df %>%
+1731424994284:mutate(species = tolower(species)) %>%
+1731424994284:group_by(year) %>%                   # Group by each year
+1731424994284:distinct(species) %>%                 # Get unique species per year
+1731424994284:group_by(species) %>%                 # Group by each species
+1731424994284:filter(n() == 1) %>%                  # Retain only species that appear in a single year
+1731424994284:ungroup() %>%
+1731424994284:group_by(year) %>%                    # Re-group by year for summarization
+1731424994285:summarise(unique_species = list(species), .groups = 'drop')  # Create a list of unique species per year
+1731424994297:# Continue with reshaping and saving as before
+1731424994297:reshaped_data <- unique_species_per_year %>%
+1731424994297:unnest(unique_species) %>%
+1731424994297:pivot_wider(names_from = year, values_from = unique_species, values_fill = list(unique_species = ""))
+1731425004191:unique_species_per_year
+1731425028485:unique_species_per_year <- df %>%
+1731425028486:group_by(year) %>%
+1731425028486:distinct(species) %>%
+1731425028486:group_by(species) %>%
+1731425028486:filter(n() == 1) %>%
+1731425028486:ungroup() %>%
+1731425028486:group_by(year) %>%
+1731425028486:summarise(unique_species_count = n(), unique_species = list(species))
+1731425028499:# Print the results
+1731425028499:unique_species_per_year %>%
+1731425028499:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731425028500:select(year, unique_species_count, species_list) %>%
+1731425028500:print(n = Inf)
+1731425052005:unique_species_per_year <- df %>%
+1731425052005:group_by(year) %>%
+1731425052006:distinct(species) %>%
+1731425052006:group_by(species) %>%
+1731425052006:filter(n() == 1) %>%
+1731425052006:ungroup() %>%
+1731425052006:group_by(year) %>%
+1731425052006:summarise(unique_species_count = n(), unique_species = list(species))
+1731425052020:# Print the results
+1731425052020:rass <- unique_species_per_year %>%
+1731425052020:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731425052020:select(year, unique_species_count, species_list) %>%
+1731425052020:print(n = Inf)
+1731425054411:rass
+1731425058514:t(rass)
+1731425631758:KolgrTaxa <- read_csv(file("data/raw/KolgrTaxa.csv", encoding = "UTF-8"), na = "empty")
+1731425634263:taxa_to_remove <- c(
+1731425634264:"Foraminifera",
+1731425634264:"Nematoda",
+1731425634264:"Cirripedia",
+1731425634264:"Porifera",
+1731425634264:"Cnidaria",
+1731425634264:"Bryozoa",
+1731425634264:"Sipuncula",
+1731425634265:"Platyhelminthes",
+1731425634265:"Nemertea",
+1731425634265:#"Oligochaeta",
+1731425634265:"Ostracoda"
+1731425634265:)
+1731425638390:# Filter out the specified taxa using if_all()
+1731425638391:KolgrTaxa <- KolgrTaxa %>%
+1731425638391:filter(if_all(where(is.character), ~ !. %in% taxa_to_remove))
+1731425639076:KolgrTaxa$gamalt <- iconv(KolgrTaxa$gamalt, from = "UTF-8", to = "UTF-8", sub = NA)
+1731425641853:remove_list <- paste(c(
+1731425641853:"nýsestir",
+1731425641853:"ungviði",
+1731425641854:"ungv",
+1731425641854:"ungv.",
+1731425641854:"juv",
+1731425641854:"harpacticoida"
+1731425641854:), collapse = '|')
+1731425643157:remove_ind <- lapply(strsplit(remove_list , "\\|")[[1]] , \(x) grep(x , KolgrTaxa$gamalt , fixed = T)) |>
+1731425643157:unlist() |>
+1731425643158:unique()
+1731425644206:ekkiungvidi <- KolgrTaxa[-remove_ind,]
+1731425644569:jorundur <- ekkiungvidi %>%
+1731425644569:filter(!Flokkun %in% c("harpacticoida", "Campanulariidae")) %>%
+1731425644569:mutate(
+1731425644569:Flokkun = case_when(
+1731425644569:# General taxonomic standardization (no year-specific)
+1731425644569:str_detect(tolower(Flokkun), "^sipuncul") ~ NA_character_,
+1731425644570:tolower(Flokkun) == "ostracoda" ~ "Ostracoda",
+1731425644570:tolower(Flokkun) == "terebellides stroemi" ~ "Terebellides stroemii",
+1731425644570:tolower(Flokkun) == "bivalvia" ~ NA_character_,
+1731425644570:tolower(Flokkun) == "pectinaria koreni" ~ "Lagis koreni",
+1731425644570:tolower(Flokkun) == "sphaerosyllis" ~ "Sphaerosyllis erinaceus",
+1731425644571:tolower(Flokkun) %in% c("maldane sarsi", "maldanidae", "praxillella praetermissa") ~ "Praxillella",
+1731425644571:tolower(Flokkun) == "oligochaeta" ~ NA_character_,
+1731425644571:tolower(Flokkun) == "Tubificidae" ~ NA_character_,
+1731425644571:# 1999 specific matches
+1731425644571:Artal == "1999" & tolower(Flokkun) %in% c("ampharetinae", "ampharete acutifrons") ~ "Ampharetidae",
+1731425644572:Artal == "1999" & tolower(Flokkun) == "bivalvia" ~ NA_character_,
+1731425644572:Artal == "1999" & tolower(Flokkun) == "leucon acutirostris" ~ "Cumacea",
+1731425644572:Artal == "1999" & tolower(Flokkun) == "eudorella emarginata" ~ "Cumacea",
+1731425644572:Artal == "1999" & tolower(Flokkun) == "musculus discors" ~ "Musculus",
+1731425644573:Artal == "1999" & tolower(Flokkun) == "aricidea (acmira) cerrutii" ~ "Aricidea suecica",
+1731425644573:Artal == "1999" & tolower(Flokkun) == "mediomastus filiformis" ~ "Heteromastus filiformis",
+1731425644573:# 2013 specific matches
+1731425644573:Artal == "2013" & tolower(Flokkun) %in% c("harmothoe", "polynoidae") ~ "Harmothoe extenuata",
+1731425644574:Artal == "2013" & tolower(Flokkun) == "spionidae" ~ "Spio",
+1731425644574:# 2014 specific matches
+1731425644574:Artal == "2014" & tolower(Flokkun) == "ampharete acutifrons" ~ "Ampharetidae",
+1731425644574:Artal == "2014" & tolower(Flokkun) == "spionidae" ~ "Spio",
+1731425644575:Artal == "2014" & tolower(Flokkun) == "terebellidae" ~ "Terebellides stroemii",
+1731425644575:Artal == "2014" & tolower(Flokkun) == "caprellidae" ~ "Caprella septemtrionalis",
+1731425644575:Artal == "2014" & tolower(Flokkun) == "praxillella" ~ "Praxillella praetermissa",
+1731425644575:Artal == "2014" & tolower(Flokkun) == "syllidae" ~ "Syllis cornuta",
+1731425644576:Artal == "2014" & tolower(Flokkun) == "mya" ~ "Mya arenaria",
+1731425644576:Artal == "2014" & tolower(Flokkun) == "mytilus edulis" ~ "Mytilidae",
+1731425644576:Artal == "2014" & tolower(Flokkun) == "nephtyidae" ~ "Nephthys",
+1731425644576:Artal == "2014" & tolower(Flokkun) == "amphipoda" ~ "Protomedeia fasciata",
+1731425644577:Artal == "2014" & tolower(Flokkun) == "tubificidae" ~ "Tubificoides kozloffi",
+1731425644577:Artal == "2014" & tolower(Flokkun) == "harmothoe" ~ "Harmothoe extenuata",
+1731425644577:# 2015 specific matches
+1731425644578:Artal == "2015" & tolower(Flokkun) == "spionidae" ~ "Spio",
+1731425644578:Artal == "2015" & tolower(Flokkun) == "terebellidae" ~ "Terebellides stroemii",
+1731425644578:Artal == "2015" & tolower(Flokkun) == "crenella" ~ "Crenella decussata",
+1731425644579:Artal == "2015" & tolower(Flokkun) == "syllidae" ~ "Syllis cornuta",
+1731425644579:Artal == "2015" & tolower(Flokkun) == "mya" ~ "Mya arenaria",
+1731425644579:Artal == "2015" & tolower(Flokkun) == "mytilidae" ~ "Mytilus edulis",
+1731425644579:Artal == "2015" & tolower(Flokkun) == "ampharetidae" ~ NA_character_,
+1731425644580:Artal == "2015" & tolower(Flokkun) == "pholoe" ~ "Pholoe minuta",
+1731425644580:Artal == "2015" & tolower(Flokkun) == "harmothoe" ~ "Harmothoe extenuata",
+1731425644580:Artal == "2015" & tolower(Flokkun) == "amphipoda" ~ "Protomedeia fasciata",
+1731425644581:# 2016 specific matches
+1731425644581:Artal == "2016" & tolower(Flokkun) == "leaena ebranchiata" ~ "Terebellides stroemii",
+1731425644581:Artal == "2016" & tolower(Flokkun) == "pseudopolydora antennata" ~ "Polydora",
+1731425644582:Artal == "2016" & tolower(Flokkun) == "cistenides hyperborea" ~ "Cistenides granulata",
+1731425644582:Artal == "2016" & tolower(Flokkun) == "paraonidae" ~ "Aricidea suecica",
+1731425644582:Artal == "2016" & tolower(Flokkun) == "dorvilleidae" ~ "Capitella capitata",
+1731425644582:Artal == "2016" & tolower(Flokkun) == "orbiniidae" ~ "Scoloplos armiger",
+1731425644583:Artal == "2016" & tolower(Flokkun) == "polychaeta" ~ NA_character_,
+1731425644583:Artal == "2016" & tolower(Flokkun) == "polynoidae" ~ "Harmothoe imbricata",
+1731425644583:Artal == "2016" & tolower(Flokkun) %in% c("spio filicornis", "spionidae") ~ "Spionidae",
+1731425644584:Artal == "2017" & tolower(Flokkun) == "spionidae" ~ "Spio",
+1731425644584:Artal == "2016" & tolower(Flokkun) %in% c("syllis", "syllidae") ~ "Syllis cornuta",
+1731425644584:Artal == "2016" & tolower(Flokkun) %in% c("terebellidae", "terebelliformia") ~ "Terebellides stroemii",
+1731425644585:Artal == "2016" & tolower(Flokkun) == "amphipoda" ~ NA_character_,
+1731425644585:Artal == "2016" & tolower(Flokkun) == "bivalvia" ~ NA_character_,
+1731425644585:Artal == "2016" & tolower(Flokkun) == "cardium" ~ NA_character_,
+1731425644586:Artal == "2016" & tolower(Flokkun) == "aricidea" ~ "Amphitrite cirrata",
+1731425644586:Artal == "2016" & tolower(Flokkun) == "capitellidae" ~ "Capitella capitata",
+1731425644586:Artal == "2016" & tolower(Flokkun) == "cirratulidae" ~ "Cirratulus cirratus",
+1731425644587:Artal == "2016" & tolower(Flokkun) == "cossuridae" ~ "Cossura longocirrata",
+1731425644587:Artal == "2016" & tolower(Flokkun) == "pectinariidae" ~ "Pectinaria koreni",
+1731425644587:Artal == "2016" & tolower(Flokkun) == "phyllodocida" ~ "Phyllodoce maculata",
+1731425644588:Artal == "2016" & tolower(Flokkun) == "lumbrineridae" ~ "Lumbrineris",
+1731425644588:Artal == "2016" & tolower(Flokkun) == "pholoe" ~ "Pholoe minuta",
+1731425644588:Artal == "2016" & tolower(Flokkun) == "balanus balanus" ~ "Balanus",
+1731425644589:Artal == "2016" & tolower(Flokkun) %in% c("priapulidae", "priapulidae") ~ "Priapulus caudatus",
+1731425644589:# 2017 specific matches
+1731425644590:Artal == "2017" & tolower(Flokkun) == "oligochaeta" ~ NA_character_,
+1731425644590:Artal == "2017" & tolower(Flokkun) == "tubificidae" ~ NA_character_,
+1731425644590:Artal == "2017" & tolower(Flokkun) == "mediomastus filiformis" ~ "Heteromastus filiformis",
+1731425644591:Artal == "2017" & tolower(Flokkun) == "spionidae" ~ "Spio",
+1731425644591:Artal == "2017" & tolower(Flokkun) == "terebellidae" ~ "Terebellides stroemii",
+1731425644592:Artal == "2017" & tolower(Flokkun) == "caprellidae" ~ "Caprella septentrionalis",
+1731425644592:Artal == "2017" & tolower(Flokkun) == "opisthobranchia" ~ "Retusa pertenuis",
+1731425644592:Artal == "2017" & tolower(Flokkun) == "mya" ~ "Mya arenaria",
+1731425644593:Artal == "2017" & tolower(Flokkun) == "maldanidae" ~ "Praxillella praetermissa",
+1731425644593:Artal == "2017" & tolower(Flokkun) %in% c("ampharete", "ampharete acutifrons") ~ "Ampharetidae",
+1731425644594:Artal == "2017" & tolower(Flokkun) == "pholoe" ~ "Pholoe minuta",
+1731425644595:Artal == "2017" & tolower(Flokkun) == "harmothoe" ~ "Harmothoe extenuata",
+1731425644596:# Default case
+1731425644597:TRUE ~ Flokkun
+1731425644597:)
+1731425644598:) %>%
+1731425644598:drop_na(Flokkun)
+1731425645765:df <- jorundur  %>%
+1731425645765:rename(
+1731425645766:species = Flokkun,
+1731425645766:sample_id = id,
+1731425645766:year = Artal,
+1731425645766:station = stod,
+1731425645766:subdivision = skipting,
+1731425645766:count = N,
+1731425645767:density = Nu
+1731425645767:)
+1731425647118:result <- df %>%
+1731425647119:filter(station %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+1731425647119:# First, apply the subdivision to the count
+1731425647119:mutate(adjusted_count = count * subdivision) %>%
+1731425647119:# Calculate the correct number of samples and total area for each station-year combination
+1731425647119:group_by(station, year) %>%
+1731425647119:mutate(
+1731425647120:n_samples = n_distinct(sample_id),
+1731425647120:grab_area = case_when(
+1731425647120:year == 1999 ~ 0.0225,
+1731425647120:TRUE ~ 0.04
+1731425647120:),
+1731425647121:total_area = grab_area * n_samples
+1731425647121:) %>%
+1731425647121:ungroup() %>%
+1731425647121:# Now group by station, year, and species to get total counts
+1731425647121:group_by(station, year, species) %>%
+1731425647121:summarise(
+1731425647122:original_total_count = sum(count),
+1731425647122:adjusted_total_count = sum(adjusted_count),
+1731425647122:n_samples = first(n_samples),  # Use the previously calculated n_samples
+1731425647122:total_area = first(total_area),  # Use the previously calculated total_area
+1731425647122:.groups = 'keep'
+1731425647123:) %>%
+1731425647123:# Calculate densities
+1731425647123:mutate(
+1731425647123:original_density = original_total_count / total_area,
+1731425647123:adjusted_density = adjusted_total_count / total_area,
+1731425647124:density_difference = adjusted_density - original_density,
+1731425647124:density_ratio = adjusted_density / original_density
+1731425647124:) %>%
+1731425647124:# Ungroup
+1731425647124:ungroup()
+1731425697902:df_result <- result
+1731425700717:# Load cleaned data
+1731425700717:#df_result <- result # just so this won't be accidentally changed
+1731425700717:df <- df_result
+1731425708502:# Prepare data for NMDS - exclude 1999 data
+1731425708503:species_matrix <- df %>%
+1731425708503:"filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731425708503:select(station, year, species, adjusted_density) %>%
+1731425708503:pivot_wider(
+1731425708503:names_from = species,
+1731425708504:values_from = adjusted_density,
+1731425708504:values_fill = 0
+1731425708504:) %>%
+1731425708504:# Store station and year before removing them for NMDS
+1731425708504:mutate(
+1731425708504:station_temp = station,
+1731425708504:year_temp = year
+1731425708504:) %>%
+1731425708505:select(-station, -year)
+1731425708505:# Perform NMDS
+1731425708505:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731425747827:# Prepare data for NMDS - exclude 1999 data
+1731425747828:species_matrix <- df %>%
+1731425747828:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731425747828:select(station, year, species, adjusted_density) %>%
+1731425747828:pivot_wider(
+1731425747829:names_from = species,
+1731425747829:values_from = adjusted_density,
+1731425747829:values_fill = 0
+1731425747829:) %>%
+1731425747829:# Store station and year before removing them for NMDS
+1731425747829:mutate(
+1731425747830:station_temp = station,
+1731425747830:year_temp = year
+1731425747830:) %>%
+1731425747830:select(-station, -year)
+1731425750486:# Perform NMDS
+1731425750486:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731425751445:# Extract site scores and add metadata
+1731425751446:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731425752839:site_scores$Station <- species_matrix$station_temp
+1731425754696:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731425756004:# Extract species scores
+1731425756004:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731425757564:# Calculate species contributions (using relative abundance)
+1731425757564:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731425757564:sum(select(species_matrix, -station_temp, -year_temp))
+1731425758086:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731425759135:# Filter species scores to only show important species
+1731425759136:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731425760110:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731425760110:select(station, year,
+1731425760110:organic_content, depth,
+1731425760110:grain_20um, grain_63um, grain_125um,
+1731425760111:grain_250um, grain_1000um) %>%
+1731425760111:distinct()
+1731425761197:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731425761197:as.data.frame() %>%
+1731425761197:mutate(variable = rownames(.)) %>%
+1731425761197:filter(env_fit$vectors$pvals < 0.05)
+1731425779914:# Create the plot
+1731425779914:nmds_plot <- ggplot() +
+1731425779915:# Base NMDS plot elements
+1731425779915:geom_path(data = site_scores,
+1731425779915:aes(x = NMDS1, y = NMDS2, color = Station, group = Station),
+1731425779915:arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+1731425779915:geom_point(data = site_scores,
+1731425779915:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731425779916:size = 3) +
+1731425779916:# Add significant environmental vectors
+1731425779916:# geom_segment(data = sig_env_vectors,
+1731425779916:#             aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731425779916:#             arrow = arrow(length = unit(0.2, "cm")),
+1731425779916:#             color = "darkgrey") +
+1731425779917:# geom_text(data = sig_env_vectors,
+1731425779917:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731425779917:#           size = 3, color = "darkgrey") +
+1731425779917:theme_bw() +
+1731425779917:theme(panel.background = element_rect(fill = "white")) +
+1731425779918:labs(title = "NMDS of Community Composition (2013-2017)",
+1731425779918:caption = "")
+1731425785839:# Save plot
+1731425785839:ggsave("output/nmds_plot_1999.png", nmds_plot, width = 10, height = 8, bg = "white")
+1731425859588:nmds_plot <- ggplot() +
+1731425859588:# Add points for sites
+1731425859588:geom_point(data = site_scores,
+1731425859588:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731425859589:size = 3) +
+1731425859589:# Add smaller ellipses around years with solid lines
+1731425859589:stat_ellipse(data = site_scores,
+1731425859589:aes(x = NMDS1, y = NMDS2, group = Year),
+1731425859589:type = "norm",
+1731425859589:level = 0.7,
+1731425859589:linetype = 1,
+1731425859590:size = 0.5) +
+1731425859590:# Add significant environmental vectors
+1731425859590:geom_segment(data = sig_env_vectors,
+1731425859590:aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731425859590:arrow = arrow(length = unit(0.2, "cm")),
+1731425859590:color = "darkgrey") +
+1731425859591:geom_text(data = sig_env_vectors,
+1731425859591:aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731425859591:size = 3, color = "darkgrey") +
+1731425859591:theme_bw() +
+1731425859591:theme(
+1731425859591:panel.background = element_rect(fill = "white"),
+1731425859592:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731425859592:axis.title = element_text(size = 14),                  # Larger axis titles
+1731425859592:legend.text = element_text(size = 12),                 # Larger legend text
+1731425859592:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731425859592:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731425859593:) +
+1731425859593:labs(title = "NMDS of Community Composition (2013-2017)",
+1731425859593:caption = "") +
+1731425859593:guides(color = guide_legend("Station"),
+1731425859594:shape = guide_legend("Year"))
+1731425859607:# Save with higher resolution and size
+1731425859607:ggsave("output/nmds_plot_1999.png",
+1731425859608:nmds_plot,
+1731425859608:width = 12,      # Increased width
+1731425859608:height = 10,     # Increased height
+1731425859608:dpi = 300,       # Higher resolution
+1731425859608:bg = "white")
+1731425885343:# Create the plot
+1731425885344:nmds_plot <- ggplot() +
+1731425885344:# Add points for sites
+1731425885344:geom_point(data = site_scores,
+1731425885344:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731425885344:size = 3) +
+1731425885344:# Add smaller ellipses around years with solid lines
+1731425885345:stat_ellipse(data = site_scores,
+1731425885345:aes(x = NMDS1, y = NMDS2, group = Year),
+1731425885345:type = "norm",
+1731425885345:level = 0.7,
+1731425885345:linetype = 1,
+1731425885345:size = 0.5) +
+1731425885346:# Add significant environmental vectors
+1731425885346:# geom_segment(data = sig_env_vectors,
+1731425885346:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731425885346:#              arrow = arrow(length = unit(0.2, "cm")),
+1731425885346:#              color = "darkgrey") +
+1731425885346:# geom_text(data = sig_env_vectors,
+1731425885347:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731425885347:#           size = 3, color = "darkgrey") +
+1731425885347:theme_bw() +
+1731425885347:theme(
+1731425885347:panel.background = element_rect(fill = "white"),
+1731425885348:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731425885348:axis.title = element_text(size = 14),                  # Larger axis titles
+1731425885348:legend.text = element_text(size = 12),                 # Larger legend text
+1731425885348:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731425885348:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731425885349:) +
+1731425885349:labs(title = "NMDS of Community Composition (2013-2017)",
+1731425885349:caption = "") +
+1731425885349:guides(color = guide_legend("Station"),
+1731425885349:shape = guide_legend("Year"))
+1731425886435:# Save with higher resolution and size
+1731425886436:ggsave("output/nmds_plot_1999.png",
+1731425886436:nmds_plot,
+1731425886436:width = 12,      # Increased width
+1731425886436:height = 10,     # Increased height
+1731425886436:dpi = 300,       # Higher resolution
+1731425886437:bg = "white")
+1731426417333:henda <- read_csv(
+1731426417333:"data/processed/hendaB.csv",
+1731426417333:col_types = cols(
+1731426417333:Year = col_integer(),
+1731426417333:Flokkun = col_character(),  # Ensure Flokkun is read as character
+1731426417334:A7 = col_integer(),
+1731426417334:B5 = col_integer(),
+1731426417334:B8 = col_integer(),
+1731426417334:C4 = col_integer(),
+1731426417334:E3 = col_integer(),
+1731426417335:E4 = col_integer()
+1731426417335:),
+1731426417335:na = c("", "NA")
+1731426417335:) %>%
+1731426417335:mutate(across(where(is.numeric), ~ replace_na(., 0)))  %>% # Replace NA with 0 for numeric columns
+1731426417336:select(Flokkun:last_col())
+1731426427199:henda
+1731426450765:df
+1731426463316:df_result
+1731426631147:df %>% select(station,year,species,adjusted_density)
+1731426653420:df %>% select(station,year,species,round(adjusted_density))
+1731426707885:henda
+1731426743190:# Transform henda from wide to long format
+1731426743190:henda_long <- henda %>%
+1731426743190:pivot_longer(cols = starts_with("A"):starts_with("E"), # Select station columns
+1731426743190:names_to = "station",                     # New column for station names
+1731426743191:values_to = "adjusted_density") %>%       # New column for density values
+1731426743191:rename(species = Flokkun,                              # Rename 'Flokkun' to 'species'
+1731426743191:year = Year) %>%                                # Rename 'Year' to 'year'
+1731426743191:select(station, year, species, adjusted_density)       # Select and order columns
+1731426743200:# Display the transformed data
+1731426743200:print(henda_long, n = 10)  ''
+1731426745560:# Transform henda from wide to long format
+1731426745560:henda_long <- henda %>%
+1731426745560:pivot_longer(cols = starts_with("A"):starts_with("E"), # Select station columns
+1731426745561:names_to = "station",                     # New column for station names
+1731426745561:values_to = "adjusted_density") %>%       # New column for density values
+1731426745561:rename(species = Flokkun,                              # Rename 'Flokkun' to 'species'
+1731426745561:year = Year) %>%                                # Rename 'Year' to 'year'
+1731426745561:select(station, year, species, adjusted_density)       # Select and order columns
+1731426745570:# Display the transformed data
+1731426745570:print(henda_long, n = 10)
+1731426856486:# Prepare data for NMDS - exclude 1999 data
+1731426856487:#species_matrix <- df %>% #Mín gögn
+1731426856487:species_matrix <- henda_long %>% #Gögn Jörundar
+1731426856487:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731426856487:select(station, year, species, adjusted_density) %>%
+1731426856487:pivot_wider(
+1731426856487:names_from = species,
+1731426856488:values_from = adjusted_density,
+1731426856488:values_fill = 0
+1731426856488:) %>%
+1731426856488:# Store station and year before removing them for NMDS
+1731426856488:mutate(
+1731426856489:station_temp = station,
+1731426856489:year_temp = year
+1731426856489:) %>%
+1731426856489:select(-station, -year)
+1731426858255:# Perform NMDS
+1731426858255:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731426859012:# Extract site scores and add metadata
+1731426859012:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731426859354:site_scores$Station <- species_matrix$station_temp
+1731426859714:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731426860358:# Extract species scores
+1731426860358:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731426861020:# Calculate species contributions (using relative abundance)
+1731426861021:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731426861021:sum(select(species_matrix, -station_temp, -year_temp))
+1731426861710:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731426862144:# Filter species scores to only show important species
+1731426862145:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731426863597:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731426863598:select(station, year,
+1731426863598:organic_content, depth,
+1731426863598:grain_20um, grain_63um, grain_125um,
+1731426863598:grain_250um, grain_1000um) %>%
+1731426863598:distinct()
+1731426864437:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731426864437:as.data.frame() %>%
+1731426864438:mutate(variable = rownames(.)) %>%
+1731426864438:filter(env_fit$vectors$pvals < 0.05)
+1731426865724:# Create the plot
+1731426865725:nmds_plot <- ggplot() +
+1731426865725:# Add points for sites
+1731426865725:geom_point(data = site_scores,
+1731426865725:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731426865725:size = 3) +
+1731426865725:# Add smaller ellipses around years with solid lines
+1731426865725:stat_ellipse(data = site_scores,
+1731426865726:aes(x = NMDS1, y = NMDS2, group = Year),
+1731426865726:type = "norm",
+1731426865726:level = 0.7,
+1731426865726:linetype = 1,
+1731426865726:size = 0.5) +
+1731426865726:# Add significant environmental vectors
+1731426865727:# geom_segment(data = sig_env_vectors,
+1731426865727:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731426865727:#              arrow = arrow(length = unit(0.2, "cm")),
+1731426865727:#              color = "darkgrey") +
+1731426865727:# geom_text(data = sig_env_vectors,
+1731426865727:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731426865728:#           size = 3, color = "darkgrey") +
+1731426865728:theme_bw() +
+1731426865728:theme(
+1731426865728:panel.background = element_rect(fill = "white"),
+1731426865728:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731426865728:axis.title = element_text(size = 14),                  # Larger axis titles
+1731426865729:legend.text = element_text(size = 12),                 # Larger legend text
+1731426865729:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731426865729:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731426865729:) +
+1731426865729:labs(title = "NMDS of Community Composition (2013-2017)",
+1731426865729:caption = "") +
+1731426865730:guides(color = guide_legend("Station"),
+1731426865730:shape = guide_legend("Year"))
+1731426869264:# Save with higher resolution and size
+1731426869264:ggsave("output/nmds_plot_1999.png",
+1731426869264:nmds_plot,
+1731426869265:width = 12,      # Increased width
+1731426869265:height = 10,     # Increased height
+1731426869265:dpi = 300,       # Higher resolution
+1731426869265:bg = "white")
+1731426916301:# Create the plot
+1731426916301:nmds_plot <- ggplot() +
+1731426916301:# Add points for sites
+1731426916301:geom_point(data = site_scores,
+1731426916301:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731426916302:size = 3) +
+1731426916302:# Add smaller ellipses around years with solid lines
+1731426916302:stat_ellipse(data = site_scores,
+1731426916302:aes(x = NMDS1, y = NMDS2, group = Year),
+1731426916302:type = "norm",
+1731426916302:level = 0.7,
+1731426916303:linetype = 1,
+1731426916303:size = 0.5) +
+1731426916303:# Add significant environmental vectors
+1731426916303:# geom_segment(data = sig_env_vectors,
+1731426916303:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731426916303:#              arrow = arrow(length = unit(0.2, "cm")),
+1731426916304:#              color = "darkgrey") +
+1731426916304:# geom_text(data = sig_env_vectors,
+1731426916304:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731426916304:#           size = 3, color = "darkgrey") +
+1731426916304:theme_bw() +
+1731426916304:theme(
+1731426916304:panel.background = element_rect(fill = "white"),
+1731426916305:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731426916305:axis.title = element_text(size = 14),                  # Larger axis titles
+1731426916305:legend.text = element_text(size = 12),                 # Larger legend text
+1731426916305:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731426916305:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731426916306:) +
+1731426916306:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731426916306:caption = "") +
+1731426916306:guides(color = guide_legend("Station"),
+1731426916306:shape = guide_legend("Year"))
+1731426918094:# Save with higher resolution and size
+1731426918094:ggsave("output/nmds_plot_1999.png",
+1731426918094:nmds_plot,
+1731426918095:width = 12,      # Increased width
+1731426918095:height = 10,     # Increased height
+1731426918095:dpi = 300,       # Higher resolution
+1731426918095:bg = "white")
+1731426930949:# Create the plot
+1731426930949:nmds_plot <- ggplot() +
+1731426930950:# Add points for sites
+1731426930950:geom_point(data = site_scores,
+1731426930950:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731426930950:size = 3) +
+1731426930950:# Add smaller ellipses around years with solid lines
+1731426930951:# stat_ellipse(data = site_scores,
+1731426930951:#              aes(x = NMDS1, y = NMDS2, group = Year),
+1731426930951:#              type = "norm",
+1731426930951:#              level = 0.7,
+1731426930951:#              linetype = 1,
+1731426930951:#              size = 0.5) +
+1731426930952:# Add significant environmental vectors
+1731426930952:# geom_segment(data = sig_env_vectors,
+1731426930952:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731426930952:#              arrow = arrow(length = unit(0.2, "cm")),
+1731426930952:#              color = "darkgrey") +
+1731426930952:# geom_text(data = sig_env_vectors,
+1731426930952:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731426930953:#           size = 3, color = "darkgrey") +
+1731426930953:theme_bw() +
+1731426930953:theme(
+1731426930953:panel.background = element_rect(fill = "white"),
+1731426930953:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731426930954:axis.title = element_text(size = 14),                  # Larger axis titles
+1731426930954:legend.text = element_text(size = 12),                 # Larger legend text
+1731426930954:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731426930954:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731426930954:) +
+1731426930955:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731426930955:caption = "") +
+1731426930955:guides(color = guide_legend("Station"),
+1731426930955:shape = guide_legend("Year"))
+1731426954150:# Save with higher resolution and size
+1731426954151:ggsave("output/nmds_plot_1999-Ekki_hringir.png",
+1731426954151:nmds_plot,
+1731426954151:width = 12,      # Increased width
+1731426954151:height = 10,     # Increased height
+1731426954151:dpi = 300,       # Higher resolution
+1731426954152:bg = "white")
+1731427318438:unique_species_per_year <- henda_long %>%
+1731427318438:group_by(year) %>%
+1731427318438:distinct(species) %>%
+1731427318438:group_by(species) %>%
+1731427318438:filter(n() == 1) %>%
+1731427318439:ungroup() %>%
+1731427318439:group_by(year) %>%
+1731427318439:summarise(unique_species_count = n(), unique_species = list(species))
+1731427318455:# Print the results
+1731427318455:rass <- unique_species_per_year %>%
+1731427318455:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731427318455:select(year, unique_species_count, species_list) %>%
+1731427318455:print(n = Inf)
+1731427325925:rass
+1731427341557:t(rass)
+1731488346345:henda <- read_csv(
+1731488346346:"data/processed/hendaB.csv",
+1731488346346:na = c("", "NA")
+1731488346346:)
+1731488367470:table(henda$Phylum)
+1731488373175:table(henda$Class)
+1731488461465:henda <- read_csv(
+1731488461465:"data/processed/hendaB.csv",
+1731488461465:col_types = cols(
+1731488461465:Year = col_integer(),
+1731488461466:Flokkun = col_character(),  # Ensure Flokkun is read as character
+1731488461466:A7 = col_integer(),
+1731488461466:B5 = col_integer(),
+1731488461466:B8 = col_integer(),
+1731488461466:C4 = col_integer(),
+1731488461466:E3 = col_integer(),
+1731488461466:E4 = col_integer()
+1731488461466:),
+1731488461467:na = c("", "NA")
+1731488461467:) %>%
+1731488461467:mutate(across(where(is.numeric), ~ replace_na(., 0)))  %>% # Replace NA with 0 for numeric columns
+1731488461467:select(Flokkun:last_col())
+1731488461507:# breyta á long format
+1731488461507:library(dplyr)
+1731488461507:library(tidyr)
+1731488461508:# Transform henda from wide to long format
+1731488461508:henda_long <- henda %>%
+1731488461508:pivot_longer(cols = starts_with("A"):starts_with("E"), # Select station columns
+1731488461508:names_to = "station",                     # New column for station names
+1731488461508:values_to = "adjusted_density") %>%       # New column for density values
+1731488461508:rename(species = Flokkun,                              # Rename 'Flokkun' to 'species'
+1731488461508:year = Year) %>%                                # Rename 'Year' to 'year'
+1731488461508:select(station, year, species, adjusted_density)
+1731488480304:table(henda_long$station)
+1731488521959:str(henda)
+1731488772970:# Transform henda from wide to long format
+1731488772970:henda_long <- henda %>%
+1731488772971:pivot_longer(cols = c("A7","B5", "B8",  "C4",  "E3", "E4") , # Select station columns
+1731488772971:names_to = "station",                     # New column for station names
+1731488772971:values_to = "adjusted_density") %>%       # New column for density values
+1731488772971:rename(species = Flokkun,                              # Rename 'Flokkun' to 'species'
+1731488772971:year = Year) %>%                                # Rename 'Year' to 'year'
+1731488772971:select(station, year, species, adjusted_density)       # Select and order columns
+1731488815848:table(henda_long$station)
+1731488828536:henda_long
+1731488839920:# Prepare data for NMDS - exclude 1999 data
+1731488839920:#species_matrix <- df %>% #Mín gögn
+1731488839920:species_matrix <- henda_long %>% #Gögn Jörundar
+1731488839920:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731488839920:select(station, year, species, adjusted_density) %>%
+1731488839920:pivot_wider(
+1731488839920:names_from = species,
+1731488839921:values_from = adjusted_density,
+1731488839921:values_fill = 0
+1731488839921:) %>%
+1731488839921:# Store station and year before removing them for NMDS
+1731488839921:mutate(
+1731488839921:station_temp = station,
+1731488839921:year_temp = year
+1731488839922:) %>%
+1731488839922:select(-station, -year)
+1731488841079:# Perform NMDS
+1731488841079:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731488849496:# Load required packages
+1731488849496:library(vegan)
+1731488849730:library(ggplot2)
+1731488858416:install.packages("vegan")
+1731488869426:# Perform NMDS
+1731488869426:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731488879582:library(vegan)
+1731488884344:# Perform NMDS
+1731488884344:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731488885783:# Extract site scores and add metadata
+1731488885783:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731488886123:site_scores$Station <- species_matrix$station_temp
+1731488886443:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731488886850:# Extract species scores
+1731488886850:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731488887274:# Calculate species contributions (using relative abundance)
+1731488887275:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731488887275:sum(select(species_matrix, -station_temp, -year_temp))
+1731488887907:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731488888442:# Filter species scores to only show important species
+1731488888442:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731488889841:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731488889841:select(station, year,
+1731488889841:organic_content, depth,
+1731488889841:grain_20um, grain_63um, grain_125um,
+1731488889842:grain_250um, grain_1000um) %>%
+1731488889842:distinct()
+1731488890785:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731488890785:as.data.frame() %>%
+1731488890785:mutate(variable = rownames(.)) %>%
+1731488890785:filter(env_fit$vectors$pvals < 0.05)
+1731488891877:# Create the plot
+1731488891878:nmds_plot <- ggplot() +
+1731488891878:# Add points for sites
+1731488891878:geom_point(data = site_scores,
+1731488891878:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731488891878:size = 3) +
+1731488891878:# Add smaller ellipses around years with solid lines
+1731488891878:# stat_ellipse(data = site_scores,
+1731488891879:#              aes(x = NMDS1, y = NMDS2, group = Year),
+1731488891879:#              type = "norm",
+1731488891879:#              level = 0.7,
+1731488891879:#              linetype = 1,
+1731488891879:#              size = 0.5) +
+1731488891879:# Add significant environmental vectors
+1731488891879:# geom_segment(data = sig_env_vectors,
+1731488891879:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731488891880:#              arrow = arrow(length = unit(0.2, "cm")),
+1731488891880:#              color = "darkgrey") +
+1731488891880:# geom_text(data = sig_env_vectors,
+1731488891880:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731488891880:#           size = 3, color = "darkgrey") +
+1731488891880:theme_bw() +
+1731488891881:theme(
+1731488891881:panel.background = element_rect(fill = "white"),
+1731488891881:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731488891881:axis.title = element_text(size = 14),                  # Larger axis titles
+1731488891881:legend.text = element_text(size = 12),                 # Larger legend text
+1731488891881:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731488891882:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731488891882:) +
+1731488891882:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731488891882:caption = "") +
+1731488891882:guides(color = guide_legend("Station"),
+1731488891883:shape = guide_legend("Year"))
+1731488914785:# Save with higher resolution and size
+1731488914785:ggsave("output/nmds_plot_1999.png",
+1731488914786:nmds_plot,
+1731488914786:width = 12,      # Increased width
+1731488914786:height = 10,     # Increased height
+1731488914786:dpi = 300,       # Higher resolution
+1731488914786:bg = "white")
+1731488992202:# Save with higher resolution and size
+1731488992203:ggsave("output/nmds_plot_1999_an-hringja.png",
+1731488992203:nmds_plot,
+1731488992203:width = 12,      # Increased width
+1731488992203:height = 10,     # Increased height
+1731488992203:dpi = 300,       # Higher resolution
+1731488992203:bg = "white")
+1731489005296:# Create the plot
+1731489005297:nmds_plot <- ggplot() +
+1731489005297:# Add points for sites
+1731489005297:geom_point(data = site_scores,
+1731489005297:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731489005297:size = 3) +
+1731489005297:# Add smaller ellipses around years with solid lines
+1731489005297:stat_ellipse(data = site_scores,
+1731489005297:aes(x = NMDS1, y = NMDS2, group = Year),
+1731489005298:type = "norm",
+1731489005298:level = 0.7,
+1731489005298:linetype = 1,
+1731489005298:size = 0.5) +
+1731489005298:# Add significant environmental vectors
+1731489005298:# geom_segment(data = sig_env_vectors,
+1731489005299:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731489005299:#              arrow = arrow(length = unit(0.2, "cm")),
+1731489005299:#              color = "darkgrey") +
+1731489005299:# geom_text(data = sig_env_vectors,
+1731489005299:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731489005299:#           size = 3, color = "darkgrey") +
+1731489005299:theme_bw() +
+1731489005300:theme(
+1731489005300:panel.background = element_rect(fill = "white"),
+1731489005300:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731489005300:axis.title = element_text(size = 14),                  # Larger axis titles
+1731489005301:legend.text = element_text(size = 12),                 # Larger legend text
+1731489005301:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731489005301:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731489005301:) +
+1731489005302:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731489005302:caption = "") +
+1731489005302:guides(color = guide_legend("Station"),
+1731489005302:shape = guide_legend("Year"))
+1731489006801:# Save with higher resolution and size
+1731489006801:ggsave("output/nmds_plot_1999.png",
+1731489006801:nmds_plot,
+1731489006801:width = 12,      # Increased width
+1731489006802:height = 10,     # Increased height
+1731489006802:dpi = 300,       # Higher resolution
+1731489006802:bg = "white")
+1731489524337:# Load cleaned data
+1731489524337:#df_result <- result # just so this won't be accidentally changed
+1731489524337:df <- df_result
+1731489528529:df
+1731489537071:df$species
+1731489545768:henda_long$species
+1731489640288:henda_long
+1731489737985:library(dplyr)
+1731489737985:library(stringr)
+1731489737986:# Filter for species containing "sp."
+1731489737986:species_sp <- henda_long %>%
+1731489737986:filter(str_detect(species, "sp\\.")) %>%
+1731489737986:arrange(year, species) %>%
+1731489737986:select(year, station, species, adjusted_density)
+1731489738002:# Print all matching rows
+1731489738002:print(species_sp, n = Inf)
+1731489803314:library(dplyr)
+1731489803314:library(stringr)
+1731489803315:# Filter for species containing "sp."
+1731489803315:species_sp <- henda_long %>%
+1731489803315:filter(str_detect(species, "sp\\.|sp)) %>%
+1731489803315:arrange(year, species) %>%
+1731489803315:select(year, station, species, adjusted_density)
+1731489803316:# Print all matching rows
+1731489803316:print(species_sp, n = Inf)
+1731489811664:library(dplyr)
+1731489811665:library(stringr)
+1731489811665:# Filter for species containing "sp."
+1731489811665:species_sp <- henda_long %>%
+1731489811665:filter(str_detect(species, "sp\\.|sp")) %>%
+1731489811666:arrange(year, species) %>%
+1731489811666:select(year, station, species, adjusted_density)
+1731489811672:# Print all matching rows
+1731489811673:print(species_sp, n = Inf)
+1731489910808:comparison <- henda_long %>%
+1731489910808:select(species) %>%
+1731489910808:distinct() %>%
+1731489910808:mutate(cleaned_name = str_replace(species, " sp\\.", "")) %>%
+1731489910808:filter(species != cleaned_name)
+1731489910815:print(comparison, n = Inf)
+1731490038666:library(dplyr)
+1731490038666:# Get the matching species only
+1731490038667:henda_long_matched <- henda_long_cleaned %>%
+1731490038667:semi_join(df, by = "species")
+1731490048682:library(dplyr)
+1731490048683:library(stringr)
+1731490048683:# Remove " sp." from species names
+1731490048683:henda_long_cleaned <- henda_long %>%
+1731490048683:mutate(species = str_replace(species, " sp\\.", ""))
+1731490048687:# Print a few rows to verify the changes
+1731490048687:print(henda_long_cleaned, n = 20)
+1731490054857:library(dplyr)
+1731490054858:# Get the matching species only
+1731490054858:henda_long_matched <- henda_long_cleaned %>%
+1731490054858:semi_join(df, by = "species")
+1731490054863:# Print the number of rows before and after matching
+1731490054863:cat("Original rows in henda_long_cleaned:", nrow(henda_long_cleaned), "\n")
+1731490054863:cat("Rows after matching with df:", nrow(henda_long_matched), "\n")
+1731490054864:# To see which species were removed
+1731490054864:removed_species <- henda_long_cleaned %>%
+1731490054864:anti_join(df, by = "species") %>%
+1731490054865:distinct(species) %>%
+1731490054865:arrange(species)
+1731490054871:cat("\nSpecies that were removed:\n")
+1731490054872:print(removed_species, n = Inf)
+1731490705395:library(dplyr)
+1731490705396:# Get the matching species only
+1731490705396:henda_long_matched <- henda_long_cleaned %>%
+1731490705396:semi_join(df, by = "species")
+1731490705398:# Print the number of rows before and after matching
+1731490705398:cat("Original rows in henda_long_cleaned:", nrow(henda_long_cleaned), "\n")
+1731490705399:cat("Rows after matching with df:", nrow(henda_long_matched), "\n")
+1731490705399:# To see which species were removed and their counts
+1731490705400:removed_species <- henda_long_cleaned %>%
+1731490705400:anti_join(df, by = "species") %>%
+1731490705400:group_by(species) %>%
+1731490705400:summarise(
+1731490705400:count = n(),
+1731490705400:total_abundance = sum(adjusted_density),
+1731490705401:years = n_distinct(year),
+1731490705401:stations = n_distinct(station)
+1731490705401:) %>%
+1731490705401:arrange(desc(count))
+1731490705412:cat("\nSpecies that were removed (with counts):\n")
+1731490705412:print(removed_species, n = Inf)
+1731490705439:# Summary statistics of removed data
+1731490705439:cat("\nSummary of removed data:\n")
+1731490705439:cat("Total number of removed species:", nrow(removed_species), "\n")
+1731490705439:cat("Total number of removed observations:", sum(removed_species$count), "\n")
+1731490705440:cat("Total abundance removed:", sum(removed_species$total_abundance), "\n")
+1731490872019:# Original data frame: henda_long
+1731490872019:# Cleaned version: henda_long_cleaned
+1731490872019:henda_long_cleaned <- henda_long %>%
+1731490872019:mutate(species = str_replace(species, " sp\\.", ""))
+1731490872022:# Matched version: henda_long_matched
+1731490872023:henda_long_matched <- henda_long_cleaned %>%
+1731490872023:semi_join(df, by = "species")
+1731490872025:# Summary of changes
+1731490872025:cat("Data Cleaning Summary:\n")
+1731490872026:cat("Original rows in henda_long:", nrow(henda_long), "\n")
+1731490872026:cat("Rows after removing 'sp.':", nrow(henda_long_cleaned), "\n")
+1731490872027:cat("Final rows after species matching:", nrow(henda_long_matched), "\n")
+1731490872027:# Species removed during matching
+1731490872027:removed_species <- henda_long_cleaned %>%
+1731490872028:anti_join(df, by = "species") %>%
+1731490872028:group_by(species) %>%
+1731490872028:summarise(
+1731490872028:count = n(),
+1731490872028:total_abundance = sum(adjusted_density),
+1731490872028:years = n_distinct(year),
+1731490872029:stations = n_distinct(station)
+1731490872029:) %>%
+1731490872029:arrange(desc(count))
+1731490872036:cat("\nRemoved Species Summary:\n")
+1731490872036:cat("Number of species removed:", nrow(removed_species), "\n")
+1731490872037:cat("Total observations removed:", sum(removed_species$count), "\n")
+1731490872037:cat("Total abundance removed:", sum(removed_species$total_abundance), "\n")
+1731490872038:print("\nDetailed list of removed species:")
+1731490872038:print(removed_species, n = Inf)
+1731490913490:# Prepare data for NMDS - exclude 1999 data
+1731490913490:#species_matrix <- df %>% #Mín gögn
+1731490913491:species_matrix <- removed_species %>% #Gögn Jörundar
+1731490913491:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731490913491:select(station, year, species, adjusted_density) %>%
+1731490913491:pivot_wider(
+1731490913492:names_from = species,
+1731490913492:values_from = adjusted_density,
+1731490913492:values_fill = 0
+1731490913492:) %>%
+1731490913492:# Store station and year before removing them for NMDS
+1731490913492:mutate(
+1731490913493:station_temp = station,
+1731490913493:year_temp = year
+1731490913493:) %>%
+1731490913493:select(-station, -year)
+1731490914329:# Perform NMDS
+1731490914330:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731490914946:# Extract site scores and add metadata
+1731490914947:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731490915133:site_scores$Station <- species_matrix$station_temp
+1731490915326:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731490915659:# Extract species scores
+1731490915659:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731490916042:# Calculate species contributions (using relative abundance)
+1731490916043:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731490916043:sum(select(species_matrix, -station_temp, -year_temp))
+1731490916468:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731490917312:# Filter species scores to only show important species
+1731490917312:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731490918440:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731490918440:select(station, year,
+1731490918440:organic_content, depth,
+1731490918440:grain_20um, grain_63um, grain_125um,
+1731490918441:grain_250um, grain_1000um) %>%
+1731490918441:distinct()
+1731490918867:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731490918867:as.data.frame() %>%
+1731490918867:mutate(variable = rownames(.)) %>%
+1731490918867:filter(env_fit$vectors$pvals < 0.05)
+1731490921023:# Create the plot
+1731490921024:nmds_plot <- ggplot() +
+1731490921024:# Add points for sites
+1731490921024:geom_point(data = site_scores,
+1731490921024:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731490921024:size = 3) +
+1731490921024:# Add smaller ellipses around years with solid lines
+1731490921025:stat_ellipse(data = site_scores,
+1731490921025:aes(x = NMDS1, y = NMDS2, group = Year),
+1731490921025:type = "norm",
+1731490921025:level = 0.7,
+1731490921025:linetype = 1,
+1731490921026:size = 0.5) +
+1731490921026:# Add significant environmental vectors
+1731490921026:# geom_segment(data = sig_env_vectors,
+1731490921026:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731490921026:#              arrow = arrow(length = unit(0.2, "cm")),
+1731490921026:#              color = "darkgrey") +
+1731490921027:# geom_text(data = sig_env_vectors,
+1731490921027:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731490921027:#           size = 3, color = "darkgrey") +
+1731490921027:theme_bw() +
+1731490921027:theme(
+1731490921027:panel.background = element_rect(fill = "white"),
+1731490921028:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731490921028:axis.title = element_text(size = 14),                  # Larger axis titles
+1731490921028:legend.text = element_text(size = 12),                 # Larger legend text
+1731490921028:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731490921028:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731490921029:) +
+1731490921029:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731490921029:caption = "") +
+1731490921029:guides(color = guide_legend("Station"),
+1731490921030:shape = guide_legend("Year"))
+1731490929640:# Save with higher resolution and size
+1731490929640:ggsave("output/nmds_plot_1999.png",
+1731490929641:nmds_plot,
+1731490929641:width = 12,      # Increased width
+1731490929641:height = 10,     # Increased height
+1731490929641:dpi = 300,       # Higher resolution
+1731490929641:bg = "white")
+1731491041505:rass <- unique_species_per_year %>%
+1731491041505:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731491041506:select(year, unique_species_count, species_list) %>%
+1731491041506:print(n = Inf)
+1731491041538:rass
+1731491041565:t(rass)
+1731491070777:unique_species_per_year <- removed_species %>%
+1731491070778:group_by(year) %>%
+1731491070778:distinct(species) %>%
+1731491070778:group_by(species) %>%
+1731491070778:filter(n() == 1) %>%
+1731491070778:ungroup() %>%
+1731491070778:group_by(year) %>%
+1731491070779:summarise(unique_species_count = n(), unique_species = list(species))
+1731491089089:str(removed_species)
+1731491372816:# Required packages
+1731491372816:library(dplyr)
+1731491372817:library(stringr)
+1731491372817:# Step 1: Remove " sp." from species names
+1731491372817:henda_long_cleaned <- henda_long %>%
+1731491372818:mutate(species = str_replace(species, " sp\\.", ""))
+1731491372821:# Step 2: Match with reference dataset and remove non-matching species
+1731491372821:henda_long_matched <- henda_long_cleaned %>%
+1731491372821:semi_join(df, by = "species")
+1731491372824:# Step 3: Quick validation check
+1731491372824:cat("Data Cleaning Summary:\n",
+1731491372824:"Original rows:", nrow(henda_long), "\n",
+1731491372824:"Final rows:", nrow(henda_long_matched), "\n",
+1731491372825:"Rows removed:", nrow(henda_long) - nrow(henda_long_matched), "\n")
+1731491372826:# Step 4: View removed species for validation
+1731491372826:removed_species <- henda_long_cleaned %>%
+1731491372826:anti_join(df, by = "species") %>%
+1731491372826:group_by(species) %>%
+1731491372826:summarise(
+1731491372826:observations = n(),
+1731491372826:total_abundance = sum(adjusted_density),
+1731491372827:years = paste(sort(unique(year)), collapse = ", "),
+1731491372827:stations = paste(sort(unique(station)), collapse = ", ")
+1731491372827:) %>%
+1731491372827:arrange(desc(observations))
+1731491372835:# Print removed species summary
+1731491372835:print(removed_species, n = Inf, width = Inf)
+1731491487378:# Prepare data for NMDS - exclude 1999 data
+1731491487378:#species_matrix <- df %>% #Mín gögn
+1731491487378:species_matrix <- henda_long_matched %>% #Gögn Jörundar
+1731491487378:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1731491487379:select(station, year, species, adjusted_density) %>%
+1731491487379:pivot_wider(
+1731491487379:names_from = species,
+1731491487379:values_from = adjusted_density,
+1731491487379:values_fill = 0
+1731491487379:) %>%
+1731491487379:# Store station and year before removing them for NMDS
+1731491487380:mutate(
+1731491487380:station_temp = station,
+1731491487380:year_temp = year
+1731491487380:) %>%
+1731491487380:select(-station, -year)
+1731491487576:# Perform NMDS
+1731491487577:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1731491487735:# Extract site scores and add metadata
+1731491487735:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1731491488235:site_scores$Station <- species_matrix$station_temp
+1731491488587:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1731491488914:# Extract species scores
+1731491488914:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1731491489402:# Calculate species contributions (using relative abundance)
+1731491489402:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1731491489402:sum(select(species_matrix, -station_temp, -year_temp))
+1731491489780:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1731491490162:# Filter species scores to only show important species
+1731491490162:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1731491490681:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1731491490682:select(station, year,
+1731491490682:organic_content, depth,
+1731491490682:grain_20um, grain_63um, grain_125um,
+1731491490682:grain_250um, grain_1000um) %>%
+1731491490682:distinct()
+1731491491265:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1731491491266:as.data.frame() %>%
+1731491491266:mutate(variable = rownames(.)) %>%
+1731491491266:filter(env_fit$vectors$pvals < 0.05)
+1731491491603:# Create the plot
+1731491491603:nmds_plot <- ggplot() +
+1731491491603:# Add points for sites
+1731491491603:geom_point(data = site_scores,
+1731491491603:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731491491604:size = 3) +
+1731491491604:# Add smaller ellipses around years with solid lines
+1731491491604:stat_ellipse(data = site_scores,
+1731491491604:aes(x = NMDS1, y = NMDS2, group = Year),
+1731491491604:type = "norm",
+1731491491604:level = 0.7,
+1731491491605:linetype = 1,
+1731491491605:size = 0.5) +
+1731491491605:# Add significant environmental vectors
+1731491491605:# geom_segment(data = sig_env_vectors,
+1731491491605:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731491491606:#              arrow = arrow(length = unit(0.2, "cm")),
+1731491491606:#              color = "darkgrey") +
+1731491491606:# geom_text(data = sig_env_vectors,
+1731491491606:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731491491606:#           size = 3, color = "darkgrey") +
+1731491491606:theme_bw() +
+1731491491607:theme(
+1731491491607:panel.background = element_rect(fill = "white"),
+1731491491607:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731491491607:axis.title = element_text(size = 14),                  # Larger axis titles
+1731491491607:legend.text = element_text(size = 12),                 # Larger legend text
+1731491491607:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731491491608:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731491491608:) +
+1731491491608:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731491491608:caption = "") +
+1731491491608:guides(color = guide_legend("Station"),
+1731491491609:shape = guide_legend("Year"))
+1731491492986:# Save with higher resolution and size
+1731491492986:ggsave("output/nmds_plot_1999.png",
+1731491492987:nmds_plot,
+1731491492987:width = 12,      # Increased width
+1731491492987:height = 10,     # Increased height
+1731491492987:dpi = 300,       # Higher resolution
+1731491492987:bg = "white")
+1731491581089:unique_species_per_year <- henda_long_matched %>%
+1731491581089:group_by(year) %>%
+1731491581089:distinct(species) %>%
+1731491581089:group_by(species) %>%
+1731491581089:filter(n() == 1) %>%
+1731491581089:ungroup() %>%
+1731491581090:group_by(year) %>%
+1731491581090:summarise(unique_species_count = n(), unique_species = list(species))
+1731491581110:# Print the results
+1731491581110:rass <- unique_species_per_year %>%
+1731491581110:mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+1731491581110:select(year, unique_species_count, species_list) %>%
+1731491581110:print(n = Inf)
+1731491581144:rass
+1731491581179:t(rass)
+1731493515945:# Create the plot
+1731493515946:nmds_plot <- ggplot() +
+1731493515946:# Add points for sites
+1731493515946:geom_point(data = site_scores,
+1731493515946:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1731493515946:size = 3) +
+1731493515947:# Add smaller ellipses around years with solid lines
+1731493515947:# stat_ellipse(data = site_scores,
+1731493515947:#              aes(x = NMDS1, y = NMDS2, group = Year),
+1731493515947:#              type = "norm",
+1731493515947:#              level = 0.7,
+1731493515947:#              linetype = 1,
+1731493515948:#              size = 0.5) +
+1731493515948:# Add significant environmental vectors
+1731493515948:# geom_segment(data = sig_env_vectors,
+1731493515948:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1731493515948:#              arrow = arrow(length = unit(0.2, "cm")),
+1731493515948:#              color = "darkgrey") +
+1731493515948:# geom_text(data = sig_env_vectors,
+1731493515949:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1731493515949:#           size = 3, color = "darkgrey") +
+1731493515949:theme_bw() +
+1731493515949:theme(
+1731493515949:panel.background = element_rect(fill = "white"),
+1731493515949:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1731493515950:axis.title = element_text(size = 14),                  # Larger axis titles
+1731493515950:legend.text = element_text(size = 12),                 # Larger legend text
+1731493515950:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1731493515950:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1731493515950:) +
+1731493515951:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1731493515951:caption = "") +
+1731493515951:guides(color = guide_legend("Station"),
+1731493515951:shape = guide_legend("Year"))
+1731493535712:# Save with higher resolution and size
+1731493535712:ggsave("output/nmds_plot_1999_an-hringja.png",
+1731493535713:nmds_plot,
+1731493535713:width = 12,      # Increased width
+1731493535713:height = 10,     # Increased height
+1731493535713:dpi = 300,       # Higher resolution
+1731493535713:bg = "white")

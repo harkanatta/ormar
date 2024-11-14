@@ -1,0 +1,1 @@
+Vantar talningu fyrir Spionidae en Flokkun er tóm þar sem stendur 3, kíkja í dolluna.

@@ -1,0 +1,512 @@
+pivot_wider(
+names_from = species,
+values_from = adjusted_density,
+values_fill = 0
+) %>%
+# Store station and year before removing them for NMDS
+mutate(
+station_temp = station,
+year_temp = year
+) %>%
+select(-station, -year)
+# Perform NMDS
+nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+# Load required packages
+library(vegan)
+library(ggplot2)
+install.packages("vegan")
+# Perform NMDS
+nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+library(vegan)
+# Perform NMDS
+nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+# Extract site scores and add metadata
+site_scores <- as.data.frame(scores(nmds, display = "sites"))
+site_scores$Station <- species_matrix$station_temp
+site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+# Extract species scores
+species_scores <- as.data.frame(scores(nmds, display = "species"))
+# Calculate species contributions (using relative abundance)
+species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+sum(select(species_matrix, -station_temp, -year_temp))
+important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+# Filter species scores to only show important species
+species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+select(station, year,
+organic_content, depth,
+grain_20um, grain_63um, grain_125um,
+grain_250um, grain_1000um) %>%
+distinct()
+sig_env_vectors <- scores(env_fit, "vectors") %>%
+as.data.frame() %>%
+mutate(variable = rownames(.)) %>%
+filter(env_fit$vectors$pvals < 0.05)
+# Create the plot
+nmds_plot <- ggplot() +
+# Add points for sites
+geom_point(data = site_scores,
+aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+size = 3) +
+# Add smaller ellipses around years with solid lines
+# stat_ellipse(data = site_scores,
+#              aes(x = NMDS1, y = NMDS2, group = Year),
+#              type = "norm",
+#              level = 0.7,
+#              linetype = 1,
+#              size = 0.5) +
+# Add significant environmental vectors
+# geom_segment(data = sig_env_vectors,
+#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+#              arrow = arrow(length = unit(0.2, "cm")),
+#              color = "darkgrey") +
+# geom_text(data = sig_env_vectors,
+#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+#           size = 3, color = "darkgrey") +
+theme_bw() +
+theme(
+panel.background = element_rect(fill = "white"),
+axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+axis.title = element_text(size = 14),                  # Larger axis titles
+legend.text = element_text(size = 12),                 # Larger legend text
+legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+) +
+labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+caption = "") +
+guides(color = guide_legend("Station"),
+shape = guide_legend("Year"))
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999_an-hringja.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
+# Create the plot
+nmds_plot <- ggplot() +
+# Add points for sites
+geom_point(data = site_scores,
+aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+size = 3) +
+# Add smaller ellipses around years with solid lines
+stat_ellipse(data = site_scores,
+aes(x = NMDS1, y = NMDS2, group = Year),
+type = "norm",
+level = 0.7,
+linetype = 1,
+size = 0.5) +
+# Add significant environmental vectors
+# geom_segment(data = sig_env_vectors,
+#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+#              arrow = arrow(length = unit(0.2, "cm")),
+#              color = "darkgrey") +
+# geom_text(data = sig_env_vectors,
+#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+#           size = 3, color = "darkgrey") +
+theme_bw() +
+theme(
+panel.background = element_rect(fill = "white"),
+axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+axis.title = element_text(size = 14),                  # Larger axis titles
+legend.text = element_text(size = 12),                 # Larger legend text
+legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+) +
+labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+caption = "") +
+guides(color = guide_legend("Station"),
+shape = guide_legend("Year"))
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
+# Load cleaned data
+#df_result <- result # just so this won't be accidentally changed
+df <- df_result
+df
+df$species
+henda_long$species
+henda_long
+library(dplyr)
+library(stringr)
+# Filter for species containing "sp."
+species_sp <- henda_long %>%
+filter(str_detect(species, "sp\\.")) %>%
+arrange(year, species) %>%
+select(year, station, species, adjusted_density)
+# Print all matching rows
+print(species_sp, n = Inf)
+library(dplyr)
+library(stringr)
+# Filter for species containing "sp."
+species_sp <- henda_long %>%
+filter(str_detect(species, "sp\\.|sp)) %>%
+arrange(year, species) %>%
+select(year, station, species, adjusted_density)
+# Print all matching rows
+print(species_sp, n = Inf)
+library(dplyr)
+library(stringr)
+# Filter for species containing "sp."
+species_sp <- henda_long %>%
+filter(str_detect(species, "sp\\.|sp")) %>%
+arrange(year, species) %>%
+select(year, station, species, adjusted_density)
+# Print all matching rows
+print(species_sp, n = Inf)
+comparison <- henda_long %>%
+select(species) %>%
+distinct() %>%
+mutate(cleaned_name = str_replace(species, " sp\\.", "")) %>%
+filter(species != cleaned_name)
+print(comparison, n = Inf)
+library(dplyr)
+# Get the matching species only
+henda_long_matched <- henda_long_cleaned %>%
+semi_join(df, by = "species")
+library(dplyr)
+library(stringr)
+# Remove " sp." from species names
+henda_long_cleaned <- henda_long %>%
+mutate(species = str_replace(species, " sp\\.", ""))
+# Print a few rows to verify the changes
+print(henda_long_cleaned, n = 20)
+library(dplyr)
+# Get the matching species only
+henda_long_matched <- henda_long_cleaned %>%
+semi_join(df, by = "species")
+# Print the number of rows before and after matching
+cat("Original rows in henda_long_cleaned:", nrow(henda_long_cleaned), "\n")
+cat("Rows after matching with df:", nrow(henda_long_matched), "\n")
+# To see which species were removed
+removed_species <- henda_long_cleaned %>%
+anti_join(df, by = "species") %>%
+distinct(species) %>%
+arrange(species)
+cat("\nSpecies that were removed:\n")
+print(removed_species, n = Inf)
+library(dplyr)
+# Get the matching species only
+henda_long_matched <- henda_long_cleaned %>%
+semi_join(df, by = "species")
+# Print the number of rows before and after matching
+cat("Original rows in henda_long_cleaned:", nrow(henda_long_cleaned), "\n")
+cat("Rows after matching with df:", nrow(henda_long_matched), "\n")
+# To see which species were removed and their counts
+removed_species <- henda_long_cleaned %>%
+anti_join(df, by = "species") %>%
+group_by(species) %>%
+summarise(
+count = n(),
+total_abundance = sum(adjusted_density),
+years = n_distinct(year),
+stations = n_distinct(station)
+) %>%
+arrange(desc(count))
+cat("\nSpecies that were removed (with counts):\n")
+print(removed_species, n = Inf)
+# Summary statistics of removed data
+cat("\nSummary of removed data:\n")
+cat("Total number of removed species:", nrow(removed_species), "\n")
+cat("Total number of removed observations:", sum(removed_species$count), "\n")
+cat("Total abundance removed:", sum(removed_species$total_abundance), "\n")
+# Original data frame: henda_long
+# Cleaned version: henda_long_cleaned
+henda_long_cleaned <- henda_long %>%
+mutate(species = str_replace(species, " sp\\.", ""))
+# Matched version: henda_long_matched
+henda_long_matched <- henda_long_cleaned %>%
+semi_join(df, by = "species")
+# Summary of changes
+cat("Data Cleaning Summary:\n")
+cat("Original rows in henda_long:", nrow(henda_long), "\n")
+cat("Rows after removing 'sp.':", nrow(henda_long_cleaned), "\n")
+cat("Final rows after species matching:", nrow(henda_long_matched), "\n")
+# Species removed during matching
+removed_species <- henda_long_cleaned %>%
+anti_join(df, by = "species") %>%
+group_by(species) %>%
+summarise(
+count = n(),
+total_abundance = sum(adjusted_density),
+years = n_distinct(year),
+stations = n_distinct(station)
+) %>%
+arrange(desc(count))
+cat("\nRemoved Species Summary:\n")
+cat("Number of species removed:", nrow(removed_species), "\n")
+cat("Total observations removed:", sum(removed_species$count), "\n")
+cat("Total abundance removed:", sum(removed_species$total_abundance), "\n")
+print("\nDetailed list of removed species:")
+print(removed_species, n = Inf)
+# Prepare data for NMDS - exclude 1999 data
+#species_matrix <- df %>% #Mín gögn
+species_matrix <- removed_species %>% #Gögn Jörundar
+#filter(year >= 2013) %>%  # Only include 2013-2017 data
+select(station, year, species, adjusted_density) %>%
+pivot_wider(
+names_from = species,
+values_from = adjusted_density,
+values_fill = 0
+) %>%
+# Store station and year before removing them for NMDS
+mutate(
+station_temp = station,
+year_temp = year
+) %>%
+select(-station, -year)
+# Perform NMDS
+nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+# Extract site scores and add metadata
+site_scores <- as.data.frame(scores(nmds, display = "sites"))
+site_scores$Station <- species_matrix$station_temp
+site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+# Extract species scores
+species_scores <- as.data.frame(scores(nmds, display = "species"))
+# Calculate species contributions (using relative abundance)
+species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+sum(select(species_matrix, -station_temp, -year_temp))
+important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+# Filter species scores to only show important species
+species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+select(station, year,
+organic_content, depth,
+grain_20um, grain_63um, grain_125um,
+grain_250um, grain_1000um) %>%
+distinct()
+sig_env_vectors <- scores(env_fit, "vectors") %>%
+as.data.frame() %>%
+mutate(variable = rownames(.)) %>%
+filter(env_fit$vectors$pvals < 0.05)
+# Create the plot
+nmds_plot <- ggplot() +
+# Add points for sites
+geom_point(data = site_scores,
+aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+size = 3) +
+# Add smaller ellipses around years with solid lines
+stat_ellipse(data = site_scores,
+aes(x = NMDS1, y = NMDS2, group = Year),
+type = "norm",
+level = 0.7,
+linetype = 1,
+size = 0.5) +
+# Add significant environmental vectors
+# geom_segment(data = sig_env_vectors,
+#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+#              arrow = arrow(length = unit(0.2, "cm")),
+#              color = "darkgrey") +
+# geom_text(data = sig_env_vectors,
+#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+#           size = 3, color = "darkgrey") +
+theme_bw() +
+theme(
+panel.background = element_rect(fill = "white"),
+axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+axis.title = element_text(size = 14),                  # Larger axis titles
+legend.text = element_text(size = 12),                 # Larger legend text
+legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+) +
+labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+caption = "") +
+guides(color = guide_legend("Station"),
+shape = guide_legend("Year"))
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
+rass <- unique_species_per_year %>%
+mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+select(year, unique_species_count, species_list) %>%
+print(n = Inf)
+rass
+t(rass)
+unique_species_per_year <- removed_species %>%
+group_by(year) %>%
+distinct(species) %>%
+group_by(species) %>%
+filter(n() == 1) %>%
+ungroup() %>%
+group_by(year) %>%
+summarise(unique_species_count = n(), unique_species = list(species))
+str(removed_species)
+# Required packages
+library(dplyr)
+library(stringr)
+# Step 1: Remove " sp." from species names
+henda_long_cleaned <- henda_long %>%
+mutate(species = str_replace(species, " sp\\.", ""))
+# Step 2: Match with reference dataset and remove non-matching species
+henda_long_matched <- henda_long_cleaned %>%
+semi_join(df, by = "species")
+# Step 3: Quick validation check
+cat("Data Cleaning Summary:\n",
+"Original rows:", nrow(henda_long), "\n",
+"Final rows:", nrow(henda_long_matched), "\n",
+"Rows removed:", nrow(henda_long) - nrow(henda_long_matched), "\n")
+# Step 4: View removed species for validation
+removed_species <- henda_long_cleaned %>%
+anti_join(df, by = "species") %>%
+group_by(species) %>%
+summarise(
+observations = n(),
+total_abundance = sum(adjusted_density),
+years = paste(sort(unique(year)), collapse = ", "),
+stations = paste(sort(unique(station)), collapse = ", ")
+) %>%
+arrange(desc(observations))
+# Print removed species summary
+print(removed_species, n = Inf, width = Inf)
+# Prepare data for NMDS - exclude 1999 data
+#species_matrix <- df %>% #Mín gögn
+species_matrix <- henda_long_matched %>% #Gögn Jörundar
+#filter(year >= 2013) %>%  # Only include 2013-2017 data
+select(station, year, species, adjusted_density) %>%
+pivot_wider(
+names_from = species,
+values_from = adjusted_density,
+values_fill = 0
+) %>%
+# Store station and year before removing them for NMDS
+mutate(
+station_temp = station,
+year_temp = year
+) %>%
+select(-station, -year)
+# Perform NMDS
+nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+# Extract site scores and add metadata
+site_scores <- as.data.frame(scores(nmds, display = "sites"))
+site_scores$Station <- species_matrix$station_temp
+site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+# Extract species scores
+species_scores <- as.data.frame(scores(nmds, display = "species"))
+# Calculate species contributions (using relative abundance)
+species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+sum(select(species_matrix, -station_temp, -year_temp))
+important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+# Filter species scores to only show important species
+species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+select(station, year,
+organic_content, depth,
+grain_20um, grain_63um, grain_125um,
+grain_250um, grain_1000um) %>%
+distinct()
+sig_env_vectors <- scores(env_fit, "vectors") %>%
+as.data.frame() %>%
+mutate(variable = rownames(.)) %>%
+filter(env_fit$vectors$pvals < 0.05)
+# Create the plot
+nmds_plot <- ggplot() +
+# Add points for sites
+geom_point(data = site_scores,
+aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+size = 3) +
+# Add smaller ellipses around years with solid lines
+stat_ellipse(data = site_scores,
+aes(x = NMDS1, y = NMDS2, group = Year),
+type = "norm",
+level = 0.7,
+linetype = 1,
+size = 0.5) +
+# Add significant environmental vectors
+# geom_segment(data = sig_env_vectors,
+#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+#              arrow = arrow(length = unit(0.2, "cm")),
+#              color = "darkgrey") +
+# geom_text(data = sig_env_vectors,
+#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+#           size = 3, color = "darkgrey") +
+theme_bw() +
+theme(
+panel.background = element_rect(fill = "white"),
+axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+axis.title = element_text(size = 14),                  # Larger axis titles
+legend.text = element_text(size = 12),                 # Larger legend text
+legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+) +
+labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+caption = "") +
+guides(color = guide_legend("Station"),
+shape = guide_legend("Year"))
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
+unique_species_per_year <- henda_long_matched %>%
+group_by(year) %>%
+distinct(species) %>%
+group_by(species) %>%
+filter(n() == 1) %>%
+ungroup() %>%
+group_by(year) %>%
+summarise(unique_species_count = n(), unique_species = list(species))
+# Print the results
+rass <- unique_species_per_year %>%
+mutate(species_list = map_chr(unique_species, ~ paste(.x, collapse = ", "))) %>%
+select(year, unique_species_count, species_list) %>%
+print(n = Inf)
+rass
+t(rass)
+# Create the plot
+nmds_plot <- ggplot() +
+# Add points for sites
+geom_point(data = site_scores,
+aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+size = 3) +
+# Add smaller ellipses around years with solid lines
+# stat_ellipse(data = site_scores,
+#              aes(x = NMDS1, y = NMDS2, group = Year),
+#              type = "norm",
+#              level = 0.7,
+#              linetype = 1,
+#              size = 0.5) +
+# Add significant environmental vectors
+# geom_segment(data = sig_env_vectors,
+#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+#              arrow = arrow(length = unit(0.2, "cm")),
+#              color = "darkgrey") +
+# geom_text(data = sig_env_vectors,
+#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+#           size = 3, color = "darkgrey") +
+theme_bw() +
+theme(
+panel.background = element_rect(fill = "white"),
+axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+axis.title = element_text(size = 14),                  # Larger axis titles
+legend.text = element_text(size = 12),                 # Larger legend text
+legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+) +
+labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+caption = "") +
+guides(color = guide_legend("Station"),
+shape = guide_legend("Year"))
+# Save with higher resolution and size
+ggsave("output/nmds_plot_1999_an-hringja.png",
+nmds_plot,
+width = 12,      # Increased width
+height = 10,     # Increased height
+dpi = 300,       # Higher resolution
+bg = "white")
