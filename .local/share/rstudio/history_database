@@ -3297,3 +3297,2213 @@
 1731601019834:normalized = as.data.frame(cbind(biotic_data$species, nEQR = bbi_results$nEQR))
 1731601019834:)
 1731601022655:indices_list
+1731662285270:# These are example classifications - please verify with official AMBI species list
+1731662285270:species_eg <- data.frame(
+1731662285271:species = c(
+1731662285271:"Scoloplos armiger",        # EG III
+1731662285271:"Eteone longa",             # EG III
+1731662285271:"Capitella capitata",       # EG V
+1731662285271:"Malacoceros fuliginosus",  # EG IV
+1731662285272:"Microphthalmus aberrans",  # EG II
+1731662285272:"Spionidae"                 # EG III (general classification)
+1731662285272:),
+1731662285272:EG = c(3, 3, 5, 4, 2, 3)
+1731662285272:)
+1731662285275:# Join ecological groups to your data
+1731662285275:station_assessment <- long_format_df %>%
+1731662285275:left_join(species_eg, by = "species") %>%
+1731662285276:group_by(station) %>%
+1731662285276:summarise(
+1731662285276:total_abundance = sum(adjusted_count),
+1731662285276:# Calculate proportions for each ecological group
+1731662285276:EG_I = sum(adjusted_count[EG == 1], na.rm = TRUE) / total_abundance,
+1731662285276:EG_II = sum(adjusted_count[EG == 2], na.rm = TRUE) / total_abundance,
+1731662285277:EG_III = sum(adjusted_count[EG == 3], na.rm = TRUE) / total_abundance,
+1731662285277:EG_IV = sum(adjusted_count[EG == 4], na.rm = TRUE) / total_abundance,
+1731662285277:EG_V = sum(adjusted_count[EG == 5], na.rm = TRUE) / total_abundance,
+1731662285277:# Calculate AMBI
+1731662285278:AMBI = (0*EG_I + 1.5*EG_II + 3*EG_III + 4.5*EG_IV + 6*EG_V),
+1731662285278:# Calculate species richness (S)
+1731662285278:S = n_distinct(species),
+1731662285278:# Calculate Shannon diversity (H')
+1731662285278:H = -sum((adjusted_count/total_abundance) * log(adjusted_count/total_abundance), na.rm = TRUE)
+1731662285279:) %>%
+1731662285279:mutate(
+1731662285279:# Calculate NQI1 (Norwegian Quality Index)
+1731662285279:NQI1 = (0.5 * (1 - AMBI/7) + 0.5 * (S/(S + 5))),
+1731662285279:# Ecological status based on AMBI
+1731662285280:Status = case_when(
+1731662285280:AMBI <= 1.2 ~ "High",
+1731662285280:AMBI <= 3.3 ~ "Good",
+1731662285280:AMBI <= 4.3 ~ "Moderate",
+1731662285280:AMBI <= 5.5 ~ "Poor",
+1731662285281:TRUE ~ "Bad"
+1731662285281:)
+1731662285281:)
+1731662285345:# Print results
+1731662285345:print(station_assessment, width = Inf)
+1731662334082:library(BBI)
+1731662334082:library(dplyr)
+1731662334083:# Prepare data for BBI package
+1731662334083:# Convert to wide format with species as rows and stations as columns
+1731662334083:bbi_data <- long_format_df %>%
+1731662334083:select(station, species, adjusted_count) %>%
+1731662334083:pivot_wider(
+1731662334083:names_from = station,
+1731662334083:values_from = adjusted_count,
+1731662334084:values_fill = 0
+1731662334084:) %>%
+1731662334084:as.data.frame()
+1731662334103:# Set row names as species names
+1731662334104:rownames(bbi_data) <- bbi_data$species
+1731662334104:bbi_data <- bbi_data[,-1] # Remove species column
+1731662334104:# Calculate Norwegian Quality Index (nNQI1)
+1731662334104:nqi1_results <- nNQI1(bbi_data)
+1731662382929:# Install the BBI package if not already installed
+1731662382929:# install.packages("BBI")  # Uncomment this line if BBI is not installed
+1731662382929:library(dplyr)
+1731662382930:library(tidyr)
+1731662382930:library(BBI)  # Load the BBI package
+1731662382930:# Custom function for calculating biotic indices using the BBI package
+1731662382930:calculate_biotic_indices_krokurinn <- function(data) {
+1731662382930:# Check for required columns in the provided data
+1731662382931:required_cols <- c("station", "species", "adjusted_count")
+1731662382931:stopifnot(
+1731662382931:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731662382931:"No data provided" = nrow(data) > 0,
+1731662382931:"Negative density values found" = all(data$adjusted_count >= 0),
+1731662382931:"Missing values found" = !any(is.na(data$adjusted_count))
+1731662382932:)
+1731662382932:# Prepare data by grouping by station and species
+1731662382932:biotic_data <- data %>%
+1731662382932:group_by(station, species) %>%
+1731662382933:summarise(adjusted_density = sum(adjusted_count), .groups = 'drop') %>%
+1731662382933:pivot_wider(names_from = station, values_from = adjusted_density, values_fill = 0)
+1731662382933:# Calculate BBI indices using the BBI package
+1731662382934:bbi_results <- BBI::calculate_BBI(biotic_data, species_col = "species", abundance_cols = names(biotic_data)[-1])
+1731662382934:# Store results
+1731662382934:indices_list <- list(
+1731662382934:indices = bbi_results$BBI,
+1731662382935:classification = bbi_results$BBIclass,
+1731662382935:normalized = bbi_results$nEQR
+1731662382935:)
+1731662382935:return(indices_list)
+1731662382936:}
+1731662382936:# Example of running the function
+1731662382936:biotic_indices <- calculate_biotic_indices_krokurinn(long_format_df)
+1731662440040:?BBI::BBI()
+1731662489929:?BBI::nEQR()
+1731662526895:# Load necessary libraries
+1731662526895:library(dplyr)
+1731662526896:library(tidyr)
+1731662526896:library(BBI)  # Ensure the BBI package is installed
+1731662526896:# Prepare your data: species as rows, stations as columns
+1731662526896:biotic_data <- long_format_df %>%
+1731662526897:select(station, species, adjusted_count) %>%
+1731662526897:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731662526904:# Run BBI to calculate indices
+1731662526904:bbi_results <- BBI(biotic_data)
+1731662526972:# Print BBI values and matched taxa
+1731662526972:print("BBI Values:")
+1731662526973:print(bbi_results$BBI)
+1731662526974:print("Matched Taxa:")
+1731662526974:print(bbi_results$taxa)
+1731662526975:# Calculate nEQR using the BBI results
+1731662526975:eqr_results <- nEQR(bbi_results$BBI)
+1731662526976:# Print nEQR values and classes
+1731662526976:print("nEQR Values:")
+1731662526976:print(eqr_results$nEQR)
+1731662526977:print("nEQR Classes:")
+1731662526978:print(eqr_results$nEQR_class)
+1731662626360:library(ggplot2)
+1731662626360:# Create a data frame for plotting
+1731662626360:nEQR_df <- data.frame(
+1731662626361:Station = rownames(eqr_results$nEQR),
+1731662626361:nEQR = eqr_results$nEQR$nEQR
+1731662626361:)
+1731662656726:# Load necessary libraries
+1731662656726:library(dplyr)
+1731662656726:library(tidyr)
+1731662656727:library(BBI)  # Ensure the BBI package is installed
+1731662656727:# Prepare your data: species as rows, stations as columns
+1731662656727:biotic_data <- long_format_df %>%
+1731662656727:select(station, species, adjusted_count) %>%
+1731662656728:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731662656735:# Run BBI to calculate indices
+1731662656735:bbi_results <- BBI(biotic_data)
+1731662656792:# Print BBI values and matched taxa
+1731662656792:print("BBI Values:")
+1731662656792:print(bbi_results$BBI)
+1731662656792:print("Matched Taxa:")
+1731662656792:print(bbi_results$taxa)
+1731662656793:# Calculate nEQR using the BBI results
+1731662656793:eqr_results <- nEQR(bbi_results$BBI)
+1731662656793:# Print nEQR values and classes
+1731662656793:print("nEQR Values:")
+1731662656794:print(eqr_results$nEQR)
+1731662656794:print("nEQR Classes:")
+1731662656794:print(eqr_results$nEQR_class)
+1731662693986:bbi_results
+1731664677142:long_format_df
+1731664753875:rass <- long_format_df
+1731664760873:names(rass)
+1731664871338:colnames(rass) <- c("stod", "tegund", "heildar_flatarmal", "fjoldi", "fjoldi_a_fermetra")
+1731664950666:write.csv(rass, "gogn.csv", row.names = FALSE)
+1731664954536:rass
+1731664974325:biotic_data
+1731664988963:bbi_results
+1731667858346:bbi_results$library(dplyr)
+1731667863811:library(dplyr)
+1731667863812:library(tidyr)
+1731667863813:library(BBI)
+1731667863814:# Sameina gögnin frá öllum stöðvunum
+1731667863814:combined_data <- long_format_df %>%
+1731667863814:group_by(species) %>%
+1731667863815:summarise(
+1731667863815:total_count = sum(count),
+1731667863815:total_adjusted_count = sum(adjusted_count)
+1731667863815:)
+1731667863883:# Breyta gögnunum í rétt snið fyrir BBI
+1731667863883:biotic_data_combined <- combined_data %>%
+1731667863883:pivot_wider(names_from = species, values_from = total_adjusted_count, values_fill = 0)
+1731667863971:# Reikna út BBI stuðlana
+1731667863971:bbi_results_combined <- BBI(biotic_data_combined)
+1731667864258:# Prenta BBI gildi og samsvarandi taxa
+1731667864258:print("BBI Gildi fyrir sameinaðar stöðvar:")
+1731667864260:print(bbi_results_combined$BBI)
+1731667864262:print("Samsvarandi Taxa:")
+1731667864262:print(bbi_results_combined$taxa)
+1731667864263:# Reikna út nEQR með BBI niðurstöðunum
+1731667864263:eqr_results_combined <- nEQR(bbi_results_combined$BBI)
+1731667882909:biotic_data_combined
+1731667926462:library(dplyr)
+1731667926463:library(tidyr)
+1731667926464:library(BBI)
+1731667926465:# Combine data from all stations
+1731667926465:combined_data <- long_format_df %>%
+1731667926465:group_by(species) %>%
+1731667926465:summarise(total_adjusted_count = sum(adjusted_count))
+1731667926483:# Prepare data in the correct format for BBI
+1731667926484:biotic_data_combined <- combined_data %>%
+1731667926484:pivot_wider(names_from = species, values_from = total_adjusted_count, values_fill = 0) %>%
+1731667926484:t() %>%
+1731667926484:as.data.frame()
+1731667926515:# Ensure the first column is species names
+1731667926515:colnames(biotic_data_combined) <- biotic_data_combined[1, ]
+1731667926515:biotic_data_combined <- biotic_data_combined[-1, ]
+1731667926516:# Run BBI to calculate indices
+1731667926516:bbi_results_combined <- BBI(biotic_data_combined)
+1731667956578:biotic_data <- long_format_df %>%
+1731667956578:select(species, adjusted_count) %>%
+1731667956578:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731667995973:long_format_df
+1731668078667:krokurinn_data <- long_format_df %>%
+1731668078667:mutate(station = "Krokurinn") %>%
+1731668078667:group_by(station, species) %>%
+1731668078667:summarise(
+1731668078667:total_area = sum(total_area),
+1731668078667:total_count = sum(count),
+1731668078668:total_adjusted_count = sum(adjusted_count),
+1731668078668:.groups = 'drop'
+1731668078668:)
+1731668078678:# Print the aggregated data
+1731668078679:print(krokurinn_data)
+1731668120323:biotic_data <- krokurinn_data %>%
+1731668120323:select(station, species, adjusted_count) %>%
+1731668120323:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731668157595:eqr_results
+1731668219253:## Fyrir báðar stöðvar saman
+1731668219253:krokurinn_data <- long_format_df %>%
+1731668219253:mutate(station = "Krokurinn") %>%
+1731668219253:group_by(station, species) %>%
+1731668219253:summarise(
+1731668219254:total_area = sum(total_area),
+1731668219254:count = sum(count),
+1731668219254:adjusted_count = sum(adjusted_count),
+1731668219254:.groups = 'drop'
+1731668219254:)
+1731668243155:krokurinn_data <- long_format_df %>%
+1731668243156:mutate(station = "Krokurinn") %>%
+1731668243156:group_by(station, species) %>%
+1731668243156:summarise(
+1731668243156:total_area = sum(total_area),
+1731668243156:count = sum(count),
+1731668243157:adjusted_count = sum(adjusted_count),
+1731668243157:.groups = 'drop'
+1731668243157:)
+1731668243164:# Prepare your data: species as rows, stations as columns
+1731668243164:biotic_data <- krokurinn_data %>%
+1731668243165:select(station, species, adjusted_count) %>%
+1731668243165:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731668243174:# Run BBI to calculate indices
+1731668243175:bbi_results <- BBI(biotic_data)
+1731668247665:bbi_results
+1731668279636:biotic_data
+1731668291626:# Run BBI to calculate indices
+1731668291626:bbi_results <- BBI(biotic_data)
+1731668309139:## Fyrir báðar stöðvar saman
+1731668309140:krokurinn_data <- long_format_df %>%
+1731668309140:mutate(station = "Krokurinn") %>%
+1731668309140:group_by(station, species) %>%
+1731668309140:summarise(
+1731668309140:total_area = sum(total_area),
+1731668309140:count = sum(count),
+1731668309140:adjusted_count = sum(adjusted_count),
+1731668309141:.groups = 'drop'
+1731668309141:)
+1731668309149:# Prepare your data: species as rows, stations as columns
+1731668309149:biotic_data <- krokurinn_data %>%
+1731668309149:select(station, species, adjusted_count) %>%
+1731668309150:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731668309158:# Run BBI to calculate indices
+1731668309158:bbi_results <- BBI(biotic_data)
+1731668351683:library(dplyr)
+1731668351683:library(tidyr)
+1731668351684:library(BBI)
+1731668351684:# Aggregate data for "Krokurinn"
+1731668351684:krokurinn_data <- long_format_df %>%
+1731668351685:mutate(station = "Krokurinn") %>%
+1731668351685:group_by(station, species) %>%
+1731668351685:summarise(
+1731668351685:total_area = sum(total_area),
+1731668351686:count = sum(count),
+1731668351686:adjusted_count = sum(adjusted_count),
+1731668351686:.groups = 'drop'
+1731668351686:)
+1731668351695:# Prepare data: species as rows, station as a column
+1731668351696:biotic_data <- krokurinn_data %>%
+1731668351696:select(species, adjusted_count) %>%
+1731668351696:pivot_wider(names_from = species, values_from = adjusted_count, values_fill = 0) %>%
+1731668351696:t() %>%
+1731668351696:as.data.frame()
+1731668351709:# Ensure the first column is species names
+1731668351709:colnames(biotic_data) <- biotic_data[1, ]
+1731668351710:biotic_data <- biotic_data[-1, ]
+1731668351710:# Check the structure of biotic_data
+1731668351710:print("Structure of biotic_data:")
+1731668351711:print(str(biotic_data))
+1731668351712:# Run BBI to calculate indices
+1731668351712:bbi_results <- BBI(biotic_data)
+1731668389460:library(dplyr)
+1731668389460:library(tidyr)
+1731668389460:library(BBI)
+1731668389461:# Aggregate data for "Krokurinn"
+1731668389461:krokurinn_data <- long_format_df %>%
+1731668389461:mutate(station = "Krokurinn") %>%
+1731668389461:group_by(station, species) %>%
+1731668389461:summarise(
+1731668389461:total_area = sum(total_area),
+1731668389462:count = sum(count),
+1731668389462:adjusted_count = sum(adjusted_count),
+1731668389462:.groups = 'drop'
+1731668389462:)
+1731668389469:# Prepare data: species as rows, station as a column
+1731668389469:biotic_data <- krokurinn_data %>%
+1731668389470:select(species, adjusted_count) %>%
+1731668389470:pivot_wider(names_from = species, values_from = adjusted_count, values_fill = 0)
+1731668389476:# Transpose the data to have species as rows
+1731668389477:biotic_data <- as.data.frame(t(biotic_data))
+1731668389477:colnames(biotic_data) <- "Krokurinn"
+1731668389477:biotic_data <- biotic_data[-1, , drop = FALSE]  # Ensure it remains a data frame
+1731668389477:# Check the structure of biotic_data
+1731668389477:print("Structure of biotic_data:")
+1731668389478:print(str(biotic_data))
+1731668389479:# Run BBI to calculate indices
+1731668389480:bbi_results <- BBI(biotic_data)
+1731668524588:# Original data for "Krokurinn"
+1731668524588:krokurinn_data <- long_format_df %>%
+1731668524589:mutate(station = "Krokurinn") %>%
+1731668524589:group_by(station, species) %>%
+1731668524589:summarise(
+1731668524589:total_area = sum(total_area),
+1731668524589:count = sum(count),
+1731668524590:adjusted_count = sum(adjusted_count),
+1731668524590:.groups = 'drop'
+1731668524590:)
+1731668524597:# Duplicate the data frame and change the station name
+1731668524597:krokurinn2_data <- krokurinn_data %>%
+1731668524597:mutate(station = "Krokurinn2")
+1731668524598:# Combine both data frames
+1731668524599:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731668524601:# Print the combined data frame
+1731668524601:print(combined_data)
+1731668539526:# Prepare your data: species as rows, stations as columns
+1731668539526:biotic_data <- combined_data %>%
+1731668539526:select(station, species, adjusted_count) %>%
+1731668539526:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731668540707:# Run BBI to calculate indices
+1731668540708:bbi_results <- BBI(biotic_data)
+1731668545100:bbi_results
+1731683903530:# Load necessary libraries
+1731683903530:library(dplyr)
+1731683904086:library(tidyr)
+1731683904524:library(vegan)
+1731683904940:library(kableExtra)
+1731683906870:library(BBI)
+1731683913983:species_data <- henda_long_matched %>% # see 03_nmds_analysis.R
+1731683913983:group_by(station, year, species) %>%
+1731683913983:summarise(N = sum(adjusted_density), .groups = "drop") %>%
+1731683913983:pivot_wider(names_from = species, values_from = N, values_fill = 0)
+1731683915323:# Separate environmental and species data
+1731683915323:env_data <- data.frame(
+1731683915323:Station = factor(species_data$station, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
+1731683915324:Year = factor(species_data$year)
+1731683915324:)
+1731683916465:# Create species matrix (only numeric columns)
+1731683916466:species_matrix <- species_data %>%
+1731683916466:select(-station, -year) %>%
+1731683916466:as.matrix()
+1731683917827:# Perform SIMPER analysis for year-to-year comparisons
+1731683917828:years <- sort(unique(as.character(env_data$Year)))
+1731683918502:sequential_simper <- list()
+1731683920155:for(i in 1:(length(years)-1)) {
+1731683920155:# Select data for consecutive years
+1731683920155:year_pair <- years[i:(i+1)]
+1731683920155:year_data <- species_matrix[env_data$Year %in% year_pair, ]
+1731683920155:year_groups <- env_data$Year[env_data$Year %in% year_pair]
+1731683920156:# Perform SIMPER analysis for this pair of years
+1731683920156:comparison_name <- paste(year_pair[1], year_pair[2], sep="_")
+1731683920156:sequential_simper[[comparison_name]] <- simper(year_data, group = year_groups, permutations = 999)
+1731683920156:}
+1731683921763:# Baseline comparison (if 1999 data exists)
+1731683921763:if ("1999" %in% years) {
+1731683921763:baseline_data <- species_matrix[env_data$Year %in% c("1999", years), ]
+1731683921763:baseline_groups <- env_data$Year[env_data$Year %in% c("1999", years)]
+1731683921763:simper_baseline <- simper(baseline_data, group = baseline_groups, permutations = 999)
+1731683921764:}
+1731683923754:# Calculate Benthic Biotic Indices (BBI) for each year and station
+1731683923755:calculate_biotic_indices <- function(data) {
+1731683923755:required_cols <- c("year", "station", "species", "adjusted_density")
+1731683923755:stopifnot(
+1731683923755:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731683923755:"No data provided" = nrow(data) > 0,
+1731683923755:"Negative density values found" = all(data$adjusted_density >= 0),
+1731683923755:"Missing values found" = !any(is.na(data$adjusted_density))
+1731683923756:)
+1731683923756:target_stations <- c("C4", "A7", "B5", "B8", "E4", "E3")
+1731683923756:indices_list <- list()
+1731683923756:species_ambi_mapping <- data.frame(species = character(), AMBI = numeric())
+1731683923757:for (current_year in sort(unique(data$year))) {
+1731683923757:year_data <- data %>%
+1731683923757:filter(year == current_year, station %in% target_stations) %>%
+1731683923757:group_by(station, species) %>%
+1731683923757:summarise(density = sum(adjusted_density), .groups = 'drop') %>%
+1731683923757:pivot_wider(names_from = station, values_from = density, values_fill = 0)
+1731683923758:bbi_results <- BBI(year_data)
+1731683923758:# Extract and accumulate species-AMBI mappings
+1731683923758:current_species_groups <- data.frame(
+1731683923758:species = bbi_results$taxa[, 1],
+1731683923759:AMBI = bbi_results$table$AMBI
+1731683923759:)
+1731683923759:# Combine with existing mappings, keeping the first non-NA AMBI value for each species
+1731683923759:species_ambi_mapping <- bind_rows(species_ambi_mapping, current_species_groups) %>%
+1731683923759:group_by(species) %>%
+1731683923760:summarise(AMBI = first(na.omit(AMBI))) %>%
+1731683923760:ungroup()
+1731683923760:indices_list[[as.character(current_year)]] <- list(
+1731683923760:indices = as.data.frame(cbind(bbi_results$BBI, year = current_year)),
+1731683923761:classification = bbi_results$BBIclass,
+1731683923761:normalized = as.data.frame(nEQR(bbi_results$BBI)[1])
+1731683923761:)
+1731683923761:}
+1731683923762:# Add the species-AMBI mapping to the return list
+1731683923762:indices_list$species_groups <- species_ambi_mapping
+1731683923762:return(indices_list)
+1731683923762:}
+1731683925405:# Use the result dataframe that already has the correct density calculations
+1731683925405:biotic_indices <- calculate_biotic_indices(df_result)
+1731683928140:# Extract species groups from the accumulated mappings
+1731683928140:species_groups <- biotic_indices$species_groups
+1731683929604:# Function to summarize one comparison and add ecological group
+1731683929604:summarize_one_comparison <- function(comparison_data, df_result, year1, year2, species_groups) {
+1731683929604:# Construct the dynamic key
+1731683929604:comparison_key <- paste(year1, year2, sep = "_")
+1731683929605:# Access cusum and other components dynamically
+1731683929605:species_names <- names(comparison_data[[comparison_key]]$cusum)
+1731683929605:cumulative_contributions <- unname(comparison_data[[comparison_key]]$cusum)
+1731683929605:individual_contributions <- c(cumulative_contributions[1], diff(cumulative_contributions))
+1731683929606:abundance_changes <- sapply(species_names, function(species) {
+1731683929606:abundance_year1 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year1])
+1731683929606:abundance_year2 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year2])
+1731683929606:change <- abundance_year2 - abundance_year1
+1731683929606:return(change)
+1731683929606:})
+1731683929607:ecological_groups <- sapply(species_names, function(species) {
+1731683929607:match_index <- match(species, species_groups$species)
+1731683929607:if (!is.na(match_index)) {
+1731683929607:return(species_groups$AMBI[match_index])
+1731683929607:} else {
+1731683929607:return(NA)
+1731683929608:}
+1731683929608:})
+1731683929608:df <- data.frame(
+1731683929608:Species = species_names,
+1731683929609:Cumulative_Percent = cumulative_contributions * 100,
+1731683929609:Individual_Percent = individual_contributions * 100,
+1731683929609:Abundance_Change = abundance_changes,
+1731683929609:Ecological_Group = ecological_groups
+1731683929609:)
+1731683929610:return(df)
+1731683929610:}
+1731683932564:# Process sequential comparisons
+1731683932564:print("Sequential Year Comparisons:")
+1731683933413:for(i in seq_along(sequential_simper)) {
+1731683933413:comparison_name <- names(sequential_simper)[i]
+1731683933413:years <- unlist(strsplit(comparison_name, "_"))
+1731683933413:year1 <- years[1]
+1731683933413:year2 <- years[2]
+1731683933414:cat(sprintf("\nComparison: %s\n", comparison_name))
+1731683933414:# Process this comparison
+1731683933414:summary_data <- summarize_one_comparison(sequential_simper[[i]], df_result, year1, year2, species_groups) %>%
+1731683933414:filter(Cumulative_Percent <= 70) %>%
+1731683933415:mutate_if(is.numeric, ~ round(.x, 2))  # Round all numeric columns to 2 decimal places
+1731683933415:rownames(summary_data) <- NULL
+1731683933415:# Apply line breaks to column names
+1731683933415:colnames(summary_data) <- gsub("_", "<br>", colnames(summary_data))
+1731683933415:if(nrow(summary_data) > 0) {
+1731683933416:# Export the summary data to a CSV file with a descriptive filename
+1731683933416:#file_name <- sprintf("species_contributions_sequential_%s_%s.csv", year1, year2)
+1731683933416:#write.csv(summary_data, file = file_name, row.names = FALSE)
+1731683933416:# Print the table in console for reference
+1731683933416:print(
+1731683933417:kableExtra::kbl(
+1731683933417:summary_data,
+1731683933417:caption = sprintf("Species contributions for %s", comparison_name),
+1731683933417:digits = 2,
+1731683933417:format = "html",
+1731683933418:escape = F
+1731683933418:) %>%
+1731683933418:kableExtra::kable_styling(
+1731683933418:full_width = FALSE,
+1731683933418:bootstrap_options = c("striped", "hover", "condensed", "responsive")
+1731683933419:) %>%
+1731683933419:kableExtra::row_spec(0, bold = TRUE, color = "black", background = "#f0f0f0") %>%  # Header styling
+1731683933419:kableExtra::column_spec(1, bold = TRUE, width = "5em") %>%  # First column bold
+1731683933419:kableExtra::add_header_above(c(" " = 1, "Species Contributions" = ncol(summary_data) - 1))  # Custom header
+1731683933419:)
+1731683933420:cat(sprintf("Exported summary data for %s to %s\n", comparison_name, file_name))
+1731683933420:} else {
+1731683933420:cat("No species met the contribution threshold for this comparison.\n")
+1731683933420:}
+1731683933421:}
+1731683997573:# Generate all possible pairs of years for arbitrary comparison
+1731683997573:arbitrary_year_pairs <- combn(c("1999","2017"), 2, simplify = FALSE)
+1731683999142:# Initialize a new list to store results for arbitrary year pairs
+1731683999142:sequential_simper_arbitrary <- list()
+1731684000060:# New loop for arbitrary year pairs
+1731684000060:for (pair in arbitrary_year_pairs) {
+1731684000060:# Extract the two years from the current pair
+1731684000060:year1 <- pair[1]
+1731684000060:year2 <- pair[2]
+1731684000060:# Select data for these two specific years
+1731684000061:year_data <- species_matrix[env_data$Year %in% c(year1, year2), ]
+1731684000061:year_groups <- env_data$Year[env_data$Year %in% c(year1, year2)]
+1731684000061:# Generate a unique name for this comparison
+1731684000061:comparison_name <- paste(year1, year2, sep = "_")
+1731684000061:# Perform SIMPER analysis for this arbitrary pair of years
+1731684000062:sequential_simper_arbitrary[[comparison_name]] <- simper(year_data, group = year_groups, permutations = 999)
+1731684000062:}
+1731684001613:print("Arbitrary Year Comparisons:")
+1731684002780:for(i in seq_along(sequential_simper_arbitrary)) {
+1731684002780:# Retrieve the comparison name for the arbitrary pair
+1731684002780:comparison_name <- names(sequential_simper_arbitrary)[i]
+1731684002780:years <- unlist(strsplit(comparison_name, "_"))
+1731684002781:year1 <- years[1]
+1731684002781:year2 <- years[2]
+1731684002781:cat(sprintf("\nComparison: %s\n", comparison_name))
+1731684002781:# Process this arbitrary comparison
+1731684002781:summary_data <- summarize_one_comparison(sequential_simper_arbitrary[[i]], df_result, year1, year2, species_groups) %>%
+1731684002782:filter(Cumulative_Percent <= 70)
+1731684002782:rownames(summary_data) <- NULL
+1731684002782:summary_data <- summary_data %>% mutate_if(is.numeric, ~ round(.x, 2))
+1731684002782:# Apply line breaks to column names
+1731684002782:colnames(summary_data) <- gsub("_", "<br>", colnames(summary_data))
+1731684002782:if(nrow(summary_data) > 0) {
+1731684002783:# Export the summary table to a CSV file
+1731684002783:#file_name <- sprintf("species_contributions_%s.csv", comparison_name)
+1731684002783:#write.csv(summary_data, file = file_name, row.names = FALSE)
+1731684002783:print(
+1731684002783:kableExtra::kbl(
+1731684002784:summary_data,
+1731684002784:caption = sprintf("Species contributions for %s", comparison_name),
+1731684002784:digits = 2,
+1731684002784:format = "html",
+1731684002784:escape = F
+1731684002784:) %>%
+1731684002785:kableExtra::kable_styling(
+1731684002785:full_width = FALSE,
+1731684002785:bootstrap_options = c("striped", "hover", "condensed", "responsive")
+1731684002785:) %>%
+1731684002785:kableExtra::row_spec(0, bold = TRUE, color = "black", background = "#f0f0f0") %>%  # Header styling
+1731684002786:kableExtra::column_spec(1, bold = TRUE, width = "5em") %>%  # First column bold
+1731684002786:kableExtra::add_header_above(c(" " = 1, "Species Contributions" = ncol(summary_data) - 1))  # Custom header
+1731684002786:)
+1731684002786:} else {
+1731684002786:cat("No species met the contribution threshold for this comparison.\n")
+1731684002787:}
+1731684002787:}
+1731684023820:# Create a function to prepare data for visualization
+1731684023821:prepare_simper_viz_data <- function(sequential_simper, df_result, species_groups) {
+1731684023821:viz_data <- data.frame()
+1731684023821:for(i in seq_along(sequential_simper)) {
+1731684023821:comparison_name <- names(sequential_simper)[i]
+1731684023821:years <- unlist(strsplit(comparison_name, "_"))
+1731684023821:year1 <- years[1]
+1731684023822:year2 <- years[2]
+1731684023822:# Get summary data for this comparison
+1731684023822:summary_data <- summarize_one_comparison(sequential_simper[[i]], df_result, year1, year2, species_groups) %>%
+1731684023822:filter(Cumulative_Percent <= 70)
+1731684023823:# Calculate mean abundance for each species in each year
+1731684023823:year_data <- bind_rows(
+1731684023823:df_result %>%
+1731684023823:filter(year == year1, species %in% summary_data$Species) %>%
+1731684023823:group_by(species) %>%
+1731684023823:summarise(abundance = mean(adjusted_density), year = year1),
+1731684023824:df_result %>%
+1731684023824:filter(year == year2, species %in% summary_data$Species) %>%
+1731684023824:group_by(species) %>%
+1731684023824:summarise(abundance = mean(adjusted_density), year = year2)
+1731684023824:)
+1731684023825:# Add contribution information
+1731684023825:year_data <- year_data %>%
+1731684023825:left_join(summary_data %>%
+1731684023825:select(Species, Individual_Percent, Ecological_Group),
+1731684023825:by = c("species" = "Species"))
+1731684023826:viz_data <- bind_rows(viz_data, year_data)
+1731684023826:}
+1731684023826:return(viz_data)
+1731684023826:}
+1731684025756:# Prepare visualization data
+1731684025757:viz_data <- prepare_simper_viz_data(sequential_simper, df_result, species_groups)
+1731684028205:# Create main SIMPER visualization
+1731684028205:simper_plot <- ggplot(viz_data %>%
+1731684028205:filter(Individual_Percent >= 5), # Focus on major contributors
+1731684028206:aes(x = year, y = abundance, fill = factor(Ecological_Group))) +
+1731684028206:geom_bar(stat = "identity", position = "dodge") +
+1731684028206:facet_wrap(~species, scales = "free_y") +
+1731684028206:scale_fill_brewer(palette = "Set2", name = "AMBI Group") +
+1731684028206:theme_bw() +
+1731684028206:labs(
+1731684028207:x = "Year",
+1731684028207:y = expression(paste("Abundance (individuals/m"^2, ")")),
+1731684028207:title = "Temporal changes in key species abundance (2013-2017)",
+1731684028207:subtitle = "Species contributing >5% to between-year dissimilarity"
+1731684028207:) +
+1731684028207:theme(
+1731684028208:axis.text.x = element_text(angle = 45, hjust = 1),
+1731684028208:panel.grid.minor = element_blank(),
+1731684028208:strip.text = element_text(face = "italic"),
+1731684028208:legend.position = "bottom"
+1731684028208:)
+1731684030812:# Create summary table
+1731684030812:summary_table <- viz_data %>%
+1731684030812:group_by(species) %>%
+1731684030812:summarise(
+1731684030812:AMBI_Group = first(Ecological_Group),
+1731684030812:contribution = first(Individual_Percent),
+1731684030812:`2013` = mean(abundance[year == "2013"], na.rm = TRUE),
+1731684030813:`2014` = mean(abundance[year == "2014"], na.rm = TRUE),
+1731684030813:`2015` = mean(abundance[year == "2015"], na.rm = TRUE),
+1731684030813:`2016` = mean(abundance[year == "2016"], na.rm = TRUE),
+1731684030813:`2017` = mean(abundance[year == "2017"], na.rm = TRUE),
+1731684030813:.groups = 'drop'
+1731684030813:) %>%
+1731684030813:# Remove rows where all abundance values are NA or 0
+1731684030814:filter(rowSums(!is.na(across(starts_with("20")))) > 0) %>%
+1731684030814:# Replace NAs with 0
+1731684030814:mutate(across(starts_with("20"), ~replace_na(., 0))) %>%
+1731684030814:# Round numeric values
+1731684030814:mutate(
+1731684030814:across(starts_with("20"), ~round(., 0)),
+1731684030815:contribution = round(contribution, 1)
+1731684030815:) %>%
+1731684030815:# Sort by contribution
+1731684030815:arrange(desc(contribution))
+1731684032724:# Now create the formatted table
+1731684032724:kableExtra::kbl(
+1731684032725:summary_table,
+1731684032725:caption = "Species contributions to community dissimilarity (2013-2017)",
+1731684032725:format = "html",
+1731684032725:col.names = c("Species", "AMBI Group", "% Contribution", "2013", "2014", "2015", "2016", "2017"),
+1731684032725:align = c("l", "c", "r", "r", "r", "r", "r", "r")
+1731684032725:) %>%
+1731684032725:kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+1731684032725:full_width = FALSE) %>%
+1731684032726:row_spec(0, bold = TRUE) %>%
+1731684032726:column_spec(1, italic = TRUE) %>%
+1731684032726:add_header_above(c(" " = 3, "Abundance (ind./m²)" = 5))
+1731684044572:# Export plot and table
+1731684044573:ggsave("output/simper_temporal_changes.png", simper_plot,
+1731684044573:width = 12, height = 8, dpi = 300)
+1731684671028:simper_plot
+1731684705741:# Create main SIMPER visualization
+1731684705741:simper_plot <- ggplot(viz_data %>%
+1731684705741:filter(Individual_Percent >= 5), # Focus on major contributors
+1731684705741:aes(x = year, y = abundance, fill = factor(Ecological_Group))) +
+1731684705741:geom_bar(stat = "identity", position = "dodge") +
+1731684705741:facet_wrap(~species, scales = "free_y") +
+1731684705742:scale_fill_brewer(palette = "Set2", name = "AMBI Group") +
+1731684705742:theme_bw() +
+1731684705742:labs(
+1731684705742:x = "Year",
+1731684705742:y = expression(paste("Abundance (individuals/m"^2, ")")),
+1731684705742:title = "Temporal changes in key species abundance (1999 and 2013-2017)",
+1731684705742:subtitle = "Species contributing >5% to between-year dissimilarity"
+1731684705743:) +
+1731684705743:theme(
+1731684705743:axis.text.x = element_text(angle = 45, hjust = 1),
+1731684705743:panel.grid.minor = element_blank(),
+1731684705743:strip.text = element_text(face = "italic"),
+1731684705743:legend.position = "bottom"
+1731684705744:)
+1731684715731:simper_plot
+1731684734396:# Now create the formatted table
+1731684734396:kableExtra::kbl(
+1731684734396:summary_table,
+1731684734396:caption = "Species contributions to community dissimilarity (2013-2017)",
+1731684734397:format = "html",
+1731684734397:col.names = c("Species", "AMBI Group", "% Contribution", "2013", "2014", "2015", "2016", "2017"),
+1731684734397:align = c("l", "c", "r", "r", "r", "r", "r", "r")
+1731684734397:) %>%
+1731684734397:kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+1731684734397:full_width = FALSE) %>%
+1731684734397:row_spec(0, bold = TRUE) %>%
+1731684734397:column_spec(1, italic = TRUE) %>%
+1731684734398:add_header_above(c(" " = 3, "Abundance (ind./m²)" = 5))
+1731684820980:# Nota gögnin frá Jörundi
+1731684820980:species_matrix_all <- henda_long_matched %>%
+1731684820980:select(station, year, species, adjusted_density) %>%
+1731684820981:pivot_wider(
+1731684820981:names_from = species,
+1731684820981:values_from = adjusted_density,
+1731684820981:values_fill = 0
+1731684820981:) %>%
+1731684820981:mutate(
+1731684820982:station_temp = station,
+1731684820982:year_temp = year
+1731684820982:) %>%
+1731684820982:select(-station, -year)
+1731684823014:# Rest of the code remains the same, starting from:
+1731684823014:# Find dominant species (>1% relative abundance)
+1731684823014:dominant_species <- species_matrix_all %>%
+1731684823014:select(where(is.numeric)) %>%
+1731684823014:select(-year_temp) %>%
+1731684823014:summarise(across(everything(), sum)) %>%
+1731684823015:pivot_longer(everything(),
+1731684823015:names_to = "species",
+1731684823015:values_to = "total_abundance") %>%
+1731684823015:arrange(desc(total_abundance)) %>%
+1731684823015:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1731684823015:filter(relative_abundance > 0.01)
+1731684825812:format_species_names <- function(species_names) {
+1731684825812:formatted_names <- sapply(species_names, function(name) {
+1731684825812:# If there's a space, it's already formatted (species name or family), leave it as is
+1731684825812:if (grepl(" ", name)) {
+1731684825812:return(name)
+1731684825813:}
+1731684825813:# If it's a single word, add "sp."
+1731684825813:paste0(name, " sp.")
+1731684825813:})
+1731684825813:return(formatted_names)
+1731684825813:}
+1731684828309:# PCA plot function
+1731684828309:create_year_pca <- function(year_data, year, important_species) {
+1731684828309:# Perform PCA for this year
+1731684828309:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731684828309:# Extract scores
+1731684828310:site_scores <- data.frame(
+1731684828310:scores(species_pca, display = "sites"),
+1731684828310:Station = year_data$station_temp
+1731684828310:)
+1731684828310:species_loadings <- data.frame(
+1731684828310:scores(species_pca, display = "species"),
+1731684828311:Species = rownames(scores(species_pca, display = "species"))
+1731684828311:) %>%
+1731684828311:filter(Species %in% important_species) %>%
+1731684828311:mutate(Species = format_species_names(Species))  # Format species names
+1731684828312:# Calculate variance explained
+1731684828312:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731684828312:# Set consistent axis limits across all plots
+1731684828312:axis_limits <- max(abs(c(
+1731684828313:site_scores$PC1, site_scores$PC2,
+1731684828313:species_loadings$PC1, species_loadings$PC2
+1731684828313:))) * 1.2  # Add 20% padding
+1731684828313:# Create PCA biplot
+1731684828313:pca_plot <- ggplot() +
+1731684828314:# Add site scores
+1731684828314:geom_point(data = site_scores,
+1731684828314:aes(x = PC1, y = PC2),
+1731684828314:size = 2,
+1731684828314:shape = 19,
+1731684828315:color = "black") +
+1731684828315:# Add site labels
+1731684828315:geom_text_repel(
+1731684828315:data = site_scores,
+1731684828315:aes(x = PC1, y = PC2, label = Station),
+1731684828316:size = 3.5,
+1731684828316:fontface = "bold",
+1731684828316:box.padding = 0.5,
+1731684828316:point.padding = 0.3
+1731684828316:) +
+1731684828317:# Add species arrows
+1731684828317:geom_segment(data = species_loadings,
+1731684828317:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731684828317:arrow = arrow(length = unit(0.2, "cm")),
+1731684828318:color = "darkgrey") +
+1731684828318:# Add species labels
+1731684828318:geom_text_repel(data = species_loadings,
+1731684828318:aes(x = PC1, y = PC2, label = Species),
+1731684828318:size = 2.8,
+1731684828319:fontface = "italic",
+1731684828319:color = "grey30",
+1731684828319:box.padding = 0.5,
+1731684828319:point.padding = 0.3) +
+1731684828319:# Set consistent axis limits
+1731684828320:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731684828320:ylim = c(-axis_limits, axis_limits)) +
+1731684828320:theme_bw() +
+1731684828320:theme(
+1731684828321:panel.grid.minor = element_blank(),
+1731684828321:panel.grid.major = element_line(color = "grey95"),
+1731684828321:axis.text = element_text(color = "black", size = 8),
+1731684828322:axis.title = element_text(size = 10),
+1731684828322:plot.title = element_text(size = 11, face = "bold"),
+1731684828322:plot.subtitle = element_text(size = 9),
+1731684828322:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731684828323:) +
+1731684828323:labs(
+1731684828323:title = paste("PCA of benthic community composition -", year),
+1731684828323:subtitle = "Stations shown as points, species as arrows",
+1731684828324:x = paste0("PC1 (", var_explained[1], "%)"),
+1731684828324:y = paste0("PC2 (", var_explained[2], "%)")
+1731684828324:)
+1731684828325:return(pca_plot)
+1731684828325:}
+1731684830974:# Create PCA plots for each year
+1731684830975:years <- sort(unique(species_matrix_all$year_temp))
+1731684832374:pca_plots <- list()
+1731684834301:for(year in years) {
+1731684834301:year_data <- species_matrix_all %>%
+1731684834301:filter(year_temp == year)
+1731684834301:pca_plots[[as.character(year)]] <- create_year_pca(
+1731684834301:year_data,
+1731684834302:year,
+1731684834302:dominant_species$species
+1731684834302:)
+1731684834302:ggsave(
+1731684834302:paste0("output/pca_biplot_", year, ".png"),
+1731684834302:pca_plots[[as.character(year)]],
+1731684834303:width = 10, height = 8,
+1731684834303:dpi = 300,
+1731684834303:bg = "white"
+1731684834303:)
+1731684834303:}
+1731684842732:library(ggrepel)
+1731684842838:library(patchwork)
+1731685350173:# PCA plot function
+1731685350173:create_year_pca <- function(year_data, year, important_species) {
+1731685350174:# Perform PCA for this year
+1731685350174:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731685350174:# Extract scores
+1731685350174:site_scores <- data.frame(
+1731685350174:scores(species_pca, display = "sites"),
+1731685350174:Station = year_data$station_temp
+1731685350175:)
+1731685350175:species_loadings <- data.frame(
+1731685350175:scores(species_pca, display = "species"),
+1731685350175:Species = rownames(scores(species_pca, display = "species"))
+1731685350175:) %>%
+1731685350176:filter(Species %in% important_species) %>%
+1731685350176:mutate(Species = format_species_names(Species))  # Format species names
+1731685350176:# Calculate variance explained
+1731685350176:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731685350177:# Set consistent axis limits across all plots
+1731685350177:axis_limits <- max(abs(c(
+1731685350177:site_scores$PC1, site_scores$PC2,
+1731685350177:species_loadings$PC1, species_loadings$PC2
+1731685350177:))) * 1.2  # Add 20% padding
+1731685350178:# Create PCA biplot
+1731685350178:pca_plot <- ggplot() +
+1731685350178:# Add site scores
+1731685350178:geom_point(data = site_scores,
+1731685350178:aes(x = PC1, y = PC2),
+1731685350179:size = 2,
+1731685350179:shape = 19,
+1731685350179:color = "black") +
+1731685350179:# Add site labels
+1731685350180:geom_text_repel(
+1731685350180:data = site_scores,
+1731685350180:aes(x = PC1, y = PC2, label = Station),
+1731685350180:size = 3.5,
+1731685350180:fontface = "bold",
+1731685350180:box.padding = 0.5,
+1731685350181:point.padding = 0.3
+1731685350181:) +
+1731685350181:# Add species arrows
+1731685350181:geom_segment(data = species_loadings,
+1731685350181:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731685350182:arrow = arrow(length = unit(0.2, "cm")),
+1731685350182:color = "darkgrey") +
+1731685350182:# Add species labels
+1731685350182:geom_text_repel(data = species_loadings,
+1731685350182:aes(x = PC1, y = PC2, label = Species),
+1731685350183:size = 2.8,
+1731685350183:fontface = "italic",
+1731685350183:color = "grey30",
+1731685350183:box.padding = 0.5,
+1731685350184:point.padding = 0.3) +
+1731685350184:# Set consistent axis limits
+1731685350184:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731685350184:ylim = c(-axis_limits, axis_limits)) +
+1731685350184:theme_bw() +
+1731685350185:theme(
+1731685350185:panel.grid.minor = element_blank(),
+1731685350185:panel.grid.major = element_line(color = "grey95"),
+1731685350185:axis.text = element_text(color = "black", size = 8),
+1731685350186:axis.title = element_text(size = 10),
+1731685350186:plot.title = element_text(size = 11, face = "bold"),
+1731685350186:plot.subtitle = element_text(size = 9),
+1731685350186:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731685350186:) +
+1731685350187:labs(
+1731685350187:title = paste("PCA of benthic community composition -", year),
+1731685350187:subtitle = "Stations shown as points, species as arrows",
+1731685350188:x = paste0("PC1 (", var_explained[1], "%)"),
+1731685350188:y = paste0("PC2 (", var_explained[2], "%)")
+1731685350188:)
+1731685350189:return(pca_plot)
+1731685350190:}
+1731685351062:# Create PCA plots for each year
+1731685351062:years <- sort(unique(species_matrix_all$year_temp))
+1731685352591:pca_plots <- list()
+1731685354067:for(year in years) {
+1731685354068:year_data <- species_matrix_all %>%
+1731685354068:filter(year_temp == year)
+1731685354068:pca_plots[[as.character(year)]] <- create_year_pca(
+1731685354068:year_data,
+1731685354068:year,
+1731685354069:dominant_species$species
+1731685354069:)
+1731685354069:ggsave(
+1731685354069:paste0("output/pca_biplot_", year, ".png"),
+1731685354069:pca_plots[[as.character(year)]],
+1731685354069:width = 10, height = 8,
+1731685354070:dpi = 300,
+1731685354070:bg = "white"
+1731685354070:)
+1731685354070:}
+1731685360397:# Combine all plots
+1731685360397:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1731685360397:plot_annotation(
+1731685360398:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731685360398:subtitle = "Stations shown as points, species as arrows",
+1731685360398:caption = "Based on species abundance data. Only species with >1% relative abundance shown.",
+1731685360398:theme = theme(
+1731685360398:plot.title = element_text(size = 14, face = "bold"),
+1731685360398:plot.subtitle = element_text(size = 12),
+1731685360399:plot.caption = element_text(size = 10, hjust = 0)
+1731685360399:)
+1731685360399:)
+1731685362600:ggsave("output/pca_biplots_all_years.png",
+1731685362600:combined_plot,
+1731685362600:width = 20, height = 15,
+1731685362600:dpi = 300,
+1731685362600:bg = "white")
+1731685366750:# Function to create reversed PCA biplot
+1731685366750:create_year_pca_reversed <- function(year_data, year, important_species) {
+1731685366750:# Perform PCA
+1731685366750:species_pca <- rda(select(year_data, -station_temp, -year_temp))
+1731685366750:# Extract scores - note the reversed roles
+1731685366750:species_scores <- data.frame(
+1731685366750:scores(species_pca, display = "species"),
+1731685366751:Species = rownames(scores(species_pca, display = "species"))
+1731685366751:) %>%
+1731685366751:mutate(Species = format_species_names(Species))  # Format species names
+1731685366751:station_loadings <- data.frame(
+1731685366751:scores(species_pca, display = "sites"),
+1731685366752:Station = year_data$station_temp
+1731685366752:)
+1731685366752:# Calculate variance explained
+1731685366752:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1731685366753:# Set consistent axis limits across all plots
+1731685366753:axis_limits <- max(abs(c(
+1731685366753:species_scores$PC1, species_scores$PC2,
+1731685366753:station_loadings$PC1, station_loadings$PC2
+1731685366753:))) * 1.2  # Add 20% padding
+1731685366754:# Create reversed PCA biplot
+1731685366754:pca_plot <- ggplot() +
+1731685366754:# Add species points
+1731685366754:geom_point(data = species_scores,
+1731685366754:aes(x = PC1, y = PC2),
+1731685366754:size = 2,
+1731685366755:shape = 19,
+1731685366755:color = "black") +
+1731685366755:# Add station arrows
+1731685366755:geom_segment(data = station_loadings,
+1731685366756:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731685366756:arrow = arrow(length = unit(0.2, "cm")),
+1731685366756:color = "darkgrey") +
+1731685366756:# Add station labels
+1731685366756:geom_text_repel(data = station_loadings,
+1731685366757:aes(x = PC1, y = PC2, label = Station),
+1731685366757:size = 3.5,
+1731685366757:fontface = "bold",
+1731685366757:box.padding = 0.5,
+1731685366757:point.padding = 0.3) +
+1731685366758:# Add species labels
+1731685366758:geom_text_repel(data = species_scores,
+1731685366758:aes(x = PC1, y = PC2, label = Species),
+1731685366758:size = 2.8,
+1731685366758:fontface = "italic",
+1731685366759:color = "grey30",
+1731685366759:box.padding = 0.5,
+1731685366759:point.padding = 0.3) +
+1731685366759:# Set consistent axis limits
+1731685366760:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1731685366760:ylim = c(-axis_limits, axis_limits)) +
+1731685366760:theme_bw() +
+1731685366760:theme(
+1731685366760:panel.grid.minor = element_blank(),
+1731685366761:panel.grid.major = element_line(color = "grey95"),
+1731685366761:axis.text = element_text(color = "black", size = 8),
+1731685366761:axis.title = element_text(size = 10),
+1731685366762:plot.title = element_text(size = 11, face = "bold"),
+1731685366762:plot.subtitle = element_text(size = 9),
+1731685366762:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1731685366762:) +
+1731685366763:labs(
+1731685366763:title = paste("PCA of benthic community composition -", year),
+1731685366763:subtitle = "Species shown as points, stations as arrows",
+1731685366763:x = paste0("PC1 (", var_explained[1], "%)"),
+1731685366764:y = paste0("PC2 (", var_explained[2], "%)")
+1731685366764:)
+1731685366764:return(pca_plot)
+1731685366764:}
+1731685367427:# Create reversed PCA plots for each year
+1731685367427:years <- sort(unique(species_matrix_all$year_temp))
+1731685367989:pca_plots_reversed <- list()
+1731685368517:for(year in years) {
+1731685368517:year_data <- species_matrix_all %>%
+1731685368518:filter(year_temp == year)
+1731685368518:pca_plots_reversed[[as.character(year)]] <- create_year_pca_reversed(
+1731685368518:year_data,
+1731685368518:year,
+1731685368518:dominant_species$species
+1731685368518:)
+1731685368518:ggsave(
+1731685368518:paste0("output/pca_biplot_reversed_", year, ".png"),
+1731685368518:pca_plots_reversed[[as.character(year)]],
+1731685368518:width = 10, height = 8,
+1731685368518:dpi = 300,
+1731685368519:bg = "white"
+1731685368519:)
+1731685368519:}
+1731685371995:# Combine all reversed plots
+1731685371995:combined_plot_reversed <- wrap_plots(pca_plots_reversed, ncol = 2) +
+1731685371995:plot_annotation(
+1731685371995:title = "Temporal changes in community composition (1999, 2013-2017)",
+1731685371995:subtitle = "Species shown as points, stations as arrows",
+1731685371995:caption = "Based on species abundance data. Only species with >1% relative abundance shown."
+1731685371995:)
+1731685372187:ggsave("output/pca_biplots_reversed_all_years.png",
+1731685372187:combined_plot_reversed,
+1731685372187:width = 20, height = 15,
+1731685372187:dpi = 300,
+1731685372188:bg = "white")
+1731685876534:species_data <- henda_long_matched %>% # see 03_nmds_analysis.R
+1731685876534:group_by(station, year, species) %>%
+1731685876534:summarise(N = sum(adjusted_density), .groups = "drop") %>%
+1731685876534:pivot_wider(names_from = species, values_from = N, values_fill = 0)
+1731685877948:# Separate environmental and species data
+1731685877948:env_data <- data.frame(
+1731685877949:Station = factor(species_data$station, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
+1731685877949:Year = factor(species_data$year)
+1731685877949:)
+1731685878916:# Create species matrix (only numeric columns)
+1731685878916:species_matrix <- species_data %>%
+1731685878916:select(-station, -year) %>%
+1731685878916:as.matrix()
+1731685879693:# Perform SIMPER analysis for year-to-year comparisons
+1731685879693:years <- sort(unique(as.character(env_data$Year)))
+1731685880096:sequential_simper <- list()
+1731685880511:for(i in 1:(length(years)-1)) {
+1731685880511:# Select data for consecutive years
+1731685880511:year_pair <- years[i:(i+1)]
+1731685880512:year_data <- species_matrix[env_data$Year %in% year_pair, ]
+1731685880512:year_groups <- env_data$Year[env_data$Year %in% year_pair]
+1731685880512:# Perform SIMPER analysis for this pair of years
+1731685880512:comparison_name <- paste(year_pair[1], year_pair[2], sep="_")
+1731685880512:sequential_simper[[comparison_name]] <- simper(year_data, group = year_groups, permutations = 999)
+1731685880512:}
+1731685881343:# Baseline comparison (if 1999 data exists)
+1731685881343:if ("1999" %in% years) {
+1731685881343:baseline_data <- species_matrix[env_data$Year %in% c("1999", years), ]
+1731685881343:baseline_groups <- env_data$Year[env_data$Year %in% c("1999", years)]
+1731685881344:simper_baseline <- simper(baseline_data, group = baseline_groups, permutations = 999)
+1731685881344:}
+1731685883038:# Calculate Benthic Biotic Indices (BBI) for each year and station
+1731685883038:calculate_biotic_indices <- function(data) {
+1731685883038:required_cols <- c("year", "station", "species", "adjusted_density")
+1731685883038:stopifnot(
+1731685883038:"Missing required columns" = all(required_cols %in% colnames(data)),
+1731685883039:"No data provided" = nrow(data) > 0,
+1731685883039:"Negative density values found" = all(data$adjusted_density >= 0),
+1731685883039:"Missing values found" = !any(is.na(data$adjusted_density))
+1731685883039:)
+1731685883039:target_stations <- c("C4", "A7", "B5", "B8", "E4", "E3")
+1731685883040:indices_list <- list()
+1731685883040:species_ambi_mapping <- data.frame(species = character(), AMBI = numeric())
+1731685883040:for (current_year in sort(unique(data$year))) {
+1731685883040:year_data <- data %>%
+1731685883040:filter(year == current_year, station %in% target_stations) %>%
+1731685883041:group_by(station, species) %>%
+1731685883041:summarise(density = sum(adjusted_density), .groups = 'drop') %>%
+1731685883041:pivot_wider(names_from = station, values_from = density, values_fill = 0)
+1731685883041:bbi_results <- BBI(year_data)
+1731685883042:# Extract and accumulate species-AMBI mappings
+1731685883042:current_species_groups <- data.frame(
+1731685883042:species = bbi_results$taxa[, 1],
+1731685883042:AMBI = bbi_results$table$AMBI
+1731685883042:)
+1731685883043:# Combine with existing mappings, keeping the first non-NA AMBI value for each species
+1731685883043:species_ambi_mapping <- bind_rows(species_ambi_mapping, current_species_groups) %>%
+1731685883043:group_by(species) %>%
+1731685883043:summarise(AMBI = first(na.omit(AMBI))) %>%
+1731685883043:ungroup()
+1731685883044:indices_list[[as.character(current_year)]] <- list(
+1731685883044:indices = as.data.frame(cbind(bbi_results$BBI, year = current_year)),
+1731685883044:classification = bbi_results$BBIclass,
+1731685883044:normalized = as.data.frame(nEQR(bbi_results$BBI)[1])
+1731685883044:)
+1731685883044:}
+1731685883045:# Add the species-AMBI mapping to the return list
+1731685883045:indices_list$species_groups <- species_ambi_mapping
+1731685883045:return(indices_list)
+1731685883045:}
+1731685884870:# Use the result dataframe that already has the correct density calculations
+1731685884870:biotic_indices <- calculate_biotic_indices(df_result)
+1731685887829:# Extract species groups from the accumulated mappings
+1731685887829:species_groups <- biotic_indices$species_groups
+1731685890310:# Function to summarize one comparison and add ecological group
+1731685890310:summarize_one_comparison <- function(comparison_data, df_result, year1, year2, species_groups) {
+1731685890310:# Construct the dynamic key
+1731685890310:comparison_key <- paste(year1, year2, sep = "_")
+1731685890310:# Access cusum and other components dynamically
+1731685890311:species_names <- names(comparison_data[[comparison_key]]$cusum)
+1731685890311:cumulative_contributions <- unname(comparison_data[[comparison_key]]$cusum)
+1731685890311:individual_contributions <- c(cumulative_contributions[1], diff(cumulative_contributions))
+1731685890311:abundance_changes <- sapply(species_names, function(species) {
+1731685890312:abundance_year1 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year1])
+1731685890312:abundance_year2 <- sum(df_result$adjusted_density[df_result$species == species & df_result$year == year2])
+1731685890312:change <- abundance_year2 - abundance_year1
+1731685890312:return(change)
+1731685890312:})
+1731685890313:ecological_groups <- sapply(species_names, function(species) {
+1731685890313:match_index <- match(species, species_groups$species)
+1731685890313:if (!is.na(match_index)) {
+1731685890313:return(species_groups$AMBI[match_index])
+1731685890313:} else {
+1731685890313:return(NA)
+1731685890314:}
+1731685890314:})
+1731685890314:df <- data.frame(
+1731685890314:Species = species_names,
+1731685890314:Cumulative_Percent = cumulative_contributions * 100,
+1731685890315:Individual_Percent = individual_contributions * 100,
+1731685890315:Abundance_Change = abundance_changes,
+1731685890315:Ecological_Group = ecological_groups
+1731685890315:)
+1731685890315:return(df)
+1731685890316:}
+1731685893253:# Process sequential comparisons
+1731685893253:print("Sequential Year Comparisons:")
+1731685894205:for(i in seq_along(sequential_simper)) {
+1731685894206:comparison_name <- names(sequential_simper)[i]
+1731685894206:years <- unlist(strsplit(comparison_name, "_"))
+1731685894206:year1 <- years[1]
+1731685894206:year2 <- years[2]
+1731685894206:cat(sprintf("\nComparison: %s\n", comparison_name))
+1731685894207:# Process this comparison
+1731685894207:summary_data <- summarize_one_comparison(sequential_simper[[i]], df_result, year1, year2, species_groups) %>%
+1731685894207:filter(Cumulative_Percent <= 70) %>%
+1731685894207:mutate(
+1731685894207:Species = format_species_names(Species)
+1731685894207:) %>%
+1731685894208:mutate_if(is.numeric, ~ round(.x, 2))  # Round all numeric columns to 2 decimal places
+1731685894208:rownames(summary_data) <- NULL
+1731685894208:# Apply line breaks to column names
+1731685894208:colnames(summary_data) <- gsub("_", "<br>", colnames(summary_data))
+1731685894208:if(nrow(summary_data) > 0) {
+1731685894209:# Export the summary data to a CSV file with a descriptive filename
+1731685894209:#file_name <- sprintf("species_contributions_sequential_%s_%s.csv", year1, year2)
+1731685894209:#write.csv(summary_data, file = file_name, row.names = FALSE)
+1731685894209:# Print the table in console for reference
+1731685894209:print(
+1731685894210:kableExtra::kbl(
+1731685894210:summary_data,
+1731685894210:caption = sprintf("Species contributions for %s", comparison_name),
+1731685894210:digits = 2,
+1731685894210:format = "html",
+1731685894210:escape = F
+1731685894211:) %>%
+1731685894211:kableExtra::kable_styling(
+1731685894211:full_width = FALSE,
+1731685894211:bootstrap_options = c("striped", "hover", "condensed", "responsive")
+1731685894212:) %>%
+1731685894212:kableExtra::row_spec(0, bold = TRUE, color = "black", background = "#f0f0f0") %>%  # Header styling
+1731685894212:kableExtra::column_spec(1, bold = TRUE, width = "5em") %>%  # First column bold
+1731685894212:kableExtra::add_header_above(c(" " = 1, "Species Contributions" = ncol(summary_data) - 1))  # Custom header
+1731685894212:)
+1731685894213:cat(sprintf("Exported summary data for %s to %s\n", comparison_name, file_name))
+1731685894213:} else {
+1731685894213:cat("No species met the contribution threshold for this comparison.\n")
+1731685894213:}
+1731685894214:}
+1731685968805:# Generate all possible pairs of years for arbitrary comparison
+1731685968806:arbitrary_year_pairs <- combn(c("1999","2017"), 2, simplify = FALSE)
+1731685969423:# Initialize a new list to store results for arbitrary year pairs
+1731685969423:sequential_simper_arbitrary <- list()
+1731685969926:# New loop for arbitrary year pairs
+1731685969926:for (pair in arbitrary_year_pairs) {
+1731685969927:# Extract the two years from the current pair
+1731685969927:year1 <- pair[1]
+1731685969927:year2 <- pair[2]
+1731685969927:# Select data for these two specific years
+1731685969927:year_data <- species_matrix[env_data$Year %in% c(year1, year2), ]
+1731685969927:year_groups <- env_data$Year[env_data$Year %in% c(year1, year2)]
+1731685969928:# Generate a unique name for this comparison
+1731685969928:comparison_name <- paste(year1, year2, sep = "_")
+1731685969928:# Perform SIMPER analysis for this arbitrary pair of years
+1731685969928:sequential_simper_arbitrary[[comparison_name]] <- simper(year_data, group = year_groups, permutations = 999)
+1731685969928:}
+1731685970238:print("Arbitrary Year Comparisons:")
+1731685971150:for(i in seq_along(sequential_simper_arbitrary)) {
+1731685971150:# Retrieve the comparison name for the arbitrary pair
+1731685971151:comparison_name <- names(sequential_simper_arbitrary)[i]
+1731685971151:years <- unlist(strsplit(comparison_name, "_"))
+1731685971151:year1 <- years[1]
+1731685971151:year2 <- years[2]
+1731685971151:cat(sprintf("\nComparison: %s\n", comparison_name))
+1731685971152:# Process this arbitrary comparison
+1731685971152:summary_data <- summarize_one_comparison(sequential_simper_arbitrary[[i]], df_result, year1, year2, species_groups) %>%
+1731685971152:filter(Cumulative_Percent <= 70) %>%
+1731685971152:mutate(
+1731685971152:Species = format_species_names(Species)
+1731685971152:) %>%
+1731685971153:mutate_if(is.numeric, ~ round(.x, 2))
+1731685971153:rownames(summary_data) <- NULL
+1731685971153:summary_data <- summary_data %>% mutate_if(is.numeric, ~ round(.x, 2))
+1731685971153:# Apply line breaks to column names
+1731685971153:colnames(summary_data) <- gsub("_", "<br>", colnames(summary_data))
+1731685971154:if(nrow(summary_data) > 0) {
+1731685971154:# Export the summary table to a CSV file
+1731685971154:#file_name <- sprintf("species_contributions_%s.csv", comparison_name)
+1731685971154:#write.csv(summary_data, file = file_name, row.names = FALSE)
+1731685971154:print(
+1731685971155:kableExtra::kbl(
+1731685971155:summary_data,
+1731685971155:caption = sprintf("Species contributions for %s", comparison_name),
+1731685971155:digits = 2,
+1731685971155:format = "html",
+1731685971156:escape = F
+1731685971156:) %>%
+1731685971156:kableExtra::kable_styling(
+1731685971156:full_width = FALSE,
+1731685971156:bootstrap_options = c("striped", "hover", "condensed", "responsive")
+1731685971156:) %>%
+1731685971157:kableExtra::row_spec(0, bold = TRUE, color = "black", background = "#f0f0f0") %>%  # Header styling
+1731685971157:kableExtra::column_spec(1, bold = TRUE, width = "5em") %>%  # First column bold
+1731685971157:kableExtra::add_header_above(c(" " = 1, "Species Contributions" = ncol(summary_data) - 1))  # Custom header
+1731685971157:)
+1731685971158:} else {
+1731685971158:cat("No species met the contribution threshold for this comparison.\n")
+1731685971158:}
+1731685971158:}
+1731686015332:# Create a function to prepare data for visualization
+1731686015332:prepare_simper_viz_data <- function(sequential_simper, df_result, species_groups) {
+1731686015332:viz_data <- data.frame()
+1731686015332:for(i in seq_along(sequential_simper)) {
+1731686015332:comparison_name <- names(sequential_simper)[i]
+1731686015333:years <- unlist(strsplit(comparison_name, "_"))
+1731686015333:year1 <- years[1]
+1731686015333:year2 <- years[2]
+1731686015333:# Get summary data for this comparison
+1731686015333:summary_data <- summarize_one_comparison(sequential_simper[[i]], df_result, year1, year2, species_groups) %>%
+1731686015333:filter(Cumulative_Percent <= 70)
+1731686015334:# Calculate mean abundance for each species in each year
+1731686015334:year_data <- bind_rows(
+1731686015334:df_result %>%
+1731686015334:filter(year == year1, species %in% summary_data$Species) %>%
+1731686015334:group_by(species) %>%
+1731686015334:summarise(abundance = mean(adjusted_density), year = year1),
+1731686015335:df_result %>%
+1731686015335:filter(year == year2, species %in% summary_data$Species) %>%
+1731686015335:group_by(species) %>%
+1731686015335:summarise(abundance = mean(adjusted_density), year = year2)
+1731686015335:)
+1731686015336:# Add contribution information
+1731686015336:year_data <- year_data %>%
+1731686015336:left_join(summary_data %>%
+1731686015336:select(Species, Individual_Percent, Ecological_Group),
+1731686015336:by = c("species" = "Species"))
+1731686015337:viz_data <- bind_rows(viz_data, year_data)
+1731686015337:}
+1731686015337:return(viz_data)
+1731686015337:}
+1731686016443:# Prepare visualization data
+1731686016443:viz_data <- prepare_simper_viz_data(sequential_simper, df_result, species_groups)
+1731686018013:# Create main SIMPER visualization
+1731686018013:simper_plot <- ggplot(viz_data %>%
+1731686018013:filter(Individual_Percent >= 5), # Focus on major contributors
+1731686018013:aes(x = year, y = abundance, fill = factor(Ecological_Group))) +
+1731686018013:geom_bar(stat = "identity", position = "dodge") +
+1731686018013:facet_wrap(~species, scales = "free_y") +
+1731686018013:scale_fill_brewer(palette = "Set2", name = "AMBI Group") +
+1731686018014:theme_bw() +
+1731686018014:labs(
+1731686018014:x = "Year",
+1731686018014:y = expression(paste("Abundance (individuals/m"^2, ")")),
+1731686018014:title = "Temporal changes in key species abundance (1999 and 2013-2017)",
+1731686018014:subtitle = "Species contributing >5% to between-year dissimilarity"
+1731686018014:) +
+1731686018014:theme(
+1731686018014:axis.text.x = element_text(angle = 45, hjust = 1),
+1731686018014:panel.grid.minor = element_blank(),
+1731686018014:strip.text = element_text(face = "italic"),
+1731686018014:legend.position = "bottom"
+1731686018014:)
+1731686021155:# Create summary table
+1731686021155:summary_table <- viz_data %>%
+1731686021155:group_by(species) %>%
+1731686021155:summarise(
+1731686021155:AMBI_Group = first(Ecological_Group),
+1731686021155:contribution = first(Individual_Percent),
+1731686021156:`2013` = mean(abundance[year == "2013"], na.rm = TRUE),
+1731686021156:`2014` = mean(abundance[year == "2014"], na.rm = TRUE),
+1731686021156:`2015` = mean(abundance[year == "2015"], na.rm = TRUE),
+1731686021156:`2016` = mean(abundance[year == "2016"], na.rm = TRUE),
+1731686021156:`2017` = mean(abundance[year == "2017"], na.rm = TRUE),
+1731686021156:.groups = 'drop'
+1731686021156:) %>%
+1731686021157:mutate(
+1731686021157:species = format_species_names(species)
+1731686021157:) %>%
+1731686021157:filter(rowSums(!is.na(across(starts_with("20")))) > 0) %>%
+1731686021157:mutate(across(starts_with("20"), ~replace_na(., 0))) %>%
+1731686021158:mutate(
+1731686021158:across(starts_with("20"), ~round(., 0)),
+1731686021158:contribution = round(contribution, 1)
+1731686021158:) %>%
+1731686021158:arrange(desc(contribution))
+1731686021986:# Now create the formatted table
+1731686021986:kableExtra::kbl(
+1731686021986:summary_table,
+1731686021987:caption = "Species contributions to community dissimilarity (2013-2017)",
+1731686021987:format = "html",
+1731686021987:col.names = c("Species", "AMBI Group", "% Contribution", "2013", "2014", "2015", "2016", "2017"),
+1731686021987:align = c("l", "c", "r", "r", "r", "r", "r", "r")
+1731686021987:) %>%
+1731686021987:kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+1731686021987:full_width = FALSE) %>%
+1731686021987:row_spec(0, bold = TRUE) %>%
+1731686021988:column_spec(1, italic = TRUE) %>%
+1731686021988:add_header_above(c(" " = 3, "Abundance (ind./m²)" = 5))
+1731686023508:# Export plot and table
+1731686023508:ggsave("output/simper_temporal_changes.png", simper_plot,
+1731686023509:width = 12, height = 8, dpi = 300)
+1731920916858:bbi_results
+1731921095223:library(dplyr)
+1731921095224:library(tidyr)
+1731921095224:library(BBI)  # Ensure the BBI package is installed
+1731921108115:install.packages('BBI')
+1731921119415:library(dplyr)
+1731921119416:library(tidyr)
+1731921119416:library(BBI)  # Ensure the BBI package is installed
+1731921120245:# Example data for two stations
+1731921120245:station1 <- data.frame(
+1731921120245:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731921120245:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731921120245:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa","amphipoda"))
+1731921120257:station2 <- data.frame(
+1731921120257:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731921120257:count = c(42, 2, 18, 1)
+1731921120257:)
+1731921120258:total_area <- 0.0225 * 3
+1731921120258:# Add station labels
+1731921120258:station1$station <- "st1"
+1731921120258:station2$station <- "st2"
+1731921120259:# Add total_area and adjusted count
+1731921120259:station1$total_area <- total_area
+1731921120259:station1$adjusted_count <- station1$count / total_area
+1731921120259:station2$total_area <- total_area
+1731921120260:station2$adjusted_count <- station2$count / total_area
+1731921120260:# Combine both stations into a single long-format data frame
+1731921120260:long_format_df <- rbind(station1, station2)
+1731921120261:# Reorder columns for clarity
+1731921120262:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731921120262:# Display the long-format data frame
+1731921120262:print(long_format_df)
+1731921120266:# Prepare your data: species as rows, stations as columns
+1731921120266:biotic_data <- long_format_df %>%
+1731921120266:select(station, species, adjusted_count) %>%
+1731921120266:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731921120286:# Run BBI to calculate indices
+1731921120286:bbi_results <- BBI(biotic_data)
+1731921120355:# Print BBI values and matched taxa
+1731921120355:print("BBI Values:")
+1731921120355:print(bbi_results$BBI)
+1731921120355:print("Matched Taxa:")
+1731921120356:print(bbi_results$taxa)
+1731921120356:# Calculate nEQR using the BBI results
+1731921120356:eqr_results <- nEQR(bbi_results$BBI)
+1731921120357:# Print nEQR values and classes
+1731921120357:print("nEQR Values:")
+1731921120357:print(eqr_results$nEQR)
+1731921120357:print("nEQR Classes:")
+1731921120357:print(eqr_results$nEQR_class)
+1731921197139:bbi_results
+1731921702109:## Fyrir báðar stöðvar saman
+1731921702110:krokurinn_data <- long_format_df %>%
+1731921702110:mutate(station = "Krokurinn") %>%
+1731921702110:group_by(station, species) %>%
+1731921702110:summarise(
+1731921702111:total_area = sum(total_area),
+1731921702111:count = sum(count),
+1731921702111:adjusted_count = sum(adjusted_count),
+1731921702111:.groups = 'drop'
+1731921702111:)
+1731921705483:krokurinn_data
+1731921763227:0.0225 * 6
+1731921784531:1/0.0225
+1731922382374:# Original data for "Krokurinn"
+1731922382374:krokurinn_data <- long_format_df %>%
+1731922382375:mutate(station = "Krokurinn") %>%
+1731922382375:group_by(station, species) %>%
+1731922382375:summarise(
+1731922382375:total_area = 0.0225 * 6,
+1731922382375:count = sum(count),
+1731922382376:adjusted_count = sum(adjusted_count),
+1731922382376:.groups = 'drop'
+1731922382376:)
+1731922384723:# Duplicate the data frame and change the station name
+1731922384723:krokurinn2_data <- krokurinn_data %>%
+1731922384723:mutate(station = "Krokurinn2")
+1731922386050:# Combine both data frames
+1731922386050:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731922386619:# Print the combined data frame
+1731922386619:print(combined_data)
+1731922391259:# Prepare your data: species as rows, stations as columns
+1731922391259:biotic_data <- combined_data %>%
+1731922391259:select(station, species, adjusted_count) %>%
+1731922391259:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731922392043:# Run BBI to calculate indices
+1731922392044:bbi_results <- BBI(biotic_data)
+1731922395107:bbi_results
+1731922529005:# Example data for two stations
+1731922529005:station1 <- data.frame(
+1731922529005:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731922529006:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731922529006:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731922530388:station2 <- data.frame(
+1731922530388:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731922530388:count = c(42, 2, 18, 1)
+1731922530388:)
+1731922531587:total_area <- 0.0225 * 3
+1731922532647:# Add station labels
+1731922532647:station1$station <- "st1"
+1731922532926:station2$station <- "st2"
+1731922533228:# Add total_area and adjusted count
+1731922533228:station1$total_area <- total_area
+1731922533828:station1$adjusted_count <- station1$count / total_area
+1731922534142:station2$total_area <- total_area
+1731922534436:station2$adjusted_count <- station2$count / total_area
+1731922534868:# Combine both stations into a single long-format data frame
+1731922534869:long_format_df <- rbind(station1, station2)
+1731922535349:# Reorder columns for clarity
+1731922535349:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731922535948:# Display the long-format data frame
+1731922535948:print(long_format_df)
+1731922536803:# Prepare your data: species as rows, stations as columns
+1731922536804:biotic_data <- long_format_df %>%
+1731922536804:select(station, species, adjusted_count) %>%
+1731922536804:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731922537850:# Run BBI to calculate indices
+1731922537851:bbi_results <- BBI(biotic_data)
+1731922540228:bbi_results
+1731923050584:# Load necessary libraries
+1731923050584:library(dplyr)
+1731923050584:library(tidyr)
+1731923050585:library(BBI)  # Ensure the BBI package is installed
+1731923050585:# Example data for two stations
+1731923050585:station1 <- data.frame(
+1731923050586:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923050586:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923050586:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923050589:station2 <- data.frame(
+1731923050589:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923050589:count = c(42, 2, 18, 1)
+1731923050589:)
+1731923050590:total_area <- 0.0225 * 3
+1731923050590:# Add station labels
+1731923050590:station1$station <- "st1"
+1731923050591:station2$station <- "st2"
+1731923050591:# Add total_area and adjusted count
+1731923050591:station1$total_area <- total_area
+1731923050591:station1$adjusted_count <- station1$count / total_area
+1731923050592:station2$total_area <- total_area
+1731923050592:station2$adjusted_count <- station2$count / total_area
+1731923050592:# Combine both stations into a single long-format data frame
+1731923050592:long_format_df <- rbind(station1, station2)
+1731923050593:# Reorder columns for clarity
+1731923050593:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923050593:# Display the long-format data frame
+1731923050593:print(long_format_df)
+1731923050597:# Prepare your data: species as rows, stations as columns
+1731923050597:biotic_data <- long_format_df %>%
+1731923050597:select(station, species, adjusted_count) %>%
+1731923050597:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923050607:# Run BBI to calculate indices
+1731923050607:bbi_results <- BBI(biotic_data)
+1731923050677:# Print BBI values and matched taxa
+1731923050677:print("BBI Values:")
+1731923050678:print(bbi_results$BBI)
+1731923050678:print("Matched Taxa:")
+1731923050678:print(bbi_results$taxa)
+1731923050679:# Calculate nEQR using the BBI results
+1731923050679:eqr_results <- nEQR(bbi_results$BBI)
+1731923050680:# Print nEQR values and classes
+1731923050680:print("nEQR Values:")
+1731923050680:print(eqr_results$nEQR)
+1731923050680:print("nEQR Classes:")
+1731923050680:print(eqr_results$nEQR_class)
+1731923050681:## Fyrir báðar stöðvar saman
+1731923050681:krokurinn_data <- long_format_df %>%
+1731923050681:mutate(station = "Krokurinn") %>%
+1731923050681:group_by(station, species) %>%
+1731923050681:summarise(
+1731923050681:total_area = sum(total_area),
+1731923050681:count = sum(count),
+1731923050681:adjusted_count = sum(adjusted_count),
+1731923050681:.groups = 'drop'
+1731923050681:)
+1731923050687:library(dplyr)
+1731923050688:# Original data for "Krokurinn"
+1731923050688:krokurinn_data <- long_format_df %>%
+1731923050688:mutate(station = "Krokurinn") %>%
+1731923050688:group_by(station, species) %>%
+1731923050688:summarise(
+1731923050688:total_area = 0.0225 * 6,
+1731923050688:count = sum(count),
+1731923050688:adjusted_count = sum(adjusted_count),
+1731923050689:.groups = 'drop'
+1731923050689:)
+1731923050694:# Duplicate the data frame and change the station name
+1731923050694:krokurinn2_data <- krokurinn_data %>%
+1731923050694:mutate(station = "Krokurinn2")
+1731923050695:# Combine both data frames
+1731923050695:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923050696:# Print the combined data frame
+1731923050696:print(combined_data)
+1731923050730:# Prepare your data: species as rows, stations as columns
+1731923050730:biotic_data <- combined_data %>%
+1731923050731:select(station, species, adjusted_count) %>%
+1731923050731:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923050739:# Run BBI to calculate indices
+1731923050739:bbi_results <- BBI(biotic_data)
+1731923190846:filtered_data <- bbi_results %>%
+1731923190846:select(station, NQI1, NQI1_Class)
+1731923197345:rlang::last_trace()
+1731923232808:filtered_data <- as.data.frame(bbi_results) %>%
+1731923232809:select(station, NQI1, NQI1_Class)
+1731923249949:str(bbi_results)
+1731923275323:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923275323:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923275323:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923275324:filtered_data <- data.frame(
+1731923275324:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923275324:NQI1 = NQI1$NQI1,
+1731923275324:NQI1_Class = NQI1_Class$NQI1
+1731923275324:)
+1731923275325:# Prenta töfluna
+1731923275325:print(filtered_data)
+1731923296742:# Example data for two stations
+1731923296742:station1 <- data.frame(
+1731923296742:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923296743:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923296743:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923296747:station2 <- data.frame(
+1731923296748:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923296748:count = c(42, 2, 18, 1)
+1731923296748:)
+1731923296749:total_area <- 0.0225 * 3
+1731923296749:# Add station labels
+1731923296749:station1$station <- "st1"
+1731923296749:station2$station <- "st2"
+1731923296750:# Add total_area and adjusted count
+1731923296750:station1$total_area <- total_area
+1731923296750:station1$adjusted_count <- station1$count / total_area
+1731923296750:station2$total_area <- total_area
+1731923296750:station2$adjusted_count <- station2$count / total_area
+1731923296751:# Combine both stations into a single long-format data frame
+1731923296751:long_format_df <- rbind(station1, station2)
+1731923296751:# Reorder columns for clarity
+1731923296752:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923296752:# Display the long-format data frame
+1731923296752:print(long_format_df)
+1731923296756:# Prepare your data: species as rows, stations as columns
+1731923296756:biotic_data <- long_format_df %>%
+1731923296757:select(station, species, adjusted_count) %>%
+1731923296757:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923296765:# Run BBI to calculate indices
+1731923296765:bbi_results <- BBI(biotic_data)
+1731923296830:# Print BBI values and matched taxa
+1731923296830:print("BBI Values:")
+1731923296831:print(bbi_results$BBI)
+1731923296831:print("Matched Taxa:")
+1731923296831:print(bbi_results$taxa)
+1731923296832:# Calculate nEQR using the BBI results
+1731923296832:eqr_results <- nEQR(bbi_results$BBI)
+1731923296832:# Print nEQR values and classes
+1731923296832:print("nEQR Values:")
+1731923296832:print(eqr_results$nEQR)
+1731923296833:print("nEQR Classes:")
+1731923296833:print(eqr_results$nEQR_class)
+1731923296833:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923296833:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923296834:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923296834:filtered_data <- data.frame(
+1731923296834:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923296834:NQI1 = NQI1$NQI1,
+1731923296834:NQI1_Class = NQI1_Class$NQI1
+1731923296834:)
+1731923296835:# Prenta töfluna
+1731923296835:print(filtered_data)
+1731923312725:## Fyrir báðar stöðvar saman
+1731923312725:krokurinn_data <- long_format_df %>%
+1731923312725:mutate(station = "Krokurinn") %>%
+1731923312726:group_by(station, species) %>%
+1731923312726:summarise(
+1731923312726:total_area = sum(total_area),
+1731923312726:count = sum(count),
+1731923312726:adjusted_count = sum(adjusted_count),
+1731923312726:.groups = 'drop'
+1731923312727:)
+1731923312733:library(dplyr)
+1731923312733:# Original data for "Krokurinn"
+1731923312734:krokurinn_data <- long_format_df %>%
+1731923312734:mutate(station = "Krokurinn") %>%
+1731923312734:group_by(station, species) %>%
+1731923312734:summarise(
+1731923312734:total_area = 0.0225 * 6,
+1731923312734:count = sum(count),
+1731923312734:adjusted_count = sum(adjusted_count),
+1731923312735:.groups = 'drop'
+1731923312735:)
+1731923312739:# Duplicate the data frame and change the station name
+1731923312739:krokurinn2_data <- krokurinn_data %>%
+1731923312739:mutate(station = "Krokurinn2")
+1731923312741:# Combine both data frames
+1731923312741:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923312741:# Print the combined data frame
+1731923312742:print(combined_data)
+1731923312770:# Prepare your data: species as rows, stations as columns
+1731923312771:biotic_data <- combined_data %>%
+1731923312771:select(station, species, adjusted_count) %>%
+1731923312771:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923312778:# Run BBI to calculate indices
+1731923312778:bbi_results <- BBI(biotic_data)
+1731923312868:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923312868:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923312868:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923312868:filtered_data <- data.frame(
+1731923312868:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923312868:NQI1 = NQI1$NQI1,
+1731923312869:NQI1_Class = NQI1_Class$NQI1
+1731923312869:)
+1731923312869:# Prenta töfluna
+1731923312869:print(filtered_data)
+1731923437230:# Búa til HTML töflu með flextable
+1731923437231:library(flextable)
+1731923446573:install.packages(‘flextable’)
+1731923451501:install.packages('flextable')
+1731923466525:# Búa til HTML töflu með flextable
+1731923466525:library(flextable)
+1731923466887:# Gögnin
+1731923466887:data <- data.frame(
+1731923466887:station = c("st1", "st2", "Krokurinn"),
+1731923466888:NQI1 = c(0.4033375, 0.3607073, 0.4097562),
+1731923466888:NQI1_Class = c("Bad", "Bad", "Bad")
+1731923466888:)
+1731923466888:# Búa til flextable
+1731923466888:ft <- flextable(data) %>%
+1731923466889:set_header_labels(
+1731923466889:station = "Stöð",
+1731923466889:NQI1 = "NQI1",
+1731923466889:NQI1_Class = "NQI1 Class"
+1731923466889:) %>%
+1731923466889:autofit() %>%
+1731923466890:theme_vanilla()
+1731923467020:# Vista sem HTML
+1731923467020:save_as_html(ft, path = "table.html")
+1731923642757:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923655084:AMBI$AMBI
+1731923677758:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923677758:filtered_data <- data.frame(
+1731923677758:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923677759:AMBI = AMBI$AMBI
+1731923677759:NQI1 = NQI1$NQI1,
+1731923684284:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923684284:filtered_data <- data.frame(
+1731923684285:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923684285:AMBI = AMBI$AMBI,
+1731923684285:NQI1 = NQI1$NQI1,
+1731923684285:NQI1_Class = NQI1_Class$NQI1
+1731923684285:)
+1731923684973:# Prenta töfluna
+1731923684974:print(filtered_data)
+1731923709323:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923709323:filtered_data <- data.frame(
+1731923709323:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923709324:AMBI = AMBI$AMBI,
+1731923709324:NQI1 = NQI1$NQI1,
+1731923709324:NQI1_Class = NQI1_Class$NQI1
+1731923709324:)
+1731923722924:# Example data for two stations
+1731923722925:station1 <- data.frame(
+1731923722925:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923722925:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923722925:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923722927:station2 <- data.frame(
+1731923722928:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923722928:count = c(42, 2, 18, 1)
+1731923722928:)
+1731923722929:total_area <- 0.0225 * 3
+1731923722929:# Add station labels
+1731923722929:station1$station <- "st1"
+1731923722929:station2$station <- "st2"
+1731923722929:# Add total_area and adjusted count
+1731923722930:station1$total_area <- total_area
+1731923722930:station1$adjusted_count <- station1$count / total_area
+1731923722930:station2$total_area <- total_area
+1731923722930:station2$adjusted_count <- station2$count / total_area
+1731923722930:# Combine both stations into a single long-format data frame
+1731923722930:long_format_df <- rbind(station1, station2)
+1731923722931:# Reorder columns for clarity
+1731923722931:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923722932:# Display the long-format data frame
+1731923722932:print(long_format_df)
+1731923722935:# Prepare your data: species as rows, stations as columns
+1731923722935:biotic_data <- long_format_df %>%
+1731923722935:select(station, species, adjusted_count) %>%
+1731923722935:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923722942:# Run BBI to calculate indices
+1731923722942:bbi_results <- BBI(biotic_data)
+1731923723006:# Print BBI values and matched taxa
+1731923723006:print("BBI Values:")
+1731923723006:print(bbi_results$BBI)
+1731923723007:print("Matched Taxa:")
+1731923723007:print(bbi_results$taxa)
+1731923723007:# Calculate nEQR using the BBI results
+1731923723007:eqr_results <- nEQR(bbi_results$BBI)
+1731923723008:# Print nEQR values and classes
+1731923723008:print("nEQR Values:")
+1731923723008:print(eqr_results$nEQR)
+1731923723009:print("nEQR Classes:")
+1731923723009:print(eqr_results$nEQR_class)
+1731923723009:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923723009:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923723009:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923723009:filtered_data <- data.frame(
+1731923723009:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923723010:AMBI = AMBI$AMBI,
+1731923723010:NQI1 = NQI1$NQI1,
+1731923723010:NQI1_Class = NQI1_Class$NQI1
+1731923723010:)
+1731923723010:# Prenta töfluna
+1731923723010:print(filtered_data)
+1731923731869:# Example data for two stations
+1731923731869:station1 <- data.frame(
+1731923731870:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923731870:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923731870:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923731872:station2 <- data.frame(
+1731923731872:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923731872:count = c(42, 2, 18, 1)
+1731923731872:)
+1731923731872:total_area <- 0.0225 * 3
+1731923731872:# Add station labels
+1731923731873:station1$station <- "st1"
+1731923731873:station2$station <- "st2"
+1731923731873:# Add total_area and adjusted count
+1731923731873:station1$total_area <- total_area
+1731923731873:station1$adjusted_count <- station1$count / total_area
+1731923731873:station2$total_area <- total_area
+1731923731873:station2$adjusted_count <- station2$count / total_area
+1731923731873:# Combine both stations into a single long-format data frame
+1731923731873:long_format_df <- rbind(station1, station2)
+1731923731874:# Reorder columns for clarity
+1731923731874:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923731874:# Display the long-format data frame
+1731923731874:print(long_format_df)
+1731923731876:# Prepare your data: species as rows, stations as columns
+1731923731876:biotic_data <- long_format_df %>%
+1731923731876:select(station, species, adjusted_count) %>%
+1731923731876:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923731884:# Run BBI to calculate indices
+1731923731884:bbi_results <- BBI(biotic_data)
+1731923731969:# Print BBI values and matched taxa
+1731923731969:print("BBI Values:")
+1731923731969:print(bbi_results$BBI)
+1731923731969:print("Matched Taxa:")
+1731923731969:print(bbi_results$taxa)
+1731923731970:# Calculate nEQR using the BBI results
+1731923731970:eqr_results <- nEQR(bbi_results$BBI)
+1731923731971:# Print nEQR values and classes
+1731923731971:print("nEQR Values:")
+1731923731971:print(eqr_results$nEQR)
+1731923731971:print("nEQR Classes:")
+1731923731972:print(eqr_results$nEQR_class)
+1731923731972:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923731972:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923731972:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923731972:filtered_data <- data.frame(
+1731923731972:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923731973:AMBI = AMBI$AMBI,
+1731923731973:NQI1 = NQI1$NQI1,
+1731923731973:NQI1_Class = NQI1_Class$NQI1
+1731923731973:)
+1731923731973:# Prenta töfluna
+1731923731973:print(filtered_data)
+1731923731974:## Fyrir báðar stöðvar saman
+1731923731974:krokurinn_data <- long_format_df %>%
+1731923731974:mutate(station = "Krokurinn") %>%
+1731923731974:group_by(station, species) %>%
+1731923731974:summarise(
+1731923731975:total_area = sum(total_area),
+1731923731975:count = sum(count),
+1731923731975:adjusted_count = sum(adjusted_count),
+1731923731975:.groups = 'drop'
+1731923731975:)
+1731923731979:library(dplyr)
+1731923731980:# Original data for "Krokurinn"
+1731923731980:krokurinn_data <- long_format_df %>%
+1731923731980:mutate(station = "Krokurinn") %>%
+1731923731980:group_by(station, species) %>%
+1731923731980:summarise(
+1731923731980:total_area = 0.0225 * 6,
+1731923731980:count = sum(count),
+1731923731980:adjusted_count = sum(adjusted_count),
+1731923731980:.groups = 'drop'
+1731923731980:)
+1731923731985:# Duplicate the data frame and change the station name
+1731923731985:krokurinn2_data <- krokurinn_data %>%
+1731923731985:mutate(station = "Krokurinn2")
+1731923731986:# Combine both data frames
+1731923731986:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923731986:# Print the combined data frame
+1731923731986:print(combined_data)
+1731923732013:# Prepare your data: species as rows, stations as columns
+1731923732013:biotic_data <- combined_data %>%
+1731923732013:select(station, species, adjusted_count) %>%
+1731923732013:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923732020:# Run BBI to calculate indices
+1731923732020:bbi_results <- BBI(biotic_data)
+1731923732087:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923732088:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923732088:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923732088:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923732088:filtered_data <- data.frame(
+1731923732089:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923732089:AMBI = AMBI$AMBI,
+1731923732089:NQI1 = NQI1$NQI1,
+1731923732089:NQI1_Class = NQI1_Class$NQI1
+1731923732089:)
+1731923732090:# Prenta töfluna
+1731923732090:print(filtered_data)
+1731923817925:# Example data for two stations
+1731923817925:station1 <- data.frame(
+1731923817925:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923817926:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923817926:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923817928:station2 <- data.frame(
+1731923817929:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923817929:count = c(42, 2, 18, 1)
+1731923817929:)
+1731923817930:total_area <- 0.0225 * 3
+1731923817930:# Add station labels
+1731923817930:station1$station <- "st1"
+1731923817930:station2$station <- "st2"
+1731923817930:# Add total_area and adjusted count
+1731923817931:station1$total_area <- total_area
+1731923817931:station1$adjusted_count <- station1$count / total_area
+1731923817931:station2$total_area <- total_area
+1731923817931:station2$adjusted_count <- station2$count / total_area
+1731923817932:# Combine both stations into a single long-format data frame
+1731923817932:long_format_df <- rbind(station1, station2)
+1731923817932:# Reorder columns for clarity
+1731923817932:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923817933:# Display the long-format data frame
+1731923817933:print(long_format_df)
+1731923817936:# Prepare your data: species as rows, stations as columns
+1731923817937:biotic_data <- long_format_df %>%
+1731923817937:select(station, species, adjusted_count) %>%
+1731923817937:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923817944:# Run BBI to calculate indices
+1731923817944:bbi_results <- BBI(biotic_data)
+1731923818026:# Calculate nEQR using the BBI results
+1731923818027:eqr_results <- nEQR(bbi_results$BBI)
+1731923818027:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923818027:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923818027:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923818028:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923818028:filtered_data <- data.frame(
+1731923818028:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923818028:AMBI = AMBI$AMBI,
+1731923818028:NQI1 = NQI1$NQI1,
+1731923818028:NQI1_Class = NQI1_Class$NQI1
+1731923818028:)
+1731923818029:# Prenta töfluna
+1731923818029:print(filtered_data)
+1731923818030:## Fyrir báðar stöðvar saman
+1731923818030:krokurinn_data <- long_format_df %>%
+1731923818030:mutate(station = "Krokurinn") %>%
+1731923818030:group_by(station, species) %>%
+1731923818030:summarise(
+1731923818030:total_area = sum(total_area),
+1731923818030:count = sum(count),
+1731923818030:adjusted_count = sum(adjusted_count),
+1731923818030:.groups = 'drop'
+1731923818030:)
+1731923818035:library(dplyr)
+1731923818035:# Original data for "Krokurinn"
+1731923818035:krokurinn_data <- long_format_df %>%
+1731923818035:mutate(station = "Krokurinn") %>%
+1731923818035:group_by(station, species) %>%
+1731923818035:summarise(
+1731923818035:total_area = 0.0225 * 6,
+1731923818035:count = sum(count),
+1731923818035:adjusted_count = sum(adjusted_count),
+1731923818035:.groups = 'drop'
+1731923818035:)
+1731923818040:# Duplicate the data frame and change the station name
+1731923818040:krokurinn2_data <- krokurinn_data %>%
+1731923818040:mutate(station = "Krokurinn2")
+1731923818041:# Combine both data frames
+1731923818041:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923818041:# Print the combined data frame
+1731923818041:print(combined_data)
+1731923818066:# Prepare your data: species as rows, stations as columns
+1731923818066:biotic_data <- combined_data %>%
+1731923818067:select(station, species, adjusted_count) %>%
+1731923818067:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923818073:# Run BBI to calculate indices
+1731923818073:bbi_results <- BBI(biotic_data)
+1731923818141:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923818141:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923818141:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923818141:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923818141:filtered_data <- data.frame(
+1731923818142:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923818142:AMBI = AMBI$AMBI,
+1731923818142:NQI1 = NQI1$NQI1,
+1731923818142:NQI1_Class = NQI1_Class$NQI1
+1731923818142:)
+1731923818143:# Prenta töfluna
+1731923818143:print(filtered_data)
+1731923846021:# Example data for two stations
+1731923846021:station1 <- data.frame(
+1731923846022:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923846022:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923846022:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923846024:station2 <- data.frame(
+1731923846024:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923846024:count = c(42, 2, 18, 1)
+1731923846025:)
+1731923846025:total_area <- 0.0225 * 3
+1731923846025:# Add station labels
+1731923846026:station1$station <- "st1"
+1731923846026:station2$station <- "st2"
+1731923846026:# Add total_area and adjusted count
+1731923846026:station1$total_area <- total_area
+1731923846026:station1$adjusted_count <- station1$count / total_area
+1731923846027:station2$total_area <- total_area
+1731923846027:station2$adjusted_count <- station2$count / total_area
+1731923846027:# Combine both stations into a single long-format data frame
+1731923846027:long_format_df <- rbind(station1, station2)
+1731923846028:# Reorder columns for clarity
+1731923846028:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923846028:# Prepare your data: species as rows, stations as columns
+1731923846028:biotic_data <- long_format_df %>%
+1731923846028:select(station, species, adjusted_count) %>%
+1731923846029:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923846035:# Run BBI to calculate indices
+1731923846035:bbi_results <- BBI(biotic_data)
+1731923846099:# Calculate nEQR using the BBI results
+1731923846099:eqr_results <- nEQR(bbi_results$BBI)
+1731923846099:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923846100:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923846100:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923846100:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923846100:filtered_data <- data.frame(
+1731923846100:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923846100:AMBI = AMBI$AMBI,
+1731923846100:NQI1 = NQI1$NQI1,
+1731923846100:NQI1_Class = NQI1_Class$NQI1
+1731923846100:)
+1731923846101:## Fyrir báðar stöðvar saman
+1731923846101:krokurinn_data <- long_format_df %>%
+1731923846101:mutate(station = "Krokurinn") %>%
+1731923846101:group_by(station, species) %>%
+1731923846101:summarise(
+1731923846101:total_area = sum(total_area),
+1731923846101:count = sum(count),
+1731923846101:adjusted_count = sum(adjusted_count),
+1731923846101:.groups = 'drop'
+1731923846101:)
+1731923846106:library(dplyr)
+1731923846106:# Original data for "Krokurinn"
+1731923846106:krokurinn_data <- long_format_df %>%
+1731923846106:mutate(station = "Krokurinn") %>%
+1731923846106:group_by(station, species) %>%
+1731923846106:summarise(
+1731923846106:total_area = 0.0225 * 6,
+1731923846106:count = sum(count),
+1731923846106:adjusted_count = sum(adjusted_count),
+1731923846106:.groups = 'drop'
+1731923846106:)
+1731923846111:# Duplicate the data frame and change the station name
+1731923846111:krokurinn2_data <- krokurinn_data %>%
+1731923846111:mutate(station = "Krokurinn2")
+1731923846112:# Combine both data frames
+1731923846112:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923846112:# Prepare your data: species as rows, stations as columns
+1731923846112:biotic_data <- combined_data %>%
+1731923846112:select(station, species, adjusted_count) %>%
+1731923846112:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923846119:# Run BBI to calculate indices
+1731923846119:bbi_results <- BBI(biotic_data)
+1731923846184:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923846184:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923846184:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923846184:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923846185:filtered_data <- data.frame(
+1731923846185:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923846185:AMBI = AMBI$AMBI,
+1731923846185:NQI1 = NQI1$NQI1,
+1731923846185:NQI1_Class = NQI1_Class$NQI1
+1731923846185:)
+1731923846186:# Prenta töfluna
+1731923846186:print(filtered_data)
+1731923868116:# Example data for two stations
+1731923868116:station1 <- data.frame(
+1731923868116:species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
+1731923868116:count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
+1731923868116:) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
+1731923868118:station2 <- data.frame(
+1731923868118:species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
+1731923868118:count = c(42, 2, 18, 1)
+1731923868118:)
+1731923868119:total_area <- 0.0225 * 3
+1731923868119:# Add station labels
+1731923868119:station1$station <- "st1"
+1731923868120:station2$station <- "st2"
+1731923868120:# Add total_area and adjusted count
+1731923868120:station1$total_area <- total_area
+1731923868120:station1$adjusted_count <- station1$count / total_area
+1731923868120:station2$total_area <- total_area
+1731923868121:station2$adjusted_count <- station2$count / total_area
+1731923868121:# Combine both stations into a single long-format data frame
+1731923868121:long_format_df <- rbind(station1, station2)
+1731923868121:# Reorder columns for clarity
+1731923868121:long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
+1731923868122:# Prepare your data: species as rows, stations as columns
+1731923868122:biotic_data <- long_format_df %>%
+1731923868122:select(station, species, adjusted_count) %>%
+1731923868122:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923868138:# Run BBI to calculate indices
+1731923868138:bbi_results <- BBI(biotic_data)
+1731923868202:# Calculate nEQR using the BBI results
+1731923868202:eqr_results <- nEQR(bbi_results$BBI)
+1731923868202:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923868202:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923868202:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923868203:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923868203:filtered_data <- data.frame(
+1731923868203:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923868203:AMBI = AMBI$AMBI,
+1731923868203:NQI1 = NQI1$NQI1,
+1731923868203:NQI1_Class = NQI1_Class$NQI1
+1731923868203:)
+1731923868204:print(filtered_data)
+1731923868204:## Fyrir báðar stöðvar saman
+1731923868205:krokurinn_data <- long_format_df %>%
+1731923868205:mutate(station = "Krokurinn") %>%
+1731923868205:group_by(station, species) %>%
+1731923868205:summarise(
+1731923868205:total_area = sum(total_area),
+1731923868205:count = sum(count),
+1731923868205:adjusted_count = sum(adjusted_count),
+1731923868205:.groups = 'drop'
+1731923868205:)
+1731923868209:library(dplyr)
+1731923868210:# Original data for "Krokurinn"
+1731923868210:krokurinn_data <- long_format_df %>%
+1731923868210:mutate(station = "Krokurinn") %>%
+1731923868210:group_by(station, species) %>%
+1731923868210:summarise(
+1731923868210:total_area = 0.0225 * 6,
+1731923868210:count = sum(count),
+1731923868210:adjusted_count = sum(adjusted_count),
+1731923868210:.groups = 'drop'
+1731923868210:)
+1731923868214:# Duplicate the data frame and change the station name
+1731923868214:krokurinn2_data <- krokurinn_data %>%
+1731923868214:mutate(station = "Krokurinn2")
+1731923868215:# Combine both data frames
+1731923868215:combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
+1731923868216:# Prepare your data: species as rows, stations as columns
+1731923868216:biotic_data <- combined_data %>%
+1731923868216:select(station, species, adjusted_count) %>%
+1731923868216:pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+1731923868222:# Run BBI to calculate indices
+1731923868223:bbi_results <- BBI(biotic_data)
+1731923868294:AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+1731923868295:NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+1731923868295:NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+1731923868295:# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+1731923868295:filtered_data <- data.frame(
+1731923868295:station = rownames(as.data.frame(bbi_results$BBI)),
+1731923868295:AMBI = AMBI$AMBI,
+1731923868296:NQI1 = NQI1$NQI1,
+1731923868296:NQI1_Class = NQI1_Class$NQI1
+1731923868296:)
+1731923868296:# Prenta töfluna
+1731923868297:print(filtered_data)
+1731946330064:library(readxl)
+1731946330772:library(ggplot2)
+1731946331300:library(factoextra)
+1731946338897:install.packages(factoextra)
+1731946342146:install.packages('factoextra')
+1731946439110:library(factoextra)
+1731946443195:# 1. Load Data
+1731946443195:data <- read_excel("C:\Users\valty\Downloads\Copy of Fjoldi_a_fermetra_3-js okt 2024 hreinsað eintak nota í analysur endubætt 1.xlsx", sheet = "1999")
+1731946472197:# 1. Load Data
+1731946472197:data <- read_excel("C:/Users/valty/Downloads/Copy of Fjoldi_a_fermetra_3-js okt 2024 hreinsað eintak nota í analysur endubætt 1.xlsx", sheet = "1999")
+1731946502873:# 1. Load Data
+1731946502873:data <- read_excel("C:/Users/valty/Downloads/gogn.xlsx", sheet = "1999")
+1731946551195:# 1. Load Data
+1731946551195:data <- read_excel("data/processed/gogn.xlsx", sheet = "1999")
+1731946563579:?read_excel
+1731946590851:# 2. Prepare Data
+1731946590851:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1731946598833:data_matrix <- as.matrix(data[, -1])  # Select only station columns
+1731946603106:data_matrix
+1731946622652:data <- as.data.frame(data)
+1731946641564:data <- data[,-1:2]
+1731946649211:data <- data[,-c(1:2)]
+1731946655978:str(data)
+1731946672980:# 1. Load Data
+1731946672981:data <- read_excel("data/processed/gogn.xlsx", sheet = "1999")
+1731946673602:data <- as.data.frame(data)
+1731946673740:data <- data[,-c(1:3)]
+1731946675588:# 2. Prepare Data
+1731946675588:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1731946682811:str(data)
+1731946691393:dimnames(data)
+1731946698470:data_matrix <- as.matrix(data[, -1])  # Select only station columns
+1731946701323:data_matrix
+1731946706565:# 3. Run PCA with Covariance Scaling
+1731946706565:pca <- prcomp(data_matrix, center = TRUE, scale. = FALSE)  # Use covariance (no scaling)
+1731946708507:# 4. Visualize the Results
+1731946708507:# Plot biplot
+1731946708507:fviz_pca_biplot(pca,
+1731946708507:repel = TRUE,                   # Avoid overlapping labels
+1731946708508:label = "var",                  # Label variables (stations)
+1731946708508:habillage = rownames(data),     # Taxa names as labels
+1731946708508:addEllipses = FALSE,            # No group ellipses
+1731946708508:title = "Multidimensional Preference Analysis") +
+1731946708508:labs(x = paste0("Component 1 (", round(100 * summary(pca)$importance[2, 1], 2), "%)"),
+1731946708508:y = paste0("Component 2 (", round(100 * summary(pca)$importance[2, 2], 2), "%)"))
+1731946732881:pca
+1731946785913:str(data.matrix)
+1731946794307:str(data_matrix)
+1731946825947:dim(data_matrix)
+1731946840180:data_matrix <- as.matrix(data_matrix)  # Ensure it's a numeric matrix
+1731946842147:dim(data_matrix)
+1731946843929:str(data_matrix)
+1731946880866:variance <- (pca$sdev^2 / sum(pca$sdev^2)) * 100
+1731946880867:variance  # View variance explained by each component
+1731946926854:fviz_pca_biplot(
+1731946926855:pca,
+1731946926855:repel = TRUE,                   # Avoid overlapping labels
+1731946926855:label = "both",                 # Show both variables (stations) and observations (species)
+1731946926855:col.var = "blue",               # Color for variable vectors
+1731946926855:col.ind = "red",                # Color for individuals (species)
+1731946926855:title = "Multidimensional Preference Analysis"
+1731946926856:) +
+1731946926856:labs(
+1731946926856:x = paste0("Component 1 (", round(variance[1], 2), "%)"),
+1731946926856:y = paste0("Component 2 (", round(variance[2], 2), "%)")
+1731946926856:)
+1731947197908:pca <- prcomp(data_matrix, center = TRUE, scale. = FALSE)
+1731947203850:variance <- (pca$sdev^2 / sum(pca$sdev^2)) * 100
+1731947203850:variance
+1731947312915:# Scale station loadings
+1731947312915:stations_coords <- as.data.frame(pca$rotation[, 1:2])  # Loadings for PC1 and PC2
+1731947312916:stations_coords <- stations_coords * max(abs(pca$x[, 1]))  # Scale for better visualization
+1731947318509:library(ggplot2)
+1731947318510:# Extract PCA coordinates for species (scores) and stations (loadings)
+1731947318510:species_coords <- as.data.frame(pca$x[, 1:2])  # PC1 and PC2 scores
+1731947318510:species_coords$species <- rownames(data_matrix)
+1731947318511:stations_coords$station <- rownames(pca$rotation)
+1731947318511:# Scale station loadings for visualization
+1731947318511:stations_coords <- stations_coords * max(abs(species_coords$PC1))
+1731947343457:# Extract PCA coordinates for species (scores) and stations (loadings)
+1731947343457:species_coords <- as.data.frame(pca$x[, 1:2])  # PC1 and PC2 scores
+1731947343458:species_coords$species <- rownames(data_matrix)  # Add species names as a column
+1731947343458:stations_coords <- as.data.frame(pca$rotation[, 1:2])  # PC1 and PC2 loadings
+1731947343459:stations_coords$station <- rownames(pca$rotation)  # Add station names as a column
+1731947343459:# Rescale station loadings for visualization
+1731947343459:stations_coords[, 1:2] <- stations_coords[, 1:2] * max(abs(species_coords$PC1))  # Scale loadings
+1731947345076:library(ggplot2)
+1731947345076:# Extract PCA coordinates for species (scores) and stations (loadings)
+1731947345076:species_coords <- as.data.frame(pca$x[, 1:2])  # PC1 and PC2 scores
+1731947345077:species_coords$species <- rownames(data_matrix)
+1731947345077:stations_coords$station <- rownames(pca$rotation)
+1731947345077:# Scale station loadings for visualization
+1731947345078:stations_coords <- stations_coords * max(abs(species_coords$PC1))
+1731947353957:library(ggplot2)
+1731947353958:# Plot
+1731947353958:ggplot() +
+1731947353959:geom_point(data = species_coords, aes(x = PC1, y = PC2), color = "red") +
+1731947353959:geom_text(data = species_coords, aes(x = PC1, y = PC2, label = species), hjust = -0.2, size = 3) +
+1731947353959:geom_segment(data = stations_coords, aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1731947353959:arrow = arrow(length = unit(0.2, "cm")), color = "blue") +
+1731947353959:geom_text(data = stations_coords, aes(x = PC1, y = PC2, label = station), hjust = -0.2, size = 4) +
+1731947353960:labs(
+1731947353960:x = paste0("Component 1 (", round(variance[1], 2), "%)"),
+1731947353960:y = paste0("Component 2 (", round(variance[2], 2), "%)"),
+1731947353960:title = "Multidimensional Preference Analysis (R)"
+1731947353960:)
+1731947774685:variance_explained <- summary(pca)$importance[2, 1:2] * 100
+1731947775269:print(variance_explained)
+1731947788332:?prcomp
+1731947859292:# 3. Run PCA with Covariance Scaling
+1731947859292:pca <- prcomp(data_matrix, center = TRUE, scale. = T)  # Use covariance (no scaling)
+1731947860559:variance_explained <- summary(pca)$importance[2, 1:2] * 100
+1731947861011:print(variance_explained)
+1731947880644:# 4. Visualize the Results
+1731947880644:# Plot biplot
+1731947880644:fviz_pca_biplot(pca,
+1731947880644:repel = TRUE,                   # Avoid overlapping labels
+1731947880644:label = "var",                  # Label variables (stations)
+1731947880644:habillage = rownames(data),     # Taxa names as labels
+1731947880644:addEllipses = FALSE,            # No group ellipses
+1731947880645:title = "Multidimensional Preference Analysis") +
+1731947880645:labs(x = paste0("Component 1 (", round(100 * summary(pca)$importance[2, 1], 2), "%)"),
+1731947880645:y = paste0("Component 2 (", round(100 * summary(pca)$importance[2, 2], 2), "%)"))
+1731947903177:summary(pca)$importance[2, 1:2]
+1731947907290:summary(pca)$importance
+1731947933668:summary(pca()
+1731947943780:summary(pca)
+1731947952747:pca

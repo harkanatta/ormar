@@ -5,6 +5,19 @@ library(vegan)
 library(kableExtra)
 library(BBI)
 
+# Add this function after the libraries and before the data processing
+format_species_names <- function(species_names) {
+  formatted_names <- sapply(species_names, function(name) {
+    # If there's a space, it's already formatted (species name or family), leave it as is
+    if (grepl(" ", name)) {
+      return(name)
+    }
+    # If it's a single word, add "sp."
+    paste0(name, " sp.")
+  })
+  return(formatted_names)
+}
+
 # Check if df_result is loaded
 if (!exists("df_result")) {
   stop("df_result is not defined. Please load or create this data frame before running the script.")
@@ -23,6 +36,7 @@ species_data <- df_result %>%
   summarise(N = sum(adjusted_density), .groups = "drop") %>%
   pivot_wider(names_from = species, values_from = N, values_fill = 0)
 
+
 # Separate environmental and species data
 env_data <- data.frame(
   Station = factor(species_data$station, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
@@ -33,6 +47,26 @@ env_data <- data.frame(
 species_matrix <- species_data %>% 
   select(-station, -year) %>% 
   as.matrix()
+
+
+# Use cleaned data from Jörundur
+
+species_data <- henda_long_matched %>% # see 03_nmds_analysis.R
+  group_by(station, year, species) %>%
+  summarise(N = sum(adjusted_density), .groups = "drop") %>%
+  pivot_wider(names_from = species, values_from = N, values_fill = 0)
+
+# Separate environmental and species data
+env_data <- data.frame(
+  Station = factor(species_data$station, levels = c("C4", "E3", "E4", "B5", "B8", "A7")),
+  Year = factor(species_data$year)
+)
+
+# Create species matrix (only numeric columns)
+species_matrix <- species_data %>% 
+  select(-station, -year) %>% 
+  as.matrix()
+
 
 # Perform SIMPER analysis for year-to-year comparisons
 years <- sort(unique(as.character(env_data$Year)))
@@ -161,6 +195,9 @@ for(i in seq_along(sequential_simper)) {
   # Process this comparison
   summary_data <- summarize_one_comparison(sequential_simper[[i]], df_result, year1, year2, species_groups) %>%
     filter(Cumulative_Percent <= 70) %>%
+    mutate(
+      Species = format_species_names(Species)
+    ) %>%
     mutate_if(is.numeric, ~ round(.x, 2))  # Round all numeric columns to 2 decimal places
   rownames(summary_data) <- NULL
   # Apply line breaks to column names
@@ -235,7 +272,11 @@ for(i in seq_along(sequential_simper_arbitrary)) {
   
   # Process this arbitrary comparison
   summary_data <- summarize_one_comparison(sequential_simper_arbitrary[[i]], df_result, year1, year2, species_groups) %>%
-    filter(Cumulative_Percent <= 70)
+    filter(Cumulative_Percent <= 70) %>%
+    mutate(
+      Species = format_species_names(Species)
+    ) %>%
+    mutate_if(is.numeric, ~ round(.x, 2))
   rownames(summary_data) <- NULL
   summary_data <- summary_data %>% mutate_if(is.numeric, ~ round(.x, 2))
   # Apply line breaks to column names
@@ -318,7 +359,7 @@ simper_plot <- ggplot(viz_data %>%
   labs(
     x = "Year",
     y = expression(paste("Abundance (individuals/m"^2, ")")),
-    title = "Temporal changes in key species abundance (2013-2017)",
+    title = "Temporal changes in key species abundance (1999 and 2013-2017)",
     subtitle = "Species contributing >5% to between-year dissimilarity"
   ) +
   theme(
@@ -341,16 +382,15 @@ summary_table <- viz_data %>%
     `2017` = mean(abundance[year == "2017"], na.rm = TRUE),
     .groups = 'drop'
   ) %>%
-  # Remove rows where all abundance values are NA or 0
+  mutate(
+    species = format_species_names(species)
+  ) %>%
   filter(rowSums(!is.na(across(starts_with("20")))) > 0) %>%
-  # Replace NAs with 0
   mutate(across(starts_with("20"), ~replace_na(., 0))) %>%
-  # Round numeric values
   mutate(
     across(starts_with("20"), ~round(., 0)),
     contribution = round(contribution, 1)
   ) %>%
-  # Sort by contribution
   arrange(desc(contribution))
 
 # Now create the formatted table

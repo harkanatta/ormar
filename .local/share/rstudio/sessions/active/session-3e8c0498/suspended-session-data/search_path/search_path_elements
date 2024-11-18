@@ -1,4 +1,9 @@
 .GlobalEnv
+package:patchwork
+package:ggrepel
+package:kableExtra
+package:gplots
+package:BBI
 package:vegan
 package:permute
 package:purrr

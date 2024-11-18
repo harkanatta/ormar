@@ -32,6 +32,33 @@ dominant_species <- species_matrix_all %>%
   filter(relative_abundance > 0.01)
 
 
+# Nota gögnin frá Jörundi
+species_matrix_all <- henda_long_matched %>%
+  select(station, year, species, adjusted_density) %>%
+  pivot_wider(
+    names_from = species,
+    values_from = adjusted_density,
+    values_fill = 0
+  ) %>%
+  mutate(
+    station_temp = station,
+    year_temp = year
+  ) %>%
+  select(-station, -year)
+
+# Rest of the code remains the same, starting from:
+# Find dominant species (>1% relative abundance)
+dominant_species <- species_matrix_all %>%
+  select(where(is.numeric)) %>%  
+  select(-year_temp) %>%
+  summarise(across(everything(), sum)) %>%  
+  pivot_longer(everything(), 
+               names_to = "species", 
+               values_to = "total_abundance") %>%
+  arrange(desc(total_abundance)) %>%  
+  mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+  filter(relative_abundance > 0.01)
+
 format_species_names <- function(species_names) {
   formatted_names <- sapply(species_names, function(name) {
     # If there's a space, it's already formatted (species name or family), leave it as is

@@ -1,3 +1,50 @@
+library(readxl)
+library(ggplot2)
+library(factoextra)
+
+# 1. Load Data
+data <- read_excel("data/processed/gogn.xlsx", sheet = "1999")
+data <- as.data.frame(data)
+data <- data[,-c(1:3)]
+# 2. Prepare Data
+rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+data_matrix <- as.matrix(data[, -1])  # Select only station columns
+
+# 3. Run PCA with Covariance Scaling
+pca <- prcomp(data_matrix, center = TRUE, scale. = T)  # Use covariance (no scaling)
+pca <- prcomp(data_matrix, center = TRUE, scale. = FALSE)
+variance_explained <- summary(pca)$importance[2, 1:2] * 100
+print(variance_explained) 
+
+# 4. Visualize the Results
+# Plot biplot
+fviz_pca_biplot(pca,
+                repel = TRUE,                   # Avoid overlapping labels
+                label = "var",                  # Label variables (stations)
+                habillage = rownames(data),     # Taxa names as labels
+                addEllipses = FALSE,            # No group ellipses
+                title = "Multidimensional Preference Analysis") +
+  labs(x = paste0("Component 1 (", round(100 * summary(pca)$importance[2, 1], 2), "%)"),
+       y = paste0("Component 2 (", round(100 * summary(pca)$importance[2, 2], 2), "%)"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Load necessary libraries
 library(dplyr)
 library(tidyr)
@@ -74,7 +121,7 @@ for(i in seq_along(sequential_simper)) {
   year1 <- years[1]
   year2 <- years[2]
   
-  cat(sprintf("\nComparison: %s\n", comparison_name))
+  cat(sprintf("/nComparison: %s/n", comparison_name))
   
   # Process this comparison
   summary_data <- summarize_one_comparison(sequential_simper[[i]], subsample_data, year1, year2) %>%
@@ -86,7 +133,7 @@ for(i in seq_along(sequential_simper)) {
                           caption = sprintf("Species contributions for %s", comparison_name),
                           digits = 2))
   } else {
-    cat("No species met the contribution threshold for this comparison.\n")
+    cat("No species met the contribution threshold for this comparison./n")
   }
 }
 

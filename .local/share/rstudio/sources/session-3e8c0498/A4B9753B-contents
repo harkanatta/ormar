@@ -1,9 +1,14 @@
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+library(BBI)  # Ensure the BBI package is installed
+
 
 # Example data for two stations
 station1 <- data.frame(
   species = c("Scoloplos armiger", "Eteone longa", "ostracoda", "harpacticoida", "nematoda", "krabbalirfa", "Capitella capitata", "Malacoceros fuliginosus", "amphipoda", "Spionidae sp."),
   count = c(190, 1, 1, 4, 2, 1, 1, 24, 2, 1)
-) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa","amphipoda"))
+) %>% filter(!species %in% c("ostracoda", "harpacticoida", "nematoda", "krabbalirfa"))
 
 station2 <- data.frame(
   species = c("Scoloplos armiger", "Microphthalmus aberrans", "Malacoceros fuliginosus", "Eteone longa"),
@@ -28,56 +33,82 @@ long_format_df <- rbind(station1, station2)
 # Reorder columns for clarity
 long_format_df <- long_format_df[, c("station", "species", "total_area", "count", "adjusted_count")]
 
-# Display the long-format data frame
-print(long_format_df)
+# Prepare your data: species as rows, stations as columns
+biotic_data <- long_format_df %>%
+  select(station, species, adjusted_count) %>%
+  pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
 
+# Run BBI to calculate indices
+bbi_results <- BBI(biotic_data)
+
+
+# Calculate nEQR using the BBI results
+eqr_results <- nEQR(bbi_results$BBI)
+
+
+AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+
+# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+filtered_data <- data.frame(
+  station = rownames(as.data.frame(bbi_results$BBI)),
+  AMBI = AMBI$AMBI,
+  NQI1 = NQI1$NQI1,
+  NQI1_Class = NQI1_Class$NQI1
+)
+print(filtered_data)
+
+## Fyrir báðar stöðvar saman
+krokurinn_data <- long_format_df %>%
+  mutate(station = "Krokurinn") %>%
+  group_by(station, species) %>%
+  summarise(
+    total_area = sum(total_area),
+    count = sum(count),
+    adjusted_count = sum(adjusted_count),
+    .groups = 'drop'
+  )
 
 library(dplyr)
-library(tidyr)
 
-# Custom function for calculating biotic indices, adjusted to your data
-calculate_biotic_indices_krokurinn <- function(data) {
-  # Check for required columns in the provided data
-  required_cols <- c("station", "species", "adjusted_count")
-  stopifnot(
-    "Missing required columns" = all(required_cols %in% colnames(data)),
-    "No data provided" = nrow(data) > 0,
-    "Negative density values found" = all(data$adjusted_count >= 0),
-    "Missing values found" = !any(is.na(data$adjusted_count))
+# Original data for "Krokurinn"
+krokurinn_data <- long_format_df %>%
+  mutate(station = "Krokurinn") %>%
+  group_by(station, species) %>%
+  summarise(
+    total_area = 0.0225 * 6,
+    count = sum(count),
+    adjusted_count = sum(adjusted_count),
+    .groups = 'drop'
   )
-  
-  # Initialize list to store results
-  indices_list <- list()
-  
-  # Prepare data by grouping by station and species
-  biotic_data <- data %>%
-    group_by(station, species) %>%
-    summarise(adjusted_density = sum(adjusted_count), .groups = 'drop') %>%
-    pivot_wider(names_from = station, values_from = adjusted_density, values_fill = 0)
-  
-  # Placeholder for biotic index calculations (replace BBI with your actual formula)
-  # For example purposes, we’ll assume a simple calculation.
-  # Replace this with the actual BBI calculation logic
-  bbi_results <- list(
-    BBI = rowMeans(biotic_data[, -1]),  # Simple example: taking the mean adjusted density across stations
-    BBIclass = ifelse(rowMeans(biotic_data[, -1]) > 10, "High", "Low"),  # Example classification based on arbitrary threshold
-    nEQR = rowMeans(biotic_data[, -1]) / max(rowMeans(biotic_data[, -1]))  # Normalized example based on max value
-  )
-  
-  # Store results
-  indices_list <- list(
-    indices = as.data.frame(cbind(biotic_data$species, BBI = bbi_results$BBI)),
-    classification = as.data.frame(cbind(biotic_data$species, BBIclass = bbi_results$BBIclass)),
-    normalized = as.data.frame(cbind(biotic_data$species, nEQR = bbi_results$nEQR))
-  )
-  
-  return(indices_list)
-}
 
-# Example of running the function
-biotic_indices <- calculate_biotic_indices_krokurinn(long_format_df)
+# Duplicate the data frame and change the station name
+krokurinn2_data <- krokurinn_data %>%
+  mutate(station = "Krokurinn2")
 
-# Display the result
-print(biotic_indices)
+# Combine both data frames
+combined_data <- bind_rows(krokurinn_data, krokurinn2_data)
 
 
+# Prepare your data: species as rows, stations as columns
+biotic_data <- combined_data %>%
+  select(station, species, adjusted_count) %>%
+  pivot_wider(names_from = station, values_from = adjusted_count, values_fill = 0)
+
+# Run BBI to calculate indices
+bbi_results <- BBI(biotic_data)
+AMBI <- as.data.frame(bbi_results$BBI)["AMBI"]
+NQI1 <- as.data.frame(bbi_results$BBI)["NQI1"]
+NQI1_Class <- as.data.frame(bbi_results$BBIclass)["NQI1"]
+
+# Búa til töflu með stöðvarheitum, NQI1 og NQI1 Class
+filtered_data <- data.frame(
+  station = rownames(as.data.frame(bbi_results$BBI)),
+  AMBI = AMBI$AMBI,
+  NQI1 = NQI1$NQI1,
+  NQI1_Class = NQI1_Class$NQI1
+)
+
+# Prenta töfluna
+print(filtered_data)
