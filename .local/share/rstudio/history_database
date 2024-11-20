@@ -9016,3 +9016,507 @@
 1732111821784:height = 10,     # Increased height
 1732111821784:dpi = 300,       # Higher resolution
 1732111821784:bg = "white")
+1732114332258:# Combine all plots
+1732114332259:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1732114332261:plot_annotation(
+1732114332261:title = "Temporal changes in community composition (1999, 2013-2017)",
+1732114332261:subtitle = "Species shown as points, stations as arrows",
+1732114332261:caption = "Based on species abundance data",
+1732114332262:theme = theme(
+1732114332262:plot.title = element_text(size = 18, face = "bold"),
+1732114332262:axis.text = element_text(size = 16, color = "black"),
+1732114332262:axis.title = element_text(size = 18),
+1732114332263:plot.subtitle = element_text(size = 14),
+1732114332263:plot.caption = element_text(size = 10, hjust = 0)
+1732114332263:)
+1732114332263:)
+1732114333243:# Save combined plot
+1732114333243:ggsave("output/pca_biplots_all_years.png",
+1732114333243:combined_plot,
+1732114333243:width = 20, height = 15,
+1732114333244:dpi = 300,
+1732114333244:bg = "white")
+1732114450370:# Create PCA plot
+1732114450370:pca_plot <- ggplot() +
+1732114450371:# Add points for all species
+1732114450371:geom_point(data = site_scores,
+1732114450371:aes(x = PC1, y = PC2),
+1732114450371:size = 2,
+1732114450371:shape = 19,
+1732114450371:color = "black") +
+1732114450372:# Add arrows for stations
+1732114450372:geom_segment(data = species_loadings,
+1732114450372:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732114450372:arrow = arrow(length = unit(0.2, "cm")),
+1732114450372:color = "darkgrey") +
+1732114450372:# Add station labels
+1732114450373:geom_text_repel(data = species_loadings,
+1732114450373:aes(x = PC1, y = PC2, label = Station),
+1732114450373:size = 3.5,
+1732114450373:fontface = "bold",
+1732114450373:box.padding = 0.5,
+1732114450374:point.padding = 0.3) +
+1732114450374:# Add labels only for dominant species
+1732114450374:geom_text_repel(data = filter(site_scores, is_dominant),
+1732114450374:aes(x = PC1, y = PC2, label = Species),
+1732114450374:size = 2.8,
+1732114450374:fontface = "italic",
+1732114450375:color = "grey30",
+1732114450375:box.padding = 0.5,
+1732114450375:point.padding = 0.3) +
+1732114450375:coord_fixed() +
+1732114450375:theme_bw() +
+1732114450375:theme(
+1732114450376:panel.grid.minor = element_blank(),
+1732114450376:panel.grid.major = element_line(color = "grey95"),
+1732114450376:axis.text = element_text(size = 14, color = "black"),     # Increased from 12
+1732114450376:axis.title = element_text(size = 16),
+1732114450376:plot.title = element_text(size = 12, face = "bold"),
+1732114450377:plot.subtitle = element_text(size = 10)
+1732114450377:) +
+1732114450377:labs(
+1732114450377:title = paste("PCA of benthic community composition -", year),
+1732114450378:subtitle = paste0("Species shown as points (>1% abundance labeled, n=",
+1732114450378:sum(site_scores$is_dominant), "), stations as arrows"),
+1732114450378:x = paste0("PC1 (", var_explained[1], "%)"),
+1732114450378:y = paste0("PC2 (", var_explained[2], "%)")
+1732114450378:)
+1732114453748:# Function to process and create PCA for one year
+1732114453748:create_year_pca <- function(year, data = henda) {
+1732114453748:# Calculate dominant species for this specific year
+1732114453748:year_dominant_species <- data %>%
+1732114453748:filter(Year == year) %>%
+1732114453748:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732114453749:names_to = "Station",
+1732114453749:values_to = "abundance") %>%
+1732114453749:group_by(Flokkun) %>%
+1732114453749:summarise(total_abundance = sum(abundance)) %>%
+1732114453749:ungroup() %>%
+1732114453749:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732114453750:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732114453750:rename(Species = Flokkun)
+1732114453750:# Filter data for specific year and prepare
+1732114453750:year_data <- data %>%
+1732114453750:filter(Year == year) %>%
+1732114453751:select(-Year) %>%
+1732114453751:as.data.frame()
+1732114453751:# Prepare data for PCA
+1732114453751:rownames(year_data) <- year_data$Flokkun
+1732114453751:year_data <- year_data %>% select(-Flokkun)
+1732114453752:# Handle NAs
+1732114453752:year_data[is.na(year_data)] <- 0
+1732114453752:# Run PCA
+1732114453752:species_pca <- rda(scale(year_data))
+1732114453753:# Extract scores
+1732114453753:site_scores <- data.frame(
+1732114453753:scores(species_pca, display = "sites"),
+1732114453753:Species = rownames(scores(species_pca, display = "sites"))
+1732114453753:) %>%
+1732114453754:# Add indicator for dominant species
+1732114453754:mutate(is_dominant = Species %in% year_dominant_species$Species)
+1732114453754:species_loadings <- data.frame(
+1732114453754:scores(species_pca, display = "species"),
+1732114453755:Station = colnames(year_data)
+1732114453755:)
+1732114453755:# Calculate variance explained
+1732114453755:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732114453756:# Create PCA plot
+1732114453756:pca_plot <- ggplot() +
+1732114453756:# Add points for all species
+1732114453756:geom_point(data = site_scores,
+1732114453756:aes(x = PC1, y = PC2),
+1732114453757:size = 2,
+1732114453757:shape = 19,
+1732114453757:color = "black") +
+1732114453757:# Add arrows for stations
+1732114453757:geom_segment(data = species_loadings,
+1732114453758:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732114453758:arrow = arrow(length = unit(0.2, "cm")),
+1732114453758:color = "darkgrey") +
+1732114453758:# Add station labels
+1732114453759:geom_text_repel(data = species_loadings,
+1732114453759:aes(x = PC1, y = PC2, label = Station),
+1732114453759:size = 3.5,
+1732114453759:fontface = "bold",
+1732114453760:box.padding = 0.5,
+1732114453760:point.padding = 0.3) +
+1732114453760:# Add labels only for dominant species
+1732114453761:geom_text_repel(data = filter(site_scores, is_dominant),
+1732114453761:aes(x = PC1, y = PC2, label = Species),
+1732114453761:size = 2.8,
+1732114453761:fontface = "italic",
+1732114453762:color = "grey30",
+1732114453762:box.padding = 0.5,
+1732114453762:point.padding = 0.3) +
+1732114453763:coord_fixed() +
+1732114453763:theme_bw() +
+1732114453763:theme(
+1732114453763:panel.grid.minor = element_blank(),
+1732114453764:panel.grid.major = element_line(color = "grey95"),
+1732114453764:axis.text = element_text(size = 14, color = "black"),     # Increased from 12
+1732114453764:axis.title = element_text(size = 16),
+1732114453765:plot.title = element_text(size = 12, face = "bold"),
+1732114453765:plot.subtitle = element_text(size = 10)
+1732114453765:) +
+1732114453765:labs(
+1732114453766:title = paste("PCA of benthic community composition -", year),
+1732114453766:subtitle = paste0("Species shown as points (>1% abundance labeled, n=",
+1732114453766:sum(site_scores$is_dominant), "), stations as arrows"),
+1732114453767:x = paste0("PC1 (", var_explained[1], "%)"),
+1732114453767:y = paste0("PC2 (", var_explained[2], "%)")
+1732114453767:)
+1732114453768:return(pca_plot)
+1732114453768:}
+1732114456289:# Create PCA plots for all years
+1732114456289:years <- c(1999, 2013:2017)
+1732114456732:pca_plots <- list()
+1732114457802:for(year in years) {
+1732114457802:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732114457802:# Save individual plots
+1732114457803:ggsave(
+1732114457803:paste0("output/pca_biplot_", year, ".png"),
+1732114457803:pca_plots[[as.character(year)]],
+1732114457803:width = 10, height = 8,
+1732114457803:dpi = 300,
+1732114457803:bg = "white"
+1732114457804:)
+1732114457804:}
+1732118985547:library(readr)
+1732118985549:merged_data_allt <- read_csv("data/processed/merged_data_allt.csv")
+1732118986172:View(merged_data_allt)
+1732119929347:# Add feeding guild information to henda_long_matched
+1732119929348:henda_long_matched_with_guilds <- henda_long_matched %>%
+1732119929348:left_join(
+1732119929348:merged_data_allt %>% select(Flokkun, `Feeding guild`),
+1732119929348:by = c("species" = "Flokkun")
+1732119929348:)
+1732119929446:# Validate the merge
+1732119929446:cat("Merge Summary:\n",
+1732119929446:"Original species count:", n_distinct(henda_long_matched$species), "\n",
+1732119929446:"Species with guild data:", n_distinct(henda_long_matched_with_guilds$species[!is.na(henda_long_matched_with_guilds$`Feeding guild`)]), "\n",
+1732119929446:"Species missing guild data:", n_distinct(henda_long_matched_with_guilds$species[is.na(henda_long_matched_with_guilds$`Feeding guild`)]), "\n")
+1732119929450:# Show species missing guild data if any
+1732119929450:if(any(is.na(henda_long_matched_with_guilds$`Feeding guild`))) {
+1732119929450:cat("\nSpecies missing feeding guild data:\n")
+1732119929450:henda_long_matched_with_guilds %>%
+1732119929450:filter(is.na(`Feeding guild`)) %>%
+1732119929450:distinct(species) %>%
+1732119929450:pull(species) %>%
+1732119929451:print()
+1732119929451:}
+1732120109887:# Calculate proportion of feeding guilds per station and year
+1732120109887:feeding_guild_summary <- henda_long_matched_with_guilds %>%
+1732120109887:group_by(station, year, `Feeding guild`) %>%
+1732120109887:summarise(
+1732120109888:total_abundance = sum(adjusted_density),
+1732120109888:.groups = "drop"
+1732120109888:) %>%
+1732120109888:group_by(station, year) %>%
+1732120109888:mutate(proportion = total_abundance / sum(total_abundance)) %>%
+1732120109888:ungroup()
+1732120109902:# Add feeding guild information to NMDS plot
+1732120109902:# Extract feeding guild centroids in NMDS space
+1732120109902:guild_centroids <- henda_long_matched_with_guilds %>%
+1732120109903:group_by(species, `Feeding guild`) %>%
+1732120109903:summarise(
+1732120109903:NMDS1 = mean(species_scores[species, "NMDS1"]),
+1732120109903:NMDS2 = mean(species_scores[species, "NMDS2"]),
+1732120109903:.groups = "drop"
+1732120109903:) %>%
+1732120109903:filter(!is.na(`Feeding guild`))
+1732120109917:# Create enhanced NMDS plot with feeding guilds
+1732120109917:nmds_plot_with_guilds <- ggplot() +
+1732120109917:# Original site points
+1732120109917:geom_point(data = site_scores,
+1732120109917:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1732120109917:size = 3) +
+1732120109917:# Add feeding guild centroids
+1732120109917:geom_label(data = guild_centroids,
+1732120109918:aes(x = NMDS1, y = NMDS2, label = `Feeding guild`, fill = `Feeding guild`),
+1732120109918:alpha = 0.7,
+1732120109918:size = 3) +
+1732120109918:theme_bw() +
+1732120109918:theme(
+1732120109918:panel.background = element_rect(fill = "white"),
+1732120109918:axis.text = element_text(size = 12, color = "black"),
+1732120109919:axis.title = element_text(size = 14),
+1732120109919:legend.text = element_text(size = 12),
+1732120109919:legend.title = element_text(size = 12, face = "bold"),
+1732120109919:plot.title = element_text(size = 16, face = "bold")
+1732120109919:) +
+1732120109919:labs(title = "NMDS of Community Composition with Feeding Guilds")
+1732120109933:# Save the enhanced plot
+1732120109933:ggsave("output/nmds_plot_with_feeding_guilds.png",
+1732120109933:nmds_plot_with_guilds,
+1732120109933:width = 12,
+1732120109933:height = 10,
+1732120109933:dpi = 300,
+1732120109933:bg = "white")
+1732120111187:# Statistical analysis of feeding guild patterns
+1732120111187:# Test for differences in feeding guild composition between stations
+1732120111187:guild_permanova <- adonis2(
+1732120111187:total_abundance ~ station + year,
+1732120111187:data = feeding_guild_summary,
+1732120111187:method = "bray",
+1732120111187:permutations = 999
+1732120111187:)
+1732120385169:# Load required packages
+1732120385169:library(vegan)
+1732120385704:library(ggplot2)
+1732120386445:library(dplyr)
+1732120386743:library(tidyr)
+1732120388590:library(ggrepel)
+1732120389758:library(patchwork)
+1732120413887:# Load the data with feeding guilds
+1732120413887:henda_long_matched_with_guilds <- henda_long_matched %>%
+1732120413887:left_join(
+1732120413887:merged_data_allt %>% select(Flokkun, `Feeding guild`),
+1732120413888:by = c("species" = "Flokkun")
+1732120413888:)
+1732120519062:# Check for duplicates in merged_data_allt
+1732120519062:merged_data_check <- merged_data_allt %>%
+1732120519062:select(Flokkun, `Feeding guild`) %>%
+1732120519062:group_by(Flokkun) %>%
+1732120519063:summarise(
+1732120519063:n = n(),
+1732120519063:unique_guilds = n_distinct(`Feeding guild`)
+1732120519064:) %>%
+1732120519064:filter(n > 1)  # Show species with multiple entries
+1732120519076:print("Species with multiple feeding guild assignments:")
+1732120519076:print(merged_data_check)
+1732120519123:# Clean the feeding guild data before joining
+1732120519124:merged_data_clean <- merged_data_allt %>%
+1732120519124:select(Flokkun, `Feeding guild`) %>%
+1732120519124:distinct(Flokkun, .keep_all = TRUE)  # Keep only unique species entries
+1732120519126:# Now perform the join with cleaned data
+1732120519126:henda_long_matched_with_guilds <- henda_long_matched %>%
+1732120519126:left_join(
+1732120519126:merged_data_clean,
+1732120519126:by = c("species" = "Flokkun")
+1732120519126:)
+1732120519128:# Verify the row counts
+1732120519128:cat("\nRow counts comparison:\n",
+1732120519128:"henda_long_matched rows:", nrow(henda_long_matched), "\n",
+1732120519129:"henda_long_matched_with_guilds rows:", nrow(henda_long_matched_with_guilds), "\n")
+1732120519129:# Check for any species that got duplicated in the join
+1732120519129:duplicates_check <- henda_long_matched_with_guilds %>%
+1732120519129:group_by(station, year, species) %>%
+1732120519129:filter(n() > 1)
+1732120519147:if(nrow(duplicates_check) > 0) {
+1732120519147:print("\nDuplicated entries after join:")
+1732120519147:print(duplicates_check)
+1732120519147:}
+1732120571832:# Prepare data for NMDS
+1732120571832:species_matrix <- henda_long_matched_with_guilds %>%
+1732120571832:select(station, year, species, adjusted_density) %>%
+1732120571832:pivot_wider(
+1732120571832:names_from = species,
+1732120571832:values_from = adjusted_density,
+1732120571833:values_fill = 0
+1732120571833:) %>%
+1732120571833:mutate(
+1732120571833:station_temp = station,
+1732120571833:year_temp = year
+1732120571833:) %>%
+1732120571834:select(-station, -year)
+1732120582174:# Perform NMDS
+1732120582174:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1732120583974:# Extract site scores and add metadata
+1732120583974:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1732120584664:site_scores$Station <- species_matrix$station_temp
+1732120585392:site_scores$Year <- as.factor(species_matrix$year_temp)
+1732120586450:# Extract species scores and add feeding guild information
+1732120586451:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1732120586855:species_scores$species <- rownames(species_scores)
+1732120587262:species_scores <- species_scores %>%
+1732120587262:left_join(
+1732120587263:henda_long_matched_with_guilds %>%
+1732120587263:select(species, `Feeding guild`) %>%
+1732120587263:distinct(),
+1732120587263:by = "species"
+1732120587263:)
+1732120588958:# Calculate centroids for feeding guilds
+1732120588958:guild_centroids <- species_scores %>%
+1732120588958:group_by(`Feeding guild`) %>%
+1732120588958:summarise(
+1732120588958:NMDS1 = mean(NMDS1),
+1732120588958:NMDS2 = mean(NMDS2),
+1732120588959:n = n()
+1732120588959:) %>%
+1732120588959:filter(!is.na(`Feeding guild`))
+1732120590238:# Create enhanced NMDS plot with feeding guilds
+1732120590239:nmds_guild_plot <- ggplot() +
+1732120590239:# Add points for sites
+1732120590239:geom_point(data = site_scores,
+1732120590239:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1732120590239:size = 3) +
+1732120590240:# Add feeding guild centroids
+1732120590240:geom_label(data = guild_centroids,
+1732120590240:aes(x = NMDS1, y = NMDS2,
+1732120590240:label = paste0(`Feeding guild`, "\n(n=", n, ")")),
+1732120590240:alpha = 0.7,
+1732120590240:size = 3) +
+1732120590241:theme_bw() +
+1732120590241:theme(
+1732120590241:panel.background = element_rect(fill = "white"),
+1732120590241:axis.text = element_text(size = 12, color = "black"),
+1732120590241:axis.title = element_text(size = 14),
+1732120590241:legend.text = element_text(size = 12),
+1732120590241:legend.title = element_text(size = 12, face = "bold")
+1732120590242:) +
+1732120590242:labs(title = "NMDS of Community Composition with Feeding Guilds")
+1732120593710:# Save NMDS plot
+1732120593710:ggsave("output/nmds_feeding_guilds.png",
+1732120593710:nmds_guild_plot,
+1732120593710:width = 12,
+1732120593710:height = 10,
+1732120593710:dpi = 300,
+1732120593711:bg = "white")
+1732120634829:# Prepare data for PCA by feeding guild
+1732120634830:guild_abundances <- henda_long_matched_with_guilds %>%
+1732120634830:group_by(station, year, `Feeding guild`) %>%
+1732120634830:summarise(total_abundance = sum(adjusted_density), .groups = "drop") %>%
+1732120634830:pivot_wider(
+1732120634830:names_from = `Feeding guild`,
+1732120634831:values_from = total_abundance,
+1732120634831:values_fill = 0
+1732120634831:)
+1732120635877:# Perform PCA on feeding guild composition
+1732120635877:pca_data <- guild_abundances %>%
+1732120635878:select(-station, -year) %>%
+1732120635878:scale()
+1732120637501:pca_result <- rda(pca_data)
+1732120639022:# Extract PCA scores
+1732120639022:pca_site_scores <- data.frame(
+1732120639022:scores(pca_result, display = "sites"),
+1732120639022:Station = guild_abundances$station,
+1732120639022:Year = factor(guild_abundances$year)
+1732120639023:)
+1732120640181:pca_guild_scores <- data.frame(
+1732120640182:scores(pca_result, display = "species"),
+1732120640182:Guild = colnames(select(guild_abundances, -station, -year))
+1732120640182:)
+1732120641233:# Calculate variance explained
+1732120641234:var_explained <- summary(pca_result)$cont$importance[2,1:2] * 100
+1732120643054:# Create PCA plot
+1732120643054:pca_guild_plot <- ggplot() +
+1732120643054:geom_point(data = pca_site_scores,
+1732120643054:aes(x = PC1, y = PC2, color = Station, shape = Year),
+1732120643055:size = 3) +
+1732120643055:geom_segment(data = pca_guild_scores,
+1732120643055:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732120643055:arrow = arrow(length = unit(0.2, "cm")),
+1732120643055:color = "darkgrey") +
+1732120643055:geom_text_repel(data = pca_guild_scores,
+1732120643055:aes(x = PC1, y = PC2, label = Guild),
+1732120643056:size = 4) +
+1732120643056:theme_bw() +
+1732120643056:theme(
+1732120643056:panel.background = element_rect(fill = "white"),
+1732120643056:axis.text = element_text(size = 12),
+1732120643056:axis.title = element_text(size = 14)
+1732120643056:) +
+1732120643056:labs(
+1732120643057:title = "PCA of Feeding Guild Composition",
+1732120643057:x = sprintf("PC1 (%.1f%%)", var_explained[1]),
+1732120643057:y = sprintf("PC2 (%.1f%%)", var_explained[2])
+1732120643057:)
+1732120644503:# Save PCA plot
+1732120644503:ggsave("output/pca_feeding_guilds.png",
+1732120644503:pca_guild_plot,
+1732120644503:width = 12,
+1732120644503:height = 10,
+1732120644504:dpi = 300,
+1732120644504:bg = "white")
+1732120674084:# Statistical analysis of feeding guild patterns
+1732120674085:# PERMANOVA test
+1732120674085:guild_permanova <- adonis2(
+1732120674085:pca_data ~ Station + Year,
+1732120674085:data = guild_abundances,
+1732120674085:permutations = 999
+1732120674085:)
+1732120684228:pca_data
+1732120714517:str(pca_data)
+1732120794238:# Prepare data for PCA and PERMANOVA by feeding guild
+1732120794238:guild_abundances <- henda_long_matched_with_guilds %>%
+1732120794238:group_by(station, year, `Feeding guild`) %>%
+1732120794239:summarise(total_abundance = sum(adjusted_density), .groups = "drop") %>%
+1732120794239:pivot_wider(
+1732120794239:names_from = `Feeding guild`,
+1732120794239:values_from = total_abundance,
+1732120794239:values_fill = 0
+1732120794239:)
+1732120795150:# Create abundance matrix for PERMANOVA (non-scaled)
+1732120795151:guild_matrix <- guild_abundances %>%
+1732120795151:select(-station, -year)  # Keep raw abundances for PERMANOVA
+1732120796325:# Perform PERMANOVA on raw abundances
+1732120796326:guild_permanova <- adonis2(
+1732120796326:guild_matrix ~ station + year,
+1732120796326:data = guild_abundances,
+1732120796326:method = "bray",
+1732120796326:permutations = 999
+1732120796326:)
+1732120797268:# For PCA, scale the data separately
+1732120797268:pca_data <- scale(guild_matrix)
+1732120797976:pca_result <- rda(pca_data)
+1732120798732:# Extract PCA scores
+1732120798732:pca_site_scores <- data.frame(
+1732120798732:scores(pca_result, display = "sites"),
+1732120798732:Station = guild_abundances$station,
+1732120798733:Year = factor(guild_abundances$year)
+1732120798733:)
+1732120800373:pca_guild_scores <- data.frame(
+1732120800374:scores(pca_result, display = "species"),
+1732120800374:Guild = colnames(select(guild_abundances, -station, -year))
+1732120800374:)
+1732120800998:# Calculate variance explained
+1732120800998:var_explained <- summary(pca_result)$cont$importance[2,1:2] * 100
+1732120801846:# Create PCA plot
+1732120801846:pca_guild_plot <- ggplot() +
+1732120801846:geom_point(data = pca_site_scores,
+1732120801846:aes(x = PC1, y = PC2, color = Station, shape = Year),
+1732120801846:size = 3) +
+1732120801846:geom_segment(data = pca_guild_scores,
+1732120801847:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732120801847:arrow = arrow(length = unit(0.2, "cm")),
+1732120801847:color = "darkgrey") +
+1732120801847:geom_text_repel(data = pca_guild_scores,
+1732120801847:aes(x = PC1, y = PC2, label = Guild),
+1732120801847:size = 4) +
+1732120801847:theme_bw() +
+1732120801848:theme(
+1732120801848:panel.background = element_rect(fill = "white"),
+1732120801848:axis.text = element_text(size = 12),
+1732120801848:axis.title = element_text(size = 14)
+1732120801848:) +
+1732120801848:labs(
+1732120801849:title = "PCA of Feeding Guild Composition",
+1732120801849:x = sprintf("PC1 (%.1f%%)", var_explained[1]),
+1732120801849:y = sprintf("PC2 (%.1f%%)", var_explained[2])
+1732120801849:)
+1732120802903:# Save PCA plot
+1732120802903:ggsave("output/pca_feeding_guilds.png",
+1732120802904:pca_guild_plot,
+1732120802904:width = 12,
+1732120802904:height = 10,
+1732120802904:dpi = 300,
+1732120802904:bg = "white")
+1732120824925:# Save PERMANOVA results
+1732120824925:sink("output/feeding_guild_analysis.txt")
+1732120826150:cat("Feeding Guild Analysis Results\n")
+1732120827242:cat("============================\n\n")
+1732120828296:cat("1. PERMANOVA Results\n")
+1732120828600:cat("-----------------\n")
+1732120828967:print(guild_permanova)
+1732120829425:cat("\n2. Feeding Guild Composition\n")
+1732120829602:cat("-------------------------\n")
+1732120829749:guild_summary <- henda_long_matched_with_guilds %>%
+1732120829750:group_by(`Feeding guild`) %>%
+1732120829750:summarise(
+1732120829750:n_species = n_distinct(species),
+1732120829750:total_abundance = sum(adjusted_density),
+1732120829750:relative_abundance = total_abundance / sum(henda_long_matched_with_guilds$adjusted_density)
+1732120829751:) %>%
+1732120829751:arrange(desc(relative_abundance))
+1732120829907:print(guild_summary)
+1732120830966:sink()

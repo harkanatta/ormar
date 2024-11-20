@@ -100,10 +100,10 @@ create_year_pca <- function(year, data = henda) {
     theme(
       panel.grid.minor = element_blank(),
       panel.grid.major = element_line(color = "grey95"),
-      axis.text = element_text(color = "black", size = 8),
-      axis.title = element_text(size = 10),
-      plot.title = element_text(size = 11, face = "bold"),
-      plot.subtitle = element_text(size = 9)
+      axis.text = element_text(size = 14, color = "black"),     # Increased from 12
+      axis.title = element_text(size = 16),
+      plot.title = element_text(size = 12, face = "bold"),
+      plot.subtitle = element_text(size = 10)
     ) +
     labs(
       title = paste("PCA of benthic community composition -", year),
@@ -140,8 +140,10 @@ combined_plot <- wrap_plots(pca_plots, ncol = 2) +
     subtitle = "Species shown as points, stations as arrows",
     caption = "Based on species abundance data",
     theme = theme(
-      plot.title = element_text(size = 14, face = "bold"),
-      plot.subtitle = element_text(size = 12),
+      plot.title = element_text(size = 18, face = "bold"),
+      axis.text = element_text(size = 16, color = "black"),
+      axis.title = element_text(size = 18),    
+      plot.subtitle = element_text(size = 14),
       plot.caption = element_text(size = 10, hjust = 0)
     )
   )

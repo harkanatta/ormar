@@ -1,0 +1,36 @@
+Feeding Guild Analysis Results
+============================
+
+1. PERMANOVA Results
+-----------------
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = guild_matrix ~ station + year, data = guild_abundances, permutations = 999, method = "bray")
+         Df SumOfSqs      R2      F Pr(>F)
+Model     6   1.0953 0.18896 1.1261  0.304
+Residual 29   4.7012 0.81104              
+Total    35   5.7965 1.00000              
+
+2. Feeding Guild Composition
+-------------------------
+# A tibble: 16 × 4
+   `Feeding guild` n_species total_abundance relative_abundance
+   <chr>               <int>           <int>              <dbl>
+ 1 SS-De                  13          152960           0.521   
+ 2 SR-De                  26           95962           0.327   
+ 3 EP-Su                  23           15964           0.0544  
+ 4 SR-Pr-mac               9           10930           0.0372  
+ 5 SR-He-mic               4            6093           0.0207  
+ 6 SR-Su                   3            5177           0.0176  
+ 7 SS-Pr-mac               4            1208           0.00411 
+ 8 SR-Om-mic               5            1144           0.00390 
+ 9 SS-Sc-mac               1            1046           0.00356 
+10 SS-Pr-mei               4             877           0.00299 
+11 SR-Pr-mei               3             759           0.00258 
+12 SR-Ch-Om                1             689           0.00235 
+13 <NA>                    2             625           0.00213 
+14 SR-Dt                   3             166           0.000565
+15 SR-He-mac               2              41           0.000140
+16 EP-Pr-zoo               1              33           0.000112

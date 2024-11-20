@@ -143,7 +143,7 @@ env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
    # Add points for sites
    geom_point(data = site_scores, 
               aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
-              size = 3) +
+              size = 4) +
    # Add smaller ellipses around years with solid lines
     # stat_ellipse(data = site_scores,
     #              aes(x = NMDS1, y = NMDS2, group = Year),
@@ -162,11 +162,12 @@ env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
    theme_bw() +
    theme(
      panel.background = element_rect(fill = "white"),
-     axis.text = element_text(size = 12, color = "black"),  # Larger axis text
-     axis.title = element_text(size = 14),                  # Larger axis titles
-     legend.text = element_text(size = 12),                 # Larger legend text
-     legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
-     plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+     axis.text = element_text(size = 16, color = "black"),     # Increased from 12
+     axis.title = element_text(size = 18),                     # Increased from 14
+     legend.text = element_text(size = 16),                    # Increased from 12
+     legend.title = element_text(size = 16, face = "bold"),    # Increased from 12
+     plot.title = element_text(size = 20, face = "bold"),      # Increased from 16
+     legend.position = "right"
    ) +
    labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
         caption = "") +
