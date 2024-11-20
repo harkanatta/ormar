@@ -5507,3 +5507,3512 @@
 1731947933668:summary(pca()
 1731947943780:summary(pca)
 1731947952747:pca
+1732004736974:pca
+1732004813906:fviz_pca_biplot(
+1732004813907:pca,
+1732004813907:repel = TRUE,                         # Avoid overlapping labels
+1732004813907:label = "var",                        # Label variables (stations)
+1732004813907:col.var = "red",                      # Color station arrows
+1732004813907:col.ind = "blue",                     # Color species points
+1732004813907:addEllipses = FALSE                   # No group ellipses
+1732004813907:) +
+1732004813908:labs(
+1732004813908:x = paste0("PC1 (", round(100 * summary(pca)$importance[2, 1], 2), "%)"),
+1732004813908:y = paste0("PC2 (", round(100 * summary(pca)$importance[2, 2], 2), "%)")
+1732004813908:) +
+1732004813908:ggtitle("Multidimensional Preference Analysis")
+1732005127834:data_matrix
+1732005146471:head(data_matrix)
+1732005388580:library(vegan)
+1732005388580:library(ggplot2)
+1732005388581:library(ggrepel)
+1732005388597:library(dplyr)
+1732005388597:library(tidyr)
+1732005388597:library(factoextra)
+1732005388597:# Function to format species names (from your existing code)
+1732005388598:format_species_names <- function(species_names) {
+1732005388598:formatted_names <- sapply(species_names, function(name) {
+1732005388598:if (grepl(" ", name)) return(name)
+1732005388598:paste0(name, " sp.")
+1732005388598:})
+1732005388598:return(formatted_names)
+1732005388599:}
+1732005388599:# Get data for one year to compare methods
+1732005388599:year_data <- henda_long_matched %>%
+1732005388599:filter(year == 1999) %>%  # Using 1999 as example
+1732005388599:select(station, species, adjusted_density) %>%
+1732005388599:pivot_wider(
+1732005388600:names_from = species,
+1732005388600:values_from = adjusted_density,
+1732005388600:values_fill = 0
+1732005388600:)
+1732005388621:# Method 1: prcomp (base R)
+1732005388621:# Prepare data matrix
+1732005388621:matrix_for_prcomp <- as.matrix(year_data[,-1])  # Remove station column
+1732005388622:rownames(matrix_for_prcomp) <- year_data$station
+1732005388622:# Run PCA using prcomp
+1732005388622:pca_prcomp <- prcomp(matrix_for_prcomp, center = TRUE, scale. = TRUE)
+1732005388625:# Method 2: rda (vegan)
+1732005388625:# Run PCA using rda
+1732005388625:pca_rda <- rda(matrix_for_prcomp, scale = TRUE)
+1732005388629:# Create comparison plots
+1732005388629:# 1. Basic factoextra plot for prcomp
+1732005388629:prcomp_plot <- fviz_pca_biplot(pca_prcomp,
+1732005388629:label = "all",
+1732005388629:repel = TRUE,
+1732005388629:title = "PCA using prcomp") +
+1732005388629:theme_bw()
+1732005388676:# 2. Custom ggplot for rda (similar to your existing code)
+1732005388676:# Extract scores
+1732005388676:site_scores <- data.frame(
+1732005388677:scores(pca_rda, display = "sites"),
+1732005388677:Station = rownames(scores(pca_rda, display = "sites"))
+1732005388677:)
+1732005388678:species_scores <- data.frame(
+1732005388678:scores(pca_rda, display = "species"),
+1732005388678:Species = rownames(scores(pca_rda, display = "species"))
+1732005388678:) %>%
+1732005388678:mutate(Species = format_species_names(Species))
+1732005388681:# Calculate variance explained
+1732005388681:var_explained_rda <- round(summary(pca_rda)$cont$importance[2,1:2] * 100, 1)
+1732005388681:# Create RDA plot
+1732005388681:rda_plot <- ggplot() +
+1732005388681:geom_point(data = site_scores,
+1732005388682:aes(x = PC1, y = PC2),
+1732005388682:size = 2) +
+1732005388682:geom_text_repel(data = site_scores,
+1732005388682:aes(x = PC1, y = PC2, label = Station),
+1732005388682:size = 3.5) +
+1732005388682:geom_segment(data = species_scores,
+1732005388682:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732005388682:arrow = arrow(length = unit(0.2, "cm")),
+1732005388682:color = "red",
+1732005388682:alpha = 0.5) +
+1732005388682:geom_text_repel(data = species_scores,
+1732005388682:aes(x = PC1, y = PC2, label = Species),
+1732005388682:size = 2.8,
+1732005388683:color = "darkred") +
+1732005388683:theme_bw() +
+1732005388683:labs(title = "PCA using rda (vegan)",
+1732005388683:x = paste0("PC1 (", var_explained_rda[1], "%)"),
+1732005388683:y = paste0("PC2 (", var_explained_rda[2], "%)"))
+1732005388694:# Compare variance explained
+1732005388694:variance_comparison <- data.frame(
+1732005388695:Method = c("prcomp", "rda"),
+1732005388695:PC1 = c(summary(pca_prcomp)$importance[2,1] * 100,
+1732005388695:var_explained_rda[1]),
+1732005388695:PC2 = c(summary(pca_prcomp)$importance[2,2] * 100,
+1732005388695:var_explained_rda[2])
+1732005388695:)
+1732005388696:# Print comparison results
+1732005388696:print("Variance explained comparison:")
+1732005388697:print(variance_comparison)
+1732005388698:# Compare site scores correlation
+1732005388698:site_scores_prcomp <- pca_prcomp$x[,1:2]
+1732005388698:site_scores_rda <- scores(pca_rda, display = "sites")[,1:2]
+1732005388699:cor_pc1 <- cor(site_scores_prcomp[,1], site_scores_rda[,1])
+1732005388700:cor_pc2 <- cor(site_scores_prcomp[,2], site_scores_rda[,2])
+1732005388701:print("Correlation between site scores:")
+1732005388701:print(paste("PC1 correlation:", round(cor_pc1, 3)))
+1732005388702:print(paste("PC2 correlation:", round(cor_pc2, 3)))
+1732005388702:# Save plots
+1732005388702:ggsave("output/pca_comparison_prcomp.png", prcomp_plot, width = 10, height = 8)
+1732005390024:ggsave("output/pca_comparison_rda.png", rda_plot, width = 10, height = 8)
+1732005390585:# Optional: Create side-by-side plot
+1732005390585:library(patchwork)
+1732005390611:combined_plot <- prcomp_plot + rda_plot +
+1732005390611:plot_annotation(title = "Comparison of PCA methods",
+1732005390611:theme = theme(plot.title = element_text(size = 16)))
+1732005390614:ggsave("output/pca_methods_comparison.png",
+1732005390614:combined_plot,
+1732005390614:width = 20, height = 8)
+1732005845866:species_matrix_all <- data %>%
+1732005845866:pivot_wider(names_from = species, values_from = adjusted_density) %>%
+1732005845867:mutate(station_temp = station)
+1732005855134:str(data)
+1732005896202:pca_data1 <- data.frame(t(data[,-1]))  # Transpose and remove Flokkun column
+1732005896203:colnames(pca_data1) <- data$Flokkun    # Add species names as column names
+1732005896203:# Run PCA
+1732005896203:species_pca <- rda(pca_data1)
+1732005906632:species_pca
+1732005975474:summary(species_pca)
+1732006207058:summary(pca)
+1732006262769:# Method 1 (vegan's rda)
+1732006262769:species_pca_summary <- summary(species_pca)
+1732006262770:vegan_variance <- species_pca_summary$cont$importance[2,] * 100  # Proportion explained
+1732006262770:vegan_scores <- scores(species_pca)
+1732006262771:# Method 2 (stats' prcomp)
+1732006262771:prcomp_summary <- summary(pca)
+1732006262771:prcomp_variance <- prcomp_summary$importance[2,] * 100  # Proportion explained
+1732006262771:# Compare variance explained by first 2 PCs
+1732006262771:comparison <- data.frame(
+1732006262772:PC = 1:2,
+1732006262772:vegan = vegan_variance[1:2],
+1732006262772:prcomp = prcomp_variance[1:2]
+1732006262772:)
+1732006262773:print(comparison)
+1732006445802:# Load libraries
+1732006445802:library(vegan)
+1732006445803:library(stats)
+1732006445803:# Using your data structure:
+1732006445803:# data - data.frame with Flokkun (species) and station columns (A7, B5, etc.)
+1732006445804:# Method 1 (vegan's rda)
+1732006445804:pca_data1 <- data.frame(t(data[,-1]))  # Transpose and remove Flokkun column
+1732006445805:colnames(pca_data1) <- data$Flokkun    # Add species names as column names
+1732006445805:species_pca <- rda(decostand(pca_data1, method = "standardize"))  # Standardized
+1732006445808:# Method 2 (stats' prcomp)
+1732006445808:pca_data2 <- data[,-1]  # Remove Flokkun column
+1732006445809:rownames(pca_data2) <- data$Flokkun    # Add species names as row names
+1732006445809:pca <- prcomp(pca_data2, center = TRUE, scale. = TRUE)  # Standardized
+1732006445811:# Compare variance explained
+1732006445811:species_pca_summary <- summary(species_pca)
+1732006445812:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006445812:prcomp_summary <- summary(pca)
+1732006445813:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006445813:comparison <- data.frame(
+1732006445813:PC = 1:2,
+1732006445813:vegan = vegan_variance[1:2],
+1732006445813:prcomp = prcomp_variance[1:2]
+1732006445813:)
+1732006445814:print(comparison)
+1732006487392:# Load libraries
+1732006487392:library(vegan)
+1732006487392:library(stats)
+1732006487393:# Method 1 (vegan's rda)
+1732006487393:pca_data1 <- data.frame(t(data[,-1]))  # Transpose and remove Flokkun column
+1732006487394:colnames(pca_data1) <- data$Flokkun    # Add species names as column names
+1732006487394:# Use scale() instead of decostand() to match prcomp exactly
+1732006487394:pca_data1_scaled <- scale(pca_data1)  # This matches prcomp's standardization
+1732006487395:species_pca <- rda(pca_data1_scaled)
+1732006487396:# Method 2 (stats' prcomp)
+1732006487396:pca_data2 <- data[,-1]  # Remove Flokkun column
+1732006487396:rownames(pca_data2) <- data$Flokkun    # Add species names as row names
+1732006487396:pca <- prcomp(pca_data2, center = TRUE, scale. = TRUE)
+1732006487397:# Compare variance explained
+1732006487397:species_pca_summary <- summary(species_pca)
+1732006487398:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006487398:prcomp_summary <- summary(pca)
+1732006487398:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006487398:comparison <- data.frame(
+1732006487398:PC = 1:2,
+1732006487398:vegan = vegan_variance[1:2],
+1732006487399:prcomp = prcomp_variance[1:2]
+1732006487399:)
+1732006487399:print(comparison)
+1732006518715:# Load libraries
+1732006518715:library(vegan)
+1732006518715:library(stats)
+1732006518716:# Start with same orientation for both methods
+1732006518716:# Species in columns, stations in rows (like prcomp expects)
+1732006518716:pca_matrix <- t(as.matrix(data[,-1]))  # Transpose original data
+1732006518716:rownames(pca_matrix) <- colnames(data)[-1]  # Station names
+1732006518717:colnames(pca_matrix) <- data$Flokkun   # Species names
+1732006518717:# Method 1 (vegan's rda)
+1732006518717:species_pca <- rda(scale(pca_matrix))
+1732006518718:# Method 2 (stats' prcomp)
+1732006518718:pca <- prcomp(pca_matrix, center = TRUE, scale. = TRUE)
+1732006518719:# Compare variance explained
+1732006518719:species_pca_summary <- summary(species_pca)
+1732006518720:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006518721:prcomp_summary <- summary(pca)
+1732006518721:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006518721:comparison <- data.frame(
+1732006518721:PC = 1:2,
+1732006518721:vegan = vegan_variance[1:2],
+1732006518722:prcomp = prcomp_variance[1:2]
+1732006518722:)
+1732006518722:print(comparison)
+1732006577778:# Load libraries
+1732006577778:library(vegan)
+1732006577779:library(stats)
+1732006577779:# Method 1 (vegan's rda)
+1732006577779:# Use original orientation: species in rows, stations in columns
+1732006577780:pca_data <- as.matrix(data[,-1])  # Remove Flokkun column
+1732006577780:rownames(pca_data) <- data$Flokkun    # Species names
+1732006577780:# Scale the data and run rda
+1732006577780:species_pca <- rda(scale(t(pca_data)))  # Transpose inside rda to match prcomp
+1732006577782:# Method 2 (stats' prcomp) - keep original
+1732006577782:pca_data2 <- data[,-1]  # Remove Flokkun column
+1732006577782:rownames(pca_data2) <- data$Flokkun    # Add species names as row names
+1732006577782:pca <- prcomp(pca_data2, center = TRUE, scale. = TRUE)
+1732006577783:# Compare variance explained
+1732006577783:species_pca_summary <- summary(species_pca)
+1732006577784:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006577784:prcomp_summary <- summary(pca)
+1732006577785:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006577785:comparison <- data.frame(
+1732006577785:PC = 1:2,
+1732006577785:vegan = vegan_variance[1:2],
+1732006577785:prcomp = prcomp_variance[1:2]
+1732006577786:)
+1732006577786:print(comparison)
+1732006608907:# Load libraries
+1732006608907:library(vegan)
+1732006608908:library(stats)
+1732006608908:# Prepare data - keep species in rows, stations in columns
+1732006608908:pca_data <- as.matrix(data[,-1])  # Remove Flokkun column
+1732006608908:rownames(pca_data) <- data$Flokkun    # Species names
+1732006608909:# Method 1 (vegan's rda)
+1732006608909:# Scale first, then transpose for rda
+1732006608909:scaled_data <- scale(pca_data)  # Scale original orientation
+1732006608909:species_pca <- rda(t(scaled_data))  # Transpose for rda
+1732006608910:# Method 2 (stats' prcomp) - unchanged
+1732006608910:pca <- prcomp(pca_data, center = TRUE, scale. = TRUE)
+1732006608911:# Compare variance explained
+1732006608911:species_pca_summary <- summary(species_pca)
+1732006608912:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006608912:prcomp_summary <- summary(pca)
+1732006608912:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006608912:comparison <- data.frame(
+1732006608913:PC = 1:2,
+1732006608913:vegan = vegan_variance[1:2],
+1732006608913:prcomp = prcomp_variance[1:2]
+1732006608913:)
+1732006608914:print(comparison)
+1732006744226:# Load libraries
+1732006744227:library(vegan)
+1732006744227:library(stats)
+1732006744228:# Method 2 (prcomp) - Keep this as our reference
+1732006744228:pca_data2 <- data[,-1]  # Remove Flokkun column
+1732006744228:rownames(pca_data2) <- data$Flokkun    # Add species names as row names
+1732006744229:pca <- prcomp(pca_data2, center = TRUE, scale. = TRUE)
+1732006744230:# Method 1 (vegan) - Adjust to match prcomp
+1732006744230:pca_data1 <- data[,-1]  # Same data structure as prcomp
+1732006744231:rownames(pca_data1) <- data$Flokkun
+1732006744231:species_pca <- rda(scale(pca_data1))  # Scale and no transpose
+1732006744232:# Compare variance explained
+1732006744232:species_pca_summary <- summary(species_pca)
+1732006744232:vegan_variance <- species_pca_summary$cont$importance[2,] * 100
+1732006744233:prcomp_summary <- summary(pca)
+1732006744233:prcomp_variance <- prcomp_summary$importance[2,] * 100
+1732006744233:comparison <- data.frame(
+1732006744233:PC = 1:2,
+1732006744234:vegan = vegan_variance[1:2],
+1732006744234:prcomp = prcomp_variance[1:2]
+1732006744234:)
+1732006744234:print(comparison)
+1732006848540:library(ggrepel)
+1732006848540:library(vegan)
+1732006848541:# Prepare data
+1732006848541:pca_data <- data[,-1]  # Remove Flokkun column
+1732006848542:rownames(pca_data) <- data$Flokkun    # Species names as row names
+1732006848542:# Run PCA
+1732006848542:species_pca <- rda(scale(pca_data))  # Scaled to match prcomp results
+1732006848544:# Extract scores
+1732006848544:site_scores <- data.frame(
+1732006848544:scores(species_pca, display = "sites"),
+1732006848545:Species = rownames(scores(species_pca, display = "sites"))
+1732006848545:) %>%
+1732006848546:mutate(Species = format_species_names(Species))
+1732006848554:species_loadings <- data.frame(
+1732006848554:scores(species_pca, display = "species"),
+1732006848555:Station = colnames(pca_data)
+1732006848555:)
+1732006848555:# Calculate variance explained
+1732006848556:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732006848556:# Create PCA biplot
+1732006848557:pca_plot <- ggplot() +
+1732006848557:# Add species points
+1732006848557:geom_point(data = site_scores,
+1732006848557:aes(x = PC1, y = PC2),
+1732006848557:size = 2,
+1732006848557:shape = 19,
+1732006848558:color = "black") +
+1732006848558:# Add station arrows
+1732006848558:geom_segment(data = species_loadings,
+1732006848558:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732006848558:arrow = arrow(length = unit(0.2, "cm")),
+1732006848558:color = "darkgrey") +
+1732006848558:# Add station labels
+1732006848559:geom_text_repel(data = species_loadings,
+1732006848559:aes(x = PC1, y = PC2, label = Station),
+1732006848559:size = 3.5,
+1732006848559:fontface = "bold",
+1732006848559:box.padding = 0.5,
+1732006848559:point.padding = 0.3) +
+1732006848560:# Add species labels
+1732006848560:geom_text_repel(data = site_scores,
+1732006848560:aes(x = PC1, y = PC2, label = Species),
+1732006848560:size = 2.8,
+1732006848560:fontface = "italic",
+1732006848560:color = "grey30",
+1732006848561:box.padding = 0.5,
+1732006848561:point.padding = 0.3) +
+1732006848561:coord_fixed() +
+1732006848561:theme_bw() +
+1732006848561:labs(
+1732006848562:title = "PCA of benthic community composition - 1999",
+1732006848562:subtitle = "Species shown as points, stations as arrows",
+1732006848562:x = paste0("PC1 (", var_explained[1], "%)"),
+1732006848562:y = paste0("PC2 (", var_explained[2], "%)")
+1732006848562:)
+1732006853423:pca_plot
+1732007167080:# Function to process and create PCA for one year
+1732007167081:create_year_pca <- function(year) {
+1732007167081:# Read and prepare data
+1732007167081:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732007167081:data <- as.data.frame(data)
+1732007167081:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732007167082:# Run PCA
+1732007167082:species_pca <- rda(scale(data))
+1732007167082:# Extract scores
+1732007167082:site_scores <- data.frame(
+1732007167082:scores(species_pca, display = "sites"),
+1732007167082:Species = rownames(scores(species_pca, display = "sites"))
+1732007167083:) %>%
+1732007167083:mutate(Species = format_species_names(Species))
+1732007167083:species_loadings <- data.frame(
+1732007167083:scores(species_pca, display = "species"),
+1732007167083:Station = colnames(data)
+1732007167084:)
+1732007167084:# Calculate variance explained
+1732007167084:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732007167085:# Create PCA plot
+1732007167085:pca_plot <- ggplot() +
+1732007167085:geom_point(data = site_scores,
+1732007167085:aes(x = PC1, y = PC2),
+1732007167085:size = 2,
+1732007167086:shape = 19,
+1732007167086:color = "black") +
+1732007167086:geom_segment(data = species_loadings,
+1732007167086:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732007167086:arrow = arrow(length = unit(0.2, "cm")),
+1732007167086:color = "darkgrey") +
+1732007167087:geom_text_repel(data = species_loadings,
+1732007167087:aes(x = PC1, y = PC2, label = Station),
+1732007167087:size = 3.5,
+1732007167087:fontface = "bold",
+1732007167088:box.padding = 0.5,
+1732007167088:point.padding = 0.3) +
+1732007167088:geom_text_repel(data = site_scores,
+1732007167088:aes(x = PC1, y = PC2, label = Species),
+1732007167089:size = 2.8,
+1732007167089:fontface = "italic",
+1732007167089:color = "grey30",
+1732007167089:box.padding = 0.5,
+1732007167090:point.padding = 0.3) +
+1732007167090:coord_fixed() +
+1732007167090:theme_bw() +
+1732007167090:theme(
+1732007167091:panel.grid.minor = element_blank(),
+1732007167091:panel.grid.major = element_line(color = "grey95"),
+1732007167091:axis.text = element_text(color = "black", size = 8),
+1732007167091:axis.title = element_text(size = 10),
+1732007167092:plot.title = element_text(size = 11, face = "bold"),
+1732007167092:plot.subtitle = element_text(size = 9)
+1732007167093:) +
+1732007167093:labs(
+1732007167093:title = paste("PCA of benthic community composition -", year),
+1732007167093:subtitle = "Species shown as points, stations as arrows",
+1732007167094:x = paste0("PC1 (", var_explained[1], "%)"),
+1732007167094:y = paste0("PC2 (", var_explained[2], "%)")
+1732007167094:)
+1732007167095:return(pca_plot)
+1732007167095:}
+1732007170116:# Create PCA plots for all years
+1732007170116:years <- c(1999, 2013:2017)
+1732007171191:pca_plots <- list()
+1732007172663:for(year in years) {
+1732007172663:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732007172663:# Save individual plots
+1732007172664:ggsave(
+1732007172664:paste0("output/pca_biplot_", year, ".png"),
+1732007172664:pca_plots[[as.character(year)]],
+1732007172664:width = 10, height = 8,
+1732007172664:dpi = 300,
+1732007172665:bg = "white"
+1732007172665:)
+1732007172665:}
+1732007296106:data <- read_excel("data/processed/gogn.xlsx", sheet = "1999")
+1732007296688:data <- as.data.frame(data)
+1732007296689:data <- data[,-c(1:3)]
+1732007296689:str(data)
+1732007388022:data <- read_excel("data/processed/gogn.xlsx", sheet = "1999")
+1732007388701:data <- as.data.frame(data)
+1732007391272:data
+1732007414777:year
+1732007419685:# Read and prepare data
+1732007419685:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732007425114:data <- as.data.frame(data)
+1732007430793:data
+1732007475875:# Function to process and create PCA for one year
+1732007475876:create_year_pca <- function(year) {
+1732007475876:# Read and prepare data
+1732007475876:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732007475876:data <- as.data.frame(data)
+1732007475876:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732007475876:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732007475877:data_matrix <- as.matrix(data[, -1])  # Select only station columns
+1732007475877:# Run PCA
+1732007475877:species_pca <- rda(scale(data))
+1732007475877:# Extract scores
+1732007475877:site_scores <- data.frame(
+1732007475878:scores(species_pca, display = "sites"),
+1732007475878:Species = rownames(scores(species_pca, display = "sites"))
+1732007475878:) %>%
+1732007475878:mutate(Species = format_species_names(Species))
+1732007475878:species_loadings <- data.frame(
+1732007475878:scores(species_pca, display = "species"),
+1732007475879:Station = colnames(data)
+1732007475879:)
+1732007475879:# Calculate variance explained
+1732007475879:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732007475880:# Create PCA plot
+1732007475880:pca_plot <- ggplot() +
+1732007475880:geom_point(data = site_scores,
+1732007475880:aes(x = PC1, y = PC2),
+1732007475880:size = 2,
+1732007475881:shape = 19,
+1732007475881:color = "black") +
+1732007475881:geom_segment(data = species_loadings,
+1732007475881:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732007475881:arrow = arrow(length = unit(0.2, "cm")),
+1732007475881:color = "darkgrey") +
+1732007475882:geom_text_repel(data = species_loadings,
+1732007475882:aes(x = PC1, y = PC2, label = Station),
+1732007475882:size = 3.5,
+1732007475882:fontface = "bold",
+1732007475882:box.padding = 0.5,
+1732007475883:point.padding = 0.3) +
+1732007475883:geom_text_repel(data = site_scores,
+1732007475883:aes(x = PC1, y = PC2, label = Species),
+1732007475883:size = 2.8,
+1732007475883:fontface = "italic",
+1732007475884:color = "grey30",
+1732007475884:box.padding = 0.5,
+1732007475884:point.padding = 0.3) +
+1732007475884:coord_fixed() +
+1732007475885:theme_bw() +
+1732007475885:theme(
+1732007475885:panel.grid.minor = element_blank(),
+1732007475885:panel.grid.major = element_line(color = "grey95"),
+1732007475886:axis.text = element_text(color = "black", size = 8),
+1732007475886:axis.title = element_text(size = 10),
+1732007475886:plot.title = element_text(size = 11, face = "bold"),
+1732007475886:plot.subtitle = element_text(size = 9)
+1732007475887:) +
+1732007475887:labs(
+1732007475887:title = paste("PCA of benthic community composition -", year),
+1732007475887:subtitle = "Species shown as points, stations as arrows",
+1732007475887:x = paste0("PC1 (", var_explained[1], "%)"),
+1732007475888:y = paste0("PC2 (", var_explained[2], "%)")
+1732007475888:)
+1732007475888:return(pca_plot)
+1732007475889:}
+1732007477972:# Create PCA plots for all years
+1732007477973:years <- c(1999, 2013:2017)
+1732007478548:pca_plots <- list()
+1732007479883:for(year in years) {
+1732007479883:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732007479884:# Save individual plots
+1732007479884:ggsave(
+1732007479884:paste0("output/pca_biplot_", year, ".png"),
+1732007479884:pca_plots[[as.character(year)]],
+1732007479884:width = 10, height = 8,
+1732007479884:dpi = 300,
+1732007479884:bg = "white"
+1732007479885:)
+1732007479885:}
+1732007497474:species_pca
+1732007503579:data_matrix
+1732007509952:site_scores
+1732007565276:# Create PCA plot
+1732007565276:pca_plot <- ggplot() +
+1732007565276:geom_point(data = site_scores,
+1732007565276:aes(x = PC1, y = PC2),
+1732007565276:size = 2,
+1732007565277:shape = 19,
+1732007565277:color = "black") +
+1732007565277:geom_segment(data = species_loadings,
+1732007565277:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732007565277:arrow = arrow(length = unit(0.2, "cm")),
+1732007565277:color = "darkgrey") +
+1732007565278:geom_text_repel(data = species_loadings,
+1732007565278:aes(x = PC1, y = PC2, label = Station),
+1732007565278:size = 3.5,
+1732007565278:fontface = "bold",
+1732007565279:box.padding = 0.5,
+1732007565279:point.padding = 0.3) +
+1732007565279:geom_text_repel(data = site_scores,
+1732007565279:aes(x = PC1, y = PC2, label = Species),
+1732007565279:size = 2.8,
+1732007565279:fontface = "italic",
+1732007565280:color = "grey30",
+1732007565280:box.padding = 0.5,
+1732007565280:point.padding = 0.3) +
+1732007565280:coord_fixed() +
+1732007565280:theme_bw() +
+1732007565280:theme(
+1732007565281:panel.grid.minor = element_blank(),
+1732007565281:panel.grid.major = element_line(color = "grey95"),
+1732007565281:axis.text = element_text(color = "black", size = 8),
+1732007565281:axis.title = element_text(size = 10),
+1732007565281:plot.title = element_text(size = 11, face = "bold"),
+1732007565281:plot.subtitle = element_text(size = 9)
+1732007565282:) +
+1732007565282:labs(
+1732007565282:title = paste("PCA of benthic community composition -", year),
+1732007565282:subtitle = "Species shown as points, stations as arrows",
+1732007565282:x = paste0("PC1 (", var_explained[1], "%)"),
+1732007565283:y = paste0("PC2 (", var_explained[2], "%)")
+1732007565283:)
+1732007569323:return(pca_plot)
+1732007593329:data_matrix
+1732007606623:head(data_matrix)
+1732007626099:species_pca
+1732007642241:site_scores
+1732007648384:head(site_scores)
+1732007661937:var_explained
+1732007675827:pca_plot
+1732007683106:# Create PCA plot
+1732007683106:pca_plot <- ggplot() +
+1732007683106:geom_point(data = site_scores,
+1732007683106:aes(x = PC1, y = PC2),
+1732007683106:size = 2,
+1732007683107:shape = 19,
+1732007683107:color = "black") +
+1732007683107:geom_segment(data = species_loadings,
+1732007683107:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732007683107:arrow = arrow(length = unit(0.2, "cm")),
+1732007683107:color = "darkgrey") +
+1732007683107:geom_text_repel(data = species_loadings,
+1732007683108:aes(x = PC1, y = PC2, label = Station),
+1732007683108:size = 3.5,
+1732007683108:fontface = "bold",
+1732007683108:box.padding = 0.5,
+1732007683108:point.padding = 0.3) +
+1732007683108:geom_text_repel(data = site_scores,
+1732007683108:aes(x = PC1, y = PC2, label = Species),
+1732007683109:size = 2.8,
+1732007683109:fontface = "italic",
+1732007683109:color = "grey30",
+1732007683109:box.padding = 0.5,
+1732007683109:point.padding = 0.3) +
+1732007683109:coord_fixed() +
+1732007683110:theme_bw() +
+1732007683110:theme(
+1732007683110:panel.grid.minor = element_blank(),
+1732007683110:panel.grid.major = element_line(color = "grey95"),
+1732007683110:axis.text = element_text(color = "black", size = 8),
+1732007683110:axis.title = element_text(size = 10),
+1732007683111:plot.title = element_text(size = 11, face = "bold"),
+1732007683111:plot.subtitle = element_text(size = 9)
+1732007683111:) +
+1732007683111:labs(
+1732007683111:title = paste("PCA of benthic community composition -", year),
+1732007683111:subtitle = "Species shown as points, stations as arrows",
+1732007683112:x = paste0("PC1 (", var_explained[1], "%)"),
+1732007683112:y = paste0("PC2 (", var_explained[2], "%)")
+1732007683112:)
+1732007685242:return(pca_plot)
+1732007853412:# Function to process and create PCA for one year
+1732007853412:create_year_pca <- function(year) {
+1732007853412:# Read and prepare data
+1732007853413:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732007853413:data <- as.data.frame(data)
+1732007853413:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732007853413:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732007853413:data <- data[, -1]  # Remove Flokkun column
+1732007853413:# Run PCA
+1732007853414:species_pca <- rda(scale(data))
+1732007853414:# Extract scores
+1732007853414:site_scores <- data.frame(
+1732007853414:scores(species_pca, display = "sites"),
+1732007853415:Species = rownames(scores(species_pca, display = "sites"))
+1732007853415:) %>%
+1732007853415:mutate(Species = format_species_names(Species))
+1732007853415:species_loadings <- data.frame(
+1732007853416:scores(species_pca, display = "species"),
+1732007853416:Station = colnames(data)
+1732007853416:)
+1732007853416:# Calculate variance explained
+1732007853416:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732007853417:# Create PCA plot
+1732007853417:pca_plot <- ggplot() +
+1732007853417:geom_point(data = site_scores,
+1732007853417:aes(x = PC1, y = PC2),
+1732007853417:size = 2,
+1732007853418:shape = 19,
+1732007853418:color = "black") +
+1732007853418:geom_segment(data = species_loadings,
+1732007853418:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732007853419:arrow = arrow(length = unit(0.2, "cm")),
+1732007853419:color = "darkgrey") +
+1732007853419:geom_text_repel(data = species_loadings,
+1732007853419:aes(x = PC1, y = PC2, label = Station),
+1732007853419:size = 3.5,
+1732007853420:fontface = "bold",
+1732007853420:box.padding = 0.5,
+1732007853420:point.padding = 0.3) +
+1732007853420:geom_text_repel(data = site_scores,
+1732007853420:aes(x = PC1, y = PC2, label = Species),
+1732007853421:size = 2.8,
+1732007853421:fontface = "italic",
+1732007853421:color = "grey30",
+1732007853421:box.padding = 0.5,
+1732007853421:point.padding = 0.3) +
+1732007853422:coord_fixed() +
+1732007853422:theme_bw() +
+1732007853423:theme(
+1732007853424:panel.grid.minor = element_blank(),
+1732007853425:panel.grid.major = element_line(color = "grey95"),
+1732007853425:axis.text = element_text(color = "black", size = 8),
+1732007853426:axis.title = element_text(size = 10),
+1732007853426:plot.title = element_text(size = 11, face = "bold"),
+1732007853427:plot.subtitle = element_text(size = 9)
+1732007853427:) +
+1732007853428:labs(
+1732007853428:title = paste("PCA of benthic community composition -", year),
+1732007853428:subtitle = "Species shown as points, stations as arrows",
+1732007853429:x = paste0("PC1 (", var_explained[1], "%)"),
+1732007853429:y = paste0("PC2 (", var_explained[2], "%)")
+1732007853429:)
+1732007853430:return(pca_plot)
+1732007853430:}
+1732007855243:# Create PCA plots for all years
+1732007855243:years <- c(1999, 2013:2017)
+1732007855797:pca_plots <- list()
+1732007857042:for(year in years) {
+1732007857042:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732007857043:# Save individual plots
+1732007857043:ggsave(
+1732007857043:paste0("output/pca_biplot_", year, ".png"),
+1732007857043:pca_plots[[as.character(year)]],
+1732007857043:width = 10, height = 8,
+1732007857043:dpi = 300,
+1732007857044:bg = "white"
+1732007857044:)
+1732007857044:}
+1732008180887:year
+1732008192280:data
+1732008203507:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732008204135:data <- as.data.frame(data)
+1732008204136:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732008204136:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732008204136:data <- data[, -1]  # Remove Flokkun column
+1732008211024:data
+1732008231314:# Run PCA
+1732008231315:species_pca <- rda(scale(data))
+1732008299524:# Function to process and create PCA for one year
+1732008299524:create_year_pca <- function(year) {
+1732008299524:# Read and prepare data
+1732008299524:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732008299524:data <- as.data.frame(data)
+1732008299525:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732008299525:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732008299525:data <- data[, -1]  # Remove Flokkun column
+1732008299525:data[is.na(data)] <- 0
+1732008299526:# Run PCA
+1732008299526:species_pca <- rda(scale(data))
+1732008299526:# Extract scores
+1732008299526:site_scores <- data.frame(
+1732008299526:scores(species_pca, display = "sites"),
+1732008299527:Species = rownames(scores(species_pca, display = "sites"))
+1732008299527:) %>%
+1732008299527:mutate(Species = format_species_names(Species))
+1732008299527:species_loadings <- data.frame(
+1732008299527:scores(species_pca, display = "species"),
+1732008299528:Station = colnames(data)
+1732008299528:)
+1732008299528:# Calculate variance explained
+1732008299528:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732008299529:# Create PCA plot
+1732008299529:pca_plot <- ggplot() +
+1732008299529:geom_point(data = site_scores,
+1732008299529:aes(x = PC1, y = PC2),
+1732008299529:size = 2,
+1732008299530:shape = 19,
+1732008299530:color = "black") +
+1732008299530:geom_segment(data = species_loadings,
+1732008299530:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732008299530:arrow = arrow(length = unit(0.2, "cm")),
+1732008299531:color = "darkgrey") +
+1732008299531:geom_text_repel(data = species_loadings,
+1732008299531:aes(x = PC1, y = PC2, label = Station),
+1732008299531:size = 3.5,
+1732008299531:fontface = "bold",
+1732008299531:box.padding = 0.5,
+1732008299532:point.padding = 0.3) +
+1732008299532:geom_text_repel(data = site_scores,
+1732008299532:aes(x = PC1, y = PC2, label = Species),
+1732008299532:size = 2.8,
+1732008299533:fontface = "italic",
+1732008299533:color = "grey30",
+1732008299533:box.padding = 0.5,
+1732008299533:point.padding = 0.3) +
+1732008299534:coord_fixed() +
+1732008299534:theme_bw() +
+1732008299534:theme(
+1732008299534:panel.grid.minor = element_blank(),
+1732008299559:panel.grid.major = element_line(color = "grey95"),
+1732008299560:axis.text = element_text(color = "black", size = 8),
+1732008299560:axis.title = element_text(size = 10),
+1732008299560:plot.title = element_text(size = 11, face = "bold"),
+1732008299560:plot.subtitle = element_text(size = 9)
+1732008299561:) +
+1732008299561:labs(
+1732008299561:title = paste("PCA of benthic community composition -", year),
+1732008299561:subtitle = "Species shown as points, stations as arrows",
+1732008299561:x = paste0("PC1 (", var_explained[1], "%)"),
+1732008299562:y = paste0("PC2 (", var_explained[2], "%)")
+1732008299562:)
+1732008299562:return(pca_plot)
+1732008299563:}
+1732008300490:# Create PCA plots for all years
+1732008300490:years <- c(1999, 2013:2017)
+1732008301651:pca_plots <- list()
+1732008302950:for(year in years) {
+1732008302950:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732008302950:# Save individual plots
+1732008302950:ggsave(
+1732008302950:paste0("output/pca_biplot_", year, ".png"),
+1732008302950:pca_plots[[as.character(year)]],
+1732008302951:width = 10, height = 8,
+1732008302951:dpi = 300,
+1732008302951:bg = "white"
+1732008302951:)
+1732008302951:}
+1732008518649:data
+1732008542971:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732008543681:data <- as.data.frame(data)
+1732008543682:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732008543683:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732008543683:data <- data[, -1]  # Remove Flokkun column
+1732008543684:data[is.na(data)] <- 0
+1732008547034:data
+1732008631981:# Read and prepare data
+1732008631982:data <- read_excel("data/processed/gogn.xlsx", sheet = as.character(year))
+1732008640429:data$Flokkun
+1732008792132:# Function to process and create PCA for one year
+1732008792133:create_year_pca <- function(year) {
+1732008792133:# Read and prepare data
+1732008792133:data <- read_excel("data/processed/gogn.xlsx",
+1732008792133:sheet = as.character(year),
+1732008792133:trim_ws = FALSE)  # Don't trim whitespace
+1732008792134:data <- as.data.frame(data)
+1732008792134:data <- data[,-c(1:3)]  # Remove first 3 columns
+1732008792134:rownames(data) <- data$Flokkun  # Set species/taxa as rownames
+1732008792134:data <- data[, -1]  # Remove Flokkun column
+1732008792134:data[is.na(data)] <- 0
+1732008792135:# Run PCA
+1732008792135:species_pca <- rda(scale(data))
+1732008792135:# Extract scores
+1732008792135:site_scores <- data.frame(
+1732008792136:scores(species_pca, display = "sites"),
+1732008792136:Species = rownames(scores(species_pca, display = "sites"))
+1732008792136:) %>%
+1732008792136:mutate(Species = format_species_names(Species))
+1732008792136:species_loadings <- data.frame(
+1732008792137:scores(species_pca, display = "species"),
+1732008792137:Station = colnames(data)
+1732008792137:)
+1732008792137:# Calculate variance explained
+1732008792138:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732008792138:# Create PCA plot
+1732008792138:pca_plot <- ggplot() +
+1732008792138:geom_point(data = site_scores,
+1732008792139:aes(x = PC1, y = PC2),
+1732008792139:size = 2,
+1732008792139:shape = 19,
+1732008792139:color = "black") +
+1732008792139:geom_segment(data = species_loadings,
+1732008792140:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732008792140:arrow = arrow(length = unit(0.2, "cm")),
+1732008792140:color = "darkgrey") +
+1732008792140:geom_text_repel(data = species_loadings,
+1732008792141:aes(x = PC1, y = PC2, label = Station),
+1732008792141:size = 3.5,
+1732008792141:fontface = "bold",
+1732008792141:box.padding = 0.5,
+1732008792141:point.padding = 0.3) +
+1732008792142:geom_text_repel(data = site_scores,
+1732008792142:aes(x = PC1, y = PC2, label = Species),
+1732008792142:size = 2.8,
+1732008792142:fontface = "italic",
+1732008792143:color = "grey30",
+1732008792143:box.padding = 0.5,
+1732008792143:point.padding = 0.3) +
+1732008792143:coord_fixed() +
+1732008792144:theme_bw() +
+1732008792144:theme(
+1732008792144:panel.grid.minor = element_blank(),
+1732008792145:panel.grid.major = element_line(color = "grey95"),
+1732008792145:axis.text = element_text(color = "black", size = 8),
+1732008792145:axis.title = element_text(size = 10),
+1732008792145:plot.title = element_text(size = 11, face = "bold"),
+1732008792146:plot.subtitle = element_text(size = 9)
+1732008792146:) +
+1732008792147:labs(
+1732008792147:title = paste("PCA of benthic community composition -", year),
+1732008792147:subtitle = "Species shown as points, stations as arrows",
+1732008792147:x = paste0("PC1 (", var_explained[1], "%)"),
+1732008792148:y = paste0("PC2 (", var_explained[2], "%)")
+1732008792148:)
+1732008792149:return(pca_plot)
+1732008792149:}
+1732008793115:# Create PCA plots for all years
+1732008793116:years <- c(1999, 2013:2017)
+1732008795606:pca_plots <- list()
+1732008796218:for(year in years) {
+1732008796219:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732008796219:# Save individual plots
+1732008796219:ggsave(
+1732008796219:paste0("output/pca_biplot_", year, ".png"),
+1732008796219:pca_plots[[as.character(year)]],
+1732008796219:width = 10, height = 8,
+1732008796220:dpi = 300,
+1732008796220:bg = "white"
+1732008796220:)
+1732008796220:}
+1732008821877:# Read and prepare data
+1732008821877:data <- read_excel("data/processed/gogn.xlsx",
+1732008821877:sheet = as.character(year),
+1732008821877:trim_ws = FALSE)  # Don't trim whitespace
+1732008826129:data <- as.data.frame(data)
+1732008833571:data$Flokkun
+1732008961594:# Nota gögnin frá Jörundi
+1732008961594:species_matrix_all <- henda_long_matched %>%
+1732008961594:select(station, year, species, adjusted_density) %>%
+1732008961594:pivot_wider(
+1732008961594:names_from = species,
+1732008961594:values_from = adjusted_density,
+1732008961595:values_fill = 0
+1732008961595:) %>%
+1732008961595:mutate(
+1732008961595:station_temp = station,
+1732008961595:year_temp = year
+1732008961595:) %>%
+1732008961596:select(-station, -year)
+1732008961613:# Rest of the code remains the same, starting from:
+1732008961613:# Find dominant species (>1% relative abundance)
+1732008961614:dominant_species <- species_matrix_all %>%
+1732008961614:select(where(is.numeric)) %>%
+1732008961614:select(-year_temp) %>%
+1732008961614:summarise(across(everything(), sum)) %>%
+1732008961614:pivot_longer(everything(),
+1732008961614:names_to = "species",
+1732008961614:values_to = "total_abundance") %>%
+1732008961614:arrange(desc(total_abundance)) %>%
+1732008961615:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732008961615:filter(relative_abundance > 0.01)
+1732008961647:format_species_names <- function(species_names) {
+1732008961647:formatted_names <- sapply(species_names, function(name) {
+1732008961647:# If there's a space, it's already formatted (species name or family), leave it as is
+1732008961647:if (grepl(" ", name)) {
+1732008961647:return(name)
+1732008961647:}
+1732008961647:# If it's a single word, add "sp."
+1732008961648:paste0(name, " sp.")
+1732008961648:})
+1732008961648:return(formatted_names)
+1732008961648:}
+1732008961648:# PCA plot function
+1732008961648:create_year_pca <- function(year_data, year, important_species) {
+1732008961648:# Perform PCA for this year
+1732008961648:species_pca <- rda(scale(select(year_data, -station_temp, -year_temp)))
+1732008961649:# Extract scores
+1732008961649:site_scores <- data.frame(
+1732008961649:scores(species_pca, display = "sites"),
+1732008961649:Station = year_data$station_temp
+1732008961649:)
+1732008961649:species_loadings <- data.frame(
+1732008961649:scores(species_pca, display = "species"),
+1732008961649:Species = rownames(scores(species_pca, display = "species"))
+1732008961649:) %>%
+1732008961649:filter(Species %in% important_species) %>%
+1732008961649:mutate(Species = format_species_names(Species))  # Format species names
+1732008961650:# Calculate variance explained
+1732008961650:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732008961650:# Set consistent axis limits across all plots
+1732008961650:axis_limits <- max(abs(c(
+1732008961650:site_scores$PC1, site_scores$PC2,
+1732008961650:species_loadings$PC1, species_loadings$PC2
+1732008961650:))) * 1.2  # Add 20% padding
+1732008961650:# Create PCA biplot
+1732008961650:pca_plot <- ggplot() +
+1732008961650:# Add site scores
+1732008961651:geom_point(data = site_scores,
+1732008961651:aes(x = PC1, y = PC2),
+1732008961651:size = 2,
+1732008961651:shape = 19,
+1732008961651:color = "black") +
+1732008961651:# Add site labels
+1732008961651:geom_text_repel(
+1732008961651:data = site_scores,
+1732008961651:aes(x = PC1, y = PC2, label = Station),
+1732008961652:size = 3.5,
+1732008961652:fontface = "bold",
+1732008961652:box.padding = 0.5,
+1732008961652:point.padding = 0.3
+1732008961652:) +
+1732008961652:# Add species arrows
+1732008961652:geom_segment(data = species_loadings,
+1732008961652:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732008961652:arrow = arrow(length = unit(0.2, "cm")),
+1732008961653:color = "darkgrey") +
+1732008961653:# Add species labels
+1732008961653:geom_text_repel(data = species_loadings,
+1732008961653:aes(x = PC1, y = PC2, label = Species),
+1732008961653:size = 2.8,
+1732008961653:fontface = "italic",
+1732008961653:color = "grey30",
+1732008961654:box.padding = 0.5,
+1732008961654:point.padding = 0.3) +
+1732008961654:# Set consistent axis limits
+1732008961654:coord_fixed(xlim = c(-axis_limits, axis_limits),
+1732008961654:ylim = c(-axis_limits, axis_limits)) +
+1732008961654:theme_bw() +
+1732008961654:theme(
+1732008961654:panel.grid.minor = element_blank(),
+1732008961655:panel.grid.major = element_line(color = "grey95"),
+1732008961655:axis.text = element_text(color = "black", size = 8),
+1732008961655:axis.title = element_text(size = 10),
+1732008961655:plot.title = element_text(size = 11, face = "bold"),
+1732008961655:plot.subtitle = element_text(size = 9),
+1732008961655:plot.margin = margin(t = 10, r = 10, b = 10, l = 10)
+1732008961656:) +
+1732008961656:labs(
+1732008961656:title = paste("PCA of benthic community composition -", year),
+1732008961656:subtitle = "Stations shown as points, species as arrows",
+1732008961656:x = paste0("PC1 (", var_explained[1], "%)"),
+1732008961656:y = paste0("PC2 (", var_explained[2], "%)")
+1732008961657:)
+1732008961657:return(pca_plot)
+1732008961657:}
+1732008961658:# Create PCA plots for each year
+1732008961658:years <- sort(unique(species_matrix_all$year_temp))
+1732008961658:pca_plots <- list()
+1732008961658:for(year in years) {
+1732008961658:year_data <- species_matrix_all %>%
+1732008961658:filter(year_temp == year)
+1732008961658:pca_plots[[as.character(year)]] <- create_year_pca(
+1732008961658:year_data,
+1732008961658:year,
+1732008961658:dominant_species$species
+1732008961658:)
+1732008961659:ggsave(
+1732008961659:paste0("output/pca_biplot_", year, ".png"),
+1732008961659:pca_plots[[as.character(year)]],
+1732008961659:width = 10, height = 8,
+1732008961659:dpi = 300,
+1732008961659:bg = "white"
+1732008961659:)
+1732008961659:}
+1732008979563:species_matrix_all
+1732009002532:select(year_data, -station_temp, -year_temp)
+1732009014732:scale(select(year_data, -station_temp, -year_temp))
+1732009020604:species_pca
+1732009027899:site_scores
+1732009034596:# Perform PCA for this year
+1732009034597:species_pca <- rda(scale(select(year_data, -station_temp, -year_temp)))
+1732011215053:henda_long_matched
+1732011245948:henda <- read_csv(
+1732011245949:"data/processed/hendaB.csv",
+1732011245949:col_types = cols(
+1732011245949:Year = col_integer(),
+1732011245949:Flokkun = col_character(),  # Ensure Flokkun is read as character
+1732011245949:A7 = col_integer(),
+1732011245949:B5 = col_integer(),
+1732011245949:B8 = col_integer(),
+1732011245949:C4 = col_integer(),
+1732011245950:E3 = col_integer(),
+1732011245950:E4 = col_integer()
+1732011245950:),
+1732011245950:na = c("", "NA")
+1732011245950:)
+1732011251916:henda
+1732011268854:henda <- read_csv(
+1732011268855:"data/processed/hendaB.csv",
+1732011268855:col_types = cols(
+1732011268855:Year = col_integer(),
+1732011268855:Flokkun = col_character(),  # Ensure Flokkun is read as character
+1732011268855:A7 = col_integer(),
+1732011268855:B5 = col_integer(),
+1732011268855:B8 = col_integer(),
+1732011268856:C4 = col_integer(),
+1732011268856:E3 = col_integer(),
+1732011268856:E4 = col_integer()
+1732011268856:),
+1732011268856:na = c("", "NA")
+1732011268856:) %>%
+1732011268856:mutate(across(where(is.numeric), ~ replace_na(., 0)))  %>% # Replace NA with 0 for numeric columns
+1732011268857:select(Flokkun:last_col())
+1732011272462:henda
+1732011349259:unique(henda$Year)
+1732011425478:# Function to process and create PCA for one year
+1732011425478:create_year_pca <- function(year, data = henda) {
+1732011425478:# Filter data for specific year and prepare
+1732011425479:year_data <- data %>%
+1732011425479:filter(Year == year) %>%
+1732011425479:select(-Year)  # Remove Year column
+1732011425479:# Prepare data for PCA
+1732011425479:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732011425479:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732011425480:# Handle NAs
+1732011425480:year_data[is.na(year_data)] <- 0
+1732011425480:# Run PCA
+1732011425481:species_pca <- rda(scale(year_data))
+1732011425481:# Extract scores
+1732011425481:site_scores <- data.frame(
+1732011425481:scores(species_pca, display = "sites"),
+1732011425481:Species = rownames(scores(species_pca, display = "sites"))
+1732011425481:) %>%
+1732011425481:mutate(Species = format_species_names(Species))
+1732011425482:species_loadings <- data.frame(
+1732011425482:scores(species_pca, display = "species"),
+1732011425482:Station = colnames(year_data)
+1732011425482:)
+1732011425483:# Calculate variance explained
+1732011425483:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732011425483:# Create PCA plot
+1732011425483:pca_plot <- ggplot() +
+1732011425483:geom_point(data = site_scores,
+1732011425484:aes(x = PC1, y = PC2),
+1732011425484:size = 2,
+1732011425484:shape = 19,
+1732011425484:color = "black") +
+1732011425484:geom_segment(data = species_loadings,
+1732011425485:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732011425485:arrow = arrow(length = unit(0.2, "cm")),
+1732011425485:color = "darkgrey") +
+1732011425485:geom_text_repel(data = species_loadings,
+1732011425485:aes(x = PC1, y = PC2, label = Station),
+1732011425486:size = 3.5,
+1732011425486:fontface = "bold",
+1732011425486:box.padding = 0.5,
+1732011425486:point.padding = 0.3) +
+1732011425486:geom_text_repel(data = site_scores,
+1732011425487:aes(x = PC1, y = PC2, label = Species),
+1732011425487:size = 2.8,
+1732011425487:fontface = "italic",
+1732011425487:color = "grey30",
+1732011425487:box.padding = 0.5,
+1732011425488:point.padding = 0.3) +
+1732011425488:coord_fixed() +
+1732011425488:theme_bw() +
+1732011425488:theme(
+1732011425489:panel.grid.minor = element_blank(),
+1732011425489:panel.grid.major = element_line(color = "grey95"),
+1732011425489:axis.text = element_text(color = "black", size = 8),
+1732011425489:axis.title = element_text(size = 10),
+1732011425490:plot.title = element_text(size = 11, face = "bold"),
+1732011425490:plot.subtitle = element_text(size = 9)
+1732011425490:) +
+1732011425491:labs(
+1732011425491:title = paste("PCA of benthic community composition -", year),
+1732011425491:subtitle = "Species shown as points, stations as arrows",
+1732011425491:x = paste0("PC1 (", var_explained[1], "%)"),
+1732011425492:y = paste0("PC2 (", var_explained[2], "%)")
+1732011425492:)
+1732011425493:return(pca_plot)
+1732011425494:}
+1732011427445:# Create PCA plots for all years
+1732011427446:years <- c(1999, 2013:2017)
+1732011428005:pca_plots <- list()
+1732011429405:for(year in years) {
+1732011429405:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732011429405:# Save individual plots
+1732011429406:ggsave(
+1732011429406:paste0("output/pca_biplot_", year, ".png"),
+1732011429406:pca_plots[[as.character(year)]],
+1732011429406:width = 10, height = 8,
+1732011429406:dpi = 300,
+1732011429406:bg = "white"
+1732011429406:)
+1732011429407:}
+1732011494700:site_scores
+1732011515915:year_data
+1732011524998:year
+1732011546355:species_pca
+1732011561093:site_scores
+1732011609187:species_pca
+1732011761717:species_pca
+1732011767459:year_data
+1732011774290:species_pca
+1732011800933:species_pca
+1732011807819:species_pca$regularization
+1732011812644:species_pca$colsum
+1732011822603:species_pca$tot.chi
+1732011826740:species_pca$Ybar
+1732011904174:species_pca <- rda(scale(year_data))
+1732011912676:# Handle NAs
+1732011912676:year_data[is.na(year_data)] <- 0
+1732011913349:# Run PCA
+1732011913350:species_pca <- rda(scale(year_data))
+1732011921003:year_data <- data %>%
+1732011921003:filter(Year == year) %>%
+1732011921003:select(-Year)  # Remove Year column
+1732011926071:year_data
+1732011940141:# Filter data for specific year and prepare
+1732011940141:year_data <- data %>%
+1732011940141:filter(Year == year) %>%
+1732011940141:select(-Year)  # Remove Year column
+1732011959045:# Filter data for specific year and prepare
+1732011959045:year_data <- henda %>%
+1732011959046:filter(Year == year) %>%
+1732011959046:select(-Year)  # Remove Year column
+1732011962972:# Prepare data for PCA
+1732011962973:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732012025221:# Filter data for specific year and prepare
+1732012025222:year_data <- henda %>%
+1732012025222:filter(Year == year) %>%
+1732012025222:select(-Year)%>%
+1732012025222:as.data.frame()  # Convert tibble to data frame
+1732012029015:# Prepare data for PCA
+1732012029015:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732012031477:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732012032341:# Handle NAs
+1732012032341:year_data[is.na(year_data)] <- 0
+1732012041373:# Run PCA
+1732012041373:species_pca <- rda(scale(year_data))
+1732012041375:# Extract scores and fix species names
+1732012041375:site_scores <- data.frame(
+1732012041375:scores(species_pca, display = "sites"),
+1732012041375:Species = rownames(scores(species_pca, display = "sites"))
+1732012041376:) %>%
+1732012041376:mutate(
+1732012041376:# Fix species names by adding spaces back
+1732012041376:Species = gsub("(?<!^)(?=[A-Z])", " ", Species, perl = TRUE)  # Add space before capital letters
+1732012041376:)
+1732012045668:site_scores
+1732012137989:# Run PCA
+1732012137989:species_pca <- rda(scale(year_data))
+1732012137990:# Extract scores and fix species names
+1732012137990:site_scores <- data.frame(
+1732012137990:scores(species_pca, display = "sites"),
+1732012137991:Species = rownames(scores(species_pca, display = "sites"))
+1732012137991:) %>%
+1732012137991:mutate(
+1732012137991:# Fix species names by adding spaces back
+1732012137991:Species = gsub("(?<!^)(?=[A-Z])", " ", Species, perl = TRUE)  # Add space before capital letters
+1732012137991:)%>%
+1732012137991:mutate(Species = format_species_names(Species))
+1732012139958:site_scores
+1732012184061:species_loadings <- data.frame(
+1732012184061:scores(species_pca, display = "species"),
+1732012184061:Station = colnames(year_data)
+1732012184061:)
+1732012189941:# Calculate variance explained
+1732012189941:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732012190833:# Create PCA plot
+1732012190833:pca_plot <- ggplot() +
+1732012190833:geom_point(data = site_scores,
+1732012190833:aes(x = PC1, y = PC2),
+1732012190834:size = 2,
+1732012190834:shape = 19,
+1732012190834:color = "black") +
+1732012190834:geom_segment(data = species_loadings,
+1732012190834:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732012190834:arrow = arrow(length = unit(0.2, "cm")),
+1732012190834:color = "darkgrey") +
+1732012190834:geom_text_repel(data = species_loadings,
+1732012190835:aes(x = PC1, y = PC2, label = Station),
+1732012190835:size = 3.5,
+1732012190835:fontface = "bold",
+1732012190835:box.padding = 0.5,
+1732012190835:point.padding = 0.3) +
+1732012190835:geom_text_repel(data = site_scores,
+1732012190836:aes(x = PC1, y = PC2, label = Species),
+1732012190836:size = 2.8,
+1732012190836:fontface = "italic",
+1732012190836:color = "grey30",
+1732012190836:box.padding = 0.5,
+1732012190836:point.padding = 0.3) +
+1732012190837:coord_fixed() +
+1732012190837:theme_bw() +
+1732012190837:theme(
+1732012190837:panel.grid.minor = element_blank(),
+1732012190837:panel.grid.major = element_line(color = "grey95"),
+1732012190837:axis.text = element_text(color = "black", size = 8),
+1732012190838:axis.title = element_text(size = 10),
+1732012190838:plot.title = element_text(size = 11, face = "bold"),
+1732012190838:plot.subtitle = element_text(size = 9)
+1732012190838:) +
+1732012190838:labs(
+1732012190838:title = paste("PCA of benthic community composition -", year),
+1732012190839:subtitle = "Species shown as points, stations as arrows",
+1732012190839:x = paste0("PC1 (", var_explained[1], "%)"),
+1732012190839:y = paste0("PC2 (", var_explained[2], "%)")
+1732012190839:)
+1732012192677:return(pca_plot)
+1732012199980:pca_plot
+1732012235847:# Function to process and create PCA for one year
+1732012235847:create_year_pca <- function(year, data = henda) {
+1732012235847:# Filter data for specific year and prepare
+1732012235848:year_data <- data %>%
+1732012235848:filter(Year == year) %>%
+1732012235848:select(-Year) %>%
+1732012235848:as.data.frame()  # Convert tibble to data frame
+1732012235848:# Prepare data for PCA
+1732012235848:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732012235848:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732012235849:# Handle NAs
+1732012235849:year_data[is.na(year_data)] <- 0
+1732012235849:# Run PCA
+1732012235849:species_pca <- rda(scale(year_data))
+1732012235849:# Extract scores and fix species names
+1732012235850:site_scores <- data.frame(
+1732012235850:scores(species_pca, display = "sites"),
+1732012235850:Species = rownames(scores(species_pca, display = "sites"))
+1732012235850:) %>%
+1732012235850:mutate(
+1732012235850:# Fix species names by adding spaces back
+1732012235850:Species = gsub("(?<!^)(?=[A-Z])", " ", Species, perl = TRUE)  # Add space before capital letters
+1732012235851:)%>%
+1732012235851:mutate(Species = format_species_names(Species))
+1732012235851:species_loadings <- data.frame(
+1732012235851:scores(species_pca, display = "species"),
+1732012235851:Station = colnames(year_data)
+1732012235851:)
+1732012235852:# Calculate variance explained
+1732012235852:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732012235852:# Create PCA plot
+1732012235853:pca_plot <- ggplot() +
+1732012235853:geom_point(data = site_scores,
+1732012235853:aes(x = PC1, y = PC2),
+1732012235853:size = 2,
+1732012235853:shape = 19,
+1732012235853:color = "black") +
+1732012235854:geom_segment(data = species_loadings,
+1732012235854:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732012235854:arrow = arrow(length = unit(0.2, "cm")),
+1732012235854:color = "darkgrey") +
+1732012235855:geom_text_repel(data = species_loadings,
+1732012235855:aes(x = PC1, y = PC2, label = Station),
+1732012235855:size = 3.5,
+1732012235855:fontface = "bold",
+1732012235855:box.padding = 0.5,
+1732012235856:point.padding = 0.3) +
+1732012235856:geom_text_repel(data = site_scores,
+1732012235856:aes(x = PC1, y = PC2, label = Species),
+1732012235856:size = 2.8,
+1732012235856:fontface = "italic",
+1732012235857:color = "grey30",
+1732012235857:box.padding = 0.5,
+1732012235857:point.padding = 0.3) +
+1732012235857:coord_fixed() +
+1732012235857:theme_bw() +
+1732012235858:theme(
+1732012235859:panel.grid.minor = element_blank(),
+1732012235859:panel.grid.major = element_line(color = "grey95"),
+1732012235859:axis.text = element_text(color = "black", size = 8),
+1732012235859:axis.title = element_text(size = 10),
+1732012235860:plot.title = element_text(size = 11, face = "bold"),
+1732012235860:plot.subtitle = element_text(size = 9)
+1732012235860:) +
+1732012235861:labs(
+1732012235862:title = paste("PCA of benthic community composition -", year),
+1732012235862:subtitle = "Species shown as points, stations as arrows",
+1732012235862:x = paste0("PC1 (", var_explained[1], "%)"),
+1732012235863:y = paste0("PC2 (", var_explained[2], "%)")
+1732012235863:)
+1732012235864:return(pca_plot)
+1732012235864:}
+1732012237335:# Create PCA plots for all years
+1732012237335:years <- c(1999, 2013:2017)
+1732012237590:pca_plots <- list()
+1732012238237:for(year in years) {
+1732012238237:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732012238237:# Save individual plots
+1732012238237:ggsave(
+1732012238237:paste0("output/pca_biplot_", year, ".png"),
+1732012238238:pca_plots[[as.character(year)]],
+1732012238238:width = 10, height = 8,
+1732012238238:dpi = 300,
+1732012238238:bg = "white"
+1732012238238:)
+1732012238238:}
+1732012241974:# Combine all plots
+1732012241975:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1732012241975:plot_annotation(
+1732012241975:title = "Temporal changes in community composition (1999, 2013-2017)",
+1732012241975:subtitle = "Species shown as points, stations as arrows",
+1732012241975:caption = "Based on species abundance data",
+1732012241975:theme = theme(
+1732012241975:plot.title = element_text(size = 14, face = "bold"),
+1732012241975:plot.subtitle = element_text(size = 12),
+1732012241975:plot.caption = element_text(size = 10, hjust = 0)
+1732012241976:)
+1732012241976:)
+1732012241981:# Save combined plot
+1732012241981:ggsave("output/pca_biplots_all_years.png",
+1732012241981:combined_plot,
+1732012241982:width = 20, height = 15,
+1732012241982:dpi = 300,
+1732012241982:bg = "white")
+1732012870183:library(ggrepel)
+1732012870183:library(vegan)
+1732012870184:library(patchwork)
+1732012870184:library(knitr)
+1732012870184:library(kableExtra)
+1732012870239:# Function to process and create PCA for one year
+1732012870239:create_year_pca <- function(year, data = henda) {
+1732012870239:# Filter data for specific year and prepare
+1732012870239:year_data <- data %>%
+1732012870239:filter(Year == year) %>%
+1732012870239:select(-Year) %>%
+1732012870240:as.data.frame()  # Convert tibble to data frame
+1732012870240:# Prepare data for PCA
+1732012870240:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732012870240:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732012870241:# Handle NAs
+1732012870241:year_data[is.na(year_data)] <- 0
+1732012870241:# Run PCA
+1732012870241:species_pca <- rda(scale(year_data))
+1732012870241:# Extract and format results for publication
+1732012870241:pca_summary <- summary(species_pca)
+1732012870242:# Create results list
+1732012870242:results <- list(
+1732012870242:# Basic PCA information
+1732012870242:year = year,
+1732012870242:n_species = nrow(year_data),
+1732012870243:n_stations = ncol(year_data),
+1732012870243:# Eigenvalues and variance explained
+1732012870243:eigenvalues = pca_summary$cont$eigenvals,
+1732012870243:variance_explained = pca_summary$cont$importance[2,] * 100,
+1732012870243:cumulative_variance = pca_summary$cont$importance[3,] * 100,
+1732012870244:# Species scores (contributions)
+1732012870244:species_scores = data.frame(
+1732012870244:Species = rownames(scores(species_pca, display = "sites")),
+1732012870244:PC1 = scores(species_pca, display = "sites")[,1],
+1732012870245:PC2 = scores(species_pca, display = "sites")[,2]
+1732012870245:) %>%
+1732012870245:arrange(desc(abs(PC1))) %>%  # Sort by absolute PC1 contribution
+1732012870245:mutate(across(where(is.numeric), round, 3)),
+1732012870246:# Station scores
+1732012870246:station_scores = data.frame(
+1732012870246:Station = colnames(year_data),
+1732012870246:PC1 = scores(species_pca, display = "species")[,1],
+1732012870246:PC2 = scores(species_pca, display = "species")[,2]
+1732012870247:) %>%
+1732012870247:mutate(across(where(is.numeric), round, 3)),
+1732012870247:# Plot object
+1732012870248:plot = create_plot(species_pca, year, year_data)  # Original plot creation
+1732012870248:)
+1732012870248:return(results)
+1732012870248:}
+1732012870249:# Create PCA results for all years
+1732012870249:years <- c(1999, 2013:2017)
+1732012870249:pca_results <- list()
+1732012870250:# Open file connection for results
+1732012870250:sink("output/PCA_results_summary.txt")
+1732012870278:cat("PCA Results Summary for Benthic Community Composition\n")
+1732012870279:cat("==================================================\n\n")
+1732012870279:for(year in years) {
+1732012870280:results <- create_year_pca(year)
+1732012870280:pca_results[[as.character(year)]] <- results
+1732012870280:# Print comprehensive results for each year
+1732012870280:cat(sprintf("\nYear %d Analysis\n", year))
+1732012870280:cat("----------------\n")
+1732012870280:# Basic information
+1732012870280:cat(sprintf("Number of species: %d\n", results$n_species))
+1732012870280:cat(sprintf("Number of stations: %d\n", results$n_stations))
+1732012870280:# Variance explained
+1732012870281:cat("\nVariance Explained:\n")
+1732012870281:var_table <- data.frame(
+1732012870281:PC = paste0("PC", 1:length(results$variance_explained)),
+1732012870281:"Variance (%)" = round(results$variance_explained, 1),
+1732012870281:"Cumulative (%)" = round(results$cumulative_variance, 1)
+1732012870281:)
+1732012870281:print(kable(var_table, format = "simple"))
+1732012870281:# Top contributing species
+1732012870281:cat("\nTop 10 Species Contributions (PC1):\n")
+1732012870281:print(kable(head(results$species_scores, 10), format = "simple"))
+1732012870282:# Station scores
+1732012870282:cat("\nStation Scores:\n")
+1732012870282:print(kable(results$station_scores, format = "simple"))
+1732012870282:cat("\n\n")
+1732012870282:}
+1732012935763:library(ggrepel)
+1732012935764:library(vegan)
+1732012935764:library(readxl)
+1732012935764:library(patchwork)
+1732012935765:# Function to process and create PCA for one year
+1732012935765:create_year_pca <- function(year, data = henda) {
+1732012935765:# Filter data for specific year and prepare
+1732012935765:year_data <- data %>%
+1732012935765:filter(Year == year) %>%
+1732012935765:select(-Year) %>%
+1732012935766:as.data.frame()  # Convert tibble to data frame
+1732012935766:# Prepare data for PCA
+1732012935766:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732012935766:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732012935766:# Handle NAs
+1732012935767:year_data[is.na(year_data)] <- 0
+1732012935767:# Run PCA
+1732012935767:species_pca <- rda(scale(year_data))
+1732012935767:# Extract scores and fix species names
+1732012935767:site_scores <- data.frame(
+1732012935768:scores(species_pca, display = "sites"),
+1732012935768:Species = rownames(scores(species_pca, display = "sites"))
+1732012935768:) %>%
+1732012935768:mutate(
+1732012935768:# Fix species names by adding spaces back
+1732012935768:Species = gsub("(?<!^)(?=[A-Z])", " ", Species, perl = TRUE)  # Add space before capital letters
+1732012935769:)%>%
+1732012935769:mutate(Species = format_species_names(Species))
+1732012935769:species_loadings <- data.frame(
+1732012935769:scores(species_pca, display = "species"),
+1732012935769:Station = colnames(year_data)
+1732012935770:)
+1732012935770:# Calculate variance explained
+1732012935770:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732012935770:# Create PCA plot
+1732012935771:pca_plot <- ggplot() +
+1732012935771:geom_point(data = site_scores,
+1732012935771:aes(x = PC1, y = PC2),
+1732012935771:size = 2,
+1732012935772:shape = 19,
+1732012935772:color = "black") +
+1732012935772:geom_segment(data = species_loadings,
+1732012935772:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732012935772:arrow = arrow(length = unit(0.2, "cm")),
+1732012935773:color = "darkgrey") +
+1732012935773:geom_text_repel(data = species_loadings,
+1732012935773:aes(x = PC1, y = PC2, label = Station),
+1732012935773:size = 3.5,
+1732012935773:fontface = "bold",
+1732012935774:box.padding = 0.5,
+1732012935774:point.padding = 0.3) +
+1732012935774:geom_text_repel(data = site_scores,
+1732012935774:aes(x = PC1, y = PC2, label = Species),
+1732012935774:size = 2.8,
+1732012935775:fontface = "italic",
+1732012935775:color = "grey30",
+1732012935775:box.padding = 0.5,
+1732012935775:point.padding = 0.3) +
+1732012935775:coord_fixed() +
+1732012935776:theme_bw() +
+1732012935776:theme(
+1732012935776:panel.grid.minor = element_blank(),
+1732012935776:panel.grid.major = element_line(color = "grey95"),
+1732012935777:axis.text = element_text(color = "black", size = 8),
+1732012935777:axis.title = element_text(size = 10),
+1732012935777:plot.title = element_text(size = 11, face = "bold"),
+1732012935777:plot.subtitle = element_text(size = 9)
+1732012935778:) +
+1732012935778:labs(
+1732012935778:title = paste("PCA of benthic community composition -", year),
+1732012935778:subtitle = "Species shown as points, stations as arrows",
+1732012935779:x = paste0("PC1 (", var_explained[1], "%)"),
+1732012935779:y = paste0("PC2 (", var_explained[2], "%)")
+1732012935779:)
+1732012935780:return(pca_plot)
+1732012935780:}
+1732012935780:# Create PCA plots for all years
+1732012935781:years <- c(1999, 2013:2017)
+1732012935781:pca_plots <- list()
+1732012935781:for(year in years) {
+1732012935781:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732012935781:# Save individual plots
+1732012935781:ggsave(
+1732012935782:paste0("output/pca_biplot_", year, ".png"),
+1732012935782:pca_plots[[as.character(year)]],
+1732012935782:width = 10, height = 8,
+1732012935782:dpi = 300,
+1732012935782:bg = "white"
+1732012935782:)
+1732012935783:}
+1732012939570:# Combine all plots
+1732012939570:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1732012939570:plot_annotation(
+1732012939571:title = "Temporal changes in community composition (1999, 2013-2017)",
+1732012939571:subtitle = "Species shown as points, stations as arrows",
+1732012939571:caption = "Based on species abundance data",
+1732012939571:theme = theme(
+1732012939571:plot.title = element_text(size = 14, face = "bold"),
+1732012939571:plot.subtitle = element_text(size = 12),
+1732012939571:plot.caption = element_text(size = 10, hjust = 0)
+1732012939572:)
+1732012939572:)
+1732012939577:# Save combined plot
+1732012939577:ggsave("output/pca_biplots_all_years.png",
+1732012939577:combined_plot,
+1732012939577:width = 20, height = 15,
+1732012939578:dpi = 300,
+1732012939578:bg = "white")
+1732012984766:# Create a function to extract key PCA results
+1732012984766:extract_pca_results <- function(year, species_pca) {
+1732012984766:# Get variance explained
+1732012984766:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732012984766:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732012984766:species_scores <- scores(species_pca, display = "sites")
+1732012984767:top_contributors <- data.frame(
+1732012984767:Species = rownames(species_scores),
+1732012984767:PC1_loading = species_scores[,1],
+1732012984767:PC2_loading = species_scores[,2]
+1732012984767:) %>%
+1732012984767:mutate(
+1732012984768:PC1_abs = abs(PC1_loading),
+1732012984768:PC2_abs = abs(PC2_loading)
+1732012984768:) %>%
+1732012984768:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732012984768:slice_head(n = 10)  # Top 10 contributing species
+1732012984768:# Get station scores
+1732012984769:station_scores <- data.frame(
+1732012984769:scores(species_pca, display = "species"),
+1732012984769:Station = colnames(year_data)
+1732012984769:)
+1732012984770:# Return list of results
+1732012984770:return(list(
+1732012984770:year = year,
+1732012984770:variance = var_explained,
+1732012984770:top_species = top_contributors,
+1732012984771:stations = station_scores
+1732012984771:))
+1732012984771:}
+1732012987159:# Store results for all years
+1732012987160:pca_results <- list()
+1732012987959:for(year in years) {
+1732012987960:# Run PCA again to get results
+1732012987960:year_data <- henda %>%
+1732012987960:filter(Year == year) %>%
+1732012987960:select(-Year) %>%
+1732012987960:as.data.frame()
+1732012987960:rownames(year_data) <- year_data$Flokkun
+1732012987961:year_data <- year_data %>% select(-Flokkun)
+1732012987961:species_pca <- rda(scale(year_data))
+1732012987961:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732012987961:}
+1732012989054:# Create summary tables for the manuscript
+1732012989054:# 1. Variance explained table
+1732012989054:variance_table <- data.frame(
+1732012989054:Year = years,
+1732012989054:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732012989055:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732012989055:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732012989055:)
+1732012990311:# Print variance table in publication format
+1732012990311:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732012991254:print(knitr::kable(variance_table,
+1732012991255:digits = 1,
+1732012991255:caption = "Percentage of variance explained by PCA axes"))
+1732012992813:# 2. Top contributing species for each year
+1732012992814:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732012993208:for(year in years) {
+1732012993208:cat(sprintf("\nYear %d:\n", year))
+1732012993208:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732012993208:digits = 3,
+1732012993208:caption = sprintf("Top 5 contributing species in %d", year)))
+1732012993209:}
+1732012994158:# 3. Station patterns summary
+1732012994158:cat("\nStation patterns across years:\n")
+1732012994408:for(year in years) {
+1732012994409:cat(sprintf("\nYear %d:\n", year))
+1732012994409:stations <- pca_results[[as.character(year)]]$stations
+1732012994409:print(knitr::kable(stations,
+1732012994409:digits = 3,
+1732012994409:caption = sprintf("Station coordinates in %d", year)))
+1732012994409:}
+1732012995533:# Save results to file for manuscript
+1732012995533:sink("output/pca_results_summary.txt")
+1732012997750:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732012998463:cat("================================================\n\n")
+1732012998826:cat("1. Variance Explained\n")
+1732012999257:cat("-------------------\n")
+1732012999697:print(knitr::kable(variance_table, digits = 1))
+1732013000064:cat("\n\n2. Species Contributions\n")
+1732013000360:cat("----------------------\n")
+1732013000647:for(year in years) {
+1732013000647:cat(sprintf("\nYear %d:\n", year))
+1732013000648:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,], digits = 3))
+1732013000648:}
+1732013001152:cat("\n\n3. Station Patterns\n")
+1732013001567:cat("-----------------\n")
+1732013001913:for(year in years) {
+1732013001913:cat(sprintf("\nYear %d:\n", year))
+1732013001913:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732013001913:}
+1732013002360:sink()
+1732028097723:# Find dominant species (>1% relative abundance)
+1732028097724:dominant_species <- henda %>%
+1732028097724:select(-Year, -Flokkun) %>%  # Remove Year and Flokkun columns
+1732028097724:summarise(across(everything(), sum)) %>%  # Sum abundances for each species
+1732028097724:pivot_longer(everything(),
+1732028097724:names_to = "Species",
+1732028097724:values_to = "total_abundance") %>%
+1732028097725:arrange(desc(total_abundance)) %>%
+1732028097725:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732028097725:filter(relative_abundance > 0.01)  # Keep species with >1% relative abundance
+1732028098368:# Function to process and create PCA for one year
+1732028098368:create_year_pca <- function(year, data = henda) {
+1732028098369:# Filter data for specific year and prepare
+1732028098369:year_data <- data %>%
+1732028098369:filter(Year == year) %>%
+1732028098369:select(-Year) %>%
+1732028098369:as.data.frame()  # Convert tibble to data frame
+1732028098370:# Prepare data for PCA
+1732028098370:rownames(year_data) <- year_data$Flokkun  # Set species names as rownames
+1732028098370:year_data <- year_data %>% select(-Flokkun)  # Remove Flokkun column
+1732028098370:# Handle NAs
+1732028098370:year_data[is.na(year_data)] <- 0
+1732028098371:# Run PCA
+1732028098371:species_pca <- rda(scale(year_data))
+1732028098371:# Extract scores
+1732028098371:site_scores <- data.frame(
+1732028098371:scores(species_pca, display = "sites"),
+1732028098372:Species = rownames(scores(species_pca, display = "sites"))
+1732028098372:) %>%
+1732028098372:# Only keep dominant species for labeling
+1732028098372:mutate(show_label = Species %in% dominant_species$Species)
+1732028098373:species_loadings <- data.frame(
+1732028098373:scores(species_pca, display = "species"),
+1732028098373:Station = colnames(year_data)
+1732028098373:)
+1732028098373:# Calculate variance explained
+1732028098373:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732028098374:# Create PCA plot
+1732028098374:pca_plot <- ggplot() +
+1732028098374:geom_point(data = site_scores,
+1732028098374:aes(x = PC1, y = PC2),
+1732028098374:size = 2,
+1732028098375:shape = 19,
+1732028098375:color = "black") +
+1732028098375:geom_segment(data = species_loadings,
+1732028098375:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732028098376:arrow = arrow(length = unit(0.2, "cm")),
+1732028098376:color = "darkgrey") +
+1732028098376:geom_text_repel(data = species_loadings,
+1732028098376:aes(x = PC1, y = PC2, label = Station),
+1732028098376:size = 3.5,
+1732028098377:fontface = "bold",
+1732028098377:box.padding = 0.5,
+1732028098377:point.padding = 0.3) +
+1732028098377:# Only label dominant species
+1732028098377:geom_text_repel(data = filter(site_scores, show_label),
+1732028098378:aes(x = PC1, y = PC2, label = Species),
+1732028098378:size = 2.8,
+1732028098378:fontface = "italic",
+1732028098378:color = "grey30",
+1732028098379:box.padding = 0.5,
+1732028098379:point.padding = 0.3) +
+1732028098379:coord_fixed() +
+1732028098379:theme_bw() +
+1732028098379:theme(
+1732028098380:panel.grid.minor = element_blank(),
+1732028098380:panel.grid.major = element_line(color = "grey95"),
+1732028098380:axis.text = element_text(color = "black", size = 8),
+1732028098380:axis.title = element_text(size = 10),
+1732028098381:plot.title = element_text(size = 11, face = "bold"),
+1732028098381:plot.subtitle = element_text(size = 9)
+1732028098381:) +
+1732028098381:labs(
+1732028098382:title = paste("PCA of benthic community composition -", year),
+1732028098382:subtitle = "Species shown as points, stations as arrows",
+1732028098382:x = paste0("PC1 (", var_explained[1], "%)"),
+1732028098382:y = paste0("PC2 (", var_explained[2], "%)")
+1732028098383:)
+1732028098383:return(pca_plot)
+1732028098384:}
+1732028100563:# Create PCA plots for all years
+1732028100564:years <- c(1999, 2013:2017)
+1732028101073:pca_plots <- list()
+1732028101744:for(year in years) {
+1732028101744:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732028101744:# Save individual plots
+1732028101745:ggsave(
+1732028101745:paste0("output/pca_biplot_", year, ".png"),
+1732028101745:pca_plots[[as.character(year)]],
+1732028101745:width = 10, height = 8,
+1732028101745:dpi = 300,
+1732028101746:bg = "white"
+1732028101746:)
+1732028101746:}
+1732028104332:# Combine all plots
+1732028104332:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1732028104333:plot_annotation(
+1732028104333:title = "Temporal changes in community composition (1999, 2013-2017)",
+1732028104333:subtitle = "Species shown as points, stations as arrows",
+1732028104333:caption = "Based on species abundance data",
+1732028104333:theme = theme(
+1732028104333:plot.title = element_text(size = 14, face = "bold"),
+1732028104333:plot.subtitle = element_text(size = 12),
+1732028104334:plot.caption = element_text(size = 10, hjust = 0)
+1732028104334:)
+1732028104334:)
+1732028110305:# Save combined plot
+1732028110305:ggsave("output/pca_biplots_all_years.png",
+1732028110306:combined_plot,
+1732028110306:width = 20, height = 15,
+1732028110306:dpi = 300,
+1732028110306:bg = "white")
+1732028231742:# Create a function to extract key PCA results
+1732028231743:extract_pca_results <- function(year, species_pca) {
+1732028231743:# Get variance explained
+1732028231743:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028231743:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732028231744:species_scores <- scores(species_pca, display = "sites")
+1732028231744:top_contributors <- data.frame(
+1732028231744:Species = rownames(species_scores),
+1732028231744:PC1_loading = species_scores[,1],
+1732028231744:PC2_loading = species_scores[,2]
+1732028231744:) %>%
+1732028231745:mutate(
+1732028231745:PC1_abs = abs(PC1_loading),
+1732028231745:PC2_abs = abs(PC2_loading)
+1732028231745:) %>%
+1732028231745:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732028231745:slice_head(n = 10)  # Top 10 contributing species
+1732028231746:# Get station scores
+1732028231746:station_scores <- data.frame(
+1732028231746:scores(species_pca, display = "species"),
+1732028231746:Station = colnames(year_data)
+1732028231746:)
+1732028231747:# Return list of results
+1732028231747:return(list(
+1732028231747:year = year,
+1732028231747:variance = var_explained,
+1732028231748:top_species = top_contributors,
+1732028231748:stations = station_scores
+1732028231748:))
+1732028231748:}
+1732028233048:# Store results for all years
+1732028233048:pca_results <- list()
+1732028233512:for(year in years) {
+1732028233513:# Run PCA again to get results
+1732028233513:year_data <- henda %>%
+1732028233513:filter(Year == year) %>%
+1732028233513:select(-Year) %>%
+1732028233513:as.data.frame()
+1732028233513:rownames(year_data) <- year_data$Flokkun
+1732028233514:year_data <- year_data %>% select(-Flokkun)
+1732028233514:species_pca <- rda(scale(year_data))
+1732028233514:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732028233514:}
+1732028234154:# Create summary tables for the manuscript
+1732028234154:# 1. Variance explained table
+1732028234154:variance_table <- data.frame(
+1732028234154:Year = years,
+1732028234154:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732028234155:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732028234155:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732028234155:)
+1732028234657:# Print variance table in publication format
+1732028234657:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732028235146:print(knitr::kable(variance_table,
+1732028235146:digits = 1,
+1732028235146:caption = "Percentage of variance explained by PCA axes"))
+1732028235609:# 2. Top contributing species for each year
+1732028235609:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732028236001:for(year in years) {
+1732028236001:cat(sprintf("\nYear %d:\n", year))
+1732028236002:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732028236002:digits = 3,
+1732028236002:caption = sprintf("Top 5 contributing species in %d", year)))
+1732028236002:}
+1732028236377:# 3. Station patterns summary
+1732028236378:cat("\nStation patterns across years:\n")
+1732028236697:for(year in years) {
+1732028236697:cat(sprintf("\nYear %d:\n", year))
+1732028236698:stations <- pca_results[[as.character(year)]]$stations
+1732028236698:print(knitr::kable(stations,
+1732028236698:digits = 3,
+1732028236698:caption = sprintf("Station coordinates in %d", year)))
+1732028236698:}
+1732028237099:# Save results to file for manuscript
+1732028237099:sink("output/pca_results_summary.txt")
+1732028237619:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028238210:cat("================================================\n\n")
+1732028238514:cat("1. Variance Explained\n")
+1732028238865:cat("-------------------\n")
+1732028239104:print(knitr::kable(variance_table, digits = 1))
+1732028239258:cat("\n\n2. Species Contributions\n")
+1732028239401:cat("----------------------\n")
+1732028239556:for(year in years) {
+1732028239556:cat(sprintf("\nYear %d:\n", year))
+1732028239556:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,], digits = 3))
+1732028239556:}
+1732028239667:cat("\n\n3. Station Patterns\n")
+1732028239825:cat("-----------------\n")
+1732028239971:for(year in years) {
+1732028239972:cat(sprintf("\nYear %d:\n", year))
+1732028239972:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732028239972:}
+1732028240193:sink()
+1732028582442:# Create a function to extract key PCA results
+1732028582442:extract_pca_results <- function(year, species_pca) {
+1732028582442:# Get variance explained
+1732028582442:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028582443:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732028582443:species_scores <- scores(species_pca, display = "sites")
+1732028582443:top_contributors <- data.frame(
+1732028582443:Species = rownames(species_scores),
+1732028582443:PC1_loading = species_scores[,1],
+1732028582444:PC2_loading = species_scores[,2]
+1732028582444:) %>%
+1732028582444:mutate(
+1732028582444:PC1_abs = abs(PC1_loading),
+1732028582444:PC2_abs = abs(PC2_loading)
+1732028582444:) %>%
+1732028582444:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732028582445:slice_head(n = 10)  # Top 10 contributing species
+1732028582445:# Get station scores
+1732028582445:station_scores <- data.frame(
+1732028582445:scores(species_pca, display = "species"),
+1732028582446:Station = colnames(year_data)
+1732028582446:)
+1732028582446:# Return list of results
+1732028582446:return(list(
+1732028582446:year = year,
+1732028582447:variance = var_explained,
+1732028582447:top_species = top_contributors,
+1732028582447:stations = station_scores
+1732028582447:))
+1732028582447:}
+1732028582448:# Store results for all years
+1732028582448:pca_results <- list()
+1732028582448:for(year in years) {
+1732028582448:# Run PCA again to get results
+1732028582448:year_data <- henda %>%
+1732028582449:filter(Year == year) %>%
+1732028582449:select(-Year) %>%
+1732028582449:as.data.frame()
+1732028582450:rownames(year_data) <- year_data$Flokkun
+1732028582450:year_data <- year_data %>% select(-Flokkun)
+1732028582450:species_pca <- rda(scale(year_data))
+1732028582450:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732028582450:}
+1732028582540:# Create summary tables for the manuscript
+1732028582540:# 1. Variance explained table
+1732028582540:variance_table <- data.frame(
+1732028582540:Year = years,
+1732028582540:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732028582540:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732028582540:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732028582540:)
+1732028582546:# Print variance table in publication format
+1732028582546:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732028582547:print(knitr::kable(variance_table,
+1732028582547:digits = 1,
+1732028582547:caption = "Percentage of variance explained by PCA axes"))
+1732028582556:# 2. Top contributing species for each year
+1732028582556:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732028582556:for(year in years) {
+1732028582556:cat(sprintf("\nYear %d:\n", year))
+1732028582556:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732028582557:digits = 3,
+1732028582557:caption = sprintf("Top 5 contributing species in %d", year)))
+1732028582557:}
+1732028582613:# 3. Station patterns summary
+1732028582613:cat("\nStation patterns across years:\n")
+1732028582613:for(year in years) {
+1732028582613:cat(sprintf("\nYear %d:\n", year))
+1732028582613:stations <- pca_results[[as.character(year)]]$stations
+1732028582613:print(knitr::kable(stations,
+1732028582613:digits = 3,
+1732028582613:caption = sprintf("Station coordinates in %d", year)))
+1732028582614:}
+1732028582691:# Save results to file for manuscript
+1732028582691:sink("output/pca_results_summary.txt")
+1732028582700:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028582700:cat("================================================\n\n")
+1732028582701:cat("1. Variance Explained\n")
+1732028582701:cat("-------------------\n")
+1732028582701:print(knitr::kable(variance_table, digits = 1))
+1732028582708:cat("\n\n2. Species Contributions\n")
+1732028582709:cat("----------------------\n")
+1732028582709:for(year in years) {
+1732028582709:cat(sprintf("\nYear %d:\n", year))
+1732028582709:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,], digits = 3))
+1732028582709:}
+1732028582759:cat("\n\n3. Station Patterns\n")
+1732028582759:cat("-----------------\n")
+1732028582760:for(year in years) {
+1732028582760:cat(sprintf("\nYear %d:\n", year))
+1732028582760:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732028582760:}
+1732028582803:sink()
+1732028634576:# Create a function to extract key PCA results
+1732028634576:extract_pca_results <- function(year, species_pca) {
+1732028634576:# Get variance explained
+1732028634577:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028634577:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732028634577:species_scores <- scores(species_pca, display = "sites")
+1732028634577:top_contributors <- data.frame(
+1732028634577:Species = rownames(species_scores),
+1732028634578:PC1_loading = species_scores[,1],
+1732028634578:PC2_loading = species_scores[,2]
+1732028634578:) %>%
+1732028634578:mutate(
+1732028634578:PC1_abs = abs(PC1_loading),
+1732028634578:PC2_abs = abs(PC2_loading),
+1732028634579:is_dominant = Species %in% dominant_species$Species,
+1732028634579:relative_abundance = sapply(Species, function(sp) {
+1732028634579:dominant_species$relative_abundance[dominant_species$Species == sp][1]
+1732028634579:})
+1732028634579:) %>%
+1732028634580:arrange(desc(PC1_abs + PC2_abs))
+1732028634580:# Get station scores
+1732028634580:station_scores <- data.frame(
+1732028634581:scores(species_pca, display = "species"),
+1732028634581:Station = colnames(year_data)
+1732028634581:)
+1732028634581:return(list(
+1732028634581:year = year,
+1732028634582:variance = var_explained,
+1732028634582:top_species = top_contributors,
+1732028634582:stations = station_scores
+1732028634582:))
+1732028634582:}
+1732028634583:# Store results for all years
+1732028634583:pca_results <- list()
+1732028634583:for(year in years) {
+1732028634583:# Run PCA again to get results
+1732028634584:year_data <- henda %>%
+1732028634584:filter(Year == year) %>%
+1732028634584:select(-Year) %>%
+1732028634584:as.data.frame()
+1732028634584:rownames(year_data) <- year_data$Flokkun
+1732028634585:year_data <- year_data %>% select(-Flokkun)
+1732028634585:species_pca <- rda(scale(year_data))
+1732028634585:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732028634585:}
+1732028634694:# Create summary tables for the manuscript
+1732028634694:# 1. Variance explained table
+1732028634694:variance_table <- data.frame(
+1732028634694:Year = years,
+1732028634694:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732028634694:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732028634694:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732028634694:)
+1732028634701:# Print variance table in publication format
+1732028634701:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732028634702:print(knitr::kable(variance_table,
+1732028634702:digits = 1,
+1732028634702:caption = "Percentage of variance explained by PCA axes"))
+1732028634711:# 2. Top contributing species for each year
+1732028634711:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732028634711:for(year in years) {
+1732028634711:cat(sprintf("\nYear %d:\n", year))
+1732028634711:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732028634711:digits = 3,
+1732028634711:caption = sprintf("Top 5 contributing species in %d", year)))
+1732028634711:}
+1732028634765:# 3. Station patterns summary
+1732028634766:cat("\nStation patterns across years:\n")
+1732028634766:for(year in years) {
+1732028634766:cat(sprintf("\nYear %d:\n", year))
+1732028634766:stations <- pca_results[[as.character(year)]]$stations
+1732028634766:print(knitr::kable(stations,
+1732028634766:digits = 3,
+1732028634766:caption = sprintf("Station coordinates in %d", year)))
+1732028634766:}
+1732028634813:# Save results to file for manuscript
+1732028634813:sink("output/pca_results_summary.txt")
+1732028634822:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028634823:cat("================================================\n\n")
+1732028634823:cat("1. Variance Explained\n")
+1732028634823:cat("-------------------\n")
+1732028634824:print(knitr::kable(variance_table, digits = 1))
+1732028634831:cat("\n\n2. Species Contributions\n")
+1732028634832:cat("----------------------\n")
+1732028634832:for(year in years) {
+1732028634832:cat(sprintf("\nYear %d:\n", year))
+1732028634832:# Print dominant species results
+1732028634832:cat("\nDominant Species (>1% relative abundance):\n")
+1732028634832:dominant_results <- pca_results[[as.character(year)]]$top_species %>%
+1732028634832:filter(is_dominant) %>%
+1732028634832:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732028634833:slice_head(n = 10)
+1732028634833:print(knitr::kable(dominant_results, digits = 3))
+1732028634833:# Print top contributors regardless of abundance
+1732028634833:cat("\nTop Contributing Species (including rare species):\n")
+1732028634833:all_results <- pca_results[[as.character(year)]]$top_species %>%
+1732028634833:select(Species, PC1_loading, PC2_loading) %>%
+1732028634833:slice_head(n = 10)
+1732028634833:print(knitr::kable(all_results, digits = 3))
+1732028634833:}
+1732028634959:cat("\n\n3. Station Patterns\n")
+1732028634960:cat("-----------------\n")
+1732028634960:for(year in years) {
+1732028634960:cat(sprintf("\nYear %d:\n", year))
+1732028634960:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732028634961:}
+1732028634999:# Add summary of dominant species
+1732028634999:cat("\n\n4. Overall Community Dominance Patterns\n")
+1732028634999:cat("-----------------------------------\n")
+1732028635000:print(knitr::kable(
+1732028635000:dominant_species %>%
+1732028635000:arrange(desc(relative_abundance)) %>%
+1732028635000:mutate(
+1732028635000:relative_abundance = round(relative_abundance * 100, 2),
+1732028635000:cumulative_abundance = cumsum(relative_abundance)
+1732028635000:) %>%
+1732028635000:select(Species, relative_abundance, cumulative_abundance),
+1732028635000:col.names = c("Species", "Relative Abundance (%)", "Cumulative Abundance (%)"),
+1732028635000:digits = 2
+1732028635000:))
+1732028635011:sink()
+1732028797874:# Create a function to extract key PCA results
+1732028797875:extract_pca_results <- function(year, species_pca) {
+1732028797875:# Get variance explained
+1732028797875:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028797875:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732028797875:species_scores <- scores(species_pca, display = "sites")
+1732028797876:top_contributors <- data.frame(
+1732028797876:Species = rownames(species_scores),
+1732028797876:PC1_loading = species_scores[,1],
+1732028797876:PC2_loading = species_scores[,2]
+1732028797876:) %>%
+1732028797876:mutate(
+1732028797877:PC1_abs = abs(PC1_loading),
+1732028797877:PC2_abs = abs(PC2_loading),
+1732028797877:is_dominant = Species %in% dominant_species$Species,
+1732028797877:relative_abundance = sapply(Species, function(sp) {
+1732028797877:dominant_species$relative_abundance[dominant_species$Species == sp][1]
+1732028797877:})
+1732028797878:) %>%
+1732028797878:arrange(desc(PC1_abs + PC2_abs))
+1732028797878:# Get station scores
+1732028797878:station_scores <- data.frame(
+1732028797879:scores(species_pca, display = "species"),
+1732028797879:Station = colnames(year_data)
+1732028797879:)
+1732028797879:return(list(
+1732028797880:year = year,
+1732028797880:variance = var_explained,
+1732028797880:top_species = top_contributors,
+1732028797880:stations = station_scores
+1732028797880:))
+1732028797881:}
+1732028797881:# Store results for all years
+1732028797881:pca_results <- list()
+1732028797882:for(year in years) {
+1732028797882:# Run PCA again to get results
+1732028797882:year_data <- henda %>%
+1732028797882:filter(Year == year) %>%
+1732028797882:select(-Year) %>%
+1732028797882:as.data.frame()
+1732028797883:rownames(year_data) <- year_data$Flokkun
+1732028797883:year_data <- year_data %>% select(-Flokkun)
+1732028797883:species_pca <- rda(scale(year_data))
+1732028797883:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732028797883:}
+1732028797962:# Create summary tables for the manuscript
+1732028797962:# 1. Variance explained table
+1732028797962:variance_table <- data.frame(
+1732028797962:Year = years,
+1732028797962:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732028797962:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732028797962:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732028797962:)
+1732028797967:# Print variance table in publication format
+1732028797967:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732028797969:print(knitr::kable(variance_table,
+1732028797969:digits = 1,
+1732028797969:caption = "Percentage of variance explained by PCA axes"))
+1732028797978:# 2. Top contributing species for each year
+1732028797978:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732028798003:for(year in years) {
+1732028798003:cat(sprintf("\nYear %d:\n", year))
+1732028798003:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732028798003:digits = 3,
+1732028798003:caption = sprintf("Top 5 contributing species in %d", year)))
+1732028798003:}
+1732028798100:# 3. Station patterns summary
+1732028798100:cat("\nStation patterns across years:\n")
+1732028798101:for(year in years) {
+1732028798101:cat(sprintf("\nYear %d:\n", year))
+1732028798101:stations <- pca_results[[as.character(year)]]$stations
+1732028798101:print(knitr::kable(stations,
+1732028798101:digits = 3,
+1732028798101:caption = sprintf("Station coordinates in %d", year)))
+1732028798101:}
+1732028798135:# Save results to file for manuscript
+1732028798135:sink("output/pca_results_summary.txt")
+1732028798145:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028798145:cat("================================================\n\n")
+1732028798146:cat("1. Variance Explained\n")
+1732028798146:cat("-------------------\n")
+1732028798147:print(knitr::kable(variance_table, digits = 1))
+1732028798153:cat("\n\n2. Species Contributions\n")
+1732028798153:cat("----------------------\n")
+1732028798154:for(year in years) {
+1732028798154:cat(sprintf("\nYear %d:\n", year))
+1732028798154:# Get year's results
+1732028798154:year_results <- pca_results[[as.character(year)]]$top_species
+1732028798154:# Print dominant species results (>1% relative abundance)
+1732028798155:cat("\nDominant Species (>1% relative abundance):\n")
+1732028798155:dominant_results <- year_results %>%
+1732028798155:filter(!is.na(relative_abundance)) %>%  # Only species in dominant_species list
+1732028798155:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732028798155:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732028798155:slice_head(n = 10)
+1732028798156:print(knitr::kable(dominant_results, digits = 3))
+1732028798156:# Print all species contributions
+1732028798156:cat("\nTop Contributing Species (including rare species):\n")
+1732028798156:all_results <- year_results %>%
+1732028798156:select(Species, PC1_loading, PC2_loading) %>%
+1732028798157:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732028798157:slice_head(n = 10)
+1732028798157:print(knitr::kable(all_results, digits = 3))
+1732028798157:}
+1732028798312:cat("\n\n3. Station Patterns\n")
+1732028798313:cat("-----------------\n")
+1732028798313:for(year in years) {
+1732028798313:cat(sprintf("\nYear %d:\n", year))
+1732028798313:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732028798313:}
+1732028798350:# Add summary of overall dominant species
+1732028798350:cat("\n\n4. Overall Community Dominance Patterns\n")
+1732028798350:cat("-----------------------------------\n")
+1732028798350:print(knitr::kable(
+1732028798350:dominant_species %>%
+1732028798350:arrange(desc(relative_abundance)) %>%
+1732028798351:mutate(
+1732028798351:relative_abundance = relative_abundance * 100,
+1732028798351:cumulative_abundance = cumsum(relative_abundance)
+1732028798351:),
+1732028798351:col.names = c("Species", "Total Abundance", "Relative Abundance (%)", "Cumulative Abundance (%)"),
+1732028798351:digits = 2
+1732028798351:))
+1732028798361:sink()
+1732028825693:# Create a function to extract key PCA results
+1732028825693:extract_pca_results <- function(year, species_pca) {
+1732028825693:# Get variance explained
+1732028825693:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028825693:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732028825693:species_scores <- scores(species_pca, display = "sites")
+1732028825694:top_contributors <- data.frame(
+1732028825694:Species = rownames(species_scores),
+1732028825694:PC1_loading = species_scores[,1],
+1732028825694:PC2_loading = species_scores[,2]
+1732028825694:) %>%
+1732028825694:mutate(
+1732028825695:PC1_abs = abs(PC1_loading),
+1732028825695:PC2_abs = abs(PC2_loading),
+1732028825695:is_dominant = Species %in% dominant_species$Species,
+1732028825695:relative_abundance = sapply(Species, function(sp) {
+1732028825695:dominant_species$relative_abundance[dominant_species$Species == sp][1]
+1732028825695:})
+1732028825696:) %>%
+1732028825696:arrange(desc(PC1_abs + PC2_abs))
+1732028825696:# Get station scores
+1732028825696:station_scores <- data.frame(
+1732028825696:scores(species_pca, display = "species"),
+1732028825697:Station = colnames(year_data)
+1732028825697:)
+1732028825697:return(list(
+1732028825697:year = year,
+1732028825698:variance = var_explained,
+1732028825698:top_species = top_contributors,
+1732028825698:stations = station_scores
+1732028825698:))
+1732028825698:}
+1732028825699:# Store results for all years
+1732028825699:pca_results <- list()
+1732028825699:for(year in years) {
+1732028825699:# Run PCA again to get results
+1732028825699:year_data <- henda %>%
+1732028825699:filter(Year == year) %>%
+1732028825700:select(-Year) %>%
+1732028825700:as.data.frame()
+1732028825700:rownames(year_data) <- year_data$Flokkun
+1732028825700:year_data <- year_data %>% select(-Flokkun)
+1732028825700:species_pca <- rda(scale(year_data))
+1732028825700:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732028825700:}
+1732028825772:# Create summary tables for the manuscript
+1732028825772:# 1. Variance explained table
+1732028825772:variance_table <- data.frame(
+1732028825773:Year = years,
+1732028825773:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732028825773:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732028825773:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732028825773:)
+1732028825778:# Print variance table in publication format
+1732028825778:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732028825779:print(knitr::kable(variance_table,
+1732028825779:digits = 1,
+1732028825779:caption = "Percentage of variance explained by PCA axes"))
+1732028825787:# 2. Top contributing species for each year
+1732028825787:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732028825788:for(year in years) {
+1732028825788:cat(sprintf("\nYear %d:\n", year))
+1732028825788:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732028825788:digits = 3,
+1732028825788:caption = sprintf("Top 5 contributing species in %d", year)))
+1732028825788:}
+1732028825835:# 3. Station patterns summary
+1732028825835:cat("\nStation patterns across years:\n")
+1732028825835:for(year in years) {
+1732028825835:cat(sprintf("\nYear %d:\n", year))
+1732028825835:stations <- pca_results[[as.character(year)]]$stations
+1732028825835:print(knitr::kable(stations,
+1732028825835:digits = 3,
+1732028825835:caption = sprintf("Station coordinates in %d", year)))
+1732028825835:}
+1732028825874:# Save results to file for manuscript
+1732028825874:sink("output/pca_results_summary.txt")
+1732028825882:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028825883:cat("================================================\n\n")
+1732028825883:cat("1. Variance Explained\n")
+1732028825884:cat("-------------------\n")
+1732028825884:print(knitr::kable(variance_table, digits = 1))
+1732028825892:cat("\n\n2. Species Contributions\n")
+1732028825892:cat("----------------------\n")
+1732028825893:for(year in years) {
+1732028825893:cat(sprintf("\nYear %d:\n", year))
+1732028825893:# Get year's results
+1732028825893:year_results <- pca_results[[as.character(year)]]$top_species
+1732028825893:# Print dominant species results (>1% relative abundance)
+1732028825893:cat("\nDominant Species (>1% relative abundance):\n")
+1732028825893:dominant_results <- year_results %>%
+1732028825893:filter(!is.na(relative_abundance)) %>%  # Only species in dominant_species list
+1732028825894:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732028825894:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732028825894:slice_head(n = 10)
+1732028825894:print(knitr::kable(dominant_results, digits = 3))
+1732028825894:# Print all species contributions
+1732028825894:cat("\nTop Contributing Species (including rare species):\n")
+1732028825894:all_results <- year_results %>%
+1732028825894:select(Species, PC1_loading, PC2_loading) %>%
+1732028825894:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732028825895:slice_head(n = 10)
+1732028825895:print(knitr::kable(all_results, digits = 3))
+1732028825895:}
+1732028826076:cat("\n\n3. Station Patterns\n")
+1732028826077:cat("-----------------\n")
+1732028826077:for(year in years) {
+1732028826077:cat(sprintf("\nYear %d:\n", year))
+1732028826077:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732028826077:}
+1732028826114:# Add summary of overall dominant species
+1732028826114:cat("\n\n4. Overall Community Dominance Patterns\n")
+1732028826114:cat("-----------------------------------\n")
+1732028826115:print(knitr::kable(
+1732028826115:dominant_species %>%
+1732028826115:arrange(desc(relative_abundance)) %>%
+1732028826115:mutate(
+1732028826115:relative_abundance = relative_abundance * 100,
+1732028826115:cumulative_abundance = cumsum(relative_abundance)
+1732028826115:),
+1732028826115:col.names = c("Species", "Total Abundance", "Relative Abundance (%)", "Cumulative Abundance (%)"),
+1732028826115:digits = 2
+1732028826115:))
+1732028826125:sink()
+1732028891921:# First, let's make sure dominant_species is correctly identified
+1732028891921:dominant_species <- henda %>%
+1732028891921:select(-Year, -Flokkun) %>%
+1732028891921:summarise(across(everything(), sum)) %>%
+1732028891922:pivot_longer(everything(),
+1732028891922:names_to = "Species",
+1732028891922:values_to = "total_abundance") %>%
+1732028891922:arrange(desc(total_abundance)) %>%
+1732028891922:mutate(
+1732028891922:relative_abundance = total_abundance/sum(total_abundance)
+1732028891923:) %>%
+1732028891923:filter(relative_abundance > 0.01)  # Keep species with >1% relative abundance
+1732028891934:# Let's verify the dominant species list
+1732028891934:print("Dominant species identified:")
+1732028891936:print(dominant_species)
+1732028891958:# Modified extract_pca_results function
+1732028891958:extract_pca_results <- function(year, species_pca) {
+1732028891958:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732028891958:species_scores <- scores(species_pca, display = "sites")
+1732028891958:top_contributors <- data.frame(
+1732028891958:Species = rownames(species_scores),
+1732028891958:PC1_loading = species_scores[,1],
+1732028891959:PC2_loading = species_scores[,2]
+1732028891959:) %>%
+1732028891959:mutate(
+1732028891959:PC1_abs = abs(PC1_loading),
+1732028891959:PC2_abs = abs(PC2_loading)
+1732028891959:) %>%
+1732028891959:# Make sure Species names match exactly
+1732028891959:left_join(
+1732028891959:dominant_species %>%
+1732028891959:select(Species, total_abundance, relative_abundance),
+1732028891959:by = "Species"
+1732028891960:)
+1732028891960:station_scores <- data.frame(
+1732028891960:scores(species_pca, display = "species"),
+1732028891960:Station = colnames(year_data)
+1732028891960:)
+1732028891960:return(list(
+1732028891960:year = year,
+1732028891960:variance = var_explained,
+1732028891960:top_species = top_contributors,
+1732028891961:stations = station_scores
+1732028891961:))
+1732028891961:}
+1732028891961:# In the results output section:
+1732028891961:sink("output/pca_results_summary.txt")
+1732028891970:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732028891971:cat("================================================\n\n")
+1732028891972:# First, print the list of dominant species for verification
+1732028891972:cat("Dominant Species (>1% relative abundance across all years):\n")
+1732028891972:print(knitr::kable(
+1732028891972:dominant_species %>%
+1732028891972:arrange(desc(relative_abundance)) %>%
+1732028891972:mutate(
+1732028891972:relative_abundance = relative_abundance * 100
+1732028891972:),
+1732028891972:digits = 2
+1732028891972:))
+1732028891981:cat("\n\n1. Variance Explained\n")
+1732028891982:cat("-------------------\n")
+1732028891982:print(knitr::kable(variance_table, digits = 1))
+1732028891988:cat("\n\n2. Species Contributions by Year\n")
+1732028891988:cat("------------------------------\n")
+1732028891989:for(year in years) {
+1732028891989:cat(sprintf("\nYear %d:\n", year))
+1732028891989:year_results <- pca_results[[as.character(year)]]$top_species
+1732028891989:# Debug print
+1732028891989:cat("\nNumber of dominant species found:", sum(!is.na(year_results$relative_abundance)), "\n")
+1732028891989:# Print dominant species results
+1732028891989:cat("\nDominant Species (>1% relative abundance):\n")
+1732028891989:dominant_results <- year_results %>%
+1732028891989:filter(!is.na(relative_abundance)) %>%
+1732028891989:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732028891989:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732028891989:slice_head(n = 10)
+1732028891990:print(knitr::kable(dominant_results, digits = 3))
+1732028891990:# Print all species contributions
+1732028891990:cat("\nAll Species Contributions (sorted by absolute contribution):\n")
+1732028891990:all_results <- year_results %>%
+1732028891990:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732028891990:select(Species, PC1_loading, PC2_loading) %>%
+1732028891990:slice_head(n = 10)
+1732028891990:print(knitr::kable(all_results, digits = 3))
+1732028891990:}
+1732028892161:# Rest of the output remains the same...
+1732028892161:sink()
+1732028913367:print("Dominant species identified:")
+1732028913370:print(dominant_species)
+1732028916967:print("Dominant species identified:")
+1732028916968:print(dominant_species)
+1732028925680:dominant_species
+1732028938628:View(dominant_species)
+1732028944478:View(dominant_species)
+1732028945499:View(dominant_species)
+1732028945975:View(dominant_species)
+1732028956024:print("Dominant species identified:")
+1732028956025:print(dominant_species)
+1732028971805:dominant_species
+1732028973910:5+5
+1732028978585:as_data_frame
+1732029034012:5+5
+1732029830689:dominant_species
+1732030134553:# Find dominant species (>1% relative abundance)
+1732030134554:dominant_species <- henda %>%
+1732030134554:select(-Year) %>%  # Keep Flokkun (species names)
+1732030134554:group_by(Flokkun) %>%  # Group by species
+1732030134554:summarise(total_abundance = sum(across(where(is.numeric)))) %>%  # Sum across all stations
+1732030134554:ungroup() %>%
+1732030134554:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030134554:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030134555:rename(Species = Flokkun) %>%  # Rename to match with other data
+1732030134555:arrange(desc(relative_abundance))
+1732030135154:# Print to verify
+1732030135154:print("Dominant species identified:")
+1732030135565:print(dominant_species)
+1732030148374:henda
+1732030201367:# Find dominant species (>1% relative abundance)
+1732030201367:dominant_species <- henda %>%
+1732030201367:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030201368:names_to = "Station",
+1732030201368:values_to = "abundance") %>%
+1732030201368:group_by(Flokkun) %>%
+1732030201368:summarise(total_abundance = sum(abundance)) %>%
+1732030201368:ungroup() %>%
+1732030201368:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030201368:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030201368:rename(Species = Flokkun) %>%
+1732030201369:arrange(desc(relative_abundance))
+1732030201912:# Print to verify
+1732030201912:print("Dominant species identified:")
+1732030202218:print(dominant_species)
+1732030211816:henda %>%
+1732030211816:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030211816:names_to = "Station",
+1732030211816:values_to = "abundance")
+1732030232944:library(tidyverse)
+1732030238954:library(ggrepel)
+1732030238962:library(vegan)
+1732030239794:library(readxl)
+1732030239807:library(patchwork)
+1732030253752:# Find dominant species (>1% relative abundance)
+1732030253753:dominant_species <- henda %>%
+1732030253753:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030253753:names_to = "Station",
+1732030253753:values_to = "abundance") %>%
+1732030253753:group_by(Flokkun) %>%
+1732030253753:summarise(total_abundance = sum(abundance)) %>%
+1732030253753:ungroup() %>%
+1732030253753:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030253754:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030253754:rename(Species = Flokkun) %>%
+1732030253754:arrange(desc(relative_abundance))
+1732030254800:# Print to verify
+1732030254801:print("Dominant species identified:")
+1732030255473:print(dominant_species)
+1732030343415:# Create a function to extract key PCA results
+1732030343415:extract_pca_results <- function(year, species_pca) {
+1732030343415:# Get variance explained
+1732030343415:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732030343415:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732030343416:species_scores <- scores(species_pca, display = "sites")
+1732030343416:top_contributors <- data.frame(
+1732030343416:Species = rownames(species_scores),
+1732030343416:PC1_loading = species_scores[,1],
+1732030343416:PC2_loading = species_scores[,2]
+1732030343416:) %>%
+1732030343416:mutate(
+1732030343417:PC1_abs = abs(PC1_loading),
+1732030343417:PC2_abs = abs(PC2_loading),
+1732030343417:is_dominant = Species %in% dominant_species$Species,
+1732030343417:relative_abundance = sapply(Species, function(sp) {
+1732030343417:dominant_species$relative_abundance[dominant_species$Species == sp][1]
+1732030343417:})
+1732030343417:) %>%
+1732030343418:arrange(desc(PC1_abs + PC2_abs))
+1732030343418:# Get station scores
+1732030343418:station_scores <- data.frame(
+1732030343418:scores(species_pca, display = "species"),
+1732030343418:Station = colnames(year_data)
+1732030343418:)
+1732030343419:return(list(
+1732030343419:year = year,
+1732030343419:variance = var_explained,
+1732030343419:top_species = top_contributors,
+1732030343419:stations = station_scores
+1732030343420:))
+1732030343420:}
+1732030343420:# Store results for all years
+1732030343420:pca_results <- list()
+1732030343420:for(year in years) {
+1732030343421:# Run PCA again to get results
+1732030343421:year_data <- henda %>%
+1732030343421:filter(Year == year) %>%
+1732030343421:select(-Year) %>%
+1732030343421:as.data.frame()
+1732030343421:rownames(year_data) <- year_data$Flokkun
+1732030343421:year_data <- year_data %>% select(-Flokkun)
+1732030343422:species_pca <- rda(scale(year_data))
+1732030343422:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732030343422:}
+1732030343502:# Create summary tables for the manuscript
+1732030343502:# 1. Variance explained table
+1732030343502:variance_table <- data.frame(
+1732030343502:Year = years,
+1732030343502:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732030343502:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732030343502:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732030343503:)
+1732030343507:# Print variance table in publication format
+1732030343507:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732030343507:print(knitr::kable(variance_table,
+1732030343507:digits = 1,
+1732030343507:caption = "Percentage of variance explained by PCA axes"))
+1732030343528:# 2. Top contributing species for each year
+1732030343528:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732030343529:for(year in years) {
+1732030343529:cat(sprintf("\nYear %d:\n", year))
+1732030343529:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732030343529:digits = 3,
+1732030343529:caption = sprintf("Top 5 contributing species in %d", year)))
+1732030343529:}
+1732030343553:# 3. Station patterns summary
+1732030343553:cat("\nStation patterns across years:\n")
+1732030343553:for(year in years) {
+1732030343553:cat(sprintf("\nYear %d:\n", year))
+1732030343553:stations <- pca_results[[as.character(year)]]$stations
+1732030343553:print(knitr::kable(stations,
+1732030343554:digits = 3,
+1732030343554:caption = sprintf("Station coordinates in %d", year)))
+1732030343554:}
+1732030343571:# Save results to file for manuscript
+1732030343571:sink("output/pca_results_summary.txt")
+1732030343576:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732030343576:cat("================================================\n\n")
+1732030343577:cat("1. Variance Explained\n")
+1732030343577:cat("-------------------\n")
+1732030343577:print(knitr::kable(variance_table, digits = 1))
+1732030343584:cat("\n\n2. Species Contributions\n")
+1732030343584:cat("----------------------\n")
+1732030343585:for(year in years) {
+1732030343585:cat(sprintf("\nYear %d:\n", year))
+1732030343585:# Get year's results
+1732030343585:year_results <- pca_results[[as.character(year)]]$top_species
+1732030343585:# Print dominant species results (>1% relative abundance)
+1732030343585:cat("\nDominant Species (>1% relative abundance):\n")
+1732030343585:dominant_results <- year_results %>%
+1732030343585:filter(!is.na(relative_abundance)) %>%  # Only species in dominant_species list
+1732030343585:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732030343585:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732030343585:slice_head(n = 10)
+1732030343586:print(knitr::kable(dominant_results, digits = 3))
+1732030343586:# Print all species contributions
+1732030343586:cat("\nTop Contributing Species (including rare species):\n")
+1732030343586:all_results <- year_results %>%
+1732030343586:select(Species, PC1_loading, PC2_loading) %>%
+1732030343586:arrange(desc(abs(PC1_loading) + abs(PC2_loading))) %>%
+1732030343586:slice_head(n = 10)
+1732030343586:print(knitr::kable(all_results, digits = 3))
+1732030343586:}
+1732030343762:cat("\n\n3. Station Patterns\n")
+1732030343763:cat("-----------------\n")
+1732030343763:for(year in years) {
+1732030343763:cat(sprintf("\nYear %d:\n", year))
+1732030343763:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732030343763:}
+1732030343803:# Add summary of overall dominant species
+1732030343804:cat("\n\n4. Overall Community Dominance Patterns\n")
+1732030343804:cat("-----------------------------------\n")
+1732030343804:print(knitr::kable(
+1732030343804:dominant_species %>%
+1732030343804:arrange(desc(relative_abundance)) %>%
+1732030343804:mutate(
+1732030343804:relative_abundance = relative_abundance * 100,
+1732030343804:cumulative_abundance = cumsum(relative_abundance)
+1732030343805:),
+1732030343805:col.names = c("Species", "Total Abundance", "Relative Abundance (%)", "Cumulative Abundance (%)"),
+1732030343805:digits = 2
+1732030343805:))
+1732030343818:sink()
+1732030536658:# Modified extract_pca_results function to calculate dominant species for each year
+1732030536658:extract_pca_results <- function(year, species_pca) {
+1732030536659:# Calculate dominant species for this specific year
+1732030536659:year_dominant_species <- henda %>%
+1732030536659:filter(Year == year) %>%
+1732030536659:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030536659:names_to = "Station",
+1732030536659:values_to = "abundance") %>%
+1732030536659:group_by(Flokkun) %>%
+1732030536660:summarise(total_abundance = sum(abundance)) %>%
+1732030536660:ungroup() %>%
+1732030536660:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030536660:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030536660:rename(Species = Flokkun) %>%
+1732030536660:arrange(desc(relative_abundance))
+1732030536661:# Get variance explained
+1732030536661:var_explained <- round(summary(species_pca)$cont$importance[2,] * 100, 1)
+1732030536661:# Get species scores and sort by absolute contribution to PC1 and PC2
+1732030536661:species_scores <- scores(species_pca, display = "sites")
+1732030536662:top_contributors <- data.frame(
+1732030536662:Species = rownames(species_scores),
+1732030536662:PC1_loading = species_scores[,1],
+1732030536662:PC2_loading = species_scores[,2]
+1732030536662:) %>%
+1732030536662:mutate(
+1732030536662:PC1_abs = abs(PC1_loading),
+1732030536663:PC2_abs = abs(PC2_loading)
+1732030536663:) %>%
+1732030536663:# Join with year-specific dominant species information
+1732030536663:left_join(
+1732030536663:year_dominant_species %>%
+1732030536664:select(Species, relative_abundance),
+1732030536664:by = "Species"
+1732030536664:)
+1732030536665:station_scores <- data.frame(
+1732030536665:scores(species_pca, display = "species"),
+1732030536665:Station = colnames(year_data)
+1732030536665:)
+1732030536665:return(list(
+1732030536666:year = year,
+1732030536666:variance = var_explained,
+1732030536666:top_species = top_contributors,
+1732030536666:dominant_species = year_dominant_species,  # Include the year's dominant species list
+1732030536666:stations = station_scores
+1732030536667:))
+1732030536667:}
+1732030536667:# Store results for all years
+1732030536668:pca_results <- list()
+1732030536668:for(year in years) {
+1732030536668:# Run PCA again to get results
+1732030536668:year_data <- henda %>%
+1732030536668:filter(Year == year) %>%
+1732030536668:select(-Year) %>%
+1732030536668:as.data.frame()
+1732030536669:rownames(year_data) <- year_data$Flokkun
+1732030536669:year_data <- year_data %>% select(-Flokkun)
+1732030536669:species_pca <- rda(scale(year_data))
+1732030536669:pca_results[[as.character(year)]] <- extract_pca_results(year, species_pca)
+1732030536669:}
+1732030536839:# Create summary tables for the manuscript
+1732030536839:# 1. Variance explained table
+1732030536839:variance_table <- data.frame(
+1732030536839:Year = years,
+1732030536839:PC1 = sapply(pca_results, function(x) x$variance[1]),
+1732030536839:PC2 = sapply(pca_results, function(x) x$variance[2]),
+1732030536839:Total = sapply(pca_results, function(x) sum(x$variance[1:2]))
+1732030536839:)
+1732030536844:# Print variance table in publication format
+1732030536844:cat("\nTable 1. Percentage of variance explained by the first two principal components\n")
+1732030536845:print(knitr::kable(variance_table,
+1732030536845:digits = 1,
+1732030536845:caption = "Percentage of variance explained by PCA axes"))
+1732030536848:# 2. Top contributing species for each year
+1732030536848:cat("\nTable 2. Top contributing species to community composition by year\n")
+1732030536848:for(year in years) {
+1732030536848:cat(sprintf("\nYear %d:\n", year))
+1732030536848:print(knitr::kable(pca_results[[as.character(year)]]$top_species[1:5,],
+1732030536848:digits = 3,
+1732030536848:caption = sprintf("Top 5 contributing species in %d", year)))
+1732030536848:}
+1732030536869:# 3. Station patterns summary
+1732030536869:cat("\nStation patterns across years:\n")
+1732030536869:for(year in years) {
+1732030536869:cat(sprintf("\nYear %d:\n", year))
+1732030536869:stations <- pca_results[[as.character(year)]]$stations
+1732030536869:print(knitr::kable(stations,
+1732030536870:digits = 3,
+1732030536870:caption = sprintf("Station coordinates in %d", year)))
+1732030536870:}
+1732030536887:# Save results to file for manuscript
+1732030536887:sink("output/pca_results_summary.txt")
+1732030536891:cat("PCA Results Summary for Marine Biology Manuscript\n")
+1732030536892:cat("================================================\n\n")
+1732030536892:cat("1. Variance Explained\n")
+1732030536893:cat("-------------------\n")
+1732030536893:print(knitr::kable(variance_table, digits = 1))
+1732030536900:cat("\n\n2. Species Contributions by Year\n")
+1732030536900:cat("------------------------------\n")
+1732030536901:for(year in years) {
+1732030536901:cat(sprintf("\nYear %d:\n", year))
+1732030536901:# Print year-specific dominant species first
+1732030536901:cat("\nDominant Species for this year (>1% relative abundance):\n")
+1732030536901:print(knitr::kable(
+1732030536901:pca_results[[as.character(year)]]$dominant_species %>%
+1732030536901:mutate(relative_abundance = relative_abundance * 100),
+1732030536901:col.names = c("Species", "Total Abundance", "Relative Abundance (%)"),
+1732030536901:digits = 2
+1732030536901:))
+1732030536901:# Print PCA results for dominant species
+1732030536901:cat("\nPCA loadings for dominant species:\n")
+1732030536902:dominant_results <- pca_results[[as.character(year)]]$top_species %>%
+1732030536902:filter(!is.na(relative_abundance)) %>%
+1732030536902:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732030536902:select(Species, PC1_loading, PC2_loading, relative_abundance) %>%
+1732030536902:mutate(relative_abundance = relative_abundance * 100)
+1732030536902:print(knitr::kable(dominant_results, digits = 3))
+1732030536902:# Print all species contributions
+1732030536902:cat("\nTop Contributing Species (including rare species):\n")
+1732030536902:all_results <- pca_results[[as.character(year)]]$top_species %>%
+1732030536902:arrange(desc(PC1_abs + PC2_abs)) %>%
+1732030536902:select(Species, PC1_loading, PC2_loading) %>%
+1732030536903:slice_head(n = 10)
+1732030536903:print(knitr::kable(all_results, digits = 3))
+1732030536903:}
+1732030537161:cat("\n\n3. Station Patterns\n")
+1732030537161:cat("-----------------\n")
+1732030537162:for(year in years) {
+1732030537162:cat(sprintf("\nYear %d:\n", year))
+1732030537162:print(knitr::kable(pca_results[[as.character(year)]]$stations, digits = 3))
+1732030537162:}
+1732030537203:# Add summary of overall dominant species
+1732030537203:cat("\n\n4. Overall Community Dominance Patterns\n")
+1732030537204:cat("-----------------------------------\n")
+1732030537204:print(knitr::kable(
+1732030537204:dominant_species %>%
+1732030537204:arrange(desc(relative_abundance)) %>%
+1732030537204:mutate(
+1732030537204:relative_abundance = relative_abundance * 100,
+1732030537204:cumulative_abundance = cumsum(relative_abundance)
+1732030537204:),
+1732030537204:col.names = c("Species", "Total Abundance", "Relative Abundance (%)", "Cumulative Abundance (%)"),
+1732030537204:digits = 2
+1732030537204:))
+1732030537221:sink()
+1732030784865:library(ggrepel)
+1732030784865:library(vegan)
+1732030784865:library(readxl)
+1732030784865:library(patchwork)
+1732030784866:# Find dominant species (>1% relative abundance)
+1732030784866:dominant_species <- henda %>%
+1732030784866:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030784866:names_to = "Station",
+1732030784866:values_to = "abundance") %>%
+1732030784866:group_by(Flokkun) %>%
+1732030784867:summarise(total_abundance = sum(abundance)) %>%
+1732030784867:ungroup() %>%
+1732030784867:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030784867:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030784867:rename(Species = Flokkun) %>%
+1732030784867:arrange(desc(relative_abundance))
+1732030784881:# Print to verify
+1732030784881:print("Dominant species identified:")
+1732030784882:print(dominant_species)
+1732030784906:# Function to process and create PCA for one year
+1732030784906:create_year_pca <- function(year, data = henda) {
+1732030784906:# Calculate dominant species for this specific year
+1732030784906:year_dominant_species <- data %>%
+1732030784906:filter(Year == year) %>%
+1732030784906:pivot_longer(cols = c(A7, B5, B8, C4, E3, E4),
+1732030784906:names_to = "Station",
+1732030784906:values_to = "abundance") %>%
+1732030784906:group_by(Flokkun) %>%
+1732030784906:summarise(total_abundance = sum(abundance)) %>%
+1732030784906:ungroup() %>%
+1732030784906:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732030784907:filter(relative_abundance > 0.01) %>%  # Keep species with >1% relative abundance
+1732030784907:rename(Species = Flokkun)
+1732030784907:# Filter data for specific year and prepare
+1732030784907:year_data <- data %>%
+1732030784907:filter(Year == year) %>%
+1732030784907:select(-Year) %>%
+1732030784907:as.data.frame()
+1732030784907:# Prepare data for PCA
+1732030784907:rownames(year_data) <- year_data$Flokkun
+1732030784907:year_data <- year_data %>% select(-Flokkun)
+1732030784908:# Handle NAs
+1732030784908:year_data[is.na(year_data)] <- 0
+1732030784908:# Run PCA
+1732030784908:species_pca <- rda(scale(year_data))
+1732030784908:# Extract scores
+1732030784908:site_scores <- data.frame(
+1732030784908:scores(species_pca, display = "sites"),
+1732030784908:Species = rownames(scores(species_pca, display = "sites"))
+1732030784909:) %>%
+1732030784909:# Add indicator for dominant species
+1732030784909:mutate(is_dominant = Species %in% year_dominant_species$Species)
+1732030784909:species_loadings <- data.frame(
+1732030784909:scores(species_pca, display = "species"),
+1732030784909:Station = colnames(year_data)
+1732030784909:)
+1732030784909:# Calculate variance explained
+1732030784910:var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
+1732030784910:# Create PCA plot
+1732030784910:pca_plot <- ggplot() +
+1732030784910:# Add points for all species
+1732030784910:geom_point(data = site_scores,
+1732030784910:aes(x = PC1, y = PC2),
+1732030784910:size = 2,
+1732030784910:shape = 19,
+1732030784911:color = "black") +
+1732030784911:# Add arrows for stations
+1732030784911:geom_segment(data = species_loadings,
+1732030784911:aes(x = 0, y = 0, xend = PC1, yend = PC2),
+1732030784911:arrow = arrow(length = unit(0.2, "cm")),
+1732030784911:color = "darkgrey") +
+1732030784911:# Add station labels
+1732030784912:geom_text_repel(data = species_loadings,
+1732030784912:aes(x = PC1, y = PC2, label = Station),
+1732030784912:size = 3.5,
+1732030784912:fontface = "bold",
+1732030784912:box.padding = 0.5,
+1732030784912:point.padding = 0.3) +
+1732030784912:# Add labels only for dominant species
+1732030784913:geom_text_repel(data = filter(site_scores, is_dominant),
+1732030784913:aes(x = PC1, y = PC2, label = Species),
+1732030784913:size = 2.8,
+1732030784913:fontface = "italic",
+1732030784913:color = "grey30",
+1732030784913:box.padding = 0.5,
+1732030784913:point.padding = 0.3) +
+1732030784914:coord_fixed() +
+1732030784914:theme_bw() +
+1732030784914:theme(
+1732030784914:panel.grid.minor = element_blank(),
+1732030784914:panel.grid.major = element_line(color = "grey95"),
+1732030784914:axis.text = element_text(color = "black", size = 8),
+1732030784914:axis.title = element_text(size = 10),
+1732030784915:plot.title = element_text(size = 11, face = "bold"),
+1732030784915:plot.subtitle = element_text(size = 9)
+1732030784915:) +
+1732030784915:labs(
+1732030784915:title = paste("PCA of benthic community composition -", year),
+1732030784915:subtitle = paste0("Species shown as points (>1% abundance labeled, n=",
+1732030784916:sum(site_scores$is_dominant), "), stations as arrows"),
+1732030784916:x = paste0("PC1 (", var_explained[1], "%)"),
+1732030784916:y = paste0("PC2 (", var_explained[2], "%)")
+1732030784916:)
+1732030784917:return(pca_plot)
+1732030784917:}
+1732030784917:# Create PCA plots for all years
+1732030784917:years <- c(1999, 2013:2017)
+1732030784918:pca_plots <- list()
+1732030784918:for(year in years) {
+1732030784918:pca_plots[[as.character(year)]] <- create_year_pca(year)
+1732030784918:# Save individual plots
+1732030784918:ggsave(
+1732030784918:paste0("output/pca_biplot_", year, ".png"),
+1732030784918:pca_plots[[as.character(year)]],
+1732030784918:width = 10, height = 8,
+1732030784918:dpi = 300,
+1732030784918:bg = "white"
+1732030784918:)
+1732030784918:}
+1732030788627:# Combine all plots
+1732030788627:combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+1732030788627:plot_annotation(
+1732030788628:title = "Temporal changes in community composition (1999, 2013-2017)",
+1732030788628:subtitle = "Species shown as points, stations as arrows",
+1732030788628:caption = "Based on species abundance data",
+1732030788628:theme = theme(
+1732030788628:plot.title = element_text(size = 14, face = "bold"),
+1732030788628:plot.subtitle = element_text(size = 12),
+1732030788628:plot.caption = element_text(size = 10, hjust = 0)
+1732030788628:)
+1732030788629:)
+1732030788634:# Save combined plot
+1732030788634:ggsave("output/pca_biplots_all_years.png",
+1732030788634:combined_plot,
+1732030788634:width = 20, height = 15,
+1732030788635:dpi = 300,
+1732030788635:bg = "white")
+1732030791047:# After the PCA plots creation, add this section for results reporting
+1732034036300:# skráin hans Jörundar
+1732034036300:henda <- read_csv(
+1732034036301:"data/processed/hendaB.csv",
+1732034036301:col_types = cols(
+1732034036301:Year = col_integer(),
+1732034036301:Flokkun = col_character(),  # Ensure Flokkun is read as character
+1732034036302:A7 = col_integer(),
+1732034036302:B5 = col_integer(),
+1732034036302:B8 = col_integer(),
+1732034036302:C4 = col_integer(),
+1732034036303:E3 = col_integer(),
+1732034036303:E4 = col_integer()
+1732034036303:),
+1732034036303:na = c("", "NA")
+1732034036303:) %>%
+1732034036304:mutate(across(where(is.numeric), ~ replace_na(., 0)))  %>% # Replace NA with 0 for numeric columns
+1732034036304:select(Flokkun:last_col())
+1732034039853:# Transform henda from wide to long format
+1732034039853:henda_long <- henda %>%
+1732034039853:pivot_longer(cols = c("A7","B5", "B8",  "C4",  "E3", "E4") , # Select station columns
+1732034039853:names_to = "station",                     # New column for station names
+1732034039854:values_to = "adjusted_density") %>%       # New column for density values
+1732034039854:rename(species = Flokkun,                              # Rename 'Flokkun' to 'species'
+1732034039854:year = Year) %>%                                # Rename 'Year' to 'year'
+1732034039854:select(station, year, species, adjusted_density)       # Select and order columns
+1732034048970:# Required packages
+1732034048971:library(dplyr)
+1732034050724:library(stringr)
+1732034054020:# Step 1: Remove " sp." from species names
+1732034054021:henda_long_cleaned <- henda_long %>%
+1732034054021:mutate(species = str_replace(species, " sp\\.", ""))
+1732034058546:# Step 2: Match with reference dataset and remove non-matching species
+1732034058546:henda_long_matched <- henda_long_cleaned %>%
+1732034058546:semi_join(df, by = "species")
+1732034060341:# Step 3: Quick validation check
+1732034060341:cat("Data Cleaning Summary:\n",
+1732034060341:"Original rows:", nrow(henda_long), "\n",
+1732034060341:"Final rows:", nrow(henda_long_matched), "\n",
+1732034060341:"Rows removed:", nrow(henda_long) - nrow(henda_long_matched), "\n")
+1732034070594:# Step 4: View removed species for validation
+1732034070594:removed_species <- henda_long_cleaned %>%
+1732034070594:anti_join(df, by = "species") %>%
+1732034070594:group_by(species) %>%
+1732034070594:summarise(
+1732034070594:observations = n(),
+1732034070594:total_abundance = sum(adjusted_density),
+1732034070595:years = paste(sort(unique(year)), collapse = ", "),
+1732034070595:stations = paste(sort(unique(station)), collapse = ", ")
+1732034070595:) %>%
+1732034070595:arrange(desc(observations))
+1732034072850:# Print removed species summary
+1732034072850:print(removed_species, n = Inf, width = Inf)
+1732034110772:# Prepare data for NMDS - exclude 1999 data
+1732034110773:#species_matrix <- df %>% #Mín gögn
+1732034110773:species_matrix <- henda_long_matched %>% #Gögn Jörundar
+1732034110773:#filter(year >= 2013) %>%  # Only include 2013-2017 data
+1732034110773:select(station, year, species, adjusted_density) %>%
+1732034110773:pivot_wider(
+1732034110773:names_from = species,
+1732034110774:values_from = adjusted_density,
+1732034110774:values_fill = 0
+1732034110774:) %>%
+1732034110774:# Store station and year before removing them for NMDS
+1732034110774:mutate(
+1732034110775:station_temp = station,
+1732034110775:year_temp = year
+1732034110775:) %>%
+1732034110775:select(-station, -year)
+1732034111835:# Perform NMDS
+1732034111836:nmds <- metaMDS(select(species_matrix, -station_temp, -year_temp), distance = "bray")
+1732034113268:# Extract site scores and add metadata
+1732034113268:site_scores <- as.data.frame(scores(nmds, display = "sites"))
+1732034115408:site_scores$Station <- species_matrix$station_temp
+1732034115991:site_scores$Year <- as.factor(species_matrix$year_temp)  # Convert Year to factor
+1732034116413:# Extract species scores
+1732034116413:species_scores <- as.data.frame(scores(nmds, display = "species"))
+1732034117093:# Calculate species contributions (using relative abundance)
+1732034117093:species_rel_abundance <- colSums(select(species_matrix, -station_temp, -year_temp)) /
+1732034117094:sum(select(species_matrix, -station_temp, -year_temp))
+1732034117828:important_species <- names(sort(species_rel_abundance[species_rel_abundance > 0.01], decreasing = TRUE))
+1732034118836:# Filter species scores to only show important species
+1732034118836:species_scores_filtered <- species_scores[rownames(species_scores) %in% important_species, ]
+1732034119683:env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
+1732034119684:select(station, year,
+1732034119684:organic_content, depth,
+1732034119684:grain_20um, grain_63um, grain_125um,
+1732034119684:grain_250um, grain_1000um) %>%
+1732034119684:distinct()
+1732034121961:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1732034121962:as.data.frame() %>%
+1732034121962:mutate(variable = rownames(.)) %>%
+1732034121962:filter(env_fit$vectors$pvals < 0.05)
+1732034127209:# Create the plot
+1732034127209:nmds_plot <- ggplot() +
+1732034127210:# Add points for sites
+1732034127210:geom_point(data = site_scores,
+1732034127210:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1732034127210:size = 3) +
+1732034127210:# Add smaller ellipses around years with solid lines
+1732034127210:# stat_ellipse(data = site_scores,
+1732034127210:#              aes(x = NMDS1, y = NMDS2, group = Year),
+1732034127211:#              type = "norm",
+1732034127211:#              level = 0.7,
+1732034127211:#              linetype = 1,
+1732034127211:#              size = 0.5) +
+1732034127211:# Add significant environmental vectors
+1732034127211:# geom_segment(data = sig_env_vectors,
+1732034127212:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1732034127212:#              arrow = arrow(length = unit(0.2, "cm")),
+1732034127212:#              color = "darkgrey") +
+1732034127212:# geom_text(data = sig_env_vectors,
+1732034127212:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1732034127213:#           size = 3, color = "darkgrey") +
+1732034127213:theme_bw() +
+1732034127213:theme(
+1732034127213:panel.background = element_rect(fill = "white"),
+1732034127213:axis.text = element_text(size = 12, color = "black"),  # Larger axis text
+1732034127214:axis.title = element_text(size = 14),                  # Larger axis titles
+1732034127214:legend.text = element_text(size = 12),                 # Larger legend text
+1732034127214:legend.title = element_text(size = 12, face = "bold"), # Larger legend titles
+1732034127214:plot.title = element_text(size = 16, face = "bold")    # Larger plot title
+1732034127214:) +
+1732034127214:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1732034127215:caption = "") +
+1732034127215:guides(color = guide_legend("Station"),
+1732034127215:shape = guide_legend("Year"))
+1732034131044:# Save with higher resolution and size
+1732034131044:ggsave("output/nmds_plot_1999_an-hringja.png",
+1732034131044:nmds_plot,
+1732034131044:width = 12,      # Increased width
+1732034131044:height = 10,     # Increased height
+1732034131044:dpi = 300,       # Higher resolution
+1732034131045:bg = "white")
+1732098035473:nmds
+1732098058785:num_taxa <- ncol(species_matrix) - 2  # Excluding station_temp and year_temp
+1732098058792:num_samples <- nrow(species_matrix)
+1732098062581:num_taxa
+1732098066303:num_samples
+1732098086542:sig_env_vectors <- scores(env_fit, "vectors") %>%
+1732098086545:as.data.frame() %>%
+1732098086545:mutate(variable = rownames(.)) %>%
+1732098086546:filter(env_fit$vectors$pvals < 0.05)
+1732098090784:sig_env_vectors
+1732099218276:dominant_species <- species_matrix %>%
+1732099218277:select(where(is.numeric)) %>%
+1732099218277:select(-year_temp, -year) %>%    # Exclude ALL year columns
+1732099218277:summarise(across(everything(), sum)) %>%
+1732099218277:pivot_longer(everything(),
+1732099218278:names_to = "species",
+1732099218278:values_to = "total_abundance") %>%
+1732099218278:arrange(desc(total_abundance)) %>%
+1732099218279:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732099218279:filter(relative_abundance > 0.01)
+1732099269216:str(species_matrix )
+1732099308328:temporal_patterns <- species_matrix %>%
+1732099308328:select(where(is.numeric)) %>%
+1732099308328:select(-year) %>%
+1732099308328:group_by(year_temp) %>%          # Group by year first
+1732099308328:summarise(across(everything(), sum)) %>%  # Sum across stations
+1732099308329:pivot_longer(-year_temp,
+1732099308329:names_to = "species",
+1732099308329:values_to = "abundance") %>%
+1732099308329:filter(species %in% dominant_species$species) %>%
+1732099308329:arrange(year_temp, desc(abundance))
+1732099342856:str(henda_long_matched)
+1732099412834:dominant_species <- species_matrix %>%
+1732099412834:select(where(is.numeric)) %>%
+1732099412834:select(-year_temp, -year) %>%    # Exclude ALL year columns
+1732099412834:summarise(across(everything(), sum)) %>%
+1732099412834:pivot_longer(everything(),
+1732099412834:names_to = "species",
+1732099412835:values_to = "total_abundance") %>%
+1732099412835:arrange(desc(total_abundance)) %>%
+1732099412835:mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
+1732099412835:filter(relative_abundance > 0.01)
+1732099443408:# Calculate abundances for key species by year
+1732099443409:temporal_abundances <- henda_long_matched %>%
+1732099443409:group_by(year, species) %>%
+1732099443409:summarise(total_abundance = sum(adjusted_density)) %>%
+1732099443409:pivot_wider(names_from = year,
+1732099443409:values_from = total_abundance,
+1732099443409:values_fill = 0)
+1732099443501:# Get Capitella capitata abundances
+1732099443501:capitella_data <- henda_long_matched %>%
+1732099443502:filter(species == "Capitella capitata") %>%
+1732099443502:group_by(year) %>%
+1732099443502:summarise(abundance = sum(adjusted_density))
+1732099443507:# Get other key species abundances
+1732099443507:key_species <- c("Polydora", "Ophelina acuminata", "Macoma calcarea", "Scalibregma inflatum", "Scoloplos armiger")
+1732099443507:key_species_data <- henda_long_matched %>%
+1732099443508:filter(species %in% key_species) %>%
+1732099443508:group_by(year, species) %>%
+1732099443508:summarise(abundance = sum(adjusted_density))
+1732099443559:# Calculate total abundance for percentage calculations
+1732099443559:total_abundance <- sum(henda_long_matched$adjusted_density)
+1732099458421:temporal_abundances
+1732099496709:str(temporal_abundances )
+1732099505593:capitella_data
+1732099821153:dominant_species
+1732099873966:species_nmds_scores <- as.data.frame(scores(nmds, display = "species"))
+1732099877568:species_nmds_scores
+1732099979154:# Extract NMDS scores for all species
+1732099979155:species_nmds_scores <- as.data.frame(scores(nmds, display = "species"))
+1732099979155:# Calculate relative abundances and NMDS positions
+1732099979156:species_analysis <- data.frame(
+1732099979156:species = rownames(species_nmds_scores),
+1732099979156:NMDS1 = species_nmds_scores$NMDS1,
+1732099979156:NMDS2 = species_nmds_scores$NMDS2
+1732099979156:) %>%
+1732099979157:inner_join(
+1732099979157:henda_long_matched %>%
+1732099979157:group_by(species) %>%
+1732099979157:summarise(total_abundance = sum(adjusted_density)) %>%
+1732099979157:mutate(relative_abundance = (total_abundance / sum(total_abundance)) * 100),
+1732099979157:by = "species"
+1732099979158:) %>%
+1732099979158:arrange(desc(relative_abundance))
+1732099979184:# Find species with strong NMDS positions (e.g., in extreme quartiles)
+1732099979184:nmds_significant <- species_analysis %>%
+1732099979184:filter(
+1732099979184:relative_abundance > 1 &  # Only include species with >1% relative abundance
+1732099979184:(abs(NMDS1) > quantile(abs(NMDS1), 0.75) |  # Strong position on NMDS1
+1732099979184:abs(NMDS2) > quantile(abs(NMDS2), 0.75))   # Strong position on NMDS2
+1732099979185:) %>%
+1732099979185:arrange(NMDS1)  # Sort by NMDS1 position
+1732099979192:print(nmds_significant)
+1732100025874:# Extract NMDS scores for all species
+1732100025874:species_nmds_scores <- as.data.frame(scores(nmds, display = "species"))
+1732100025874:# Calculate relative abundances and NMDS positions
+1732100025875:species_analysis <- data.frame(
+1732100025875:species = rownames(species_nmds_scores),
+1732100025875:NMDS1 = species_nmds_scores$NMDS1,
+1732100025875:NMDS2 = species_nmds_scores$NMDS2
+1732100025875:) %>%
+1732100025875:inner_join(
+1732100025876:henda_long_matched %>%
+1732100025876:group_by(species) %>%
+1732100025876:summarise(total_abundance = sum(adjusted_density)) %>%
+1732100025876:mutate(relative_abundance = (total_abundance / sum(total_abundance)) * 100),
+1732100025876:by = "species"
+1732100025877:) %>%
+1732100025877:arrange(desc(relative_abundance))
+1732100025888:# Get top species (>1% relative abundance) with distinct NMDS positions
+1732100025888:significant_species <- species_analysis %>%
+1732100025888:filter(relative_abundance > 1) %>%
+1732100025888:# Group species by their position in NMDS space
+1732100025888:mutate(
+1732100025888:position_group = case_when(
+1732100025888:NMDS1 < -0.5 ~ "negative_NMDS1",
+1732100025889:NMDS1 > 0.5 & NMDS2 > 0.5 ~ "positive_both",
+1732100025889:NMDS1 > 0.5 & abs(NMDS2) < 0.5 ~ "positive_NMDS1_neutral_NMDS2",
+1732100025889:TRUE ~ "other"
+1732100025889:)
+1732100025889:) %>%
+1732100025889:arrange(desc(relative_abundance)) %>%
+1732100025890:head(10)  # Get top 10 species for a comprehensive view
+1732100025896:print(significant_species)
+1732100159455:# Refine position grouping based on actual data patterns
+1732100159456:significant_species <- species_analysis %>%
+1732100159456:filter(relative_abundance > 1) %>%
+1732100159456:mutate(
+1732100159456:position_group = case_when(
+1732100159456:NMDS1 > 1.5 ~ "strong_positive_NMDS1",
+1732100159456:NMDS1 < -0.6 ~ "strong_negative_NMDS1",
+1732100159457:abs(NMDS1) < 0.5 & abs(NMDS2) < 0.2 ~ "neutral_position",
+1732100159457:NMDS2 > 0.25 ~ "positive_NMDS2",
+1732100159457:TRUE ~ "other"
+1732100159457:)
+1732100159457:) %>%
+1732100159457:arrange(desc(relative_abundance))
+1732100159463:# Calculate mean NMDS scores for each group
+1732100159464:group_patterns <- significant_species %>%
+1732100159464:group_by(position_group) %>%
+1732100159464:summarise(
+1732100159464:species_count = n(),
+1732100159464:mean_abundance = mean(relative_abundance),
+1732100159464:species_list = paste(species, collapse = ", ")
+1732100159464:)
+1732100159471:print(group_patterns)
+1732100182729:# Refine position grouping based on actual data patterns
+1732100182729:significant_species <- species_analysis %>%
+1732100182730:filter(relative_abundance > 1) %>%
+1732100182730:mutate(
+1732100182730:position_group = case_when(
+1732100182730:NMDS1 > 1.5 ~ "strong_positive_NMDS1",
+1732100182730:NMDS1 < -0.6 ~ "strong_negative_NMDS1",
+1732100182730:abs(NMDS1) < 0.5 & abs(NMDS2) < 0.2 ~ "neutral_position",
+1732100182730:NMDS2 > 0.25 ~ "positive_NMDS2",
+1732100182730:TRUE ~ "other"
+1732100182731:)
+1732100182731:) %>%
+1732100182731:arrange(desc(relative_abundance))
+1732100182736:# Calculate mean NMDS scores for each group
+1732100182736:group_patterns <- significant_species %>%
+1732100182737:group_by(position_group) %>%
+1732100182737:summarise(
+1732100182737:species_count = n(),
+1732100182737:mean_abundance = mean(relative_abundance),
+1732100182737:species_list = paste(species, collapse = ", ")
+1732100182737:)
+1732100182741:print(group_patterns)
+1732100606474:# Calculate station trajectories
+1732100606474:station_trajectories <- site_scores %>%
+1732100606474:group_by(Station) %>%
+1732100606474:arrange(Year) %>%
+1732100606475:summarise(
+1732100606475:# Total path length (sum of segment lengths)
+1732100606475:total_length = sum(sqrt(diff(NMDS1)^2 + diff(NMDS2)^2)),
+1732100606475:# Net displacement (straight-line distance from start to end)
+1732100606475:net_displacement = sqrt(
+1732100606476:(last(NMDS1) - first(NMDS1))^2 +
+1732100606476:(last(NMDS2) - first(NMDS2))^2
+1732100606476:),
+1732100606476:# Initial direction (in degrees)
+1732100606476:initial_direction = atan2(
+1732100606477:NMDS2[2] - NMDS1[1],
+1732100606477:NMDS1[2] - NMDS1[1]
+1732100606477:) * (180/pi)
+1732100606477:) %>%
+1732100606477:arrange(desc(total_length))
+1732100606497:# Calculate year-to-year movement magnitudes
+1732100606497:yearly_movements <- site_scores %>%
+1732100606497:group_by(Station) %>%
+1732100606497:arrange(Year) %>%
+1732100606497:mutate(
+1732100606497:movement = sqrt(
+1732100606498:(lead(NMDS1) - NMDS1)^2 +
+1732100606498:(lead(NMDS2) - NMDS2)^2
+1732100606498:)
+1732100606498:) %>%
+1732100606498:group_by(Year) %>%
+1732100606498:summarise(
+1732100606498:mean_movement = mean(movement, na.rm = TRUE),
+1732100606499:sd_movement = sd(movement, na.rm = TRUE)
+1732100606499:)
+1732100606515:print("Station Trajectories:")
+1732100606515:print(station_trajectories)
+1732100606548:print("\nYearly Movements:")
+1732100606548:print(yearly_movements)
+1732101370616:# Calculate year-to-year movements with 1999 at the end
+1732101370617:yearly_movements_reordered <- site_scores %>%
+1732101370617:mutate(Year = factor(Year, levels = c("2013", "2014", "2015", "2016", "2017", "1999"))) %>%
+1732101370617:group_by(Station) %>%
+1732101370617:arrange(Year) %>%
+1732101370617:mutate(
+1732101370617:movement = sqrt(
+1732101370618:(lead(NMDS1) - NMDS1)^2 +
+1732101370618:(lead(NMDS2) - NMDS2)^2
+1732101370618:)
+1732101370618:) %>%
+1732101370618:group_by(Year) %>%
+1732101370619:summarise(
+1732101370619:mean_movement = mean(movement, na.rm = TRUE),
+1732101370619:sd_movement = sd(movement, na.rm = TRUE)
+1732101370619:)
+1732101370637:print("Yearly Movements (with 1999 as endpoint):")
+1732101370638:print(yearly_movements_reordered)
+1732101623530:# Test temporal gradient
+1732101623531:temporal_test <- envfit(nmds, data.frame(Year = as.numeric(as.character(site_scores$Year))))
+1732101623807:# Multivariate dispersion tests
+1732101623807:year_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101623808:species_matrix$year_temp)
+1732101623993:year_anova <- anova(year_disp)
+1732101624009:station_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101624009:species_matrix$station_temp)
+1732101624085:station_anova <- anova(station_disp)
+1732101624087:# Environmental correlation (organic matter)
+1732101624087:env_fit <- envfit(nmds, env_data[, c("organic_content")])
+1732101639881:env_data$organic_content
+1732101662231:str(nmds)
+1732101849138:# Merge environmental data with site scores
+1732101849138:nmds_env <- site_scores %>%
+1732101849139:left_join(env_data, by = c("Station" = "station", "Year" = "year"))
+1732101849142:# Test temporal gradient
+1732101849142:temporal_test <- envfit(nmds, data.frame(Year = as.numeric(as.character(site_scores$Year))))
+1732101849229:# Multivariate dispersion tests
+1732101849229:year_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101849230:species_matrix$year_temp)
+1732101849320:year_anova <- anova(year_disp)
+1732101849323:station_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101849323:species_matrix$station_temp)
+1732101849441:station_anova <- anova(station_disp)
+1732101849443:# Environmental correlation (organic matter) - using matched data
+1732101849444:env_fit <- envfit(nmds, nmds_env[, "organic_content", drop = FALSE])
+1732101901625:# Test temporal gradient
+1732101901625:temporal_test <- envfit(nmds, data.frame(Year = as.numeric(as.character(site_scores$Year))))
+1732101903222:# Multivariate dispersion tests
+1732101903222:year_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101903222:species_matrix$year_temp)
+1732101903286:year_anova <- anova(year_disp)
+1732101903289:station_disp <- betadisper(vegdist(select(species_matrix, -station_temp, -year_temp), "bray"),
+1732101903289:species_matrix$station_temp)
+1732101903395:station_anova <- anova(station_disp)
+1732101903397:print("Temporal gradient test:")
+1732101903398:print(temporal_test)
+1732101903405:print("\nMultivariate dispersion tests:")
+1732101903405:print("Years:")
+1732101903406:print(year_anova)
+1732101903408:print("Stations:")
+1732101903408:print(station_anova)
+1732101916573:# Create subset for 2013-2017 data only
+1732101916573:species_matrix_recent <- species_matrix %>%
+1732101916573:filter(year_temp >= 2013)
+1732101916576:nmds_recent <- metaMDS(select(species_matrix_recent, -station_temp, -year_temp), distance = "bray")
+1732101916734:# Match environmental data with recent NMDS
+1732101916734:nmds_env_recent <- data.frame(
+1732101916735:scores(nmds_recent, display = "sites"),
+1732101916735:Station = species_matrix_recent$station_temp,
+1732101916735:Year = species_matrix_recent$year_temp
+1732101916735:) %>%
+1732101916735:left_join(env_data, by = c("Station" = "station", "Year" = "year"))
+1732101925260:rlang::last_trace()
+1732102045154:# Create subset for 2013-2017 data only
+1732102045154:species_matrix_recent <- species_matrix %>%
+1732102045154:filter(year_temp >= 2013)
+1732102045157:nmds_recent <- metaMDS(select(species_matrix_recent, -station_temp, -year_temp), distance = "bray")
+1732102045229:# Convert year to character in both datasets
+1732102045229:nmds_env_recent <- data.frame(
+1732102045230:scores(nmds_recent, display = "sites"),
+1732102045230:Station = species_matrix_recent$station_temp,
+1732102045230:Year = as.character(species_matrix_recent$year_temp)  # Convert to character
+1732102045230:) %>%
+1732102045230:left_join(
+1732102045230:env_data %>%
+1732102045230:mutate(year = as.character(year)),  # Convert to character
+1732102045230:by = c("Station" = "station", "Year" = "year")
+1732102045230:)
+1732102045234:# Environmental correlation for 2013-2017 only
+1732102045234:env_fit_recent <- envfit(nmds_recent, nmds_env_recent[, "organic_content", drop = FALSE])
+1732102045311:print("\nOrganic matter correlation (2013-2017 only):")
+1732102045311:print(env_fit_recent)
+1732102332227:# Create subset excluding 1999 data
+1732102332227:species_matrix_no1999 <- species_matrix %>%
+1732102332227:filter(year_temp >= 2013)
+1732102332231:nmds_no1999 <- metaMDS(select(species_matrix_no1999, -station_temp, -year_temp), distance = "bray")
+1732102332294:# Tests for 2013-2017 only
+1732102332294:temporal_test_no1999 <- envfit(nmds_no1999,
+1732102332294:data.frame(Year = as.numeric(as.character(species_matrix_no1999$year_temp))))
+1732102332410:year_disp_no1999 <- betadisper(
+1732102332410:vegdist(select(species_matrix_no1999, -station_temp, -year_temp), "bray"),
+1732102332410:species_matrix_no1999$year_temp)
+1732102332449:year_anova_no1999 <- anova(year_disp_no1999)
+1732102332451:station_disp_no1999 <- betadisper(
+1732102332451:vegdist(select(species_matrix_no1999, -station_temp, -year_temp), "bray"),
+1732102332451:species_matrix_no1999$station_temp)
+1732102332520:station_anova_no1999 <- anova(station_disp_no1999)
+1732102332522:print("Results excluding 1999:")
+1732102332522:print(temporal_test_no1999)
+1732102332528:print(year_anova_no1999)
+1732102332531:print(station_anova_no1999)
+1732104145573:# Calculate pairwise station similarities
+1732104145573:station_similarities <- vegdist(select(species_matrix, -station_temp, -year_temp), "bray") %>%
+1732104145573:as.matrix()
+1732104145583:# Create station pairs comparison
+1732104145583:station_pairs <- site_scores %>%
+1732104145583:group_by(Year) %>%
+1732104145583:summarize(
+1732104145583:E3_E4_dist = vegdist(subset(species_matrix,
+1732104145583:station_temp %in% c("E3", "E4")), "bray"),
+1732104145584:# Add other station pairs as needed
+1732104145584:)
+1732104152847:rlang::last_trace()
+1732104181213:# Create a function to calculate mean Bray-Curtis dissimilarity between stations
+1732104181213:station_dissimilarity <- function(data, station1, station2) {
+1732104181214:data %>%
+1732104181214:filter(station_temp %in% c(station1, station2)) %>%
+1732104181214:select(-station_temp, -year_temp) %>%
+1732104181214:vegdist(method = "bray") %>%
+1732104181214:mean()
+1732104181214:}
+1732104181214:# Create all possible station pairs
+1732104181215:station_pairs <- expand.grid(
+1732104181215:station1 = c("E3", "E4", "A7", "B5", "B8", "C4"),
+1732104181215:station2 = c("E3", "E4", "A7", "B5", "B8", "C4")
+1732104181215:) %>%
+1732104181215:filter(station1 < station2)  # Remove duplicates and self-comparisons
+1732104181282:# Calculate mean dissimilarity for each pair
+1732104181282:station_distances <- station_pairs %>%
+1732104181282:rowwise() %>%
+1732104181282:mutate(
+1732104181282:mean_dissimilarity = station_dissimilarity(
+1732104181282:species_matrix,
+1732104181282:station1,
+1732104181283:station2
+1732104181283:)
+1732104181283:) %>%
+1732104181283:arrange(mean_dissimilarity)
+1732104181299:print("Mean dissimilarity between station pairs:")
+1732104181300:print(station_distances)
+1732104211893:# Convert stations to character and create pairs
+1732104211894:station_pairs <- expand.grid(
+1732104211894:station1 = as.character(c("E3", "E4", "A7", "B5", "B8", "C4")),
+1732104211894:station2 = as.character(c("E3", "E4", "A7", "B5", "B8", "C4"))
+1732104211894:) %>%
+1732104211894:filter(as.character(station1) < as.character(station2))
+1732104211896:# Create a matrix of Bray-Curtis dissimilarities
+1732104211896:species_matrix_wide <- species_matrix %>%
+1732104211897:select(-year_temp) %>%
+1732104211897:group_by(station_temp) %>%
+1732104211897:summarise(across(everything(), mean)) %>%
+1732104211897:column_to_rownames("station_temp")
+1732104211921:# Calculate dissimilarity matrix
+1732104211921:station_dist_matrix <- vegdist(species_matrix_wide, method = "bray") %>%
+1732104211921:as.matrix()
+1732104211921:print("Station dissimilarity matrix:")
+1732104211922:print(round(station_dist_matrix, 3))
+1732104211922:# Calculate mean dissimilarity for E3-E4 specifically
+1732104211922:e3e4_dist <- station_dist_matrix["E3", "E4"]
+1732104211923:print("\nE3-E4 dissimilarity:")
+1732104211923:print(e3e4_dist)
+1732104211923:# Compare to mean of all other pairs
+1732104211923:other_pairs <- station_dist_matrix[lower.tri(station_dist_matrix)]
+1732104211923:other_pairs <- other_pairs[other_pairs != e3e4_dist]
+1732104211923:print("\nMean dissimilarity of other station pairs:")
+1732104211923:print(mean(other_pairs))
+1732104366838:# Calculate dissimilarity matrices for each year
+1732104366838:yearly_patterns <- species_matrix %>%
+1732104366838:group_by(year_temp) %>%
+1732104366838:group_split() %>%
+1732104366838:lapply(function(year_data) {
+1732104366838:year_matrix <- year_data %>%
+1732104366839:select(-year_temp) %>%
+1732104366839:column_to_rownames("station_temp")
+1732104366839:dist_matrix <- vegdist(year_matrix, method = "bray") %>%
+1732104366839:as.matrix()
+1732104366840:# Get E3-E4 dissimilarity for this year
+1732104366840:e3e4 <- dist_matrix["E3", "E4"]
+1732104366840:other_mean <- mean(dist_matrix[lower.tri(dist_matrix)][dist_matrix[lower.tri(dist_matrix)] != e3e4])
+1732104366840:return(data.frame(
+1732104366840:year = unique(year_data$year_temp),
+1732104366841:e3e4_dist = e3e4,
+1732104366841:other_mean_dist = other_mean
+1732104366841:))
+1732104366841:}) %>%
+1732104366842:bind_rows()
+1732104366868:print("Yearly patterns of E3-E4 similarity:")
+1732104366868:print(yearly_patterns)
+1732104567030:# Station Similarity Analysis
+1732104567030:# Analyzes spatial patterns and temporal changes in community similarity between stations
+1732104567030:# Load required packages
+1732104567030:library(vegan)
+1732104567032:library(dplyr)
+1732104567032:library(tidyr)
+1732104567033:library(ggplot2)
+1732104567033:# Function to calculate station similarities
+1732104567033:calculate_station_similarities <- function(species_data) {
+1732104567033:# Create dissimilarity matrix
+1732104567034:species_matrix_wide <- species_data %>%
+1732104567034:select(-year_temp) %>%
+1732104567034:group_by(station_temp) %>%
+1732104567034:summarise(across(everything(), mean)) %>%
+1732104567034:column_to_rownames("station_temp")
+1732104567034:# Calculate Bray-Curtis dissimilarity
+1732104567035:station_dist_matrix <- vegdist(species_matrix_wide, method = "bray") %>%
+1732104567035:as.matrix()
+1732104567035:return(station_dist_matrix)
+1732104567035:}
+1732104567036:# Function to analyze temporal patterns
+1732104567036:analyze_temporal_patterns <- function(species_data) {
+1732104567036:species_data %>%
+1732104567036:group_by(year_temp) %>%
+1732104567036:group_split() %>%
+1732104567037:lapply(function(year_data) {
+1732104567037:year_matrix <- year_data %>%
+1732104567037:select(-year_temp) %>%
+1732104567037:column_to_rownames("station_temp")
+1732104567038:dist_matrix <- vegdist(year_matrix, method = "bray") %>%
+1732104567038:as.matrix()
+1732104567038:# Calculate E3-E4 and mean other distances
+1732104567038:e3e4 <- dist_matrix["E3", "E4"]
+1732104567038:other_pairs <- dist_matrix[lower.tri(dist_matrix)]
+1732104567039:other_mean <- mean(other_pairs[other_pairs != e3e4])
+1732104567039:data.frame(
+1732104567039:year = unique(year_data$year_temp),
+1732104567039:e3e4_dist = e3e4,
+1732104567039:other_mean_dist = other_mean
+1732104567040:)
+1732104567040:}) %>%
+1732104567040:bind_rows()
+1732104567040:}
+1732104567041:# Calculate overall station similarities
+1732104567041:station_dist_matrix <- calculate_station_similarities(species_matrix)
+1732104567070:# Calculate temporal patterns
+1732104567070:yearly_patterns <- analyze_temporal_patterns(species_matrix)
+1732104567128:# Create summary of station pairs
+1732104567128:station_pairs_summary <- data.frame(
+1732104567128:pair = c("E3-E4", "A7-B8", "B5-C4", "E3-A7", "E3-B8", "E4-B8"),
+1732104567128:dissimilarity = c(
+1732104567128:station_dist_matrix["E3", "E4"],
+1732104567128:station_dist_matrix["A7", "B8"],
+1732104567128:station_dist_matrix["B5", "C4"],
+1732104567128:station_dist_matrix["E3", "A7"],
+1732104567129:station_dist_matrix["E3", "B8"],
+1732104567129:station_dist_matrix["E4", "B8"]
+1732104567129:)
+1732104567129:) %>%
+1732104567129:arrange(dissimilarity)
+1732104567131:# Create visualization of temporal patterns
+1732104567132:temporal_plot <- ggplot(yearly_patterns, aes(x = year)) +
+1732104567132:geom_line(aes(y = e3e4_dist, color = "E3-E4")) +
+1732104567132:geom_line(aes(y = other_mean_dist, color = "Other Pairs Mean")) +
+1732104567132:labs(
+1732104567132:title = "Station Similarity Patterns Over Time",
+1732104567132:x = "Year",
+1732104567132:y = "Bray-Curtis Dissimilarity",
+1732104567132:color = "Station Pairs"
+1732104567132:) +
+1732104567132:theme_minimal() +
+1732104567132:theme(
+1732104567132:panel.background = element_rect(fill = "white"),
+1732104567133:legend.position = "bottom"
+1732104567133:)
+1732104567155:# Save results
+1732104567155:write.csv(station_pairs_summary, "output/station_pairs_summary.csv", row.names = FALSE)
+1732104567162:write.csv(yearly_patterns, "output/yearly_similarity_patterns.csv", row.names = FALSE)
+1732104567175:ggsave("output/temporal_similarity_patterns.png", temporal_plot, width = 8, height = 6, dpi = 300)
+1732104567880:# Print summary statistics
+1732104567880:cat("\nOverall Station Pair Summary:\n")
+1732104567880:print(station_pairs_summary)
+1732104567881:cat("\nTemporal Patterns Summary:\n")
+1732104567881:print(yearly_patterns)
+1732111819666:# Create the plot
+1732111819668:nmds_plot <- ggplot() +
+1732111819673:# Add points for sites
+1732111819673:geom_point(data = site_scores,
+1732111819674:aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
+1732111819675:size = 4) +
+1732111819675:# Add smaller ellipses around years with solid lines
+1732111819676:# stat_ellipse(data = site_scores,
+1732111819676:#              aes(x = NMDS1, y = NMDS2, group = Year),
+1732111819676:#              type = "norm",
+1732111819676:#              level = 0.7,
+1732111819677:#              linetype = 1,
+1732111819677:#              size = 0.5) +
+1732111819678:# Add significant environmental vectors
+1732111819678:# geom_segment(data = sig_env_vectors,
+1732111819680:#              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
+1732111819681:#              arrow = arrow(length = unit(0.2, "cm")),
+1732111819681:#              color = "darkgrey") +
+1732111819681:# geom_text(data = sig_env_vectors,
+1732111819681:#           aes(x = NMDS1*1.1, y = NMDS2*1.1, label = variable),
+1732111819681:#           size = 3, color = "darkgrey") +
+1732111819682:theme_bw() +
+1732111819682:theme(
+1732111819682:panel.background = element_rect(fill = "white"),
+1732111819683:axis.text = element_text(size = 16, color = "black"),     # Increased from 12
+1732111819683:axis.title = element_text(size = 18),                     # Increased from 14
+1732111819684:legend.text = element_text(size = 16),                    # Increased from 12
+1732111819684:legend.title = element_text(size = 16, face = "bold"),    # Increased from 12
+1732111819685:plot.title = element_text(size = 20, face = "bold"),      # Increased from 16
+1732111819685:legend.position = "right"
+1732111819686:) +
+1732111819686:labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+1732111819687:caption = "") +
+1732111819688:guides(color = guide_legend("Station"),
+1732111819688:shape = guide_legend("Year"))
+1732111821783:# Save with higher resolution and size
+1732111821783:ggsave("output/nmds_plot_1999_an-hringja.png",
+1732111821783:nmds_plot,
+1732111821783:width = 12,      # Increased width
+1732111821784:height = 10,     # Increased height
+1732111821784:dpi = 300,       # Higher resolution
+1732111821784:bg = "white")

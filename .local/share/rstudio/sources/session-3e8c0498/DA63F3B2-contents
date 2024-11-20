@@ -11,8 +11,7 @@ rownames(data) <- data$Flokkun  # Set species/taxa as rownames
 data_matrix <- as.matrix(data[, -1])  # Select only station columns
 
 # 3. Run PCA with Covariance Scaling
-pca <- prcomp(data_matrix, center = TRUE, scale. = T)  # Use covariance (no scaling)
-pca <- prcomp(data_matrix, center = TRUE, scale. = FALSE)
+pca <- prcomp(data_matrix, center = TRUE, scale. = T)  
 variance_explained <- summary(pca)$importance[2, 1:2] * 100
 print(variance_explained) 
 

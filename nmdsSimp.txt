@@ -1,0 +1,38 @@
+3.2 Multivariate Analysis Results
+3.2.1 NMDS Ordination and Environmental Correlations
+Non-metric multidimensional scaling (NMDS) ordination revealed clear temporal patterns in benthic community composition from 2013 to 2017 (stress = 0.138). The analysis, based on Bray-Curtis dissimilarities of 104 taxa across 36 samples (6 stations × 6 years), showed distinct recovery trajectories for different stations. Environmental fitting identified significant correlations with sediment characteristics (p < 0.05): organic content (r² = 0.640), fine mud <63μm (r² = 0.536), very fine particles <20μm (r² = 0.469), and medium-fine particles <125μm (r² = 0.334).
+
+3.2.2 Community Succession Patterns
+Temporal analysis revealed a clear succession pattern across the five-year period. The opportunistic species Capitella capitata strongly dominated the early recovery phase (2013: 66,225 ind. m⁻²), showing a dramatic decline over subsequent years (2014: 12,842 ind. m⁻²; 2015: 33 ind. m⁻²; 2016: 333 ind. m⁻²) until complete absence in 2017. Despite this temporal decline, C. capitata remained the most abundant species overall (35.9% of total abundance, 79,433 ind. m⁻²). The succession was characterized by a shift from C. capitata dominance to a more diverse community, with Polydora (8.56%, 18,975 ind. m⁻²) and Ophelina acuminata (8.09%, 17,912 ind. m⁻²) becoming prominent in later years. By 2017, the community was dominated by Polydora (11,908 ind. m⁻²) and Scalibregma inflatum (5,133 ind. m⁻²), with increased abundances of equilibrium species such as Macoma calcarea (4,312 ind. m⁻²) and Scoloplos armiger (3,700 ind. m⁻²).
+
+3.2.3 Spatial Organization in NMDS Space
+The NMDS ordination showed clear spatial segregation of dominant species. Capitella capitata, the most abundant species (27.0% of total abundance), was strongly isolated in positive NMDS1 space (NMDS1 = 1.91), distinctly separated from all other species. A group of five species, including Polydora (10.4%) and Spio (7.1%), occupied neutral positions in the ordination space, suggesting their generalist distribution patterns. Species associated with positive NMDS2 scores included Ophelina acuminata (6.5%) and Macoma calcarea (5.4%), while a distinct cluster of species including Tubificoides benedii (3.3%) and Scalibregma inflatum (3.3%) showed strong negative NMDS1 scores, suggesting their association with later recovery stages of the community succession.
+
+3.2.4 - Station Recovery Trajectories
+Station trajectories varied markedly in both total length (range: 2.78-6.69 units) and net displacement (range: 0.280-1.13 units), with station A7 showing the longest recovery path (6.69 units) and station C4 the shortest (2.78 units). All stations exhibited similar initial movement directions (18.9° to 36.2°), with stations E3 and E4 showing slightly higher angles (~29°) compared to other stations. The initial post-impact community (2013) showed substantial movement magnitude (0.917 ± 0.436 units), with movement decreasing consistently through subsequent years (2014: 0.861 ± 0.600; 2015: 0.401 ± 0.161; 2016: 0.314 ± 0.191 units).
+
+3.2.5 - Temporal Consistency and Environmental Relationships
+This recovery process showed remarkable spatial and temporal consistency across Kolgrafafjörður, with community composition changing predictably over time during the recovery period (NMDS temporal gradient: r² = 0.702, p = 0.001). Tests of multivariate dispersion revealed no significant differences in community variability either between years (F = 0.719, p = 0.587) or between stations (F = 0.569, p = 0.723), indicating an orderly, fjord-wide recovery rather than patchy recolonization. This structured succession was strongly linked to the processing of organic matter (r² = 0.549, p = 0.001), suggesting that the decomposition of herring biomass drove a coordinated ecosystem recovery.
+
+3.2.6 - Long-term Change and Baseline Comparison
+The 1999 baseline data, while collected using different sampling techniques, provides important historical context for the post-disturbance community development. The distance between the 2017 communities and the 1999 baseline state (0.657 ± 0.271 units in NMDS space) exceeded the final year-to-year changes during recovery (0.314 ± 0.191 units), indicating that while the community had stabilized by 2017, it had shifted to a different configuration than its pre-disturbance state. This transformation suggests that the hypoxic event may have triggered a transition to an alternative stable state in the fjord's benthic community structure.
+
+
+
+### 3.3.3 SIMPER Analysis
+
+The SIMPER analysis revealed distinct temporal patterns in species contributions to community dissimilarity during the recovery period (2013-2017). The opportunistic species Capitella capitata dominated the early post-disturbance community in 2013, contributing 67.15% to the dissimilarity between 2013 and 2014, with a substantial decrease in density from approximately 66,225 to 12,842 individuals/m². 
+
+Table 2. Top contributing species to community dissimilarity between consecutive years (2013-2017), showing species contributing up to 70% cumulative dissimilarity. Values represent mean abundance (individuals/m²) and percent contribution to dissimilarity.
+
+| Species | 2013 | 2014 | % Contrib. | 2014 | 2015 | % Contrib. | 2015 | 2016 | % Contrib. | 2016 | 2017 | % Contrib. |
+|---------|------|------|------------|------|------|------------|------|------|------------|------|------|------------|
+| Capitella capitata | 66,225 | 12,842 | 67.15 | 12,842 | 34 | 29.62 | - | - | - | - | - | - |
+| Polydora | - | - | - | - | - | - | 3,458 | 10,217 | 8.34 | 10,217 | 16,975 | 14.97 |
+| Ophelina acuminata | - | - | - | 0 | 3,517 | 7.83 | 7,617 | 15,233 | 17.29 | 15,233 | 7,296 | 14.32 |
+
+During the initial recovery phase (2014-2015), the community showed a more balanced contribution pattern, with C. capitata's contribution decreasing to 29.62%. This period saw the emergence of less opportunistic species, with Macoma calcarea (9.71%) and Ophelina acuminata (7.83%) among the top contributors to community dissimilarity.
+
+The later recovery phase (2016-2017) exhibited further community stabilization, characterized by increased contributions from species typically associated with less disturbed conditions. Notable species included Polydora (15.02%), Ophelina acuminata (14.93%), and Spio (12.83%), indicating a shift towards a more diverse and stable community structure.
+
+While comparisons with the 1999 baseline data should be interpreted with caution due to different sampling methodologies, they provide context for understanding the magnitude of community change. The dramatic shift from 1999 to 2013 was primarily driven by C. capitata (46.89% contribution), reflecting the community's response to the hypoxic event. By 2017, the community composition showed signs of recovery, though differences from the 1999 baseline remained, particularly in the relative abundances of key species.

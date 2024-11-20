@@ -1,11 +1,11 @@
+~/scripts/03_nmds_analysis.R
+~/scripts/01_data_cleaning.R
 ~/auka/krokurinn.R
 ~/scripts/07_PCA-SAS.R
 ~/scripts/02_exploratory_analysis.R
-~/scripts/01_data_cleaning.R
 ~/scripts/00_data_reading.R
 ~/henda/app.R
 ~/scripts/06_PCA.R
 ~/scripts/05_simper_analysis.R
-~/scripts/03_nmds_analysis.R
 ~/Kfj.Rmd
 ~/scripts/04_permanova_analysis.R

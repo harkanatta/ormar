@@ -1,0 +1,92 @@
+PCA analysis of species density by station 
+The PCA analysis explained between 69.2% and 99.9% of the total variance in the species density data, with particularly high explanation (99.9%) in 2013 when the community was dominated by Capitella capitata.
+
+The PCA plots align the arrows, representing the sampling stations, together when they show similar densities of species, with highest densities shown by those furthest away from the center of the graphs, pointing towards species that are highest in density. 
+
+According to PCA plots, the E3 and E4 stations (to the west of the fjord) aligned together in a different direction from other stations, in 1999 (Figure Xa); conversely, the stations do not differ from one another in 2013 reflecting the dominance of Capitella capitata (explaining 98.9% of variance on PC1). In 2014, the station patterns became more complex, with E3 and C4 showing distinct characteristics from the other stations, particularly driven by lower C. capitata densities and higher Tubificoides kozloffi abundances (total variance explained 79.9%). The 2015 data showed high total explained variance (87.4%), though stations showed similar patterns, with Mediomastus fragilis and Ophelina acuminata as the main contributing species. In 2016 and 2017, the alignment of E3 and E4 away from other stations returned (Figure Xe, Xf), driven by high densities of Spio sp. (2016) and Polydora sp. (2017).
+
+/
+
+
+
+
+1999 
+
+According to PCA plots, stations E3 and E4  (to the west of the fjord) aligned together (Figure Xa). E3 and E4 both had high densities of two annelids, i.e. the annelids Polydora sp. (absent from all other stations) and Tubificoides benedii (low densities at B8 and C4, absent from A7 and B5). 
+
+
+The other stations (A7, B5, B8, and C4), located to the east, aligned together away from E3 and E4 (Figure Xa). These were characterized by the bivalve Ennucula tenuis, two annelids Scalibregma inflatum and Chaetozone setosa, and the amphipod Protomedeia fasciata.  
+
+ 
+
+ 
+
+2013 and 2014 
+
+The year at the organic enrichment (2013) was characterized by aberrantly high densities of the deposit-feeding annelid Capitella capitata (Figure Xb and Xc), which is an enrichment opportunist. The extremely high variance explanation (98.9% on PC1 alone) quantitatively demonstrates C. capitata's dominance of the community structure. Spio sp. was also prominent in 2013 but at lower densities than C. capitata, and mostly occurring at stations C4 and E3. Other common species include the surface-dwelling annelid predators Eteone longa and Harmothoe extenuata, as well as the deposit feeders Chaetozone setosa and Tubificoides kozloffi. 
+
+In 2014, the PCA explained 79.9% of the variance, with PC1 accounting for 56.7% and PC2 for 23.2%. This lower total variance (compared to 2013) reflects the increased complexity in species composition. The same species were the most common ones, but the number of species had increased substantially, in particular at stations B5, C4, E3 and E4. E3 aligned with the neighboring C4 station but away from B5, A7 and B8, with E4 in between the two groups (Figure Xc). A7 and B8 were highest in C. capitata densities, followed by B5 and E4 but only low densities at C4 and E3.  At stations E3 and E4,  Tubificoides kozloffi reached high densities in 2014 at two stations (E3 and E4)(Figure Xc). Other notable species in 2014 included the surface dwelling annelid predator Eteone longa at all stations, the annelid Microphthalmus aberrans at stations C4, E3 and E4, and four species at station E3; the barnacle Balanus sp., the annelids Chaetozone setosa and Harmothoe extenuate and the bivalve Mytilus edulis. Notably, Polydora sp. returned to stations E3 and E4 (same as 1999), after not being found at all in 2013. 
+
+ 
+
+2015 
+
+The PCA explained 87.4% of total variance (PC1: 75.4%, PC2: 12.0%). The PCA identified the bivalve Macoma calcarea, the oligochaetes Mediomastus fragilis, Ophelina acuminata, and Spio sp. as the main contributing species.
+
+O. acuminata was found at all stations but at highest densities at stations C4 and E3 (Figure Xd); it was found in 1999 but not in 2013 or 2014. Similarly, M. fragilis was found at all stations in 2015, having been absent in 1999 but present in low densities in 2013 and 2014. Scoloplos armiger was also found at all stations with highest densities at C4 and E3, showing an increase from its lower densities in 1999, 2013 (when found only at C4), and 2014. C. capitata, in contrast, has collapsed in density and was only found at a single station in a low density.
+
+Chaetozone setosa and Spio sp. remain conspicuous as they did in 2013 and 2014, with Spio sp. showing substantial contributions to both PC1 and PC2 (loadings: 0.995 and -1.423 respectively; 9.64% relative abundance) and Chaetozone setosa maintaining moderate influence. Polydora sp., which showed strong loadings (PC1: 0.918, PC2: 1.200; 6.84% relative abundance), were found at all stations for the first time, having previously been restricted to stations E3 and E4 in 1999 (where it was dominant at 16.91% abundance) and 2014, with none recorded in 2013. The bivalve Mya arenaria was found at all stations after being first found at stations E3 and E4 in 2014.
+
+
+2015 
+
+The PCA explained most of the variation in the community data, with the first two axes capturing 87.4% of total variance. The community was characterized by several key species: the bivalve Macoma calcarea, the polychaetes Ophelina acuminata, and Mediomastus fragilis, together accounting for over 40% of total abundance. 
+
+O. acuminata showed strong associations with stations C4 and E3 based on the PCA. M. fragilis, which was not prominent in earlier years, emerged as an important species in 2015. Scoloplos armiger maintained a consistent presence across stations. Most notably, C. capitata, which had dominated the community in 2013, was no longer among the dominant species in 2015.
+
+Chaetozone setosa and Spio sp. remained influential in the community structure as they did in previous years. Polydora sp. also contributed significantly to community patterns, while the bivalve Mya arenaria appeared as a new contributor to community structure.
+ 
+
+ The PCA explained most of the variation in the community data, with the first two axes capturing 87.4% of total variance. The community was characterized by several key species: the bivalve Macoma calcarea, the polychaetes Ophelina acuminata, and Mediomastus fragilis, together accounting for over 40% of total abundance. 
+
+C. capitata, which had dominated the community in 2013 and 2014, was now found only at a single station in low density. O. acuminata showed strong associations with stations C4 and E3 based on the PCA. M. fragilis, absent in 1999 but present in low densities in 2013 and 2014, emerged as an important species in 2015. Scoloplos armiger maintained a presence across stations, showing an increase from its lower densities in previous years (when it was found only at C4 in 2013).
+
+Chaetozone setosa and Spio sp. remained influential in the community structure as they did in previous years. Polydora sp., previously recorded only at stations E3 and E4, was now found across stations. The bivalve Mya arenaria appeared as a new contributor to community structure, having first appeared at stations E3 and E4 in 2014.
+
+2016 and 2017  
+
+These two years show E3 and E4 aligning together, similar to that observed in 1999 but not in 2013, 2014 and 2015. Many of the species from previous years were found in higher densities, most notably: 1) in 2016, Spio sp., O. acuminata, Polydora sp., and S. armiger; and 2) in 2017, Polydora sp., S. armiger, Mediomastus fragilis, O. acuminata, Chaetozone setosa, and Mya arenaria. We also note Praxillella praetermissa, found at all stations in 2016 and 2017, common in 1999 but occasionally found in 2013, 2014, and 2015. 
+
+Species emerging in high densities in 2016 included: 1) the annelid Heteromastus filiformis, which interestingly was found at stations E3 and E4 in 1999, not recorded in 2013-2015 and almost gone in 2017! 2) the bivalve Macoma calcarea, found at all stations in 1999 and 2015-2017 but not documented in 2013 and only found at C4 and E3 in 2014. 
+
+Species emerging in high densities in 2017 included: 1) the annelid Scalibregma inflatum, which was common in 1999, not documented in 2013 or 2015, found in low densities 2015, common in 2016 and 2017 but reached high densities at stations A7 and B8 in 2017. 
+
+And 2) the bivalve Abra nitida, found in low densities at 4 stations in 1999, not found in 2013, 2014 and 2015, but found in low densities at three stations in 2016 and increased densities at 5 stations in 2017 (absent from station E3). 
+
+ 
+
+ 
+
+By E3/E4 vs. the rest of the stations 2016-2017 
+
+Spio: High density E3/E4 2016, declined to low numbers 2017. 
+
+O. acuminata: similar to Spio sp. but common at all stations and decline from 2016 to 2017. 
+
+Polydora sp:  all stations 2016, high density on E4. Similar in 2017 with 10 thousand/meter2 on E4! 
+
+S. armiger: Similar densities across stations in both years, 2016 and 2017. 
+
+M. fragilis: Low on E3/E4 in 2016 (plus some at C4), similar densities all stations 2017 
+
+C. saetosa: Similar densities across stations in both years, 2016 and 2017. 
+
+M. arenaria: found at A7, B5 and B8 in 2016 but 0 at C4, E3 and E4. In 2017, absent from A7 and B5 but found at B8, C4, E3, and E4. Did they migrate?     
+
+H. filiformis: All stations in 2016, highest densities at A7 and B8. Only found in E3 in 2017. 
+
+Macoma calcarea: All stations in 2016, highest densities at B8 and C4. Similar in 2017, with B8 also having high densities. 
+
+S. inflatum: All stations in 2016 at similar densities, with increases to high densities at A7 and B8 in 2017. 
+
+A. nitida: Found at 3 stations in 2016 (B8 and low at E3 and E4). Similar densities across stations in 2017, except for 0 at E3. 

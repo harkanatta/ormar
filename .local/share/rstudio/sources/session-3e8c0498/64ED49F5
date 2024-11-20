@@ -1,0 +1,26 @@
+{
+    "id": "64ED49F5",
+    "path": "~/scripts/03_nmds_analysis.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1732011237258.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "184,0",
+        "scrollLine": "165"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1731601143,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1732111816148,
+    "read_only": false,
+    "read_only_alternatives": []
+}
