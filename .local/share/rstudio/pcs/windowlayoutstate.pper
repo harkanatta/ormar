@@ -1,14 +1,3 @@
-{
-    "left": {
-        "splitterpos": 470,
-        "topwindowstate": "NORMAL",
-        "panelheight": 885,
-        "windowheight": 959
-    },
-    "right": {
-        "splitterpos": 478,
-        "topwindowstate": "NORMAL",
-        "panelheight": 885,
-        "windowheight": 959
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c6a73e80b9d673ef098f67f389ef605852356864cbe76a7a35e2637c332482ab
+size 285

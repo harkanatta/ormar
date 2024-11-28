@@ -1,12 +1,3 @@
-{
-    "context_id": "D9775AAF",
-    "export_plot_options": {
-        "width": 649,
-        "height": 580,
-        "format": "png",
-        "keepRatio": false,
-        "viewAfterSave": false,
-        "useDevicePixelRatio": false,
-        "copyAsMetafile": false
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d8d1f0ec6279cd0c735d2d102eb4ec564422d4c7c7cc078565a897015d4e0ca
+size 268

@@ -1,0 +1,199 @@
+
+Top 5 Species Trait Descriptions for Year 2015
+=================================================
+
+
+Macoma calcarea
+--------------- 
+   trait_category           trait_subcategory    value
+1           Class                       Class Bivalvia
+2          Phylum                      Phylum Mollusca
+3               b            Diffusive_mixing        3
+4               b          Surface_deposition        3
+5               b           Downward_conveyer        3
+6              ed              Sexual_pelagic        3
+7               f                  Suspension        3
+8               f             Surface_deposit        3
+9               f          Subsurface_deposit        3
+10              l                     3_to_10        3
+11             ld      Pelagic_planktotrophic        3
+12             lh             Burrow_dwelling        3
+13              m                 Exoskeleton        3
+14            mob                     Sessile        3
+15            mob                        Swim        3
+16            mob           Crawl_creep_climb        3
+17             sp    Shallow_infauna_0_to_5cm        3
+18             sp Mid_depth_infauna_5_to_10cm        3
+19             sr                    11_to_20        1
+20             sr                   21_to_100        1
+                                                                                        Description
+1                                                                                              <NA>
+2                                                                                              <NA>
+3                        Vertical and horizontal redistribution of sediment and/or other particles.
+4                                                       Deposition of particles at sediment surface
+5                                                                                              <NA>
+6                                                          Eggs are released into the water column.
+7                                Feeds on particulate food resources suspended in the water column.
+8                             Feeds on detritus (including algal material) on the sediment surface.
+9                                             Feeds on detritus located within the sediment matrix.
+10                           The maximum reported lifespan (years) of the adult stage of the taxon.
+11                    Larvae feed on plankton and spend a relatively long time in the water column.
+12                                                  Adults live in a permanent or temporary burrow.
+13          Body is covered or encased in either a thin chitinous layer or calcium carbonate shell.
+14 Adults have little or no mobility. Typically attached or lives in (semi-) permanent burrow/tube.
+15              Adults actively swim in the water column (many return to the bed when not feeding).
+16          Adults capable of some (typically limited) movement along the sediment or rock surface.
+17                                     Adults live below sediment surface between 0 and 5 cm depth.
+18                                    Adults live below sediment surface between 5 and 10 cm depth.
+19                                                                                             <NA>
+20                   The maximum size (mm) that the taxon is known to reach during the adult stage.
+
+
+
+Ophelina acuminata
+------------------ 
+   trait_category           trait_subcategory      value
+1           Class                       Class Polychaeta
+2          Phylum                      Phylum   Annelida
+3               b            Diffusive_mixing          3
+4              ed              Sexual_pelagic          3
+5               f          Subsurface_deposit          3
+6               l                      1_to_3          1
+7              ld      Pelagic_lecithotrophic          1
+8              lh                 Free_living          3
+9               m                        Soft          3
+10            mob                    Burrower          3
+11            mob                        Swim          1
+12             sp    Shallow_infauna_0_to_5cm          3
+13             sp Mid_depth_infauna_5_to_10cm          3
+14             sp Deep_infauna_more_than_10cm          3
+15             sr                    11_to_20          1
+16             sr                   21_to_100          1
+                                                                                      Description
+1                                                                                            <NA>
+2                                                                                            <NA>
+3                      Vertical and horizontal redistribution of sediment and/or other particles.
+4                                                        Eggs are released into the water column.
+5                                           Feeds on detritus located within the sediment matrix.
+6                          The maximum reported lifespan (years) of the adult stage of the taxon.
+7             Larvae feed on yolk reserves and spend a relatively short time in the water column.
+8  Adults do not inhabit a restrictive structure. Able to move freely within and/or on sediments.
+9                       External tissue is soft and not covered by any form of protective casing.
+10                                  Adults capable of active movement within the sediment matrix.
+11            Adults actively swim in the water column (many return to the bed when not feeding).
+12                                   Adults live below sediment surface between 0 and 5 cm depth.
+13                                  Adults live below sediment surface between 5 and 10 cm depth.
+14                                Adults live below sediment surface at greater than 10 cm depth.
+15                                                                                           <NA>
+16                 The maximum size (mm) that the taxon is known to reach during the adult stage.
+
+
+
+Mediomastus fragilis
+-------------------- 
+   trait_category        trait_subcategory      value
+1           Class                    Class Polychaeta
+2          Phylum                   Phylum   Annelida
+3               b          Upward_conveyor          3
+4              ed           Sexual_brooded          3
+5              ed           Sexual_benthic          1
+6               f       Subsurface_deposit          3
+7               l                   1_to_3          3
+8              ld   Pelagic_planktotrophic          3
+9              lh            Tube_dwelling          3
+10             lh          Burrow_dwelling          1
+11              m                     Soft          3
+12            mob                  Sessile          1
+13             sp Shallow_infauna_0_to_5cm          3
+14             sr                21_to_100          3
+                                                                                        Description
+1                                                                                              <NA>
+2                                                                                              <NA>
+3                                         Translocation of particles from depth to sediment surface
+4                                            Fertilised eggs are maintained by adult for protection
+5                                                            Eggs are released onto/into the seabed
+6                                             Feeds on detritus located within the sediment matrix.
+7                            The maximum reported lifespan (years) of the adult stage of the taxon.
+8                     Larvae feed on plankton and spend a relatively long time in the water column.
+9                                                                             Adults live in a tube
+10                                                  Adults live in a permanent or temporary burrow.
+11                        External tissue is soft and not covered by any form of protective casing.
+12 Adults have little or no mobility. Typically attached or lives in (semi-) permanent burrow/tube.
+13                                     Adults live below sediment surface between 0 and 5 cm depth.
+14                   The maximum size (mm) that the taxon is known to reach during the adult stage.
+
+
+
+Spio
+---- 
+   trait_category        trait_subcategory      value
+1           Class                    Class Polychaeta
+2          Phylum                   Phylum   Annelida
+3               b       Surface_deposition          3
+4              ed           Sexual_brooded          3
+5               f          Surface_deposit          3
+6               l                   1_to_3          3
+7              ld   Pelagic_planktotrophic          3
+8              ld           Benthic_direct          1
+9              lh            Tube_dwelling          3
+10             lh          Burrow_dwelling          3
+11              m                     Soft          3
+12            mob                  Sessile          3
+13             sp Shallow_infauna_0_to_5cm          3
+14             sr                 11_to_20          1
+15             sr                21_to_100          1
+                                                                                        Description
+1                                                                                              <NA>
+2                                                                                              <NA>
+3                                                       Deposition of particles at sediment surface
+4                                            Fertilised eggs are maintained by adult for protection
+5                             Feeds on detritus (including algal material) on the sediment surface.
+6                            The maximum reported lifespan (years) of the adult stage of the taxon.
+7                     Larvae feed on plankton and spend a relatively long time in the water column.
+8  Larval stage missing (eggs develop directly into juveniles) or larvae are limited to the seabed.
+9                                                                             Adults live in a tube
+10                                                  Adults live in a permanent or temporary burrow.
+11                        External tissue is soft and not covered by any form of protective casing.
+12 Adults have little or no mobility. Typically attached or lives in (semi-) permanent burrow/tube.
+13                                     Adults live below sediment surface between 0 and 5 cm depth.
+14                                                                                             <NA>
+15                   The maximum size (mm) that the taxon is known to reach during the adult stage.
+
+
+
+Polydora
+-------- 
+   trait_category           trait_subcategory      value
+1           Class                       Class Polychaeta
+2          Phylum                      Phylum   Annelida
+3               b          Surface_deposition          1
+4              ed              Sexual_brooded          3
+5               f             Surface_deposit          3
+6               l                      1_to_3          1
+7              ld      Pelagic_planktotrophic          3
+8              lh               Tube_dwelling          3
+9              lh             Epi_endo_biotic          3
+10              m                        Soft          3
+11            mob                     Sessile          1
+12             sp    Shallow_infauna_0_to_5cm          2
+13             sp Mid_depth_infauna_5_to_10cm          1
+14             sr                    11_to_20          1
+15             sr                   21_to_100          1
+                                                                                        Description
+1                                                                                              <NA>
+2                                                                                              <NA>
+3                                                       Deposition of particles at sediment surface
+4                                            Fertilised eggs are maintained by adult for protection
+5                             Feeds on detritus (including algal material) on the sediment surface.
+6                            The maximum reported lifespan (years) of the adult stage of the taxon.
+7                     Larvae feed on plankton and spend a relatively long time in the water column.
+8                                                                             Adults live in a tube
+9                                                            Adults live on or in another organism.
+10                        External tissue is soft and not covered by any form of protective casing.
+11 Adults have little or no mobility. Typically attached or lives in (semi-) permanent burrow/tube.
+12                                     Adults live below sediment surface between 0 and 5 cm depth.
+13                                    Adults live below sediment surface between 5 and 10 cm depth.
+14                                                                                             <NA>
+15                   The maximum size (mm) that the taxon is known to reach during the adult stage.
+
+

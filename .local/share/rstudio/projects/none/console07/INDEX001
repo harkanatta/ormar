@@ -1,1 +1,3 @@
-[{"handle":"D23F3126","caption":"Terminal 1","show_on_output":false,"interaction_mode":2,"max_output_lines":1000,"buffered_output":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","exit_code":null,"terminal_sequence":1,"allow_restart":true,"title":"~","child_procs":false,"shell_type":"default","channel_mode":1,"channel_id":"7251","alt_buffer":false,"cwd":"~","cols":150,"rows":57,"restarted":true,"autoclose":1,"zombie":false,"track_env":true}]
+version https://git-lfs.github.com/spec/v1
+oid sha256:20e912f7076d76107284c9622a5d5b809b87e381948b13925eb187b796bd4f7f
+size 622

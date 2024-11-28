@@ -1,29 +1,3 @@
-]0;~[?2004hrstudio@0f5a8861939e:~$ [Krstudio@0f5a8861939e:~$ ^V^V[K[K[7mrm -rf /usr/local/lib/R/site-library/rlang[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm -rf /usr/local/lib/R/site-library/rlang
-[A
-[?2004l]0;~[?2004hrstudio@0f5a8861939e:~$ ^C[?2004l[?2004h[?2004l
-]0;~[?2004hrstudio@0f5a8861939e:~$ 5+5
-[?2004lbash: 5+5: command not found
-]0;~[?2004hrstudio@0f5a8861939e:~$ [7mrm -rf /usr/local/lib/R/site-library/00LOCK-rlang[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm -rf /usr/local/lib/R/site-library/00LOCK-rlang
-[A
-[?2004lrm: cannot remove '/usr/local/lib/R/site-library/00LOCK-rlang/rlang/libs/x64/rlang.dll': Input/output error
-]0;~[?2004hrstudio@0f5a8861939e:~$ [7msudo rm -rf /usr/local/lib/R/site-library/00LOCK-rlang[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo rm -rf /usr/local/lib/R/site-library/00LOCK-rlang
-[A
-[?2004l[sudo] password for rstudio: 
-Sorry, try again.
-[sudo] password for rstudio: 
-sudo: 1 incorrect password attempt
-[7msudo rm -rf /usr/local/lib/R/site-library/00LOCK-rlang[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo rm -rf /usr/local/lib/R/site-library/00LOCK-rlang
-[A
-[?2004l[sudo] password for rstudio: 
-Sorry, try again.
-[sudo] password for rstudio: 
-sudo: 1 incorrect password attempt
-[7mrm -rf /usr/local/lib/R/site-library/00LOCK-rlang[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm -rf /usr/local/lib/R/site-library/00LOCK-rlang
-[A
-[?2004lrm: cannot remove '/usr/local/lib/R/site-library/00LOCK-rlang/rlang/libs/x64/rlang.dll': Input/output error
-]0;~[?2004hrstudio@e307076c2ee2:~$ 
+version https://git-lfs.github.com/spec/v1
+oid sha256:8dbe99a8b71b218a244a7f7315bdab5c879e05440a91fcc04c5310d3fef247ff
+size 1818

@@ -1,0 +1,49 @@
+Trait,Category,Description
+Maximum size (sr),Less_than_10,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Maximum size (sr),10_to_20,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Maximum size (sr),21_to_100,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Maximum size (sr),101_to_200,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Maximum size (sr),201_to_500,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Maximum size (sr),More_than_500,The maximum size (mm) that the taxon is known to reach during the adult stage.
+Morphology (m),Soft,External tissue is soft and not covered by any form of protective casing.
+Morphology (m),Tunic,Body is covered by a protective outer tissue made up of, for example, cellulose, e.g., tunicates.
+Morphology (m),Exoskeleton,Body is covered or encased in either a thin chitinous layer or calcium carbonate shell.
+Morphology (m),Crustose,Body is hard and forms a thin layer over the substratum or another organism.
+Morphology (m),Cushion,Body is soft and forms a cushion-like layer over the substratum or another organism.
+Morphology (m),Stalked,Body is erect and typically attached.
+Lifespan (l),Less_than_1,The maximum reported lifespan (years) of the adult stage of the taxon.
+Lifespan (l),1_to_3,The maximum reported lifespan (years) of the adult stage of the taxon.
+Lifespan (l),3_to_10,The maximum reported lifespan (years) of the adult stage of the taxon.
+Lifespan (l),More_than_10,The maximum reported lifespan (years) of the adult stage of the taxon.
+Egg development location (ed),Asexual,Can reproduce asexually, either by fragmentation, budding, epitoky, etc.
+Egg development location (ed),Sexual_pelagic,Eggs are released into the water column.
+Egg development location (ed),Sexual_benthic,Eggs are released onto/into the seabed, either free or attached, e.g. by mucous.
+Egg development location (ed),Sexual_brooded,Fertilised eggs are maintained by adult for protection, either within parental tube or body cavity.
+Larva development location (ld),Pelagic_planktotrophic,Larvae feed on plankton and spend a relatively long time in the water column.
+Larva development location (ld),Pelagic_lecithotrophic,Larvae feed on yolk reserves and spend a relatively short time in the water column.
+Larva development location (ld),Benthic_direct,Larval stage missing (eggs develop directly into juveniles) or larvae are limited to the seabed.
+Living habit (lh),Tube_dwelling,Adults live in a tube, which may be lined with sand, mucus or calcium carbonate.
+Living habit (lh),Burrow_dwelling,Adults live in a permanent or temporary burrow.
+Living habit (lh),Free_living,Adults do not inhabit a restrictive structure. Able to move freely within and/or on sediments.
+Living habit (lh),Crevice_hole_under_stones,Adults typically cryptic and inhabit spaces within coarse/rock substrate or algal holdfasts.
+Living habit (lh),Epi_endo_biotic,Adults live on or in another organism.
+Living habit (lh),Attached_to_substratum,Adults are attached to coarse substrate or rock.
+Sediment position (sp),Surface,Adults live on or just above the seabed.
+Sediment position (sp),Shallow_infauna_0_to_5cm,Adults live below sediment surface between 0 and 5 cm depth.
+Sediment position (sp),Mid_depth_infauna_5_to_10cm,Adults live below sediment surface between 5 and 10 cm depth.
+Sediment position (sp),Deep_infauna_more_than_10cm,Adults live below sediment surface at greater than 10 cm depth.
+Feeding mode (f),Suspension,Feeds on particulate food resources suspended in the water column.
+Feeding mode (f),Surface_deposit,Feeds on detritus (including algal material) on the sediment surface.
+Feeding mode (f),Subsurface_deposit,Feeds on detritus located within the sediment matrix.
+Feeding mode (f),Scavenger,Feeds on dead animals (carrion).
+Feeding mode (f),Predator,Actively predates on animals (including small zooplankton).
+Feeding mode (f),Parasite,Derives nutrition from its host organism.
+Mobility (mob),Sessile,Adults have little or no mobility. Typically attached or lives in (semi-) permanent burrow/tube.
+Mobility (mob),Swim,Adults actively swim in the water column (many return to the bed when not feeding).
+Mobility (mob),Crawl_creep_climb,Adults capable of some (typically limited) movement along the sediment or rock surface.
+Mobility (mob),Burrower,Adults capable of active movement within the sediment matrix.
+Bioturbation mode (b),Diffusive_mixing,Vertical and horizontal redistribution of sediment and/or other particles.
+Bioturbation mode (b),Surface_deposition,Deposition of particles at sediment surface, e.g. from defecation or egestion (pseudofaeces).
+Bioturbation mode (b),Upward_conveyor,Translocation of particles from depth to sediment surface, e.g. during sub-surface deposit-feeding.
+Bioturbation mode (b),Downward_conveyor,The subduction of particles from sediment surface to depth, e.g. by feeding and/or defecation.
+Bioturbation mode (b),None,Does not have any bioturbative capacity.

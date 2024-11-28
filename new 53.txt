@@ -1,0 +1,45 @@
+Discussion 
+
+The herring event in Kolgrafafjörður provided an excellent system to study effects of single-event hypoxia on benthic ecosystems in the absence of seasonal (or otherwise repeated) hypoxic conditions, in the absence of any salinity stratifications, excessive fertilizer use, and in almost completely marine (not an estuary) environment. Observing the recovery of benthic communities enabled us to identify pioneer species which can break down organic material to restore oxygenated conditions within an affected ecosystem, which in turn may aid in biological breakdown of sewage or otherwise accumulated organic materials. 
+
+Immediately following the herring event in 2013, biplots for the stations all pointed towards a high density of a single species, Capitella capitata, a specialist in anorexic benthos, and this continues as a dominant feature of the ecosystem into 2014 when C. capitata remained in high numbers for 4 of 6 stations. After 2014, C. capitata was only found in low densities (33 in 2015, 200 in 2016) until it vanished from the samples in 2017. After the herring event in 2013, then number of species was reduced to an all-time low of 21 total, but 4 species were conspicuous in density (200 or higher), i.e. Microphthalmus aberrans, Capitella capitata, Harmothoe extenuate and Aricidea suecica., with C. capitata by far the most numerous species. These changes are reported by each year’s ecological status, which was bad for 2013, intermediate for 2014, and then good for 2015-2017 and the reference year 1999.  
+
+An important distinction between 1999 and 2013 was the separation of stations into two axes in 1999, the two westernmost stations E4 + E3 pointing vertically towards Polydora sp. and Tubificoides benededi but the remaining stations (C4 + B5 + A7 + B8) pointing towards Chaetozone setosa, Ennucula tenuis, Scalibregma inflatum and Protomedeia fasciata. The recovery of the ecosystem in 2015-2017 approaches a similar pattern to that in 1999, with 2013 and 2014 the two standout years in community structure. While we use 1999 as a reference year in this study, we acknowledge that communities could have differed between 1999 and 2012 due to naturally occurring changes in weather or sediment changes driven by storms or tidal activity (see Komendić et al. 2024). 
+
+  
+
+A summary of annual changes 
+
+The herring event took place on two occasions, between December 2012 and February 2013.  
+
+1999:  This year can be considered representative of a natural state, or even a “control” relative to later years, which were all post-herring event. However, there were species found in 1999 not recorded later, and vice versa. The dominant species found at E3 and E4 suggest muddy bottom whereas the other four stations have species that generally use a mixture of muddy, sandy and even more gravelly benthos.  
+
+2013-2014: These years showed strong signs of the herring event, most notably the scarcity of species and low densities but most importantly dominance by C. capitata, a specialist in anorexic benthos (Silva et al. 2017, Ghanavati Asl et al. 2023). The year 2013 was completely dominated by C. capitata, but 2014 is less clear, with other species haven risen to prominent densities compared to 2013. Number of species recovered to 1999-like levels by 2014. 
+
+2015: was an intermediate year between the herring death years 2013 and 2014 but also is different from 2016 and 2017 in many, cryptically interesting ways. 
+
+2016-2017: Similar years in many aspects and seem to be approaching 1999 in community structure and have more in common with 1999 than 2013-2014. However, the community structure of 2015-2017 was rather defined by stations than by year, although stations E3 and E3 were segregating away from the other stations during these years.  
+
+ 
+
+ 
+
+C. capitata are eutrophication specialists and are dominant in samples from areas high in organic matter (Ghanavati Asl et al. 2023). In our study, the species dominated in 2013 and 2014, for two years after the hypoxic herring event but quickly receded 2015-2016 and vanished from our samples in 2017. The disappearance of C. capitata in 2017 is probably a huge step towards ecosystem restoration, with their ecosystem role of breaking down the herring mass and converting conditions into oxygenated again largely completed (Silva et al. 2017, Liu et al. 2024). The emergence of many predator species in 2014 or 2015 suggests that the Capitella were also a food source for other invertebrates.  
+
+Capitellidae indet. belongs to the Polychaeta Sedentaria group (POSE) and is a subsurface deposit feeder (SS-De). It is discretely motile (D), meaning it can move but does not require movement for feeding, and it is free-living (F). It is omnivorous (Om), feeding on a variety of food sizes including sediment, particulate organic matter, and benthic microfauna (sed/pom/mic). 
+
+ 
+
+Temporal variation and sediment structure 
+
+Benthic community structure can change vastly over two decades, without catastrophic events but changes in sediment structure, possibly driven by storms (Komendić et al. 2024). We have no sediment or organic matter data for 1999, but sediment structure was constant at 4 of 6 stations 2013-2017, with some annual changes occurring at stations E3 and E4, which also showed different species compositions in 1999, and 2015- 2017. The herring event disrupted this structure in 2013 and 2014 but there was tendency to return to a similar community structure in 2015-2017. Kolgrafarfjörður is sheltered from storms but probably affected by them occasionally. However, a constant factor is the tidal activity, which may have greater effects on sediment and community structure at stations E3 and E4, which also is the location where the dead herring mass was swept towards in the wake of the herring event. The species that were prominent at E3 and E4 are pure mud specialists, whereas the prominent species at A7, B5, B8 and C4 correspond to species that utilize coarser sediments, i.e. mixtures of mud, sand and even gravel.  
+
+Importantly, Kolgrafarfjörður is a fjord with a narrow outflow and not exposed to much human activity (for example, ship traffic or aquaculture) but still faces its share of storms and tidal activity and combinations of those, including the one that lead to the herring event. This system is more pristine than most studied for organic pollutions, where influx of nutrients generally is related to human activity. However, changes in sediment structure occur at varying rates among our sampling stations, and we attribute the annual variation at stations E3 and E4 (to a lesser extent C4?) to tidal activity, which is greater in the eastern part of the fjord relative to that to the east or to southern part of the fjord (stations B5, A7 and B8). 
+
+Molluscs and arthropods often are wiped out during hypoxic events, as these groups are dependent on oxygen-rich waters (Raman et al. 2015). In 1999, there were 15 species of molluscs (12 bivalve and 3 gastropod species), and 7 species of arthropods present in Kolgrafarfjörður. In 2013, only 2 of each group were found on two stations each and in low densities; the Arthropods were Acari and Crassicorophium bonellii and the molluscs Arctica islandica and Polyplacophora (Tonicellia sp). The number of mollusc species increased to 9 in 2014 (8 species of bivalves and the gastropod Onoba aculeus) and the number of arthropods to four (Caprella septentrionalis, Protomedeia fasciata, Balanus sp, and Verruca stroemia. By 2017, the numbers had reached or passed 1999 number of species, i.e.  20 for molluscs (12 bivalves and 8 Gastropod species) and 7 Arthropods.  
+
+  
+
+Changes in feeding groups (Guild analysis) 
+
+Predators, scavengers, filter feeders, slík umfjöllun og það sem tengist. 

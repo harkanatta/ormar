@@ -1,7 +1,3 @@
-{
-    "new-shiny-application": {
-        "name": "henda",
-        "type": "type_single_file",
-        "dir": "~"
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bea3026127933fa0ef6bc9d7517ab44e3589f9455ab94b04c9681c66cdfb232d
+size 120

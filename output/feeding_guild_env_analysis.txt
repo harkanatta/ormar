@@ -1,0 +1,204 @@
+Feeding Guild and Environmental Variable Analysis
+=============================================
+
+1. Correlations between Feeding Guilds and Environmental Variables
+----------------------------------------------------------
+# A tibble: 16 × 8
+   `Feeding guild` organic_cor depth_cor grain_20um_cor grain_63um_cor grain_125um_cor grain_250um_cor grain_1000um_cor
+   <chr>                 <dbl>     <dbl>          <dbl>          <dbl>           <dbl>           <dbl>            <dbl>
+ 1 SR-He-mac           -0.693    -0.431         -0.254         -0.277         -0.269          -0.00940           0.903 
+ 2 EP-Pr-zoo           -0.693    -0.431         -0.254         -0.277         -0.269          -0.00940           0.903 
+ 3 SR-Dt                0.573    -0.132          0.624          0.368         -0.0970         -0.268            -0.318 
+ 4 SS-De                0.526    -0.132          0.0813         0.469         -0.197          -0.0257           -0.160 
+ 5 SR-De               -0.396    -0.194         -0.468         -0.403          0.0537          0.0208            0.514 
+ 6 EP-Su               -0.360    -0.177         -0.108         -0.196          0.119           0.0536            0.0932
+ 7 SS-Sc-mac           -0.314    -0.329         -0.257         -0.146         -0.133          -0.161             0.318 
+ 8 <NA>                -0.277     0.197         -0.161         -0.143          0.0887          0.0625            0.104 
+ 9 SR-Pr-mac           -0.259    -0.0170        -0.423         -0.327          0.236           0.113             0.314 
+10 SR-Su               -0.250    -0.294         -0.154         -0.124          0.00691        -0.0858            0.189 
+11 SR-Om-mic            0.204    -0.404         -0.200         -0.0463        -0.108           0.0105            0.352 
+12 SR-He-mic           -0.111    -0.0586        -0.251         -0.240          0.118          -0.0582            0.245 
+13 SR-Pr-mei            0.0837    0.292         -0.303          0.130          0.199           0.110             0.0272
+14 SR-Ch-Om            -0.0740   -0.0801         0.513          0.521         -0.738          -0.725             0.0221
+15 SS-Pr-mac           -0.0643    0.260          0.0138         0.0825         0.155           0.297            -0.167 
+16 SS-Pr-mei           -0.0315   -0.291          0.0845        -0.247         -0.212          -0.0727            0.144 
+
+2. Temporal Patterns by Feeding Guild
+----------------------------------
+# A tibble: 72 × 4
+   year  `Feeding guild` mean_abundance sd_abundance
+   <fct> <chr>                    <dbl>        <dbl>
+ 1 1999  SR-De                  5458.        7887.  
+ 2 1999  SS-De                  3592         3512.  
+ 3 1999  EP-Su                  1066.         888.  
+ 4 1999  SR-Su                   333.         323.  
+ 5 1999  SR-Pr-mac               237.         177.  
+ 6 1999  SR-He-mic               215.         279.  
+ 7 1999  SR-Om-mic               163          278.  
+ 8 1999  SS-Pr-mei               118.         168.  
+ 9 1999  SS-Pr-mac                81.3        136.  
+10 1999  SR-Pr-mei                74          121.  
+11 1999  SR-Ch-Om                 59.3         91.9 
+12 1999  SR-Dt                    22.2         37.2 
+13 1999  SS-Sc-mac                14.8         36.3 
+14 2013  SS-De                 11104.        9675.  
+15 2013  SR-De                   758.        1181.  
+16 2013  SR-Pr-mac               145.         201.  
+17 2013  SR-He-mic               138.         210.  
+18 2013  SR-Pr-mei                14           26.8 
+19 2013  EP-Su                    11.2         27.4 
+20 2013  SR-Om-mic                11.2         27.4 
+21 2013  SR-Su                     2.67         6.53
+22 2014  SS-De                  3073.        2199.  
+23 2014  SR-De                  1045.        1390.  
+24 2014  SR-Pr-mac               780.         414.  
+25 2014  SR-He-mic               315.         380.  
+26 2014  EP-Su                   241          468.  
+27 2014  SR-Su                    49.8         65.8 
+28 2014  SS-Sc-mac                40           41.5 
+29 2014  <NA>                     20.8         37.3 
+30 2014  SS-Pr-mei                11.2         27.4 
+31 2014  SR-Pr-mei                11           19.5 
+32 2014  SR-Om-mic                 5.5         13.5 
+33 2014  SS-Pr-mac                 5.33         6.53
+34 2015  SR-De                  1791          848.  
+35 2015  SS-De                  1378.         800.  
+36 2015  EP-Su                   264.         130.  
+37 2015  SR-Pr-mac               244          230.  
+38 2015  SR-He-mic               147.         104.  
+39 2015  SR-Su                    49.8        107.  
+40 2015  <NA>                     34.2         23.0 
+41 2015  SS-Pr-mac                23.5         26.1 
+42 2015  SS-Sc-mac                22.3         54.7 
+43 2015  SR-Pr-mei                11           17.0 
+44 2015  SR-Om-mic                 5.5         13.5 
+45 2015  SS-Pr-mei                 5.5         13.5 
+46 2016  SS-De                  3724.        1240.  
+47 2016  SR-De                  3502.        2201.  
+48 2016  EP-Su                   446.         578.  
+49 2016  SR-Pr-mac               197.         250.  
+50 2016  SR-He-mic                78.8        116.  
+51 2016  SR-Su                    61           80.0 
+52 2016  SS-Pr-mac                41.5         65.1 
+53 2016  SS-Sc-mac                27.8         44.4 
+54 2016  <NA>                     12.3         16.2 
+55 2016  SR-Pr-mei                11           17.0 
+56 2016  SR-Dt                     5.5         13.5 
+57 2016  SS-Pr-mei                 5.5         13.5 
+58 2017  SR-De                  3440.        4619.  
+59 2017  SS-De                  2623.         691.  
+60 2017  EP-Su                   631.         434.  
+61 2017  SR-Su                   366.         695.  
+62 2017  SR-Pr-mac               219.         166.  
+63 2017  SR-He-mic               122           72.3 
+64 2017  SS-Sc-mac                69.3        170.  
+65 2017  SR-Ch-Om                 55.5         61.9 
+66 2017  SS-Pr-mac                49.7         40.7 
+67 2017  <NA>                     36.8         40.7 
+68 2017  SR-He-mac                 6.83        16.7 
+69 2017  EP-Pr-zoo                 5.5         13.5 
+70 2017  SR-Om-mic                 5.5         13.5 
+71 2017  SR-Pr-mei                 5.5         13.5 
+72 2017  SS-Pr-mei                 5.5         13.5 
+
+3. Spatial Patterns by Feeding Guild
+--------------------------------
+# A tibble: 96 × 5
+   station `Feeding guild` mean_abundance mean_depth mean_organic
+   <chr>   <chr>                    <dbl>      <dbl>        <dbl>
+ 1 A7      SS-De                  2356.         NA        NA     
+ 2 A7      SR-De                   564.         NA        NA     
+ 3 A7      SR-Pr-mac               230.         NA        NA     
+ 4 A7      EP-Su                   157          NA        NA     
+ 5 A7      SR-Su                    73.8        NA        NA     
+ 6 A7      SR-He-mic                55.3        NA        NA     
+ 7 A7      SR-Om-mic                17.8        NA        NA     
+ 8 A7      SR-Ch-Om                 16.5        NA        NA     
+ 9 A7      <NA>                     10.2        16.6       0.122 
+10 A7      SS-Pr-mac                 6.6        NA        NA     
+11 A7      SS-Pr-mei                 6.6        NA        NA     
+12 A7      SR-Pr-mei                 5.5        NA        NA     
+13 A7      EP-Pr-zoo                 0          16.6       0.144 
+14 A7      SR-Dt                     0          NA        NA     
+15 A7      SR-He-mac                 0          16.6       0.144 
+16 A7      SS-Sc-mac                 0          NA        NA     
+17 B5      SS-De                  4015.         NA        NA     
+18 B5      SR-De                  1788.         NA        NA     
+19 B5      EP-Su                   424.         NA        NA     
+20 B5      SR-Pr-mac               226          NA        NA     
+21 B5      SR-Ch-Om                172          NA        NA     
+22 B5      SR-Om-mic               142.         NA        NA     
+23 B5      SR-He-mic               113.         NA        NA     
+24 B5      SS-Pr-mac                87.6        NA        NA     
+25 B5      <NA>                     22.5        24.5       0.116 
+26 B5      SR-Su                    17          NA        NA     
+27 B5      SR-Pr-mei                11.2        NA        NA     
+28 B5      SS-Sc-mac                 6.6        NA        NA     
+29 B5      EP-Pr-zoo                 0          24.5       0.116 
+30 B5      SR-Dt                     0          NA        NA     
+31 B5      SR-He-mac                 0          24.5       0.116 
+32 B5      SS-Pr-mei                 0          NA        NA     
+33 B8      SS-De                  2570.         NA        NA     
+34 B8      SR-De                  1283.         NA        NA     
+35 B8      EP-Su                   605          NA        NA     
+36 B8      SR-Su                   161          NA        NA     
+37 B8      SR-Pr-mac               106.         NA        NA     
+38 B8      SR-He-mic                46.2        NA        NA     
+39 B8      SS-Pr-mac                34.8        NA        NA     
+40 B8      SR-Dt                    16.5        NA        NA     
+41 B8      SS-Pr-mei                15.4        NA        NA     
+42 B8      SR-Pr-mei                14.8        NA        NA     
+43 B8      <NA>                     14.5        16.6       0.119 
+44 B8      EP-Pr-zoo                 0          16.6       0.116 
+45 B8      SR-Ch-Om                  0          NA        NA     
+46 B8      SR-He-mac                 0          16.6       0.116 
+47 B8      SR-Om-mic                 0          NA        NA     
+48 B8      SS-Sc-mac                 0          NA        NA     
+49 C4      SS-De                  3638.         NA        NA     
+50 C4      SR-De                  1994.         NA        NA     
+51 C4      EP-Su                   502.         NA        NA     
+52 C4      SR-Pr-mac               446.         NA        NA     
+53 C4      SR-He-mic               229.         NA        NA     
+54 C4      SS-Pr-mei                62.2        NA        NA     
+55 C4      SS-Pr-mac                57          NA        NA     
+56 C4      <NA>                     47          34         0.111 
+57 C4      SR-Dt                    44.5        NA        NA     
+58 C4      SR-Su                    42.5        NA        NA     
+59 C4      SR-Pr-mei                19.3        NA        NA     
+60 C4      SS-Sc-mac                13.2        NA        NA     
+61 C4      EP-Pr-zoo                 0          34         0.102 
+62 C4      SR-Ch-Om                  0          NA        NA     
+63 C4      SR-He-mac                 0          34         0.102 
+64 C4      SR-Om-mic                 0          NA        NA     
+65 E3      SS-De                  7269          NA        NA     
+66 E3      SR-De                  5957          NA        NA     
+67 E3      EP-Su                   662.         NA        NA     
+68 E3      SR-Pr-mac               497          NA        NA     
+69 E3      SR-He-mic               265.         NA        NA     
+70 E3      SR-Su                   224.         NA        NA     
+71 E3      SR-Ch-Om                122.         NA        NA     
+72 E3      SS-Pr-mei                91.2        NA        NA     
+73 E3      SS-Sc-mac                79.6        NA        NA     
+74 E3      SR-Pr-mei                67          NA        NA     
+75 E3      SR-Om-mic                62.2        NA        NA     
+76 E3      <NA>                     49.8        11.2       0.0899
+77 E3      SR-He-mac                41          11.2       0.0797
+78 E3      EP-Pr-zoo                33          11.2       0.0797
+79 E3      SR-Dt                    22          NA        NA     
+80 E3      SS-Pr-mac                12          NA        NA     
+81 E4      SS-De                  5647.         NA        NA     
+82 E4      SR-De                  4407.         NA        NA     
+83 E4      SR-Su                   344          NA        NA     
+84 E4      SR-Pr-mac               317          NA        NA     
+85 E4      EP-Su                   310.         NA        NA     
+86 E4      SR-He-mic               306.         NA        NA     
+87 E4      SS-Sc-mac               110.         NA        NA     
+88 E4      SS-Pr-mac                43.6        NA        NA     
+89 E4      SR-Ch-Om                 33.5        NA        NA     
+90 E4      <NA>                     12.2        11         0.106 
+91 E4      SR-Pr-mei                 8.67       NA        NA     
+92 E4      SR-Om-mic                 6.6        NA        NA     
+93 E4      EP-Pr-zoo                 0          11         0.102 
+94 E4      SR-Dt                     0          NA        NA     
+95 E4      SR-He-mac                 0          11         0.102 
+96 E4      SS-Pr-mei                 0          NA        NA     

@@ -1,12 +1,3 @@
-~%2FKfj.Rmd="DC58B3A1"
-~%2Fauka%2Fkrokurinn.R="F00770F2"
-~%2Fhenda%2Fapp.R="D0A3CB1E"
-~%2Fscripts%2F00_data_reading.R="9AFDFCA9"
-~%2Fscripts%2F01_data_cleaning.R="3845E4A2"
-~%2Fscripts%2F02_exploratory_analysis.R="131900C9"
-~%2Fscripts%2F03_nmds_analysis.R="1243E989"
-~%2Fscripts%2F04_permanova_analysis.R="23EF499F"
-~%2Fscripts%2F05_simper_analysis.R="F5C55AC5"
-~%2Fscripts%2F06_PCA.R="5E895562"
-~%2Fscripts%2F07_PCA-SAS.R="D1B0C10C"
-~%2Fscripts%2F08_multivariate_feeding_guilds.R="0342E2BD"
+version https://git-lfs.github.com/spec/v1
+oid sha256:8ad11490acdbdd1a4a906d9277bf7f41a0abb815a66ddd8ef0c37c4143ba3bb5
+size 634

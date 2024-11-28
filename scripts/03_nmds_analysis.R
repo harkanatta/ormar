@@ -184,22 +184,22 @@ env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
 
 # 1. Find dominant species (>1% relative abundance)
 dominant_species <- species_matrix %>%
-  select(where(is.numeric)) %>%  
-  select(-year_temp, -year) %>%    # Exclude ALL year columns
-  summarise(across(everything(), sum)) %>%  
-  pivot_longer(everything(), 
+  select(year_temp, where(is.numeric)) %>%  # Keep year_temp and numeric columns
+  group_by(year_temp) %>%                   # Group by year first
+  summarise(across(everything(), sum)) %>%    # Sum everything except year_temp
+  pivot_longer(-year_temp,                  # Exclude year_temp from pivot
                names_to = "species", 
                values_to = "total_abundance") %>%
-  arrange(desc(total_abundance)) %>%  
+  group_by(year_temp) %>%                   # Group by year again for relative abundance
   mutate(relative_abundance = total_abundance/sum(total_abundance)) %>%
-  filter(relative_abundance > 0.01)  
+  arrange(year_temp, desc(total_abundance)) %>%
+  filter(relative_abundance > 0.01)
 
 # 3. Analyze temporal patterns of dominant species
 temporal_patterns <- species_matrix %>%
-  select(where(is.numeric)) %>%     
-  select(-year) %>%                 
-  group_by(year_temp) %>%          # Group by year first
-  summarise(across(everything(), sum)) %>%  # Sum across stations
+  select(year_temp, where(is.numeric)) %>%  # Keep year_temp and numeric columns
+  group_by(year_temp) %>%                   # Group by year first
+  summarise(across(everything(), sum)) %>%  # Sum everything except the grouping variable
   pivot_longer(-year_temp,          
                names_to = "species", 
                values_to = "abundance") %>%
@@ -252,3 +252,71 @@ correlations_formatted <- axis_correlations %>%
 
 # Print formatted table
 print(correlations_formatted)
+
+
+
+# Mynd með punktalínum frá 2017 -> 1999
+
+# Prepare data for trajectory plot
+trajectory_data <- site_scores %>%
+  mutate(Year = factor(Year, levels = c("2013", "2014", "2015", "2016", "2017", "1999"))) %>%
+  arrange(Station, Year) %>%
+  group_by(Station) %>%
+  mutate(
+    NMDS1_next = lead(NMDS1),
+    NMDS2_next = lead(NMDS2)
+  )
+
+# Create NMDS trajectory plot
+nmds_plot <- ggplot() +
+  # Recent years (2013-2017): solid arrows
+  geom_segment(
+    data = trajectory_data %>% filter(!is.na(NMDS1_next), Year != "2017"),
+    aes(x = NMDS1, y = NMDS2, 
+        xend = NMDS1_next, yend = NMDS2_next,
+        color = Station),
+    arrow = arrow(length = unit(0.2, "cm"), type = "closed"),
+    size = 0.5
+  ) +
+  # Connection to 1999: dotted arrows
+  geom_segment(
+    data = trajectory_data %>% filter(!is.na(NMDS1_next), Year == "2017"),
+    aes(x = NMDS1, y = NMDS2, 
+        xend = NMDS1_next, yend = NMDS2_next,
+        color = Station),
+    arrow = arrow(length = unit(0.2, "cm"), type = "closed"),
+    linetype = "dotted",
+    size = 0.9
+  ) +
+  # Station-Year labels
+  geom_text_repel(
+    data = site_scores %>%
+      mutate(Year = factor(Year, levels = c("2013", "2014", "2015", "2016", "2017", "1999"))),
+    aes(x = NMDS1, y = NMDS2, 
+        label = paste(Station, Year),
+        color = Station),
+    size = 4,
+    box.padding = 0.5,
+    point.padding = 0.5,
+    max.overlaps = Inf
+  ) +
+  # Scales and theme
+  scale_x_continuous(expand = expansion(mult = 0.02)) +
+  scale_y_continuous(expand = expansion(mult = 0.02)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw() +
+  theme(
+    panel.background = element_rect(fill = "white"),
+    axis.text = element_text(size = 16, color = "black"),
+    axis.title = element_text(size = 18),
+    plot.title = element_text(size = 20, face = "bold"),
+    legend.position = "none"
+  )
+
+# Save plot
+ggsave("output/nmds_plot_trajectories.png", 
+       nmds_plot, 
+       width = 12,
+       height = 10,
+       dpi = 300,
+       bg = "white")

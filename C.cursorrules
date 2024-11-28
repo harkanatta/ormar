@@ -1,0 +1,86 @@
+<Rules>
+    <GeneralPrinciples>
+        <Simplicity>
+            <Rule>Write code that does the job without unnecessary complexity (KISS). Avoid overengineering or adding extra features unless absolutely necessary (YAGNI).</Rule>
+            <Rule>Keep responses concise and direct by default unless comprehensive explanations are explicitly requested.</Rule>
+        </Simplicity>
+        <Focus>
+            <Rule>Each function or script should have a single clear goal. Avoid making a script or function handle multiple unrelated tasks (Curly's Law).</Rule>
+            <Rule>Stick to the main task and ensure your results directly answer the research questions posed.</Rule>
+        </Focus>
+        <Collaboration>
+            <Rule>Ask questions to remove ambiguity and confirm assumptions, ensuring accuracy in responses and solutions.</Rule>
+            <Rule>If you don’t know something, acknowledge it clearly and seek clarification or additional information.</Rule>
+        </Collaboration>
+    </GeneralPrinciples>
+    <ProjectStructure>
+        <DirectoryStructure>
+            <Rule>Organize projects into clear folders like `data/`, `scripts/`, and `output/` to maintain clarity and separation of tasks.</Rule>
+            <Rule>Ensure raw data remains untouched in `/data/` while transformed or cleaned outputs are saved separately in `/output/`.</Rule>
+        </DirectoryStructure>
+        <FileManagement>
+            <Rule>Use simple naming conventions for files to track versions (e.g., `data_cleaned_v1.csv`).</Rule>
+            <Rule>Maintain a logical and consistent structure in R Markdown files for analysis and reports.</Rule>
+        </FileManagement>
+    </ProjectStructure>
+    <CodePractices>
+        <CleanCode>
+            <Rule>Write clean and readable code that avoids unnecessary complexity. Code should be easy to follow without extensive comments.</Rule>
+            <Rule>Follow consistent naming conventions for variables and functions to improve readability and understanding.</Rule>
+        </CleanCode>
+        <Reuse>
+            <Rule>Refrain from duplicating code by creating functions for repeated tasks (DRY principle).</Rule>
+            <Rule>Write modular scripts that can be reused and adapted without significant modification.</Rule>
+        </Reuse>
+        <ErrorHandling>
+            <Rule>Ensure error handling is integrated into scripts to gracefully manage unexpected scenarios.</Rule>
+            <Rule>Document assumptions and transformations clearly in the scripts to enhance transparency and reproducibility.</Rule>
+        </ErrorHandling>
+    </CodePractices>
+    <DataAnalysis>
+        <StatisticalMethods>
+            <Rule>Use tools appropriate for ecological and biological research, such as `vegan` for multivariate analysis and `BBI` for ecological indices.</Rule>
+            <Rule>Validate data integrity before analysis, using checks like `stopifnot()` or equivalent methods.</Rule>
+        </StatisticalMethods>
+        <Reproducibility>
+            <Rule>Document data sources, transformations, and analysis methods in R Markdown for seamless replication.</Rule>
+            <Rule>Use Docker for environment consistency, ensuring all dependencies are clearly listed and documented.</Rule>
+        </Reproducibility>
+    </DataAnalysis>
+    <VersionControl>
+        <GitUsage>
+            <Rule>Track changes using Git with clear and specific commit messages focused on individual tasks or fixes.</Rule>
+            <Rule>Avoid adding large data files to version control unless absolutely necessary. Instead, use external storage or references.</Rule>
+        </GitUsage>
+    </VersionControl>
+    <Visualization>
+        <Figures>
+            <Rule>Create publication-quality visuals using `ggplot2`, ensuring clarity and relevance to the research questions.</Rule>
+            <Rule>Use consistent scales, labels, and legends across all figures and tables to maintain visual coherence.</Rule>
+        </Figures>
+        <Outputs>
+            <Rule>Save all graphs, tables, and visualizations in a dedicated `/output/` folder with descriptive filenames.</Rule>
+            <Rule>Embed visualizations and summaries directly in R Markdown for seamless inclusion in reports.</Rule>
+        </Outputs>
+    </Visualization>
+    <Documentation>
+        <Inline>
+            <Rule>Use inline comments sparingly but effectively to explain complex transformations or critical steps in the code.</Rule>
+            <Rule>Document any assumptions or decisions made during data cleaning, analysis, or visualization.</Rule>
+        </Inline>
+        <Reports>
+            <Rule>Write clear, concise narratives in R Markdown files to accompany analysis and results.</Rule>
+            <Rule>Ensure all figures and tables are properly referenced in the accompanying text for clarity.</Rule>
+        </Reports>
+    </Documentation>
+    <Collaboration>
+        <Consistency>
+            <Rule>Maintain consistency with established project structures, styles, and analytical methods when contributing to a collaborative effort.</Rule>
+            <Rule>Align contributions with the tone, style, and expectations of the journal or team guidelines.</Rule>
+        </Consistency>
+        <Editing>
+            <Rule>Focus on clarity and precision when reviewing or editing, ensuring all results are clearly explained and linked to research questions.</Rule>
+            <Rule>Proofread thoroughly before finalizing or submitting any work to catch errors or inconsistencies.</Rule>
+        </Editing>
+    </Collaboration>
+</Rules>
