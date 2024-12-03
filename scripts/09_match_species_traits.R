@@ -98,15 +98,15 @@ get_top_species_traits <- function(year, dominant_species, filtered_traits, trai
   return(trait_list)
 }
 
-# Example usage for 1999
-traits_1999 <- get_top_species_traits(1999, dominant_species, filtered_traits, trait_descriptions)
-
-# Print results for each species
-for(species in names(traits_1999)) {
-  cat("\nTrait descriptions for", species, ":\n")
-  print(traits_1999[[species]])
-  cat("\n-------------------\n")
-}
+# # Example usage for 1999
+# traits_1999 <- get_top_species_traits(1999, dominant_species, filtered_traits, trait_descriptions)
+# 
+# # Print results for each species
+# for(species in names(traits_1999)) {
+#   cat("\nTrait descriptions for", species, ":\n")
+#   print(traits_1999[[species]])
+#   cat("\n-------------------\n")
+# }
 
 #' Write Trait Descriptions for Top Species to File
 #' 
@@ -157,5 +157,5 @@ write_multiple_years_traits <- function(years, dominant_species, filtered_traits
 }
 
 # Example usage for multiple years
-years_to_analyze <- c(1999,2013, 2014, 2015, 2016, 2017,)
+years_to_analyze <- c(1999,2013, 2014, 2015, 2016, 2017)
 write_multiple_years_traits(years_to_analyze, dominant_species, filtered_traits, trait_descriptions)

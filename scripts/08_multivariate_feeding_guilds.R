@@ -199,7 +199,7 @@ sink()
 
 
 # Function to create NMDS trajectory plot for any grouping
-create_nmds_trajectory <- function(data = henda_long_matched, grouping_col) {
+create_nmds_trajectory <- function(data = henda_long_matched_with_guilds, grouping_col) {
   # Prepare data for NMDS with specified grouping
   species_matrix_grouped <- data %>%
     group_by(station, year, !!sym(grouping_col)) %>%
@@ -300,3 +300,15 @@ feeding_guild_nmds <- create_nmds_trajectory(
 # For other groupings (if available in your data)
 # habitat_nmds <- create_nmds_trajectory(data = your_data, grouping_col = "Habitat")
 # size_class_nmds <- create_nmds_trajectory(data = your_data, grouping_col = "Size_class")
+
+
+
+
+
+
+
+
+traits <- c("Food Source", "Motility", "Habit", 
+            "Om/Ca/He", "Food size/type", "FeedMode", "Feeding guild")
+
+

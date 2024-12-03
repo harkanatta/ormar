@@ -1,3 +1,221 @@
+3. Results 
+
+A total of 149 taxa of were found at 6 stations over the 5 year period. The number of taxa per station-year ranged from 2 (station A7, 2013) to 49 (station E3, 2017). Total organism density varied from 500 individuals/m² (station A7, 2013) to 27,392 individuals/m² (station E3, 2013). The proportion of organic content in the sediment declined significantly after the initial samples in 2013 and remained relatively steady for the rest of the study period, aligning with the expected decomposition and dispersal of organic matter from the herring event. The number of individuals per m² dropped drastically in the first two years, then increased and seemed to stabilize by the last year of the study. The number of species indicates a gradual recovery over the study period, starting at a low level in 2013 and reaching a threefold count by 2017. 
+
+Ættum við að sundurliða eftir Polychaeta, Crustacea og Bivalvia? Gefa % hlutdeild helstu hópa eftir árum? 
+
+Þurfum við ekki species accumulation curves?  
+
+ 
+
+3.1 Temporal Changes in Benthic Biotic Indices 
+
+Normalized biotic indices pooled across all stations in Kolgrafarfjörður revealed clear temporal patterns during 1999-2017 (Table 1). The pre-mortality period (1999) showed good ecological status with relatively low variance between stations (nAMBI: 0.67 ± 0.05, nNQI1: 0.54 ± 0.04, nShannon: 0.68 ± 0.02). The herring event resulted in severe community degradation, with indices dropping to their lowest values (nAMBI: 0.08 ± 0.11, nNQI1: 0.21 ± 0.09, nShannon: 0.09 ± 0.13). Recovery began in 2014, marked by high variability between stations (nAMBI: 0.40 ± 0.22), reflecting asynchronous recovery patterns, particularly evident in station C4 which showed minimal recovery (nAMBI = 0.00) while stations E4 and B8 approached pre-mortality conditions. By 2015, the community had largely recovered to good status with reduced between-station variability (nAMBI: 0.66 ± 0.02, nNQI1: 0.52 ± 0.04, nShannon: 0.65 ± 0.04), maintaining similar conditions in 2017. 
+
+ 
+
+ Table 1: Mean normalized benthic indices (± SD) across all stations showing temporal changes in Kolgrafarfjörður fjord from 1999 to 2017. 
+
+Year 
+
+nAMBI 
+
+nNQI1 
+
+nShannon 
+
+Ecological Status 
+
+1999 
+
+0.67 ± 0.05 
+
+0.54 ± 0.04 
+
+0.68 ± 0.03 
+
+Good 
+
+2013 
+
+0.08 ± 0.11 
+
+0.21 ± 0.09 
+
+0.09 ± 0.13 
+
+Bad 
+
+2014 
+
+0.4 ± 0.22 
+
+0.39 ± 0.12 
+
+0.44 ± 0.25 
+
+Moderate 
+
+2015 
+
+0.66 ± 0.02 
+
+0.51 ± 0.04 
+
+0.65 ± 0.04 
+
+Good 
+
+2016 
+
+0.64 ± 0.02 
+
+0.52 ± 0.03 
+
+0.65 ± 0.04 
+
+Good 
+
+2017 
+
+0.63 ± 0.04 
+
+0.51 ± 0.05 
+
+0.66 ± 0.07 
+
+Good 
+
+ 
+
+ 
+
+ 
+
+3.2 Multivariate Analysis Results 
+
+3.2.1 NMDS Ordination and Environmental Correlations  
+
+Non-metric multidimensional scaling (NMDS) ordination revealed clear temporal patterns in benthic community composition from 2013 to 2017 (stress = 0.138). The analysis, based on Bray-Curtis dissimilarities of 104 taxa across 36 samples (6 stations × 6 years), showed distinct recovery trajectories for different stations. Environmental fitting identified significant correlations with sediment characteristics (p < 0.05): organic content (r² = 0.640), fine mud <63μm (r² = 0.536), very fine particles <20μm (r² = 0.469), and medium-fine particles <125μm (r² = 0.334). 
+
+ 
+
+The analysis revealed distinct patterns in station trajectories and community dynamics over the years (Fig. 3). Station A7 exhibited the longest recovery path, while C4 had the shortest. Initially, all stations moved in similar directions, with E3 and E4 showing slightly higher angles. The community's movement was most pronounced in 2013, gradually decreasing in subsequent years. The NDMS analysis highlighted that 2013 and 2014 were distinct, clustering by year rather than station. In contrast, data from 2015 to 2017 showed more station-based grouping, with E3 and E4 diverging from the others. Over time, the later years (2015-2017) began to resemble the reference year 1999 more closely than the earlier years, indicating a shift towards pre-impact conditions. 
+
+
+Figure 3.  Non-metric multidimensional scaling (NMDS) ordination of benthic community composition in Kolgrafarfjörður comparing baseline data from 1999 with post-disturbance recovery period (2013-2017). Points represent sampling stations in different years, with color indicating station and shape indicating sampling year. The ordination is based on Bray-Curtis dissimilarities of 104 taxa across 36 samples (stress = 0.138). 
+
+ 
+
+3.2.2 Community Succession Patterns. 
+
+ 
+
+Temporal analysis revealed a clear succession pattern across the five-year period. The opportunistic species Capitella capitata strongly dominated the early recovery phase (2013: 66,225 ind. m⁻²), showing a dramatic decline over subsequent years (2014: 12,842 ind. m⁻²; 2015: 33 ind. m⁻²; 2016: 333 ind. m⁻²) until complete absence in 2017. Despite this temporal decline, C. capitata remained the most abundant species overall (35.9% of total abundance, 79,433 ind. m⁻²). The succession was characterized by a shift from C. capitata dominance to a more diverse community, with Polydora sp. (8.56%, 18,975 ind. m⁻²) and Ophelina acuminata (8.09%, 17,912 ind. m⁻²) becoming prominent in later years. By 2017, the community was dominated by Polydora (11,908 ind. m⁻²) and Scalibregma inflatum (5,133 ind. m⁻²), with increased abundances of equilibrium species such as Macoma calcarea (4,312 ind. m⁻²) and Scoloplos armiger (3,700 ind. m⁻²). 
+
+ 
+
+3.2.3 Spatial Organization in NMDS Space 
+
+The NMDS ordination showed clear spatial segregation of dominant species. C. capitata, the most abundant species (27.0% of total abundance), was strongly isolated in positive NMDS1 space (NMDS1 = 1.91), distinctly separated from all other species. A group of five species/taxa, including Polydora sp. (10.4%) and Spio sp. (7.1%), occupied neutral positions in the ordination space, suggesting their generalist distribution patterns. Species associated with positive NMDS2 scores included O. acuminata (6.5%) and Macoma calcarea (5.4%), while a distinct cluster of species including Tubificoides benedii (3.3%) and S. inflatum (3.3%) showed strong negative NMDS1 scores, suggesting their association with later recovery stages of the community succession. 
+
+ 
+
+ 
+
+3.2.5 - Temporal Consistency and Environmental Relationships 
+
+This recovery process showed remarkable spatial and temporal consistency across Kolgrafarfjörður, with community composition changing predictably over time during the recovery period (NMDS temporal gradient: r² = 0.702, p = 0.001). Tests of multivariate dispersion revealed no significant differences in community variability either between years (F = 0.719, p = 0.587) or between stations (F = 0.569, p = 0.723), indicating an orderly, fjord-wide recovery rather than patchy recolonization. This structured succession was strongly linked to the processing or dispersion of organic matter (r² = 0.549, p = 0.001), suggesting that the decomposition of herring biomass drove a coordinated ecosystem recovery. 
+
+ 
+
+3.2.6 - Long-term Change and Baseline Comparison 
+
+The 1999 baseline data, while collected using different sampling techniques, provides important historical context for the post-disturbance community development. The distance between the 2017 communities and the 1999 baseline state (0.657 ± 0.271 units in NMDS space) exceeded the final year-to-year changes during recovery (0.314 ± 0.191 units), indicating that while the community had stabilized by 2017, it had shifted to a different configuration than its pre-disturbance state. This transformation suggests that the herring event may have triggered a transition to an alternative stable state in the fjord's benthic community structure. 
+
+ 
+
+3.3 PCA Analysis 
+
+ 
+3.3.1 PCA analysis of species density by station 
+
+The PCA analysis explained between 69.2% and 99.9% of the total variance in the species density data, with particularly high explanation (99.9%) in 2013 when the community was dominated by Capitella capitata. 
+
+The PCA plots align the arrows, representing the sampling stations, together when they show similar densities of species, with highest densities shown by those furthest away from the center of the graphs, pointing towards species that are highest in density. 
+
+According to PCA plots, the E3 and E4 stations (to the west of the fjord) aligned together in a different direction from other stations, in 1999 (Figure 4A); conversely, the stations do not differ from one another in 2013, 2014, and 2015 (Figure 4b, 4c and 4d). In 2016 and 2017, the alignment of E3 and E4 away from other stations seems to have returned (Figure 4e, 4f) but that is mostly due to high densities of Spio sp. and Polydora sp. 
+
+ 
+
+3.3.1.1 Baseline Year - 1999 
+
+According to PCA plots, stations E3 and E4 (to the west of the fjord) aligned together (Figure 4A). E3 and E4 both had high densities of two annelids, i.e. the polychaete Polydora sp. (absent from all other stations) and the oligochaete Tubificoides benedii (low densities at B8 and C4, absent from A7 and B5). 
+
+
+The other stations (A7, B5, B8, and C4), located to the east, aligned together away from E3 and E4 (Figure 4A). These were characterized by the bivalve Ennucula tenuis, two polychaetes Scalibregma inflatum and Chaetozone setosa, and the amphipod Protomedeia fasciata. 
+
+3.3.1.2 Impact Years - 2013 and 2014 
+
+The year at the organic enrichment (2013) was characterized by aberrantly high densities of the deposit-feeding polychaete C. capitata (Figure 4b and 4c), which is an enrichment opportunist. The extremely high variance explanation (98.9% on PC1 alone) quantitatively demonstrates C. capitata's dominance of the community structure. Spio sp. was also prominent in 2013 but at lower densities than C. capitata and mostly occurring at stations C4 and E3. Additional species of note included the polychaete Chaetozone setosa (1.77% relative abundance) and the oligochaete Tubificoides kozloffi (<1%). The polychaetes Harmothoe extenuata and Eteone longa were present but at very low densities (<1% relative abundance. 
+
+In 2014, the PCA explained 79.9% of the variance, with PC1 accounting for 56.7% and PC2 for 23.2%. This lower total variance (compared to 2013) reflects the increased complexity in species composition. The same species were the most common ones, but the number of species had increased substantially at stations B5, C4, E3 and E4. E3 aligned with the neighbouring C4 station but away from B5, A7 and B8, with E4 in between the two groups (Figure 4c). Station A7 and B8 were highest in C. capitata densities, followed by B5 and E4 but only low densities at stations C4 and E3. At stations E3 and E4, Tubificoides kozloffi reached high densities in 2014 at two stations (E3 and E4) (Figure 4c). Other notable species in 2014 included the surface-dwelling polychaete predator Eteone longa at all stations, the polychaete Microphthalmus aberrans at stations C4, E3 and E4, and four species at station E3; the barnacle Balanus sp., the polychaetes Chaetozone setosa and Harmothoe extenuate and the bivalve Mytilus edulis. Notably, Polydora sp. returned to stations E3 and E4 (same as 1999) in very low densities, after not being found at all in 2013. 
+
+3.3.1.3 Transition year - 2015 
+
+The PCA explained most of the variation in the community data, with the first two axes capturing 87.4% of total variance. The community was characterized by several key species: the bivalve Macoma calcarea, the polychaetes Ophelina acuminata, and Mediomastus fragilis, together accounting for over 40% of total abundance. 
+
+C. capitata, which had dominated the community in 2013 and 2014, was now found only at a single station in low density. O. acuminata showed strong associations with stations C4 and E3 based on the PCA. Scoloplos armiger was present at five of six stations but at highest densities at stations C4, and the polychaete Mediomastus fragilis was found at all stations (Figure 4d). Of those, S. armiger was found in lower densities in 1999, 2013 (C4 station only), and 2014. O. acuminata was found in 1999 but not in 2013 or 2014 and conversely, M. fragilis was not found in 1999 but in low densities in 2013 and 2014. 
+
+Chaetozona setosa and Spio sp. remained conspicuous as they did in 2013 and 2014, and Polydora sp. were found at all stations for the first time (found at E3 and E4 in 1999 and 2014 but none recorded in 2013). The bivalve Mya arenaria was found at all stations after being first found at stations E3 and E4 in 2014. 
+
+3.3.1.4 Recovery years - 2016 and 2017 
+
+These two years show E3 and E4 aligning towards each other, like that observed in 1999 but not in 2013, 2014 and 2015 (Figure 4). Many of the species from previous years were found in higher densities, most notably:  
+
+1) in 2016, Spio sp., O. acuminata (dominating with 22.8% abundance), Polydora sp., and S. armiger; and 2) in 2017, Polydora sp. (becoming dominant at 25% abundance), S. armiger, Mediomastus fragilis, O. acuminata, Chaetozone setosa, and Mya arenaria. We also note Praxillella praetermissa, found at all stations in 2016 and 2017, common in 1999 but occasionally found in 2013, 2014, and 2015. Species emerging in high densities in 2016 included: 1) the polychaete Heteromastus filiformis, which interestingly was found at stations E3 and E4 in 1999, not recorded in 2013-2015 and almost gone in 2017! 2) the bivalve Macoma calcarea, found at all stations in 1999 and 2015-2017 but not documented in 2013 and only found at C4 and E3 in 2014. 
+
+Species emerging in high densities in 2017 included: 1) the polychaete Scalibregma inflatum, which was common in 1999, not documented in 2013 or 2015, found in low densities 2015, common in 2016 and 2017 but reached high densities at stations A7 and B8 in 2017. and 2) the bivalve Abra nitida, found in low densities at 4 stations in 1999, not found in 2013, 2014 and 2015, but found in low densities at three stations in 2016 and increased densities at 5 stations in 2017 (absent from station E3). 
+
+3.4 Sediment analysis 3.4 
+
+ 
+
+3.4.1 Particle size 
+
+ 
+
+We have no particle size data from 1999 but present a comparison of stations in 2013 and annual variation across stations that showed such variation 2013-2017. After the herring event in 2013, sediment structure was similar among the three stations to the south, A7, B5 and B8, with over 70% 63 microns or coarser (Fig. 5). Conversely, stations C5, E3 and E4 were richer in finer sediments (125 microns or finer), with E3 and E4 the only stations rich in sediment of 1000 microns.  
+
+Figure 5. Proportions of dry weight of particle size groups in Kolgrafarfjörður grab sample stations from 2013 (left y-axis). Red line shows total variance of xxxx (right y-axis). 
+
+ 
+
+ 
+
+There was no annual variation in sediment particle sizes at 4 of 6 stations.  The only stations to show annual variation were stations E3 and E4 (Fig. 6). The proportion of 1000 micron particles was lowest in 2013 and peaked at station E4 in 2016. The proportions of 20 micron and 63 micron particles were highest in 2013, remained high at station E4 in 2014 but declined at both stations to a low in 2016 but returned to higher values in 2017.  
+
+3.3.2 Organic content 
+
+While organic content showed some variation among stations (ranging from 11.2% to 13.4%), post-hoc analysis (Dunn's test with Bonferroni correction) revealed no significant differences between any station pairs (all p > 0.05). This suggests that organic content was relatively homogeneous across the study area, despite the slight tendency for higher values at station A7 (13.4% ±3.0 SD) compared to other stations. 
+
+The proportion of organic content in the sediment declined significally after the initial samples in 2013 and remained steady for the rest of the study period, aligning with the expected decomposition and dispersal of organic matter from the decomposing mass of dead herring . The number of individuals per m2 dropped drastically in the first two years, then increased and seemed to stabilize by the last year. The number of species indicates a gradual recovery over the study period, starting at a low level in 2013 and reaching a threefold count by 2017. 
+
+ 
+
+4.1 Sediment 
+
+ 
+4.1.1. Carbon content of sediment 
+
+Organic matter content differed significantly among years (Kruskal-Wallis: χ² = 16.83, p = 0.002), but not among stations (χ² = 6.14, p = 0.293). Dunn's test revealed significantly higher content in 2013 compared to 2016 (p = 0.0005) and 2017 (p = 0.0128). Median values decreased notably after 2013 (2013: 0.1763; 2014-2017 range: 0.1011-0.1184), remaining relatively stable from 2014 onwards. Station medians ranged from 0.0904 to 0.1191. Boxplots corroborated these findings, showing clear temporal differences but less pronounced spatial variations. 
+
+Figure 7. Organic matter content distribution in Kolgrafarfjörður. (A) Variation by year (2013-2017), showing significant decrease after 2013 (Kruskal-Wallis, p = 0.002) , with levels remaining relatively stable from 2014 to 2017. (B) Distribution across sampling stations, with no significant differences (p = 0.293). 
+
+ 
+
+These results indicate a significant shift in organic matter content between 2013 and subsequent years, particularly 2016 and 2017, while spatial differences were not statistically significant. This pattern suggests a potential environmental change between 2013 and 2014 that influenced organic matter levels across the entire study area. 
+
 Discussion 
 
 The herring event in Kolgrafafjörður provided an excellent system to study effects of single-event hypoxia on benthic ecosystems in the absence of seasonal (or otherwise repeated) hypoxic conditions, in the absence of any salinity stratifications, excessive fertilizer use, and in almost completely marine (not an estuary) environment. Observing the recovery of benthic communities enabled us to identify pioneer species which can break down organic material to restore oxygenated conditions within an affected ecosystem, which in turn may aid in biological breakdown of sewage or otherwise accumulated organic materials. 
