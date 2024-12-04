@@ -1,0 +1,79 @@
+# R specific files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.Rapp.history
+.RDataTmp
+
+# RStudio session data
+.local/
+.local/share/
+.local/share/rstudio/
+**/suspended-session-data/
+**/session-*/
+*.rds
+environment
+
+# RStudio specific files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.Rapp.history
+.RDataTmp
+.local/
+
+# Output files
+*.html
+*.pdf
+*.docx
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.tiff
+/output/
+
+
+# System files
+.DS_Store
+Thumbs.db
+.directory
+
+# Temporary files
+*.swp
+*~
+~$*
+*.tmp
+*.bak
+
+# Docker
+.env
+.docker/
+
+# Logs
+*.log
+logs/
+log/
+
+# Dependencies
+renv/
+packrat/
+.checkpoint/
+
+# Compiled files
+*.o
+*.so
+*.dll
+
+# Cache
+*_cache/
+/cache/
+
+# Sensitive information
+.env
+.Renviron
+.httr-oauth
