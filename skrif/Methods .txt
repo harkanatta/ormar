@@ -1,0 +1,95 @@
+2 Materials and methods 
+
+ This study examined changes in benthic communities and sediment characteristics in Kolgrafarfjörður, Iceland, from 2013 to 2017. Sampling was conducted at stations aligned with a 1999 baseline survey to facilitate direct comparisons. Methods included invertebrate sampling and identification, sediment analysis for grain size and organic content, and statistical analyses to evaluate spatial and temporal patterns. 
+
+ 
+
+2.1 Sampling design 
+
+Baseline sampling in 1999 
+
+In the year 1999 an environmental impact assessment was done by Ingólfsson (1999) with an extensive sampling campaign of soft bottom fauna in the fjord. A single sample was collected from multiple stations (N = 30) in a grid-like pattern over the fjord using a small Ekman grab (0.0225 m2).  
+
+2.1.2 Sampling effort 2013-2017 
+
+Six of the stations used by Ingólfsson (1999) were selected for this study in 2013, the reason being their homogenous species composition, relative high diversity, and their similar sediment characteristics, allowing for fair comparison with later sampling. Research expeditions were in June/July each year. 
+
+ 
+
+2.2 Invertebrate sampling strategy and analyses 
+
+2.2.1 Field sampling 
+
+Sediment samples for benthic fauna were collected at each station using a Shipek© grab (0.04 m² sampling surface; three replicates). The samples were sieved with seawater onboard through a 0.5 mm mesh to retain benthic organisms. The retained organisms were immediately preserved in a formaldehyde solution (5% v/v, neutralized with borax). Within a week, the samples were transferred to 70% ethanol. An additional sample was collected at each station for sediment analysis and preserved in 70% ethanol. 
+
+ 
+
+2.2.2 Laboratory processing 
+
+In the laboratory, the benthic macrofauna was sorted and identified. Each sample was dyed with Bengal Rose to facilitate sorting. Sub-sampling was employed to manage the collected samples effectively. After removing the largest organisms visible under a magnifying glass, the samples were divided using an Endecott's sample divider, splitting each sample into two parts, repeated three times, to ensure a representative subset for detailed analysis. The macrofauna was identified to species, when possible, otherwise to lowest possible taxonomic levels.  
+
+For quality assurance, the same person, our colleague the late Guðmundur Víðir Helgason verified all annelid identifications in both this study and Ingólfsson (1999), apart from 2016 where VS and JS handled identifications following Helgason’s passing in May 2020. 
+
+ 
+
+2.3. Sediment characteristics 
+
+ 
+
+2.3.1. Sediment sampling and grain-size analysis 
+
+Sediment grain-size and organic matter content were assessed at each station. Sediments were sampled using the Shipek grab sampler and used for grain-size analysis. Small pebbles and shell fragments were separated from the sand and mud fractions by hand. Samples were dried at 60°C for 24 hours and sieved. To prevent clotting, the samples were stirred 2– 3 times during the drying process and gently tapped with a spoon during sieving. The dried samples were sieved using a series of mesh sizes (4000, 2000, 1000, 250, 125, and 63 µm). Each size fraction was then weighed to determine the proportion of sediment in each particle size group.  
+
+ 
+
+2.3.2. Organic matter content analysis 
+
+The organic matter content of sediment samples was estimated by using loss on ignition (Heiri et al. 2001). Triplicate of subsamples of (2±0.05 g) were weighed directly in porcelain melting pots and burned at 475 °C for 2 hours. Only the fraction <63 µm was used for the analysis of organic content.  
+
+ 
+
+2.4 Data processing and analysis 
+
+ 
+
+2.4.1 Data processing 
+
+Raw count data were imported and adjusted for sub-sampling and sampling area. Counts were scaled to individuals per square meter based on the bottom grab size (0.04 m² for 2013– 2017, 0.0225 m² for 1999). Species names and taxonomic classifications were standardized using the World Register of Marine Species (WoRMS) database via the 'worrms' R package (Chamberlain, 2023). Data cleaning involved removing entries related to newly settled individuals, juveniles, and specific taxa to focus on established adult populations. 
+
+Prior to multivariate analyses, a taxonomic harmonization process was performed to ensure consistency across samples and minimize artificial inflation of diversity. This involved standardizing taxonomic classifications and merging some lower taxonomic groups into higher taxa when inconsistencies were found. Data were summarized to year, station and species and merged with the environmental variables such as depth, percentage organic material in sediment, and grain size proportion in sediment. This integration allows for the exploration of how environmental factors influence species distribution, abundance, and community structure. 
+
+ 
+
+2.4.2 Assessment of Diversity and Benthic Ecological Quality 
+
+ To assess the diversity of benthic communities, the Shannon-Wiener diversity index (Shannon, 1948) was used. This index incorporates both species abundance and evenness, providing a detailed measure of community structure. 
+
+The AZTI Marine Biotic Index (AMBI) was utilized to assess the ecological quality of the benthic habitats in the sampling stations in Kolgrafafjörður by classifying species into ecological groups according to their sensitivity to pollution and disturbance (Borja et al., 2000). AMBI evaluates the impact of environmental stress on species composition and is widely used in benthic ecological studies. 
+
+The Norwegian Quality Index (NQI1), a multimetric index that combines the Shannon-Wiener index with AMBI, was applied providing sensitivity to both disturbance and biodiversity changes (Rygg, 2006). The NQI1 was determined by the Marine and Freshwater Research in Iceland to be the most suitable indicator for monitoring the ecological status of soft- bottom Icelandic coastal water bodies (Woods 2021).  
+
+A normalized version of the indices (nShannon, nAMBI and nNQI1) was calculated, expressing results as Ecological Quality Ratios (EQRs) ranging from 0 to 1, following the procedure outlined in Borja et al. (2007). This normalization enables standardized comparisons across indices, ecosystems, and time periods. The indices were calculated using the BBI package (Cordier et al., 2021) in R (R Core Team, 2023), ensuring a consistent and reliable assessment of community recovery and ecological quality throughout the study. 
+
+2.4.3 Multivariate analysis 
+
+We analysed benthic community composition data using standardized, untransformed count data across 126 104 harmonized taxonomic categories. Using the vegan package in R (Oksanen et al. 2024) we employed three complementary multivariate techniques: Permutational Multivariate Analysis of Variance (PERMANOVA), Non-metric Multidimensional Scaling (NMDS), and Similarity Percentage analysis (SIMPER). 
+
+PERMANOVA tested for significant differences in community composition across space and time using the 'adonis2' function with 999 permutations and Bray-Curtis dissimilarity. The model included station and year as factors. NMDS visualized community composition patterns using the 'metaMDS' function with Bray-Curtis dissimilarities. Species contributing >1% to total abundance were included in the analysis. Environmental vectors were fitted to the ordination using the 'envfit' function, and only vectors with p < 0.05 were retained. Station trajectories were visualized using arrows connecting consecutive years, with arrow length representing magnitude of community change. 
+
+SIMPER analysis identified species contributing most to dissimilarity between early (2013-2014) and late (2016-2017) periods using the 'simper' function. These analyses collectively assess spatial and temporal variability in benthic community composition, identify key species driving changes, and visualize community change trajectories at each sampling station. 
+
+ 
+
+2.4.4 Sediment statistical analysis 
+
+ 
+
+2.4.4.1 Grain size 
+
+To analyse the temporal and spatial patterns in sediment grain size distribution, we employed beta regression models using the betareg package in R (Cribari-Neto & Zeileis, 2010). Beta regression is appropriate for analysing proportional data that are bounded between 0 and 1. Separate models were fitted for each grain size category (20 μm, 63 μm, 125 μm, 250 μm, and 1000 μm), with sampling year and station as predictors. 
+
+ 
+
+2.4.4.2 Organic Matter 
+
+Due to non-normal distribution of organic content data, we employed the non-parametric Kruskal-Wallis test to examine temporal differences across the five-year study period. This approach is robust against violations of normality and appropriate for comparing multiple independent groups with continuous response variables. Following significant Kruskal-Wallis results, Dunn's test with Bonferroni correction was used for post-hoc pairwise comparisons between years and stations. 

@@ -1,0 +1,17 @@
+JS: Á báðum myndum skilja innstu stöðvarnar sig frá hinum. Það þarf að ræða það af hverju! T.d. stöðvar fjarstar nýjum vatnsbol, minni vatnsskipti með nýjum lirfum innst!
+Hér eru athugasemdir. Hver athugandi er með upphafsstafi sína á undan tvípunktinum og svo kemur athugasemdin.
+
+
+JS: Það mætti nefna að hér er stöð A7 með víðasta sviðið af lífrænu efni, en þetta er stöð sem var lengi að ná sér.
+
+JS: þetta segir okkur að við verðum að fara varlega í nýta setgögn og túlka. Bersýnilega er einhver breytileiki í þessu, en hann getur verið vegna reks á bátnum
+
+VS: Rauða línan stendur fyrir breytileikann á milli ára. Á E3 og E4 minnkaði fína setið og grófa jókst með tímanum (2017 reyndar skrítið) en þetta gæti verið sýnatakan. Ef þetta er ekki sýnatakan þá hafa ormarnir eða straumurinn, sem er mestur á þessum stöðvum, haft áhrif á fína setið.
+
+JE: verðum að gefa smá summary í byrjun og þætta saman PCA, NMDSI, og þau gögn sem gefa saman overall mynd.
+
+AI:
+"Sjávarbotninn í Kolgrafafirði er að mestu leyti hreinn eða lítið blandaður leirbotn, sérstaklega í innri hluta fjarðarins. Botninn er lífríkur. Tegundafjölbreytni og magn eru nokkuð sambærileg því sem finnst á miðjum leirbotni í Gilsfirði (stöðvar B4, B5 og B6) samkvæmt rannsóknum Agnars Ingólfssonar frá 1996a. Tegundasamsetningin er þó að sumu leyti ólík, þrátt fyrir að margar algengar tegundir hafi fundist á báðum svæðum.
+Samsetningin líkist meira því sem finnst í Akureyrarpolli (Agnar Ingólfsson o.fl., 1972) og Hvalfirði (Kristín Aðalsteinsdóttir og Arnþór Garðarsson, 1980). Á báðum þessum stöðum eru dæmi um algengar tegundir eins og samlokurnar Macoma calcarea og Yoldia. hyperborea og Thyasira flexuosa eru áberandi eins og í Kolgrafafirði. Samlokan Nuculana tenuis var jafnframt ríkjandi tegund í Akureyrarpolli eins og í Kolgrafafirði. Auðvelt er þó einnig að benda á talsverðan mun samfélaganna á þessum stöðum. Tegundasamsetning á botni í Þorskafirði og Kollafirði er greinilega einnig um margt lík því sem er á mjúkum botni í Kolgrafafirði, þótt talsvert skorti á fullnægjandi upplýsingar frá þessum fjörðum (Agnar Ingólfsson 1976).
+Með ströndum við vesturlandið í Kolgrafafirði innanverðum svo og víða í utanverðum firðinum er botninn meira eða minna grýttur og víða er greinilega talsverður þari (Laminaria saccharina). Greipin vinnur illa á slíkum botni, og eru greiparsýnin að vonum tegundasnauð. Sledasýnin sýna hins vegar að mikið líf er á botni sem þessum í Kolgrafafirði."
+

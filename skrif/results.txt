@@ -1,0 +1,32 @@
+A total of 149 taxa of were found at 6 stations over the 5 year period from 2013 to 2017. The number of taxa per station-year ranged from 2 (station A7, 2013) to 49 (station E3, 2017). Total organism density varied from 500 individuals/m² (station A7, 2013) to 27,392 individuals/m² (station E3, 2013). The proportion of organic content in the sediment declined significantly after the initial samples in 2013 and remained  stable for the rest of the study period, aligning with the expected decomposition and dispersal of organic matter from the herring event. The number of individuals per m² dropped drastically in the first two years, then increased and seemed to stabilize by the last year of the study. The number of species indicates a gradual recovery over the study period, starting at a low level in 2013 and reaching a threefold count by 2017. 
+
+Þurfum við ekki species accumulation curves?  
+
+ 
+
+3.1 Temporal Changes in Benthic Biotic Indices 
+
+3.1.1 
+
+Normalized biotic indices pooled across all stations in Kolgrafarfjörður revealed clear temporal patterns during 2013-2017 (Table 1). The pre-mortality period (1999) showed good ecological status with relatively low variance between stations (. The herring event resulted in severe community degradation, with indices dropping to their lowest values. Recovery began in 2014, marked by high variability between stations, reflecting asynchronous recovery patterns but by 2015, the community had largely recovered to good status with reduced between-station variability, maintaining similar conditions in 2016 and 2017. 
+
+
+
+
+3.1.2 Feeding Guild Dynamics   
+
+ 
+
+The benthic community underwent significant shifts in species composition and feeding guilds, reflecting ecological recovery. Deposit feeders (e.g., Capitella capitata) (Macdonald 2010) dominated in 2013, comprising 75.1% of individuals, a pattern linked to high organic input and hypoxic stress. Their proportion decreased to 53.0% in 2014 and further to 38.9% in 2017, indicating reduced disturbance. Meanwhile, deposit/suspension feeders (e.g., Macoma calcarea, Scalibregma inflatum) rose from 6.4% in 2013 to 34.5% in 2017, exceeding their 1999 baseline of 26.2%. 
+
+  
+
+This transition from C. capitata dominance in 2013-2014 to species like M. calcarea and S. inflatum by 2015-2017 signals a shift towards equilibrium conditions. Traits such as subsurface deposit feeding (M. calcarea, S. inflatum) and burrow dwelling (Ophelina acuminata) indicate increased bioturbation and oxygen penetration into sediments (Clare et al 2022). These changes align with nNQI1 and AMBI recovery trends, highlighting functional diversity as key to benthic ecosystem resilience. 
+
+  
+
+Predatory taxa (Pr) remained a minor component of the benthic community throughout the study period, ranging from 1.7% in 2013 to 6.4% in 2014. The predator/deposit feeder (Pr/De) guild, dominated by Eteone longa, peaked at 10.2% in 2014 before stabilizing between 1.4% and 3.4% in subsequent years. Pure suspension feeders (Su) increased steadily from 4.5% in 2013 to 16.3% in 2017, surpassing their baseline proportion of 10.0% recorded in 1999. 
+
+  
+
+The baseline year (1999) exhibited the most even distribution among feeding guilds, with deposit feeders (40.5%), deposit/suspension feeders (26.2%), and suspension feeders (10.0%) forming the main components. By 2017, the feeding guild structure showed a shift towards this baseline, though with reduced proportions of deposit feeders and an increased representation of suspension feeders and deposit/suspension feeders, reflecting ecological recovery trends. 
