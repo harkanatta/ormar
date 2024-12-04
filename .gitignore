@@ -16,6 +16,24 @@
 *.rds
 environment
 
+# Make sure your .gitignore contains:
+echo "
+# Large data files
+data/traits_data/response_public.csv
+data/traits_data/effects_public.csv
+
+# RStudio session data
+.local/
+.local/share/
+.local/share/rstudio/
+**/suspended-session-data/
+**/session-*/
+*.rds
+environment" >> .gitignore
+
+git add .gitignore
+git commit -m "Update gitignore to exclude large files"
+
 # RStudio specific files
 .Rproj.user
 .Rhistory
