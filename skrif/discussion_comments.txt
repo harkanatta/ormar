@@ -1,6 +1,12 @@
-JS: Á báðum myndum skilja innstu stöðvarnar sig frá hinum. Það þarf að ræða það af hverju! T.d. stöðvar fjarstar nýjum vatnsbol, minni vatnsskipti með nýjum lirfum innst!
 Hér eru athugasemdir. Hver athugandi er með upphafsstafi sína á undan tvípunktinum og svo kemur athugasemdin.
 
+JS: Á báðum myndum skilja innstu stöðvarnar (A7 og B8) sig frá hinum. Það þarf að ræða það af hverju! T.d. stöðvar fjarstar nýjum vatnsbol, minni vatnsskipti með nýjum lirfum innst!
+
+JS: Ein af meginniðurstöðunum rannsóknanna. Og sennilega aðallega rándýr sem skríða á botni (Harmothoe, Eteone, ...), en ekki rándýr sem lifa í göngum á botni sjávar (Glycera, Lumbrinereis, ...). Grotætur sem lifa í botni og éta dýpra hafa að líkindum þolað þetta verr, að Capitellu undanskilinni. Spio og Polydora lifa í rörum en hausinn er uppávið og þær nota palpa sem afla fæðu annaðhvort af yfirborði eða úr uppsjó.
+
+JS: Það er forvitnilegt að ein af tegundunum 1999 hverfur og kemur ekki til baka. Þetta er Sternaspis scutata. Grotæta sem lifir í botni. Mig minnir að hún gerist feitari við aukið magn lífræns efnis, en þarna hefur allt farið yfir strikið.
+
+JS: Stöðvar í halla sýna meiri breytileika og ef til vill er það vegna þess að við gætum hafa verið að taka sýni misdjúpt (vegna reks bátsins). Þetta verðum við að meðhöndla með varkárni.
 
 JS: Það mætti nefna að hér er stöð A7 með víðasta sviðið af lífrænu efni, en þetta er stöð sem var lengi að ná sér.
 
@@ -9,9 +15,4 @@ JS: þetta segir okkur að við verðum að fara varlega í nýta setgögn og t�
 VS: Rauða línan stendur fyrir breytileikann á milli ára. Á E3 og E4 minnkaði fína setið og grófa jókst með tímanum (2017 reyndar skrítið) en þetta gæti verið sýnatakan. Ef þetta er ekki sýnatakan þá hafa ormarnir eða straumurinn, sem er mestur á þessum stöðvum, haft áhrif á fína setið.
 
 JE: verðum að gefa smá summary í byrjun og þætta saman PCA, NMDSI, og þau gögn sem gefa saman overall mynd.
-
-AI:
-"Sjávarbotninn í Kolgrafafirði er að mestu leyti hreinn eða lítið blandaður leirbotn, sérstaklega í innri hluta fjarðarins. Botninn er lífríkur. Tegundafjölbreytni og magn eru nokkuð sambærileg því sem finnst á miðjum leirbotni í Gilsfirði (stöðvar B4, B5 og B6) samkvæmt rannsóknum Agnars Ingólfssonar frá 1996a. Tegundasamsetningin er þó að sumu leyti ólík, þrátt fyrir að margar algengar tegundir hafi fundist á báðum svæðum.
-Samsetningin líkist meira því sem finnst í Akureyrarpolli (Agnar Ingólfsson o.fl., 1972) og Hvalfirði (Kristín Aðalsteinsdóttir og Arnþór Garðarsson, 1980). Á báðum þessum stöðum eru dæmi um algengar tegundir eins og samlokurnar Macoma calcarea og Yoldia. hyperborea og Thyasira flexuosa eru áberandi eins og í Kolgrafafirði. Samlokan Nuculana tenuis var jafnframt ríkjandi tegund í Akureyrarpolli eins og í Kolgrafafirði. Auðvelt er þó einnig að benda á talsverðan mun samfélaganna á þessum stöðum. Tegundasamsetning á botni í Þorskafirði og Kollafirði er greinilega einnig um margt lík því sem er á mjúkum botni í Kolgrafafirði, þótt talsvert skorti á fullnægjandi upplýsingar frá þessum fjörðum (Agnar Ingólfsson 1976).
-Með ströndum við vesturlandið í Kolgrafafirði innanverðum svo og víða í utanverðum firðinum er botninn meira eða minna grýttur og víða er greinilega talsverður þari (Laminaria saccharina). Greipin vinnur illa á slíkum botni, og eru greiparsýnin að vonum tegundasnauð. Sledasýnin sýna hins vegar að mikið líf er á botni sem þessum í Kolgrafafirði."
 
