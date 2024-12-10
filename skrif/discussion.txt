@@ -1,38 +1,41 @@
+A:
 The herring event in Kolgrafafjörður provided an excellent opportunity to study the effects of a natural, single-event hypoxia on a fully marine benthic ecosystem. Immediately following the 2013 event, the number of species declined sharply to an all-time low of 21. Among these, Capitella capitata emerged as the dominant species, thriving as a specialist in anorexic benthos and exploiting the organic-rich conditions created by the disturbance. Its dominance persisted into 2014, where it remained in high numbers at 4 of 6 stations, but by 2015 it was found in only low densities (33 in 2015, 200 in 2016) and had completely vanished from the samples by 2017.
 
+B:
 Principal Component Analysis (PCA) revealed distinct trait-based community patterns in 1999. The western stations (E3, E4), characterized by stronger currents, supported species adapted to dynamic conditions through specific trait combinations: tube-dwelling habit, surface deposit feeding, and planktonic larvae (Polydora sp., Spio sp.). These stations also harbored oligochaetes within the Tubificidae family, free-living deposit feeders burrowed in sediment, that are often associated with organically enriched conditions. The eastern stations showed greater functional diversity, reflecting more stable sedimentary conditions. Here, species exhibited traits for deeper sediment utilization: varied feeding modes including suspension and deposit feeding (Macoma calcarea), deep burrowing with upward particle transport (Scalibregma inflatum), and active mobility with multiple bioturbation modes (Ophelina acuminata). These trait combinations suggest effective resource partitioning in stable sediments.
 
+C:
 By contrast, the 2013 herring event temporarily erased these spatial patterns, yielding a community almost entirely dominated by C. capitata. The PCA for 2013 showed unprecedented community uniformity, reflecting how the disturbance led to a simplification of benthic community structure. Capitella capitata’s adaptability; its use of both surface and subsurface feeding modes, tolerance for high organic loads, and production of lecithotrophic larvae, underscored its resilience during this period of disturbance.
 
+D:
 As time passed, the community began to recover. Between 2014 and 2017, declining PCA variance indicated a gradual return of functional diversity and the re-emergence of spatial differences influenced by hydrodynamics. By 2015–2017, the community began to resemble the patterns observed in 1999, with the western stations pointing towards Polydora sp. and Tubificoides benedeni, while other stations were again aligned with species such as Chaetozone setosa, Ennucula tenuis, Scalibregma inflatum, and Protomedeia fasciata. Although we use 1999 as a reference year, natural fluctuations in weather and sediment conditions (see Komendić et al. 2024) may have shaped the benthic communities prior to the herring event. Nonetheless, 2013 and 2014 stand out as years that highlight both the fragility and the resilience of these benthic communities in the face of episodic hypoxic disturbances.
 
-
+E:
 A summary of annual changes 
-
 The herring event took place on two occasions, between December 2012 and February 2013.  
-
 1999:  This year can be considered representative of a natural state, or even a “control” relative to later years, which were all post-herring event. However, there were species found in 1999 not recorded later, and vice versa. The dominant species found at E3 and E4 suggest muddy bottom whereas the other four stations have species that generally use a mixture of muddy, sandy and even more gravelly benthos.  
-
 2013-2014: These years showed strong signs of the herring event, most notably the scarcity of species and low densities but most importantly dominance by C. capitata, a specialist in anorexic benthos (Silva et al. 2017, Ghanavati Asl et al. 2023). The year 2013 was completely dominated by C. capitata, but 2014 is less clear, with other species haven risen to prominent densities compared to 2013. Number of species recovered to 1999-like levels by 2014. 
-
 2015: was an intermediate year between the herring death years 2013 and 2014 but also is different from 2016 and 2017 in many, cryptically interesting ways. 
-
 2016-2017: Similar years in many aspects and seem to be approaching 1999 in community structure and have more in common with 1999 than 2013-2014. However, the community structure of 2015-2017 was rather defined by stations than by year, although stations E3 and E3 were segregating away from the other stations during these years.  
 
+F:
 C. capitata are eutrophication specialists and are dominant in samples from areas high in organic matter (Ghanavati Asl et al. 2023). In our study, the species dominated in 2013 and 2014, for two years after the hypoxic herring event but quickly receded 2015-2016 and vanished from our samples in 2017. The disappearance of C. capitata in 2017 is probably a huge step towards ecosystem restoration, with their ecosystem role of breaking down the herring mass and converting conditions into oxygenated again largely completed (Silva et al. 2017, Liu et al. 2024). The emergence of many predator species in 2014 or 2015 suggests that the Capitella were also a food source for other invertebrates.  
 
+G:
 Capitellidae indet. belongs to the Polychaeta Sedentaria group (POSE) and is a subsurface deposit feeder (SS-De). It is discretely motile (D), meaning it can move but does not require movement for feeding, and it is free-living (F). It is omnivorous (Om), feeding on a variety of food sizes including sediment, particulate organic matter, and benthic microfauna (sed/pom/mic). 
 
  
 
-Temporal variation and sediment structure 
-
+H:
 Benthic community structure can change vastly over two decades, even without catastrophic events, due to gradual changes in sediment structure possibly driven by storms (Komendić et al. 2024). While we have no sediment or organic matter data for 1999, observations from 2013-2017 suggest that sediment characteristics remained relatively stable at 4 of the 6 stations, with some annual variations occurring at stations E3 and E4. These variations align with the stations that showed different species compositions both in 1999 and 2015-2017, and they appear to be more influenced by tidal activity than other parts of the fjord.
 
+I:
 The herring event in 2013 and 2014 disrupted community patterns, but there was a tendency for the community structure to return to a pattern similar to that observed in 1999 by 2015, 2016 and 2017. Kolgrafarfjörður is sheltered from storms, though it is likely still affected by them occasionally. A key factor here is the ongoing tidal activity, which may have greater effects on sediment and community structure at stations E3 and E4—coinciding with the area where the dead herring mass was deposited following the hypoxic event. Species that were prominent at E3 and E4 are pure mud specialists, whereas the prominent species at A7, B5, B8, and C4 correspond to those that utilize coarser sediments (mixtures of mud, sand, and even gravel), reflecting the spatial differences re-emerging post-disturbance.
 
+J:
 Importantly, Kolgrafarfjörður is a fjord with a narrow outflow and minimal human impacts (e.g., limited ship traffic or aquaculture), making it more pristine than most systems studied for organic pollution. Nonetheless, it faces natural disturbances like storms and strong tides, occasionally in combination, as was the case leading to the herring event. The varying rates of sediment structure change among the sampling stations can be attributed to tidal activity, which seems more pronounced in the western part of the fjord (E3 and E4) relative to the eastern and southern parts (stations B5, A7, and B8).
 
+K:
 Molluscs and arthropods are often wiped out during hypoxic events as these groups depend on oxygen-rich waters (Raman et al. 2015). In 1999, there were 15 species of molluscs (12 bivalves, 3 gastropods) and 7 species of arthropods present in Kolgrafarfjörður. After the herring event in 2013, only 2 mollusc species and 2 arthropod species were found, each in low densities, at just two stations. By 2014, mollusc species had increased to 9, and arthropods to 4; by 2017, mollusc diversity reached 20 species (12 bivalves and 8 gastropods) and arthropods matched their 1999 number (7 species). These trends mirror our community analyses, which show a progression from an anoxic state to conditions richer in oxygen, ultimately allowing for the gradual return of original species diversity and sediment-structured communities observed prior to the herring event.
 
   
@@ -40,3 +43,18 @@ Molluscs and arthropods are often wiped out during hypoxic events as these group
 Changes in feeding groups (Guild analysis) 
 
 Predators, scavengers, filter feeders, slík umfjöllun og það sem tengist. 
+
+L:
+The recovery trajectory observed in Kolgrafarfjörður aligns with established patterns of benthic community response to hypoxic disturbance. As documented by Diaz & Rosenberg (1995), recovery typically follows a predictable succession pattern, beginning with opportunistic species, followed by transitional species, and eventually leading to the re-establishment of a more diverse community. Our observations of C. capitata dominance followed by gradual community diversification perfectly exemplify this succession pattern, though the complete disappearance of C. capitata by 2017 occurred more rapidly than might be expected based on other studies.
+
+M:
+The varying sensitivity of different taxonomic groups to hypoxia, particularly evident in the near-elimination of mollusks and arthropods in 2013, reflects well-established patterns in the literature. Diaz & Rosenberg (1995) and Levin et al. (2009) both emphasize the hierarchical nature of hypoxia tolerance among marine taxa, with crustaceans and mollusks being particularly vulnerable. The recovery of these sensitive groups to pre-disturbance levels by 2017 provides compelling evidence for the re-establishment of well-oxygenated conditions, though the speed of this recovery appears unusually rapid compared to similar events documented in the literature.
+
+N:
+The spatial patterns of recovery in Kolgrafarfjörður, particularly the distinct responses at stations E3 and E4, align with Beukema et al.'s (1999) findings about the importance of local conditions in shaping recovery trajectories. The stronger tidal influence at these western stations likely facilitated faster organic matter removal, yet also created more challenging conditions for recolonization, resulting in a unique community composition. This spatial heterogeneity in recovery rates and patterns underscores Borja et al.'s (2010) emphasis on the importance of local environmental conditions in determining recovery outcomes.
+
+P:
+Our study's combination of baseline data from 1999 and five years of post-disturbance monitoring (2013-2017) provides valuable insights into recovery processes, though it falls short of the 15-25 year monitoring period recommended by Borja et al. (2010) for assessing full ecosystem recovery. The rapid return of many species to pre-disturbance levels suggests that Kolgrafarfjörður may be unusually resilient, possibly due to its relatively pristine condition and the discrete nature of the disturbance event. However, the differences between 1999 and 2017 communities indicate that recovery processes may still be ongoing.
+
+Q:
+The relatively rapid recovery observed in Kolgrafarfjörður, compared to the typically longer timeframes documented in the literature, may reflect several advantageous factors: the system's pristine baseline condition, the discrete nature of the disturbance, and the presence of healthy adjacent communities to serve as sources for recolonization. These conditions align with Beukema et al.'s (1999) findings about the importance of recruitment sources and environmental conditions in facilitating recovery, while also suggesting that recovery from even severe hypoxic events can occur more quickly than previously thought under optimal conditions.
