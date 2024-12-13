@@ -1,0 +1,71 @@
+# Load necessary libraries
+library(dplyr)
+library(readr)
+library(tidyr)
+library(vegan)
+library(ggplot2)
+
+# Read the merged data
+merged_data_allt <- read.csv("docs/merged_data_alltB.csv")
+
+# Filter for specific stations and clean column names
+merged_data <- merged_data_allt %>%
+  subset(stod %in% c("C4", "A7", "B5", "B8", "E4", "E3")) %>%
+  janitor::clean_names()
+
+# Create summary statistics
+station_summary <- merged_data %>%
+  group_by(stod, artal) %>%
+  summarise(
+    total_abundance = sum(nfm),
+    species_richness = n_distinct(flokkun),
+    shannon_diversity = diversity(nfm, index = "shannon"),
+    .groups = "drop"
+  )
+
+# Calculate temporal trends
+temporal_trends <- merged_data %>%
+  group_by(artal) %>%
+  summarise(
+    mean_abundance = mean(nfm),
+    total_species = n_distinct(flokkun),
+    mean_diversity = mean(diversity(nfm, index = "shannon")),
+    .groups = "drop"
+  )
+
+# Create visualization of temporal trends
+ggplot(temporal_trends, aes(x = artal)) +
+  geom_line(aes(y = mean_abundance), color = "blue") +
+  geom_point(aes(y = mean_abundance), color = "blue") +
+  geom_line(aes(y = total_species * 10), color = "red") +  # Scaled for visualization
+  geom_point(aes(y = total_species * 10), color = "red") +
+  scale_y_continuous(
+    name = "Mean Abundance",
+    sec.axis = sec_axis(~./10, name = "Species Richness")
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Temporal Trends in Community Structure",
+    x = "Year"
+  )
+
+# Analyze species composition changes
+species_composition <- merged_data %>%
+  group_by(artal, flokkun) %>%
+  summarise(
+    total_abundance = sum(nfm),
+    frequency = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(artal, desc(total_abundance))
+
+# Save results
+write.csv(station_summary, "output/station_summary.csv", row.names = FALSE)
+write.csv(temporal_trends, "output/temporal_trends.csv", row.names = FALSE)
+write.csv(species_composition, "output/species_composition.csv", row.names = FALSE)
+
+# Print summary statistics
+print("Station Summary:")
+print(station_summary)
+print("\nTemporal Trends:")
+print(temporal_trends)
