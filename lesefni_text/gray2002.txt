@@ -1,0 +1,5645 @@
+MARINE ECOLOGY PROGRESS SERIES Mar Ecol Prog Ser
+Vol. 238: 249–279, 2002 Published August 9
+INTRODUCTION
+The Group of Experts on Scientific Aspects of Marine Pollution (GESAMP), in their review of the State of the Marine Environment (GESAMP 1990) concluded that marine eutrophication was ‘one of the major causes of
+immediate concern in the marine environment’. The GESAMP report stresses that the scale of the problem
+© Inter-Research 2002 · www.int-res.com
+*Present address: Department of Biology, University of Oslo, Pb 1064 Blindern, 0316 Oslo, Norway. E-mail: j.s.gray@bio.uio.no
+REVIEW
+Effects of hypoxia and organic enrichment on the coastal marine environment
+John S. Gray*, Rudolf Shiu-sun Wu, Ying Ying Or
+Department of Biology and Chemistry, City University, Tat Chee Avenue, Kowloon, Hong Kong
+ABSTRACT: Eutrophication is one of the most severe and widespread forms of disturbance affecting coastal marine systems. Whilst there are general models of effects on benthos, such as the Pearson-Rosenberg (P-R) model, the models are descriptive rather than predictive. Here we first review the process of increased organic matter production and the ensuing sedimentation to the seafloor. It is shown that there is no simple relationship between nutrient inputs and the vertical flux of particulate organic matter (POM). In particular, episodic hydrographic events are thought to be the key factor leading to high rates of sedimentation and accompanying hypoxia. We extend an earlier review of effects of hypoxia to include organisms living in the water column. In general, fishes are more sensi-tive to hypoxia than crustaceans and echinoderms, which in turn are more sensitive than annelids, whilst molluscs are the least sensitive. Growth is affected at oxygen concentrations between 6.0 and 4.5 mg O2 l–1, other aspects of metabolism are affected at between 4 and 2 mg O2 l–1 and mortality occurs where concentrations are below 2.0 to 0.5 mg O2 l–1. Field studies, however, show that complex behavioural changes also occur as hypoxia increases, and these are described herein. The areas where hypoxia occurs are frequently areas that are stagnant or with poor water exchange. Thus again, hydrographic factors are key processes determining whether or not hypoxia and eutrophica-tion occur. Tolerance to ammonia and hydrogen sulphide is also reviewed, as these substances are found at near zero concentrations of oxygen and are highly toxic to most organisms. However, the effects of interactions between oxygen, ammonia and hydrogen sulphide only occur below oxygen concentrations of ca. 0.5 mg O2 l–1, since only below this concentration are hydrogen sulphide and oxygen released into the water. Models of eutrophication and the generation of hypoxia are dis-cussed, and in particular the P-R model is analysed. Although agreement with the model is widely reported the actual predictions of the model have rarely been tested. Our review suggests that the major effects on benthic fauna result from hypoxia rather than organic enrichment per se and sug-gests that the P-R model is descriptive rather than predictive. Finally, a managerial tool is proposed, based on the stages of effects of hypoxia and organic enrichment suggested by the P-R model and on an earlier study. The proposed strategy involves rapid assessment tools and indicates where more detailed surveys are needed. Managers are advised that remedial action will not produce rapid results and that recovery from eutrophication will probably take decades. Thus it is essential to detect potential hypoxia and eutrophication effects at early stages of development.
+KEY WORDS: Eutrophication · Hypoxia · Hydrogen sulphide · Ammonia · Effects on fauna
+Resale or republication not permitted without written consent of the publisher
+Mar Ecol Prog Ser 238: 249–279, 2002
+varies from region to region, but emphasizes that the primary causal effect is discharge of nitrate and phos-phate to coastal waters. In the latest report (GESAMP 2001), eutrophication is still recorded as one of the most severe problems affecting the oceans.
+Eutrophication arises from an increase in nutrient and dissolved organic matter (DOM) concentrations over natural levels, which in turn leads to a greater production of particulate organic matter (POM) in the water column or on the sea-bed, (Dugdale & Goering 1967, Cadée & Hegeman 1974, Cadée 1984, Smith 1984). The organic matter usually originates from bacteria, phytoplankton and zooplankton in the water column, and from surface-living bacteria and diatoms on sediments or/and production by algae and epi-phytes on hard substrata (Chapman & Craigie 1977, Hillebrand & Sommer 1999). The amounts of organic matter produced are often too large to be grazed and sink to the seabed along with faeces and other particu-late organic matter. The sedimenting organic matter is degraded largely in the water column, a process that uses up oxygen. If oxygen is not supplied by advective and vertical mixing then decreases in oxygen concen-trations lead to hypoxia and, in extreme cases, to anoxia.
+The major external sources of nutrients and DOM/POM to coastal waters are domestic sewage and agricultural fertilizers input, largely via rivers (Ryther & Dunstan 1971, Taslakian & Hardy 1976, Nixon & Pilsom 1983, Borum & Sand-Jensen 1996). Nixon (1990) pointed out that the dramatic growth of human populations in the coastal zones, the increased agri-cultural production through of the use of fertilizers, deforestation and the increased release of nitrogen oxides into the atmosphere have made the problem more acute. He noted that eutrophication is a problem around the rim of the Mediterranean, and in an increasing numbers of bays and estuaries along the coastlines of North and South America, Africa, India, Southeast Asia, Australia, China and Japan. Yet there are areas that naturally have high nutrient content and low oxygen content in the water, such as upwelling areas off Peru, Walvis Bay in SW Africa and the Horn of Africa. Fjords (in Canada, Chile, New Zealand, Scot-land, Norway, and Sweden) also have natural periodi-cally low oxygen concentrations.
+The 3 key elements of the eutrophication process therefore are (1) increased nutrient levels leading to (2) production of particulate and dissolved organic matter and (3) degradation of the organic matter lead-ing to lowered oxygen concentrations.
+In their classic paper Pearson & Rosenberg (1978) described a general model for 1 of these processes— the effects of organic enrichment on sediment-living organisms. Since their paper was published it has been
+cited many hundreds of times and the model has been shown to be valid for many coastal regions of the world. The model describes the changes in patterns of numbers of species, abundances and biomass along a ‘gradient’ from a normal assemblage to an assemblage in sediment containing very high amounts of organic matter with accompanying anerobiosis. However, the ordinate merely represents ‘increasing organic enrich-ment’ and is not quantitative. Pearson & Rosenberg pointed out that a number of other trends accompany changes in organic enrichment, namely changes in the oxygen concentration in the water column that may lead to changes independent of those arising from increased organic matter, and physical changes that occur in the sediment which usually becomes finer grained. Since over 20 yr have elapsed since their model was devised, it is time to re-examine the model in the light of more recent data. Since the P-R model was produced there have been a number of recent general reviews of eutrophication (Pearson 1982, Car-penter & Capone 1983, Walsh 1988, Gray 1992, Heip 1995, Nixon 1995, Jørgensen & Richardson 1996). In particular, the recent review by Cloern (2001) has cov-ered, in an excellent way, the process of eutrophication and the development of conceptual models. We will not attempt to repeat this study, but instead move towards a goal that Cloern set (Cloern 2001, p. 241): ‘the evolution of our conceptual model should produce a set of tools, reflecting a more mechanistic under-standing of the problems, that can be used to guide strategies of coastal ecosystem management, rehabili-tation or protection.’ Here we examine the develop-ment of hypoxia and its effects on the benthos in rela-tion to tools for management.
+PRIMARY PRODUCTION AND SEDIMENTATION OF ORGANIC MATTER
+Sedimentation
+One assumption often made is that under normal conditions the amount of organic material generated in the water column is in equilibrium with grazing and degradation processes (Graneli et al. 1990). Grazing pressure is usually a major factor influencing phyto-plankton abundance. Studies show that in the en-riched plume of the New York Bight 28 to 53% of the daily production can be consumed (Dagg & Turner 1982), whereas on the open coast at George’s Bank, Gulf of Maine, USA, only 5 to 10% of the summer pro-duction is consumed. This is due to the continual input of recycled nutrients on the Bank from tidal stirring. In shelf systems of the Mid-Atlantic Bight, Gulf of Mexico and Bering Sea around 50% of the phytoplankton bio-
+250
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+mass is consumed by grazers (Walsh 1988). Under eutrophic conditions, an excess of organic matter is produced which sediments out of the surface layers as exported production.
+Wassmann (1990) reviewed the data and suggested a model of export production as a function of total primary production (Fig. 1). The model requires that reliable data are available for total annual primary pro-duction, which is not the case for many areas. In tem-perate areas, sedimentation rates are strongly sea-sonal, with 2 main periods of heavy sedimentation during the spring and autumn plankton blooms, and relatively little sedimentation during times of stratifica-tion. For tropical and sub-tropical areas, production is generally low and more uniform due to the oligo-trophic nature of surface waters and sedimentation rates are extremely low. However, many tropical and sub-tropical areas are influenced by seasonal mon-soons, when surface-water salinity drops and high amounts of organic matter enter the coastal system. It is usually following such conditions that harmful algal bloom (HAB) outbreaks occur (e.g. in Hong Kong the south-west monsoon occurs in July-August and HAB outbreaks occur in late August and September). Stud-ies in areas subject to heavy wave action, e.g. most shallow areas, have shown that sedimentation rates increase with increasing depth (Steele & Baird 1972, Ansell 1974, Hargrave & Taguchi 1978, Smetacek 1980, Sand-Jensen et al. 1994). However, in a study of 2 fjords in Norway, which are sheltered and have little wave action, Wassmann (1985) found that sedimen-tation rate decreased with increasing depth. This is in keeping with data on the benthos for the outer Oslofjord which indicates that biomass decreases with increasing depth (J.S.G. unpubl. data).
+Wassmann’s model shows that in oligotrophic areas only 25 to 30% of the produced organic matter is exported, whereas in mesotrophic areas with primary production of 200 gC m–2 yr–1, 45% of the primary pro-duction is exported. His model predicts that under eutrophic conditions where total production is between 300 and 500 gC m–2 yr–1 (Nixon 1995), 50% of the carbon will be exported; Borum (1996) suggested that there is a maximum rate of around 500 gC m–2 yr–1 irrespective of the amounts of nutrient inputs for most coastal areas. Measured values are in agreement with this model. For shelf areas (Mid-Atlantic Bight, the Gulf of Mexico and Bering Sea), Walsh (1988) found that 50% of primary production was exported. In the upwelling area off Peru where nutrient input levels were high before changes to the system caused by El Niño and overfishing, again 50% of the primary production was exported. (It should be kept in mind that dead and decaying phytoplankton contribute DOM to the water column that is rapidly utilised by algae and micro-organisms: Otsuki & Hanya 1972). Cloern (1982) showed that in parts of San Fran-cisco Bay the benthos controlled phytoplankton biomass and this may well be a widespread phenomenon.
+A major contributor of POM and DOM to coastal areas is discharge of sewage. In the past, dumping of raw sewage was practised in many areas, notably off the Thames estuary in UK and in New York Bight. The raw sewage dumped added much particulate and dis-solved organic carbon directly to the water column. Walsh (1988) simulated a 10-fold increase in carbon and nitrogen loading to the New York Bight. He found that near the sewage dump site 1% light penetration depth occurred at 2–3 m, with a sharp increase to 7–8 m near the Hudson River plume and to 25–40 m at the outer apex. This high turbidity led to a 60–70% reduction of primary production within the Hudson River plume whereas beyond the influence of the estu-ary production increased slightly. Where sewage is treated, the amounts of POM are much reduced com-pared with raw sewage disposal, but nevertheless sewage effluents are a major source of particulate material in coastal areas. Oviatt et al. (1986, 1987, 1989) studied effects of added sewage in a mesocosm system and found that sludge particulate inputs in excess of 1 gC m–2 d–1 caused hypoxic events.
+Other forms of POM added to coastal waters are paper and pulp mill effluents (Pearson & Rosenberg 1978). The POM increases turbidity, which leads to reduced primary production and reduced growth of macroalgae (Kautsky et al. 1986), and more impor-tantly, as the organic matter is oxidised, decreases the oxygen content of the water column. Fortunately, most sewage dumping has been phased out and sewage entering coastal waters in developed countries is now treated, but the input of nutrients from this treated
+251
+Fig. 1. Wassmann’s model of export production (PE) against total production (PT) in gC m–2, for the boreal zone of the N. Atlantic (from Wassmann 1990). Fitted regression of Export
+Production PE = 9.390.012PT
+Mar Ecol Prog Ser 238: 249–279, 2002
+sewage is a major factor influencing the state of hy-poxia in coastal systems.
+In estuarine and coastal areas organic matter (partic-ulate and dissolved) can also be derived from macro-phyte tissues (dead leaves, seagrasses, kelp and other algae, mangroves and terrestrial plant material: Fenchel & Blackburn 1979), but this is not thought to be a large source compared with the planktonic components.Other sources of sedimenting organic matter are faeces from zooplankton, pseudofaeces from bivalves and other en-crusting species, and particulate matter where sewage sludge is dumped or paper and pulp mill waste dis-charged.
+Wassmann’s model is based on data for annual pri-mary productivity and sedimentation, yet sedimentation is highly seasonal. In Kiel Bay diatoms in the spring bloom settle over a few days (Graf et al. 1982). This ma-terial has a high nutritional value (C:N ratio of ca. 6 to 8) and is utilised rapidly by the bacteria and micro-organ-isms in the sediment (Graf et al. 1982, Aubert 1990); it has also been found in mesocosm experiments in Nor-way (Skeie 1987). In temperate waters, sedimentation of POM occurs mainly in spring when grazing pressure by mesozooplankton is low (for an overview of pro-cesses in open oceanic water [Pacific Ocean] see Thomas 1971a,b, Knauer et al. 1979), yet the amounts that settle vary greatly from year to year (Santos & Simon 1980, Smetacek 1980, Christensen & Kanneworff 1985) de-pending primarily on physical conditions. It is the hy-drodynamic control of ‘new’ inorganic nutrients from outside the system that controls the spatial and temporal variability in primary production rates.
+Kiørboe et al. (1996) have recently reviewed material fluxes in the water column. They suggest that where small-sized organisms dominate the production, the microbial loop operates and sedimentation is un-important as the particles are remineralized by micro-organisms within the surface layers. In such systems grazing control is highly efficient and the system is rarely food-limited. Light limitation however, is often impor-tant. In the Kattegat (and in most fjords) during the strat-ified summer period there are high concentrations of autotrophic flagellates at the pycnocline (ca. 30% of the annual primary production in the Kattegat: Kiørboe et al. 1996). Sedimentation is proportional to the amounts of new nutrients entrained across the pycnocline. Whilst eutrophication may enhance the vertical flux of POM and potentially lead to hypoxia and anoxia below the pycnocline, the magnitude of the oxygen deficit is not related to nutrient input in a simple manner (Kiørboe 1996). With a steady input of nutrients remineralisation of the POM usually occurs within the water column and there is no flux to the seabed. If the input is episodic, however, there is considerable sedimentation and oxygen deficits can occur in deeper waters
+During sedimentation (and after resuspension from the seabed) bacteria degrade POM and DOM. A key factor in the degradation process is the C:N ratio of the organic material. Phytoplankton has a C:N ratio of 6 to 7, whereas large brown algae have values of 16 to 68, sea-grasses 17 to 70, rhodophytes 20 and terrestrial plant leaves including mangroves 100 to 300 (Fenchel & Blackburn 1979). Degradation and nutrient mineralisa-tion take place when the C:N ratio, is under 10, whereas above this value net immobilization of dissolved nitrogen occurs. Thus, under eutrophic conditions with high in-puts of settling dead phytoplankton cells with a low C:N ratio, mineralisation will proceed rapidly, releasing more nutrients into the water column and exacerbating eu-trophication. For the Eastern seaboard of the US, Walsh et al. (1981) used C:N ratios in sediments as an indicator of the quality of material arriving at the sediment sur-face. Valderhaug & Gray (1984) showed that C:N ratios varied seasonally at 35 m depth in the Oslofjord, Nor-way, with values similar to those for plankton (8 to 10) in spring, rising to 18 in summer and winter, with a slight increase following the autumnal plankton bloom and subsequent sedimentation. Lateral advection of organic material is also highly important (Heip 1995). Many suspension-feeders utilise this material.
+From the data and discussion presented here it is clear that trying to link amounts of sedimenting organic material to primary production is a difficult task (Josefson 1987, Rosenberg et al. 1987) since sedi-mentation rates vary with production, grazing, miner-alisation, stratification and advective processes. In ad-dition the separation of true sedimentation rates from those effected by resuspension cannot be achieved successfully with present techniques, (Dymond et al. 1981). This is an important problem as most eutrophi-cation problems occur in shallow waters, where resus-pension from wave and current action is a dominating process. Thus measurement of the amounts of organic material exported from the upper water column as a result of higher rates of production is difficult. Richard-son (1996) suggests that measurements directly at the bottom of the pycnocline would resolve the problem of resuspension. In fact remarkably few studies of sedi-mentation rates have considered eutrophication.
+Oxygen concentrations in the water column give a good indication of the state of eutrophication. For example, changes in oxygen saturation or concentra-tions over time have been used to show that in the inner Oslofjord conditions have worsened since the turn of the century (Mirza & Gray 1983), and in the Kattegat the average annual concentration during August, September and October decreased linearly between 1965 and 1995 (Richardson 1996).
+Hydrographic conditions are extremely important in relation to whether or not hypoxia occurs. During calm
+252
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+periods, with no high inputs of nutrients and no cor-respondingly high primary production, hypoxia can build up in summer (Richardson 1996). Conversely, even with a high nutrient input, unusually high ex-change rates can also remove nutrients before produc-tion can increase, thereby preventing hypoxia condi-tions from evolving. Thus, the hydrography of a system is perhaps the most critical element determining whether or not hypoxia will occur, and may override the input of new inorganic nutrients; see ‘Hypoxia: Areas where hypoxia has been recorded’.
+Sedimenting organic matter is usually in particulate form. Under normal conditions (50 to 300 gC m–2 yr–1), it is utilised by the benthos (Graf et al. 1982). Grebmeier et al. (1988), Grebmeier & McRoy (1989), Grebmeier et al. (1989) studied 2 different water masses in the Bering and Chukchi Seas off Alaska, USA, and found that in open waters where productivity was high (250 to 300 gC m–2 yr–1) C:N ratios were low (5.8 to 7.6). In coastal waters with lower productivity (ca. 50 gC m–2
+yr–1) C:N ratios were higher (7.7 to 14.0). The 2 types of benthic communities utilising this material differed, with open waters having highly productive, low (family level) diversity systems dominated by deposit-suspen-sion-feeding amphipods, whereas inshore areas had less productive, high diversity systems. Grebmeier et al. (1989) suggested that in low productivity systems food is limiting and determines benthic diversity whereas in high-productivity systems it is largely sedi-ment heterogeneity that determines diversity, with low diversity occurring in homogeneous sediments such as silt-clay. Such findings are highly relevant to eutrophi-cation as primary production is often in the range of 250 to 500 gC m–2 yr–1 (Borum & Sand-Jensen 1996). Under highly productive conditions the proportion of silt-clay may be correlated with faunal species rich-ness provided that other factors such as hypoxia and hydrogen sulphide production play no role.
+Sedimenting organic matter may also have another effect, as it can smother benthic organisms that are unable to adapt to the amounts sedimenting. Gray (1982) suggested that one of the primary effects of eutrophication was that many organisms were smoth-ered by the sedimenting organic matter and could not survive heavy sedimentation (see also Main & Nelson 1988). The result of such effects is that species that are able continuously to colonise the newly available sediment will dominate. Examples are the polychaetes Capitella capitata complex and spionids such as Poly-dora spp. Gray listed a number of opportunistic spe-cies that probably had similar characteristics. Colonis-ing ability may therefore be as important as tolerance of low oxygen concentrations in determining which species are found in the most heavily organically en-riched sediments.
+Hypoxia
+Since sedimentation rates are difficult to obtain and are difficult to relate to nutrient inputs the simplest indication of eutrophication that can be measured is likely to be the hypoxia resulting from degradation of sedimenting POM.
+Whereas under eutrophic conditions, air-sea inter-actions keep the surface waters above the pycnocline oxygen-saturated, increased phytoplankton production arising from increased nutrient levels often leads to su-per-saturation in surface waters (e.g. in the northern Adriatic: Justic 1987, Justic et al. 1987, 1988). Water above the pycnocline in the New York Bight has a slightly higher gross photosynthetic input than losses due to respiration (Walsh 1988), including losses from sewage sludge and dissolved organic carbon. Below the pycnocline, respiration losses from sedimenting phytoplankton (75%), water column (19%), faecal pel-lets (4%) and the benthos (5%) exceeded the oxygen available in the water column. As there was no increase in oxygen production from photosynthesis, oxygen sat-uration of surface water in the Hudson River plume dropped to 60 to 65% oxygen and that of bottom water to only <1 ml O2 l–1 (<1.4 mg O2 l–1), ca. 17% saturation. Walsh suggested that increases in carbon loading of ca. 50 to 100 gC m–2 will lead to anoxia. He calculated that with low vertical diffusive inputs anoxia will develop within ~30 d whereas with high diffusive input anoxia will take >600 d to develop. Thus, in addition to nutri-ent input, hydrographic factors largely determine the degree of hypoxia and anoxia. In the Baltic Sea, Matthäus (1998, 1999) correlated river runoff with deep water oxygen concentration. However, the influence of influxes of Atlantic water is also of major significance in determining the oxygen content of the deep basins in the Baltic (Nehring 1979). Rosenberg (1990) showed a long-term decrease in the bottom water of West coast fjords in Sweden, and relates the changes primarily to nutrient inputs from agricultural runoff. The enclosed Northern Adriatic Sea also has low oxygen concentra-tions in bottom water and high mortality of benthic species (Justic et al. 1987).
+Effects of hypoxia
+Diaz & Rosenberg (1995) reviewed the effects of hypoxia on benthic organisms. Here we have extended their review to cover species living in the water col-umn. The data are maintained as a database available at: www.cityu.edu.hk/bch. Table 1 shows the data.
+The data have obvious limitations in that often the aim was not to determine the lowest oxygen concen-tration that affects a species, but rather to conduct an
+253
+Mar Ecol Prog Ser 238: 249–279, 2002254
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+A lg
+ae G
+ra ci
+la ri
+a ti
+k va
+h ia
+l 1
+14 .1
+1 L
+O E
+C R
+E P
+1 21
+–2 5°
+C ,
+L P
+ec k
+ol &
+R iv
+er s
+(1 99
+5) R
+ed u
+ce d
+t o
+23 .6
+% 30
+‰ S
+ip u
+n cu
+li d
+a P
+h as
+co lo
+so m
+a ar
+cu at
+u m
+0 0
+48 L
+O E
+C M
+E T
+48 n
+s L
+L im
+& I
+p (
+19 91
+a) E
+n zy
+m at
+ic a
+ct iv
+it ie
+s (P
+E K
+) in
+cr ea
+se d
+0 0
+48 L
+O E
+C M
+E T
+12 25
+°C ,
+L L
+im &
+I p
+( 19
+91 b
+) S
+u cc
+in at
+e in
+cr ea
+se d
+f ro
+m 0
+t o
+3. 62
+µ M
+, 15
+‰ al
+an in
+e b
+y 46
+.7 %
+0 0
+48 L
+O E
+C M
+E T
+24 25
+°C ,
+L p
+H d
+ec re
+as ed
+b y
+4. 72
+% i
+n c
+oe lo
+m ic
+15
+‰ p
+la sm
+a, C
+O 2
+in cr
+ea se
+d b
+y 53
+.8 %
+0 0
+48 L
+O E
+C M
+E T
+36 25
+°C ,
+L A
+sp ar
+at e
+d ec
+re as
+ed b
+y 46
+.3 8
+%
+15 ‰
+in b
+od y
+w al
+l
+0 0
+48 L
+O E
+C M
+E T
+48 25
+°C ,
+L Ip
+e t
+al . (
+19 92
+) T
+ot al
+f re
+e am
+in o
+ac id
+c on
+te n
+t 15
+‰ d
+ec re
+as ed
+b y
+14 %
+, a sp
+ar ta
+te b
+y 50
+% ,
+cy st
+in e
+in cr
+ea se
+d 3
+.7 -f
+ol d
+O li
+g o
+ch ae
+te s
+H et
+er oc
+h ae
+ta c
+os ta
+ta 0.
+03 2
+0. 36
+72 N
+O E
+C M
+O R
+72 16
+°C ,
+L G
+am en
+ic k
+e t
+al . (
+19 96
+) 14
+‰
+P ar
+an ai
+s li
+to ra
+li s
+0. 03
+2 0.
+36 48
+N O
+E C
+M O
+R 48
+16 °C
+, L
+14 ‰
+P o
+ly ch
+ae te
+s A
+re n
+ic ol
+a m
+ar in
+a <
+0. 2
+5 L
+O E
+C M
+E T
+5 10
+°C , n
+s L
+A b
+el e-
+O es
+ch g
+er &
+H ae
+m og
+lo b
+in a
+u to
+xi d
+at io
+n i
+n cr
+ea se
+d
+O es
+ch g
+er (
+19 95
+) b
+y 16
+5 %
+, m et
+h ae
+m og
+lo b
+on b
+y 16
+0 %
+C ap
+it el
+la c
+ap it
+at a
+1. 12
+–1 .2
+6 n
+s LT
+50 M
+O R
+31 2
+n s
+R os
+en b
+er g
+( 19
+72 )
+0. 06
+–2 .1
+0. 8
+–1 7.
+3 n
+s G
+R R
+G R
+O 0.
+83 –1
+.2 5*
+22 °C
+, L
+F or
+b es
+& L
+op ez
+( 19
+90 )
+28 ‰
+H ed
+is te
+d iv
+er si
+co lo
+r 0.
+03 2
+0. 36
+14 LT
+50 M
+O R
+14 16
+°C ,
+L G
+am en
+ic k
+e t
+al . (
+19 96
+) P
+os tl
+ar va
+l st
+ag e
+14 ‰
+0. 03
+2 0.
+36 10
+5 LT
+50 M
+O R
+10 5
+16 °C
+, L
+Ju ve
+n il
+e 14
+‰
+L oi
+m ia
+m ed
+u sa
+0. 98
+13 .5
+9 n
+s LT
+10 0
+M O
+R 33
+6 n
+s L
+la n
+só &
+D ia
+z (1
+99 4)
+< 1
+< 13
+.8 7
+34 8
+L O
+E C
+F E
+E D
+< 20
+26 °C
+, L
+R ed
+u ce
+d t
+o 0
+% 17
+‰
+0. 5
+6. 93
+34 8
+L O
+E C
+A C
+T 34
+8 26
+°C ,
+L R
+ed u
+ce d
+o ve
+ra ll
+a ct
+iv it
+ie s
+17 ‰
+P ol
+yp h
+ys ia
+c ra
+ss a
+1. 12
+–1 .2
+6 n
+s LT
+50 M
+O R
+19 2
+n s
+R os
+en b
+er g
+( 19
+72 )
+T ab
+le 1
+. L
+it er
+at u
+re r
+ev ie
+w o
+f h
+yp ox
+ia e
+ff ec
+ts o
+n m
+ar in
+e or
+g an
+is m
+s. A
+ll d
+at a
+co n
+ve rt
+ed t
+o m
+g l
+an d
+o xy
+g en
+s at
+u ra
+ti on
+b as
+ed o
+n g
+iv en
+s al
+in it
+y an
+d t
+em p
+er at
+u re
+d at
+a. L
+O E
+C :
+lo w
+es t
+ob se
+rv ab
+le e
+ff ec
+t co
+n ce
+n tr
+at io
+n ;
+N O
+E C
+: n
+o ob
+se rv
+ab le
+e ff
+ec t
+co n
+ce n
+tr at
+io n
+; L
+C :
+le th
+al c
+on ce
+n tr
+at io
+n (
+50 ,
+50 %
+m or
+ta ti
+li ty
+); L
+T :
+le th
+al t
+h re
+sh ol
+d (
+50 ,
+50 %
+m or
+ta li
+ty ;
+10 0,
+1 00
+% m
+or ta
+li ty
+) G
+R R
+: g
+ro w
+th r
+at e
+re d
+u ct
+io n
+; A
+C T
+: ac
+ti vi
+ty ;
+B E
+: b
+eh av
+io u
+ra l
+ef fe
+ct ;
+F E
+E D
+: fe
+ed in
+g ;
+G R
+O :
+g ro
+w th
+; M
+E T
+: m
+et ab
+ol is
+m ;
+M O
+R :
+m or
+ta li
+ty ;
+N ot
+: n
+o ti
+m e
+li m
+it ;
+R A
+: re
+sp ir
+at or
+y ac
+ti vi
+ty ;
+R E
+P :
+re p
+ro d
+u ct
+io n
+; F
+: fi
+el d
+; L
+: la
+b or
+at or
+y; C
+A T
+: ch
+lo ra
+m p
+h en
+ic ol
+a ce
+ty l
+tr an
+sf er
+as e;
+G A
+: g
+lu co
+se r
+ed u
+ct as
+e, P
+E K
+: p
+ro te
+in
+k in
+as e;
+S O
+D :
+su p
+er -o
+xi d
+e d
+is m
+u ta
+se ;
+n s:
+n ot
+s p
+ec if
+ie d
+Gray et al.: Hypoxia and organic enrichment in coastal environment 255
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+R if
+ti a
+p ac
+h yp
+ti la
+0 n
+s L
+O E
+C M
+E T
+6 15
+°C , n
+s L
+A rn
+d t
+et a
+l. (
+19 98
+) S
+u cc
+in at
+e le
+ve l
+in b
+od y
+fl u
+id
+in cr
+ea se
+d b
+y 24
+3 %
+0 n
+s L
+O E
+C M
+E T
+60 15
+°C , n
+s L
+S u
+cc in
+at e
+le ve
+l in
+t is
+su e
+in cr
+ea se
+d
+b y
+44 3
+%
+0 n
+s L
+O E
+C M
+E T
+6 –
+48 15
+°C , n
+s L
+S u
+cc in
+at e
+le ve
+l in
+p lu
+m e
+ti ss
+u e
+in cr
+ea se
+d b
+y 13
+3 %
+0 n
+s L
+O E
+C M
+E T
+6 15
+°C , n
+s L
+M al
+at e
+d ec
+re as
+ed b
+y 90
+% i
+n b
+lo od
+, 50
+% i
+n t
+is su
+e, 6
+0 %
+i n
+b od
+y
+0 n
+s L
+O E
+C M
+E T
+48 15
+°C , n
+s L
+G ly
+co g
+en i
+n t
+ro p
+h os
+om e
+re d
+u ce
+d
+b y
+60 %
+, g lu
+ta m
+at e
+re d
+u ce
+d b
+y 70
+%
+0 n
+s L
+O E
+C M
+E T
+60 15
+°C , n
+s L
+G ly
+co g
+en r
+ed u
+ce d
+b y
+60 %
+i n
+b od
+y w
+al l,
+5 0
+% i
+n t
+is su
+e
+S tr
+eb lo
+sp io
+b en
+ed ic
+ti 0
+0 56
+LT 50
+M O
+R 43
+L la
+n so
+( 19
+91 )
+0 –
+0. 56
+33 6
+– N
+ot LT
+10 0
+M O
+R 55
+– 33
+6
+M o
+ll u
+sc s
+H yd
+ro b
+ia v
+en tr
+os a
+0. 03
+2 0.
+36 16
+8 LT
+50 M
+O R
+16 8
+16 °C
+, 1 4
+‰ L
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+S tr
+am on
+it a
+h ae
+m as
+to m
+a 0
+0 52
+8 LT
+10 0
+M O
+R 52
+8 D
+as &
+S ti
+ck le
+( 19
+93 )
+0 0
+67 2
+LT 0
+M O
+R 20
+, 2 7,
+10 °C
+, 1 0,
+L S
+ti ck
+le e
+t al
+. ( 19
+89 )
+20 ,
+20 , 3
+0 ‰
+0 0
+67 2
+LT 0
+M O
+R 18
+, 1 9,
+20 °C
+, 1 0,
+L
+20 20
+, 3 0
+‰
+0 0
+67 2
+LT 0
+M O
+R >
+28 ,1
+0, 30
+°C , 1
+0, 15
+20 , 3
+0 ‰
+A rc
+ti ca
+i sl
+an d
+ic a
+0 0
+24 0
+L O
+E C
+M E
+T 24
+0 9.
+5 +
+0 .5
+°C ,
+L O
+es ch
+g er
+& S
+to re
+y (1
+99 3)
+T ot
+al g
+ly co
+g en
+p h
+os p
+h or
+yl as
+e in
+22
+‰ ad
+d u
+ct or
+d ec
+re as
+ed b
+y 34
+% , i
+n
+fo ot
+b y
+27 %
+, i n
+m an
+tl e
+b y
+30 %
+A st
+ar te
+b or
+ea li
+s <
+0. 2
+48 L
+O E
+C M
+E T
+48 10
+°C , n
+s L
+A b
+el e-
+O es
+ch g
+er &
+G
+R i
+n g
+il ls
+i n
+cr ea
+se d
+b y
+50 0
+% O
+es ch
+g er
+( 19
+95 )
+< 0.
+2 24
+0 L
+O E
+C M
+E T
+24 0
+10 °C
+, n s
+L M
+et h
+ae m
+og lo
+b in
+in cr
+ea se
+d b
+y 26
+0 %
+, C
+A T
+i n
+g il
+ls d
+ec re
+as ed
+b y
+70 %
+C ra
+ss os
+tr ea
+v ir
+g in
+ic a
+0 0
+67 2
+LT 50
+M O
+R >
+28 ,>
+28 ,
+10 °C
+, 1 0,
+L
+S ti
+ck le
+e t
+al . (
+19 89
+) >
+28 20
+, 3 0
+‰
+0 0
+67 2
+LT 50
+M O
+R 20
+, 1 8,
+20 °C
+, 1 0,
+L 20
+20 , 3
+0 ‰
+0 0
+67 2
+LT 50
+M O
+R 8,
+4 , 3
+30 °C
+, 1 0,
+L
+20 , 3
+0 ‰
+0 –1
+.5 0
+–2 0
+33 6-
+N ot
+LT
+50 M
+O R
+84 –
+33 6
+B ak
+er &
+M an
+n (
+19 94
+)
+< 0.
+07 <
+1 24
+LT 10
+0 M
+O R
+24 25
+°C ,
+L P
+os t-
+se tt
+le m
+en t
+p h
+as e
+21 ‰
+< 0.
+07 <
+1 24
+LT 10
+0 M
+O R
+24 25
+°C ,
+L D
+is so
+co n
+ch p
+os t-
+la rv
+ae 21
+‰
+1. 5
+20 96
+L O
+E C
+G R
+O 96
+25 °C
+, 2 1
+‰ L
+R ed
+u ce
+d f
+ro m
+4 0
+to 2
+2 %
+(Table continued on next page)
+Mar Ecol Prog Ser 238: 249–279, 2002256
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+M ac
+om a
+b al
+th ic
+a 0
+0 n
+s LT
+50 M
+O R
+43 2
+H en
+ri k
+ss on
+( 19
+90 )
+M yt
+il u
+s ed
+u li
+s 0.
+61 6.
+7 >
+96 LT
+10 0
+M O
+R 60
+10 °C
+, 3 1
+‰ L
+W an
+g &
+W id
+d ow
+s (1
+99 1)
+0. 61
+6. 7
+96 G
+R O
+96 10
+°C , 3
+1 ‰
+L F
+er ti
+li ze
+d e
+g g
+s ca
+n d
+ev el
+op t
+o g
+as tr
+u la
+s ta
+g e
+on ly
+0. 6
+7. 3
+n s
+– G
+R O
+n s
+15 °C
+, 3 1
+‰ L
+E ye
+-s p
+ot d
+ev el
+op m
+en t
+d el
+ay ed
+b y
+< 6
+d 1.
+3 15
+.7 60
+– G
+R O
+60 15
+°C , 3
+1 ‰
+L D
+el ay
+ed d
+ev el
+op m
+en t
+fr om
+em
+b ry
+os t
+o p
+ro d
+is so
+co n
+ch s
+ta g
+e 1.
+3 15
+.7 n
+s –
+G R
+O n
+s 15
+°C , 3
+1 ‰
+L E
+ye -s
+p ot
+d ev
+el op
+m en
+t d
+el ay
+ed b
+y 2
+d 2.
+4 29
+.1 n
+s –
+G R
+O n
+s 15
+°C , 3
+1 ‰
+L E
+ye -s
+p ot
+d ev
+el op
+m en
+t d
+el ay
+ed b
+y 1
+d
+P er
+n a
+p er
+n a
+1 –
+72 0
+LT 50
+M O
+R 15
+6 M
+ar sh
+al l &
+M cq
+u ai
+d (1
+99 3)
+S ca
+rp h
+ar ea
+i n
+ae q
+u al
+is 0
+0 n
+s L
+C 50
+M O
+R 46
+8 20
+°C , 3
+6. 4
+‰ L
+d e
+Z w
+aa n
+e t
+al . (
+19 93
+) T
+ol er
+an ce
+e xp
+er im
+en ts
+:
+V en
+u s
+g al
+li n
+a 0
+0 n
+s L
+C 50
+M O
+R 12
+5 20
+°C , 3
+6. 4
+‰ L
+p ar
+t of
+a m
+et ab
+ol ic
+s tu
+d y
+M yt
+il u
+s g
+al lo
+p ro
+vi n
+ci al
+is 0
+0 n
+s L
+C 50
+M O
+R 36
+0 20
+°C , 3
+6. 4
+‰ L
+C ru
+st ac
+ea n
+s A
+ca rt
+ia t
+on sa
+0. 06
+– 28
+8 LT
+50 M
+O R
+28 8
+n s
+M ar
+cu s
+& L
+u tz
+( 19
+94 )
+C en
+tr op
+ag es
+h am
+at u
+s 0.
+06 –
+28 8
+LT 50
+M O
+R 28
+8 n
+s
+L ab
+id oe
+ra a
+es ti
+va 0.
+06 –
+28 8
+LT 50
+M O
+R 76
+8 n
+s
+C yp
+ri d
+ei s
+to ro
+sa 0.
+03 2
+0. 36
+66 0
+LT 50
+M O
+R 66
+0 16
+°C , 1
+4 ‰
+L G
+am en
+ic k
+e t
+al . (
+19 96
+)
+M on
+op or
+ei a
+af fi
+n is
+4 33
+24 L
+O E
+C R
+A 20
+5° C
+, 6 .5
+‰ L
+Jo h
+an ss
+on (
+19 97
+)
+P on
+to p
+or ei
+a fe
+m or
+at a
+0. 5
+4. 2
+24 L
+O E
+C R
+A 24
+5° C
+, 6 .5
+‰ L
+55 %
+a m
+p h
+ip od
+s ly
+in g
+o n
+t h
+e se
+d im
+en t
+C or
+op h
+iu m
+v ol
+u ta
+to r
+0. 03
+2 0.
+36 4
+LT 50
+M O
+R 4
+16 °C
+, 1 4
+‰ L
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+Id ot
+ea b
+al ti
+ca 0
+0 n
+s LT
+50 M
+O R
+1. 5
+15 °C
+, 3 2
+‰ L
+V et
+te r
+et a
+l. (
+19 99
+) M
+an ca
+s (s
+ta g
+e b
+ef or
+e ju
+ve n
+il e)
+0
+0 n
+s LT
+50 M
+O R
+1. 9
+15 °C
+, 3 2
+‰ L
+Ju ve
+n il
+e 0
+0 n
+s LT
+50 M
+O R
+3. 8
+15 °C
+, 3 2
+‰ L
+A d
+u lt
+f em
+al e
+0 0
+n s
+LT 50
+M O
+R 6.
+2 15
+°C , 3
+2 ‰
+L A
+d u
+lt m
+al e
+Id ot
+ea e
+m ar
+g in
+at a
+0 0
+n s
+LT 50
+M O
+R 1.
+9 15
+°C , 3
+2 ‰
+L M
+an ca
+s 0
+0 n
+s LT
+50 M
+O R
+2. 6
+15 °C
+, 3 2
+‰ L
+Ju ve
+n il
+e 0
+0 n
+s LT
+50 M
+O R
+6. 8
+15 °C
+, 3 2
+‰ L
+A d
+u lt
+f em
+al e
+0 0
+n s
+LT 50
+M O
+R 9.
+7 15
+°C , 3
+2 ‰
+L A
+d u
+lt m
+al e
+S ad
+u ri
+a en
+to m
+on 0.
+04 4
+0. 43
+8 LT
+50 R
+E P
+8 11
+°C , 1
+0 ‰
+L V
+is m
+an n
+&
+N or
+m al
+r es
+p ir
+at io
+n r
+at e
+re -e
+st ab
+lis h
+ed H
+ag er
+m an
+( 19
+96 )
+af te
+r 8h
+0. 04
+4 0.
+43 8
+L O
+E C
+M E
+T 8
+11 °C
+, 1 0
+‰ L
+M et
+ab ol
+is m
+r ed
+u ce
+d b
+y 70
+% , o
+xy g
+en
+d eb
+t w
+as 0
+.5 7
+m g
+O 2
+l– 1
+1 8.
+3 24
+L O
+E C
+R A
+24 5°
+C , 6
+.5 ‰
+L Jo
+h an
+ss on
+( 19
+97 )
+R em
+ai n
+ed i
+m m
+ob il
+e on
+t h
+e se
+d im
+en t
+C ra
+n g
+on c
+ra n
+g on
+0. 04
+4 0.
+57 2.
+5 LT
+50 M
+O R
+2. 5
+18 °C
+, 3 0
+‰ L
+H ag
+er m
+an &
+0.
+45 5.
+79 30
+LT 50
+M O
+R 30
+18 °C
+, 3 0
+‰ L
+V is
+m an
+n (
+19 95
+) 0.
+91 11
+.7 1
+n s
+– B
+E n
+s 18
+°C , 3
+0 ‰
+L O
+n ly
+v er
+y sp
+or ad
+ic m
+ov em
+en t
+oc cu
+rr ed
+C al
+oc ar
+is m
+ac an
+d re
+ae 0.
+7 n
+s LT
+50 M
+O R
+43 n
+s A
+n d
+er so
+n e
+t al
+. ( 19
+94 )
+T ab
+le 1
+( co
+n ti
+n u
+ed )
+Gray et al.: Hypoxia and organic enrichment in coastal environment 257
+(Table continued on next page)
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+P en
+ae u
+s se
+ti fe
+ru s
+2 28
+.3 14
+40 –
+M E
+T 14
+40 28
+°C , 1
+5 ‰
+L R
+os as
+et a
+l. (
+19 99
+) U
+n fe
+d , a
+m m
+on ia
+e xc
+re ti
+on r
+ed u
+ce d
+b y
+76 .9
+% 2
+28 .3
+14 40
+M E
+T 14
+40 28
+°C , 1
+5 ‰
+L F
+ed , a
+m m
+on ia
+e xc
+re ti
+on r
+ed u
+ce d
+b y
+51 .1
+% 2
+28 .3
+14 40
+R E
+P 14
+40 28
+°C , 1
+5 ‰
+L U
+n fe
+d , o
+xg en
+u p
+ta k
+e re
+d u
+ce d
+b y
+80 .4
+% 2
+28 .3
+14 40
+– R
+E P
+14 40
+28 °C
+, 1 5
+‰ L
+F ed
+, o xy
+g en
+u p
+ta k
+e re
+d u
+ce d
+b y
+50 .3
+% 2
+31 .7
+14 40
+– R
+E P
+14 40
+28 °C
+, 3 5
+‰ L
+U n
+fe d
+, o xy
+g en
+u p
+ta k
+e re
+d u
+ce d
+b
+y 71
+.8 %
+3 42
+.4 14
+40 –
+R E
+P 14
+40 28
+°C , 1
+5 ‰
+L U
+n fe
+d , o
+xy g
+en u
+p ta
+k e
+re d
+u ce
+d b
+y 58
+.7 %
+3 47
+.6 14
+40 –
+R E
+P 14
+40 28
+°C , 3
+5 ‰
+L U
+n fe
+d , o
+xy g
+en u
+p ta
+k e
+re d
+u ce
+d
+b y
+47 .2
+% 3
+47 .6
+14 40
+– R
+E P
+14 40
+28 °C
+, 3 5
+‰ L
+F ed
+, o xy
+g en
+u p
+ta k
+e re
+d u
+ce d
+b y
+35 .5
+% 3
+47 .6
+14 40
+– M
+E T
+14 40
+28 °C
+, 3 5
+‰ L
+M et
+ab ol
+ic s
+u b
+st ra
+te c
+h an
+g ed
+f ro
+m p
+ro te
+in s
++ l
+ip id
+s to
+p ro
+te in
+s
+0 0
+67 2
+LT 50
+M O
+R <
+1, <
+1, 20
+°C , 2
+0, 3
+0 ‰
+L S
+ti ck
+le e
+t al
+. ( 19
+89 )
+C ri
+ti ca
+l le
+ve l
+of D
+O : 3
+.4 +
+0 .4
+8 m
+g l
+– 1
+P al
+ae m
+on a
+d sp
+er su
+s 3.
+4 38
+.9 n
+s R
+E P
+n s
+24 °C
+, 1 4
+‰ L
+N ie
+ls en
+&
+C ri
+ti ca
+l le
+ve l
+of D
+O : 2
+.8 9+
+0. 26
+m g
+l –
+1
+P al
+ae m
+on et
+es v
+ar ia
+n s
+2. 89
+33 n
+s R
+E P
+n s
+24 °C
+, 1 4
+‰ L
+H ag
+er m
+an (
+19 98
+)
+P. p
+u g
+io 0
+0 67
+2 LT
+50 M
+O R
+1 30
+°C , 1
+0 ‰
+L S
+ti ck
+le e
+t al
+. ( 19
+89 )
+C al
+li n
+ec te
+s sa
+p id
+u s
+0 0
+14 4
+LT 10
+0 M
+O R
+14 4
+24 °C
+, 3 0
+‰ L
+D as
+& S
+ti ck
+le (
+19 93
+) 0
+0 67
+2 LT
+50 M
+O R
+< 1,
+< 1,
+20 °C
+, 1 0,
+L
+S ti
+ck le
+e t
+al . (
+19 89
+) <
+1 20
+, 3 0
+‰ 0
+0 67
+2 LT
+50 M
+O R
+< 1,
+< 1,
+30 °C
+, 1 0,
+L <
+1 20
+, 3 0
+‰
+C . s
+im il
+is 2.
+22 32
+67 2
+L O
+E C
+F E
+E D
+67 2
+24 °C
+, 3 0
+‰ L
+D as
+& S
+ti ck
+le (
+19 93
+) F
+ee d
+in g
+r ed
+u ce
+d b
+y 20
+%
+C ar
+ci n
+u s
+m ae
+n as
+0 0
+12 L
+O E
+C M
+E T
+12 10
+°C , 3
+0 ‰
+L H
+il l
+et a
+l. (
+19 91
+) M
+et ab
+ol is
+m r
+ed u
+ce d
+t o
+< 20
+%
+C . m
+ae n
+as 0.
+04 0.
+4 8
+L O
+E C
+M E
+T 8
+11 °C
+, 1 0
+‰ L
+V is
+m an
+n &
+M
+et ab
+ol is
+m r
+ed u
+ce d
+b y
+30 %
+H ag
+er m
+an (
+19 96
+)
+E u
+ry p
+an p
+op eu
+s d
+ep re
+ss u
+s 0
+0 67
+2 LT
+50 M
+O R
+1 30
+°C , 1
+0 ‰
+L S
+ic k
+le e
+t al
+. ( 19
+89 )
+–
+R h
+it h
+ro p
+an op
+eu s
+h ar
+ri si
+i 0
+0 67
+2 LT
+50 M
+O R
+< 1
+30 °C
+, 1 0
+‰ L
+–
+H om
+ar u
+s g
+am m
+ar u
+s 0.
+88 n
+s LT
+10 0
+M O
+R 98
+4 R
+os en
+b er
+g e
+t al
+. ( 19
+91 )
+–
+N ep
+h ro
+p s
+n or
+ve g
+ic u
+s <
+2. 8
+< 30
+50 4
+L O
+E C
+F E
+E D
+50 4
+8 –1
+0° C
+, L
+B ad
+en e
+t al
+. ( 19
+90 )
+M or
+ta li
+ti y
+re d
+u ce
+d t
+o 0
+% 32
+– 34
+‰ 2.
+5 30
+.5 n
+s A
+C T
+1 15
+°C , 3
+4 ‰
+L E
+ri k
+ss on
+& B
+ad en
+( 19
+97 )
+A ct
+iv it
+y re
+d u
+ce d
+t o
+0 %
+< 2
+n s
+M E
+T 1
+n s
+F E
+ri k
+ss on
+e t
+al . (
+19 98
+) M
+an g
+an es
+e co
+n ce
+n tr
+at io
+n i
+n g
+il l
+in cr
+ea se
+d o
+ve r
+20 -f
+ol d
+E ch
+in o
+d er
+m s
+A m
+p h
+iu ra
+f il
+if or
+m is
+< 0.
+1 <
+1. 1
+16 8
+LT 50
+M O
+R 16
+8 8.
+5 +
+1 .5
+°C ,
+L V
+is ti
+se n
+& V
+is m
+an n
+( 19
+97 )
+29 .5
++ 1
+.4 ‰
+0. 3
+3. 27
+34 8
+LT 50
+M O
+R 34
+8 8.
+5 +
+1 .5
+°C ,
+L 29
+.5 +
+1 .4
+‰ 0.
+5 5.
+45 78
+0 LT
+50 M
+O R
+78 0
+8. 5
++ 1
+.5 °C
+, L
+29 .5
++ 1
+.4 ‰
+Mar Ecol Prog Ser 238: 249–279, 2002258
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+0. 1
+–1 1.
+1 –1
+1 n
+s L
+O E
+C B
+E n
+s 8.
+5 +
+1 .5
+°C ,
+L A
+ll r
+os e
+to t
+h e
+se d
+im en
+t su
+rf ac
+e an
+d
+29 .5
++ 1
+.4 ‰
+li ft
+ed t
+h e
+d is
+c in
+to t
+h e
+w at
+er c
+ol u
+m n
+1. 8
+20 14
+40 G
+R O
+14 40
+10 °C
+, 3 3
+‰ L
+N il
+ss on
+& S
+k ol
+d (
+19 96
+) A
+rm r
+eg en
+er at
+io n
+r at
+e sl
+ow ed
+b y
+65 %
+, L en
+g th
+r ed
+u ce
+d b
+y 25
+% a
+n d
+ar
+ea b
+y 36
+% 2.
+7 30
+14 40
+G R
+O 14
+40 10
+°C , 3
+3 ‰
+L L
+en g
+th r
+ed u
+ce d
+b y
+14 %
+, a re
+a b
+y 21
+% 1.
+8 –2
+.2 20
+–2 4.
+4 14
+88 G
+R O
+14 88
+10 °C
+, 3 4
+‰ L
+N il
+ss on
+( 19
+99 )
+A rm
+r eg
+en er
+at io
+n r
+at e
+d ec
+re as
+ed
+b y
+20 %
+O p
+h iu
+ra a
+lb id
+a <
+0. 1
+< 1.
+1 60
+LT 50
+M O
+R 60
+8. 5
++ 1
+.5 °C
+, L
+V is
+ti se
+n &
+Q u
+ic k
+ly b
+ec am
+e in
+ac ti
+ve &
+m or
+ib u
+n d
+29 .5
++ 1
+.4 ‰
+V is
+m an
+n (1
+99 7)
+0. 3
+3. 27
+14 4
+LT 50
+M O
+R 14
+4 8.
+5 +
+1 .5
+°C ,
+L 29
+.5 +
+1 .4
+‰ 0.
+5 5.
+45 33
+6 LT
+50 M
+O R
+33 6
+8. 5
++ 1
+.5 °C
+, L
+29 .5
++ 1
+.4 ‰
+0. 1
+–1 .1
+1. 1
+–1 1
+n s
+L O
+E C
+B E
+n s
+8. 5
++ 1
+.5 °C
+, L
+In it
+ia ll
+y sh
+ow ed
+i n
+cr ea
+se d
+m ob
+il it
+y 29
+.5 +
+1 .4
+‰ (e
+sc ap
+e re
+sp on
+se f
+or 2
+t o
+4 d
+);
+li ft
+ed d
+is c
+in to
+w at
+er c
+ol u
+m n
+A . f
+il if
+or m
+is 1.
+8 20
+14 40
+G R
+O 14
+40 10
+°C , 3
+3 ‰
+L N
+il ss
+on &
+S k
+ol d
+( 19
+96 )
+A rm
+r eg
+en er
+at io
+n r
+at e
+sl ow
+er t
+o 65
+% le
+n g
+th r
+ed u
+ce d
+b y
+25 %
+a re
+a b
+y 36
+% 2.
+7 30
+14 40
+G R
+O 14
+40 10
+°C , 3
+3 ‰
+L L
+en g
+th r
+ed u
+ce d
+b y
+14 %
+, a re
+a re
+d u
+ce d
+b
+y 21
+% 1.
+8 –2
+.2 20
+–2 4.
+4 14
+88 G
+R O
+14 88
+10 °C
+, 3 4
+‰ L
+N il
+ss on
+( 19
+99 )
+A rm
+r eg
+en er
+at io
+n r
+at e
+d ec
+re as
+ed b
+y 20
+%
+O p
+h iu
+ra a
+lb id
+a <
+0. 1
+< 1.
+1 60
+LT 50
+M O
+R 60
+8. 5
++ 1
+.5 °C
+, L
+V is
+ti se
+n &
+Q
+u ic
+k ly
+b ec
+am e
+in ac
+ti ve
+a n
+d
+V is
+m an
+n (
+19 97
+) m
+or ib
+u n
+d 29
+.5 +
+1 .4
+‰ 0.
+3 3.
+27 14
+4 LT
+50 M
+O R
+14 4
+8. 5
++ 1
+.5 °C
+, L
+29 .5
++ 1
+.4 ‰
+0. 5
+5. 45
+33 6
+LT 50
+M O
+R 33
+6 8.
+5 +
+1 .5
+°C ,
+L 29
+.5 +
+1 .4
+‰ 0.
+1 –1
+.1 1.
+1 –1
+1 n
+s L
+O E
+C B
+E n
+s 8.
+5 +
+1 .5
+°C ,
+L In
+it ia
+ll y
+sh ow
+ed i
+n cr
+ea se
+d m
+ob il
+it y
+29 .5
++ 1
+.4 ‰
+(e sc
+ap e
+re sp
+on se
+f or
+2 –
+4 d
+),
+li ft
+ed d
+is cs
+i n
+to w
+at er
+c ol
+u m
+n
+P sa
+m m
+ec h
+in u
+s m
+il ia
+ri s
+8 92
+.9 5
+R E
+P 5
+12 °C
+, 3 4
+‰ L
+S p
+ic er
+( 19
+95 )
+R ep
+ro d
+u ct
+io n
+d ec
+re as
+ed p
+ro g
+re ss
+iv el
+y as
+o xy
+g en
+d ec
+lin ed
+f ro
+m 8
+t o
+1. 8
+m g
+l–1
+F is
+h A
+n ch
+oa m
+it ch
+il li
+1 13
+.5 24
+LT 10
+0 M
+O R
+24 24
+–2 6°
+C ,
+L B
+re it
+b u
+rg e
+t al
+. ( 19
+94 )
+13 -1
+7 ‰
+B ol
+eo p
+h th
+al m
+u s
+b od
+d ae
+rt i
+0. 8
+10 .8
+6 L
+O E
+C M
+E T
+6 25
+°C , 1
+5 ‰
+L C
+h ew
+& I
+p (
+19 92
+a) A
+D P
+i n
+m u
+sc le
+r ed
+u ce
+d b
+y 36
+% 0.
+8 10
+.8 6
+L O
+E C
+R E
+P 0.
+08 3
+25 °C
+, 1 5
+‰ L
+O xy
+g en
+c on
+su m
+p ti
+on r
+ed u
+ce d
+b
+y 58
+.3 %
+0 0
+0. 67
+L O
+E C
+M E
+T 0.
+67 25
+°C , 1
+5 ‰
+L In
+m u
+sc le
+, C rP
+r ed
+u ce
+d b
+y 24
+% , A
+T P
+re
+d u
+ce d
+b y
+27 %
+.
+T ab
+le 1
+( co
+n ti
+n u
+ed )
+Gray et al.: Hypoxia and organic enrichment in coastal environment 259
+S p
+ec ie
+s D
+O l
+ev el
+E xp
+t E
+n d
+p oi
+n t
+C on
+d it
+io n
+s F
+/L S
+ou rc
+e R
+em ar
+k s
+(m g
+l –
+1 ) %
+d u
+ra ti
+on C
+on c.
+E ff
+ec t
+T im
+e (h
+) (h
+)
+0 0
+0. 36
+L O
+E C
+A C
+T 0.
+36 25
+°C , 1
+5 ‰
+L C
+h ew
+& I
+p (
+19 92
+b )
+C om
+p le
+te ly
+i n
+er t
+0 0
+1 L
+O E
+C M
+E T
+1 25
+°C , 1
+5 ‰
+L L
+ow e
+t al
+. ( 19
+93 )
+L ac
+ta te
+i n
+t h
+e g
+il ls
+i n
+cr ea
+se d
+1 2-
+fo ld
+1. 12
+15 .1
+1 L
+O E
+C M
+E T
+1 25
+°C , 1
+5 ‰
+L G
+ly co
+g en
+d ec
+re as
+ed b
+y 36
+%
+A . f
+il if
+or m
+is 1.
+8 20
+14 40
+G R
+O 14
+40 10
+°C , 3
+3 ‰
+L N
+il ss
+on &
+S k
+ol d
+( 19
+96 )
+A rm
+r eg
+en er
+at io
+n r
+at e
+sl ow
+ed b
+y 65
+% ,
+L en
+g th
+r ed
+u ce
+d b
+y 25
+% a
+n d
+a re
+a b
+y 36
+%
+B . b
+od d
+ae rt
+i 1.
+12 15
+.1 6
+L O
+E C
+M E
+T 6
+25 °C
+, 1 5
+‰ L
+L ow
+e t
+al . (
+19 93
+) T
+ot al
+l ac
+ta te
+p ro
+d u
+ce d
+i n
+cr ea
+se d
+2-
+fo ld
+, l ac
+ta te
+i n
+b lo
+od 4
+-f ol
+d
+G ad
+u s
+m or
+h u
+a <
+4 <
+36 .2
+– 50
+.1 n
+s L
+O E
+C A
+C T
+7. 5
+5, 1
+0, 1
+5° C
+, L
+S ch
+u rm
+an n
+&
+19 –2
+1 ‰
+S te
+ff en
+se n
+( 19
+94 )
+R ed
+u ce
+d s
+w im
+m in
+g a
+ct iv
+it y
+b y
+60 %
+4. 19
+45 20
+16 L
+O E
+C F
+E E
+D 20
+16 10
+°C , 2
+8 ‰
+L C
+h ab
+ot &
+D u
+ti l
+(1 99
+9) R
+ed u
+ce d
+f ee
+d in
+g b
+y 54
+.3 %
+4. 19
+45 20
+16 M
+E T
+20 16
+10 °C
+, 2 8
+‰ L
+L ac
+ta te
+d ec
+re as
+ed b
+y 21
+.7 %
+, K
+i on
+i n
+cr ea
+se d
+b y
+8. 5
+% 5.
+21 56
+20 16
+L O
+E C
+M E
+T 20
+16 10
+°C , 2
+8 ‰
+L L
+iv er
+g lu
+co se
+d ec
+re as
+ed b
+y 26
+.2 %
+6. 05
+65 20
+16 N
+O E
+C G
+R O
+20 16
+10 °C
+, 2 8
+‰ L
+R ed
+u ct
+io n
+i n
+l en
+g th
+6. 8
+73 20
+16 N
+O E
+C G
+R O
+20 16
+10 °C
+, 2 8
+‰ L
+R ed
+u ct
+io n
+i n
+m as
+s
+G ob
+io so
+m a
+b os
+c 1
+13 .5
+24 LT
+10 0
+M O
+R 24
+24 –2
+6° C
+, L
+B re
+it b
+u rg
+e t
+al . (
+19 94
+) 13
+–1 7
+‰ 1
+13 .5
+4 L
+O E
+C R
+E P
+4 24
+–2 6°
+C ,
+L R
+ep ro
+d u
+ct io
+n i
+n cr
+ea se
+d b
+y 20
+0 %
+13 –1
+7 ‰
+S ol
+ea s
+ol ea
+0 0
+12 L
+O E
+C M
+E T
+12 20
+–2 4°
+C ,
+L D
+al la
+V ia
+e t
+al . (
+19 97
+) In
+m u
+sc le
+A T
+P d
+ec re
+as ed
+b y
+40 %
+, 37
+‰ in
+l iv
+er g
+lu co
+se i
+n cr
+ea se
+d 8
+-f ol
+d 0.
+45 6.
+5 12
+L O
+E C
+M E
+T 12
+20 –2
+4° C
+, 3 7
+‰ L
+G ly
+ce ro
+l-3-
+P i
+n cr
+ea se
+d b
+y 20
+0 %
+0. 9
+13 12
+L O
+E C
+M E
+T 12
+20 –2
+4° C
+, 3 7
+‰ L
+In m
+u sc
+le l
+ac ta
+te i
+n cr
+ea se
+d 3
+-f ol
+d ,
+g lu
+co se
+b y
+11 4
+%
+0. 9
+13 12
+L O
+E C
+M E
+T 12
+20 –2
+4° C
+, 3 7
+‰ L
+D al
+la V
+ia e
+t al
+. ( 19
+94 )
+M et
+ab ol
+is m
+d ec
+re as
+ed b
+y 27
+%
+P er
+io p
+h th
+al m
+u s
+0. 75
+6 L
+O E
+C A
+C T
+2. 04
+n s
+L C
+h ew
+e t
+al . (
+19 90
+) C
+om p
+le te
+ly i
+n er
+t ch
+ry so
+sp il
+os 0.
+8 6
+L O
+E C
+R E
+P 6
+n s
+L R
+es p
+ir at
+or y
+ra te
+r ed
+u ce
+d b
+y 70
+% 0.
+8 6
+L O
+E C
+M E
+T 6
+n s
+L P
+la sm
+a la
+ct at
+e in
+cr ea
+se d
+5 -f
+ol d
+P er
+io p
+h th
+al m
+od on
+0. 8
+10 .8
+6 L
+O E
+C M
+E T
+6 25
+°C , 1
+5 ‰
+L Ip
+& L
+ow (
+19 90
+) L
+ac ta
+te i
+n g
+il ls
+i n
+cr ea
+se d
+b y
+98 %
+, sc
+h lo
+ss er
+i in
+b lo
+od b
+y 80
+% 0
+0 1
+L O
+E C
+M E
+T 1
+25 °C
+, 1 5
+‰ L
+L ow
+e t
+al . (
+19 93
+) L
+ac ta
+te i
+n t
+h e
+g il
+ls i
+n cr
+ea se
+d b
+y 11
+5 %
+1. 12
+15 .1
+1 L
+O E
+C M
+E T
+1 25
+°C , 1
+5 ‰
+L G
+ly co
+g en
+d ec
+re as
+ed b
+y 36
+% 1.
+12 15
+.1 6
+L O
+E C
+M E
+T 6
+25 °C
+, 1 5
+‰ L
+T ot
+al l
+ac ta
+te p
+ro d
+u ce
+d i
+n cr
+ea se
+d
+3. 2-
+fo ld
+, l ac
+ta te
+i n
+b lo
+od b
+y 12
+4 %
+, g
+il ls
+b y
+11 5
+% <
+0. 4
+< 5.
+8 –
+6. 3
+6 L
+O E
+C M
+E T
+3 30
+°C , 1
+5 –2
+7 ‰
+L Is
+h im
+at su
+e t
+al . (
+19 99
+) H
+ea rt
+r at
+e in
+cr ea
+se d
+b y
+29 %
+P la
+ti ch
+th ys
+f le
+su s
+0. 5
+4. 96
+0. 38
++ 0
+.0 3
+LT 50
+M O
+R 0.
+38 +
+0 .0
+3 13
+°C , 5
+‰ L
+T al
+lq vi
+st e
+t al
+. ( 19
+99 )
+1 9.
+92 2.
+48 +
+0 .1
+3 LT
+50 M
+O R
+2. 48
++ 0
+.1 3
+13 °C
+, 5 ‰
+L 2
+19 .8
+4 30
+.5 8
++ 1
+.4 5
+LT 50
+M O
+R 30
+.5 8
++ 1
+.4 5
+13 °C
+, 5 ‰
+L 3
+29 .7
+6 22
+L O
+E C
+R E
+P 22
+13 °C
+, 5 ‰
+L V
+en ti
+la ti
+on r
+at e
+in cr
+ea se
+d b
+y 26
+% 3
+29 .7
+6 24
+LT 50
+F E
+E D
+24 13
+°C , 5
+‰ L
+P re
+d at
+io n
+e ff
+ic ie
+n cy
+r ed
+u ce
+d b
+y 64
+%
+Z oa
+rc es
+v iv
+ip ar
+u s
+0 0
+1 LT
+10 0
+M O
+R 1
+F is
+ch er
+e t
+al . (
+19 92
+) <
+2. 9
+< 35
+.4 n
+s L
+O E
+C A
+C T
+n s
+15 °C
+, 3 4
+‰ L
+M ot
+io n
+le ss
+Mar Ecol Prog Ser 238: 249–279, 2002
+experiment at a specific concentration and exposure time. For example there are many studies on mortality rates at 0 mgO2 l–1. This concentration does lead to mortalities, but there may well be stronger effects at higher concentrations that have not been studied. Thus, in the present study more significance is given to non-lethal effects such as effects on growth, feeding and metabolic rates rather than mortality.
+Diaz & Rosenberg (1995) defined hypoxia as begin-ning at 2.0 mlO2 l–1 and reaching the point of anoxia at 0.0 ml l–1. (At 20 psu, 1 mlO2 l–1 is equivalent to 1.4 mg l–1, or 4.3% O2 and 14% saturation.) In general, pro-longed exposure to 4 mgO2 l–1 causes acute mortality in many invertebrates and non-salmonid fish embryos; while 3 mgO2 l–1 causes acute mortality in most non-salmonid fishes (USEPA 1986, 1989). It is also generally accepted that larval fishes and crustaceans are more sensitive than the adults (Miller et al. 1995).
+The literature data show that fishes are more sensi-tive to reduced oxygen concentrations than crusta-ceans, followed by annelids, and that bivalves are the most tolerant (Rosenberg et al. 1992, Nilsson & Rosen-berg 1994, Reish 1970). There are few studies of growth reductions caused by reduced oxygen concentrations, but see Strzyewska (1978), Strzyewska & Popiel (1974) and Wrezinski (1983) for indirect evidence. Severe production impairment of early-life non-salmonid spe-cies occurred when oxygen falls below 4.5 mg l–1
+(USEPA 1986). An oxygen concentration of 4.7 mg l–1
+impairs larval growth (Miller et al. 1995), and adult fishes reduce food intake and growth when oxygen falls to 60–70% of saturation (Jobling 1993, Pichavant et al. 1999). The relatively active cod Gadus morhua shows reductions in growth at 6.5 mgO2 l–1, a high oxy-gen concentration. Whereas metabolic effects appear in G. morhua at concentrations of 4.5 mgO2 l–1 mud-skippers (Boleophthalmus boddaerti, Periophthalmus chrysoplios, P. schlosseri), which inhabit burrows in fine muddy sediments in tropical and sub-tropical areas, show metabolic effects only at concentrations of around 1 mgO2 l–1. The boreal Solea solea, a bottom-living flatfish shows levels of metabolic response similar to those of Mudskippers. Keckeis et al. (1996) showed that reduced oxygen (10% air saturation) increased mortality and decreased hatching success in nase Chondrostoma nasus. Most fishes show mortality at oxygen concentrations between 1 and 2 mgO2 l–1, but mudskippers are not affected until values fall to around 0.5 mgO2 l–1. Thus the behavioural habits of a species are a good indication of its probable hypoxic tolerance level.
+In crustaceans, the blue crab Callinectes sapidus, the Norway lobster Nephrops norvegicus and the shrimps Penaeus setiferus and Palaemon adspersus and P. var-ians show hypoxic effects on feeding at between 2 and
+3 mgO2 l–1. A decrease in growth rates at oxygen con-centrations below 3.5 mgO2 l–1 has been shown for the marine amphipod Melitta longidactyla (Y.Y.O. unpubl. data). Abundances are reduced and mortalities occur below 1 mgO2 l–1 in the sediment-living isopod Saduria entomon. For M. longidactyla the 48 h LC50 value is 1.6 mgO2 l–1.
+Reductions in growth occur in the ophiuroid echino-derm Amphiura filiformis between 2.7 and 1.8 mgO2
+1–1 and in the bivalve molluscs Crassostrea virginica and Mytilus edulis between 1.5 and 0.6 mgO2 l–1 oxy-gen, whereas the opportunistic polychaete Capitella capitata shows growth reductions between 2.1 and 0.06 mgO2 l–1, but can survive for >24 d at 2.1 mgO2 l–1
+(Rosenberg 1972). In tolerance experiments conducted without sedi-
+ments, Dries & Theede (1974) found that at 17 psu, 10°C and <0.15 mlO2 l–1 the bivalves Astarte borealis, A. elliptica, A monatgui, Arctica islandica and Mytilus edulis survived more than 1000 h, whereas the poly-chaetes Nepthys ciliata and Nereis diversicolor sur-vived for ca. 200 h and the crustaceans Carcinus maenas, Gammarus oceanicus, Idotea balthica and Crangon crangon survived for less than 100 h. Simi-larly, Henriksson (1969) reported the ranking of anoxic tolerance from greatest to least as: bivalves Macoma balthica > Cardium lamarkii > polychaetes N. diversi-color > Scoloplos armiger > Ampharete grubei > Tere-bellides stroemi. De Zwaan et al. (1993) found that bivalves from the Medierranean were highly tolerant of anoxia, with Scarpharea inaequalis surviving 48 h of anoxia. Table 2 summarises these effects. Crustaceans show the least tolerance (Theede 1973, Dries & Theede 1974). Although growth and metabolic effects occur at concentrations above 2 mgO2 l–1 below this value mor-tality will occur if the organisms cannot escape from hypoxic conditions. Whilst fishes and some crusta-ceans may be able to move away from the areas affected, most benthic organisms suffer mortality. This will occur first in crustaceans and echinoids followed
+260
+Type of organism Effect Conc. (mg l–1)
+Actively swimming fish Growth 6 Actively swimming fish Metabolism 4.5 Bottom-living fish Metabolism 4 Most fishes Mortality 2 Crabs, shrimps, lobsters, Growth 2–3.5 isopods Bottom-living isopods Mortality 1–1.6 Bivalve molluscs Growth 1–1.5 Annelids Growth 1–2 Mudskippers Mortality 1
+Table 2. Summary of effects of reduced oxygen concentra-tions on marine organisms
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+by the more sensitive annelids and finally the bivalve molluscs.
+The present review clearly reveals that the sec-ondary effects of eutrophication on benthos and fishes are largely the result of reduced oxygen saturation caused by the decay and sedimentation of organic material. Some field studies illustrate that there are behavioural responses in addition to effects on growth and metabolism (Renaud 1986). The Kattegat has undergone regular seasonal hypoxic events for many decades (Jørgensen & Richardson 1996, Richardson & Heilmann 1995). During these events, biomass reduc-tions in benthic assemblages were recorded at stations that were subject to lowered oxygen concentrations (Pearson et al. 1985). Pihl (1989), Pihl et al. (1992, 1994) and Baden et al. (1990) reported changes in the behav-iour of benthic species, whereby fishes such as cod and whiting left the area at oxygen saturation levels below 25%, whereas dabs and flounders were more resistant, leaving the area only when oxygen saturation dropped below 15%. In hypoxic water, some fish species moved to the surface and ventilated their gills in the top oxygenated layer (Val et al. 1998). One of the more unusual aspects of hypoxic events is increased catches of fishes. Fishes migrate away from areas with low oxygen saturation and concentrated in shallower areas where catches increase (Hildén et al. 1982, Pihl 1989, Hagström et al. 1989, Baden et al. 1990, Hansson & Rudstam 1990). Dyer et al. (1983) caught much higher numbers of benthic animals in trawls off the Danish coast in an area of low bottom-water oxygen concen-trations; however, when low oxygen concentrations persisted, the catches of fishes were reduced. The decapod Nephrops norvegicus left its burrow and appeared on the sediment surface at oxygen saturation below 15%. Of the organisms commonly found in sand–mud bottoms, the bivalve Abra sp. and the bur-rowing urchins Echinocardium spp. are particularly sensitive to reduced oxygen concentration (Baden et al. 1990). In the Gullmarfjord, Sweden, Josefson & Widbom (1988) found that at oxygen concentrations below 1.4 mg l–1 all the macrofauna was eliminated, but that no meiofaunal taxa showed significant declines in abundance. (See also Gowen & Bradbury 1987, Hargrave 1994 and Hevia et al. 1996, who exam-ined the effects of direct organic matter input from fish farms on the benthos.) Levin & Gage (1998) found that depth and organic matter, rather than oxygen concen-tration, limited faunal richness and biomass.
+A consequence of these behavioural changes is that predator-prey dynamics can also be altered. Although there are few studies on the effects of hypoxia on predator-prey relationships, Sandberg (1994) showed that the predatory isopod Saduria entomon was inhib-ited in its predatory activities on the Baltic Sea benthos
+by low hypoxia. In laboratory experiments Taylor & Eggleston (2000) showed, that the blue crab Call-inectes sapidus altered its predatory behaviour in response to hypoxia. Low oxygen concentrations inhibited the crab from foraging, but increased prey (the clam Mya arenaria) vulnerability by altering the siphon extension and depth distribution within the sediment (see also Breitburg et al. 1994, Nestlerode & Diaz 1998).
+Under conditions of extreme amounts of nutrient input, mass growth occurs in opportunistic algae such as Ulva sp. in the Lagoon of Venice (Sfriso et al. 1987, 1988) and Cladophora sp. in Laholm Bay, Sweden (Baden et al. 1990). These species form huge mats and smother the sediment, which becomes anaerobic as a consequence. Large phytoplankton blooms resulting from excess nutrient addition may be toxic, the so-called ‘red tides’. Examples of such toxic blooms are too numerous to mention but see Smayda (1990) for recent references.
+Areas where hypoxia has been recorded
+In their review Diaz & Rosenberg (1995) provide a comprehensive list of areas where hypoxia has occurred. Here we take a slightly different approach and classify the types of hypoxia and areas in which hypoxia/anoxia have been recorded (see Table 3). Upwelling areas are not included since although such areas do experience hypoxic events (e.g. the coast of Peru, Walvis Bay, South Africa and the Horn of South Arabia) these are not usually driven by anthropogenic activities, but man-induced climate change may in-fluence these systems. Additional anoxic events not recorded in the Diaz & Rosenberg (1995) review are: in coastal waters in New South Wales (Rainer & Fitzhard-inghe 1981), Northern Adriatic (Degobbis et al. 1979), Tokyo Bay (Tsuji et al. 1973), Mobile Bay (May 1973), Bay of Vilaine (Rossignol-Stick 1985) and Chesapeake Bay Seliger et al. (1985). Additional references to the New York Bight incident are found in Falkowski et al. (1980).
+Table 3 shows that hypoxia occurs most commonly as a seasonal phenomenon in many areas, notably fjords, estuaries, coastal embayments, and occurs on the shelf adjacent to the Mississippi River and the anoxic basin in the central Black Sea. Hydrographic and climatic forcing processes drive these seasonal events. For example exchange of the deep (often anoxic) water in the inner Oslofjord is driven primarily by northerly winds, which move less-saline surface waters out of the fjord to be replaced by more-saline deep water from the Skagerrak. This water sinks when it flows over the 2 major sills and the anoxic water, which is
+261
+Mar Ecol Prog Ser 238: 249–279, 2002
+less saline, is lifted and disperses and moves out of the fjord. Whilst such events are natural and have occurred over long periods of time, there is no doubt that their extent in time and space has increased in recent years with the addition of nutrients and/or organic matter from anthropogenic sources. The inner Oslofjord, Norway (Mirza & Gray 1983, Paasche & Erga 1988), Swedish fjords and coasts (Söderström 1971, Rosenberg 1977, Svane & Gröndal 1988, Diaz & Rosenberg 1995), the Kattegat (Jørgensen 1980, An-dersson & Rydberg 1988, Rydberg et al. 1990, Steffen-sen 1990), the Baltic Sea (Wulff et al. 1986, 1990, Ro-senberg et al. 1990), Dutch and German coastal waters (Bennekom et al. 1975, Cadée 1984, Beukema & Cadée 1986, Reise et al. 1989), the German Bight (Rachor 1990), Kiel Bay (Rumohr 1986), Black Sea (Zaitsev 1992) and Chesapeake Bay (Cooper & Brush 1991) are good examples. There are only 2 examples of periodic, but non-seasonal hypoxia, both from rivers entering Chesapeake Bay. These events last from days to weeks and occur irregularly throughout a year. In the York River, tidal mixing controls the periodicity, whereas in the Rapahannock River a combination of tidal mixing and proximity to the hypoxic waters of Chesapeake Bay (Kuo & Neilson 1987) plays the key role.
+Irregular events are also usually driven by unusual hydrographic and/or climatic factors. For example the New York Bight event in 1981 has been particularly well studied. Whilst this event was initially attributed
+to increased anthropogenic carbon input (mainly se-wage) simulation models showed that the event was most probably the result of unusual climatic condi-tions. These were: a warm winter with large terrestrial runoff; a low frequency of spring storm events result-ing in a deep spring thermocline; persistent southerly summer winds; a large autochthonous carbon load of the dinoflagellate Ceratium triops; and low grazing pressure (Walsh 1988 gives a full account of this event). A simulation study (Stoddard & Walsh 1986) showed that the anoxic event would have occurred without any allochthonous input of organic carbon from anthro-pogenic sources. What is clear from that study is that climatic conditions were extremely important in trig-gering the event. The anoxic event off the Danish-German coasts in September 1981 (Dyer et al. 1983) was also probably caused by unusual hydrographic conditions.
+The areas with permanent anoxia (Idefjord, Byfjord, Fosa da Cariaco, Gulf of Finland and the central areas of the Baltic, Black and Caspian Seas) are all areas with extremely limited water exchange so that replen-ishment of the oxygen in the deep basins is not pos-sible. However, in all these areas there is little doubt that conditions have worsened during this century as a result of anthropogenic inputs of nutrients.
+A common factor concerning all the examples shown in Table 3 is that hypoxia and anoxia occur in areas that have poor water exchange. Yet these
+262
+Fjords Estuaries Bays Shelf Enclosed seas
+Saanich Inlet, Port Hacking, Chesapeake Bay (1) Lousiana shelf (1) Seto Inland Sea, Canada (1) Australia (1) Japan (1) Inner Oslofjord, Pamlico River, USA (1) Tome Cove, Japan (1) Black Sea shelf (1) Bornholm Basin, Norway (1) Baltic Sea(1) Gullmarsfjord, 46% of US estuaries (1) Laholm Bay, Sweden (1) Texas Shelf (3) Kattegat, Denmark (1) Sweden (1) Swedish west (1) Rappahannock R Kiel Bay, Germany (1) German Bight (3) Northern Adriatic (3) coast fjords USA (2) Limfjord, York River, USA (2) Hillsborourgh Bay, New York Bight (3) Central Black Sea (4) Denmark (1) Florida (1) Lough Ine, Gulf of Trieste, Adriatic (1) Danish-German Central Baltic Sea (4) Ireland (1) coast (3) Sullom Voe, Elefsis Bay, Aegean Sea (1) New South Wales (3) Central Caspian Sea (4) Scotland (1) Byfjord, Aarhus Bay, Denmark (1) Sweden (4) Idefjord, Tolo Harbour, Hong Kong (1) Sweden-Norway (4) Bay of Vilaine, France (3)
+Somm(1) Bay, France (3) German Bight, North Sea (3) Mobile Bay, USA (3) Tokyo Bay, Japan (3) Fosa da Cariaco, Venezuela (4) Gulf of Finland (4)
+Table 3. Marine areas subjected to hypoxia. 1: seasonal; 2: periodic; 3: irregular; 4: permanent
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+marine coastal environments encompass a wide vari-ety of systems: from stratified and non-stratified estu-aries, fjords with and without sills, areas with tempo-rary and permanent frontal systems, gyres which entrain nutrients and production, areas that are con-stantly mixed and areas that are periodically strati-fied. No simple model will encompass all these forms of variability, and it is probable that each area will have to be considered per se. Waves, tides and cur-rents are also of great significance to the large areas of intertidal and shallow subtidal zones in the marine environment. Physical factors such as wave action can limit biomass despite a rich supply of nutrients. Hypoxia in freshwater lakes has been controlled using a simple relationship established by Vollen-weider (1976). If one knows the phosphorus input and output, the area and the average depth of the lake, and its mean phosphorus concentration, one can pre-dict by how much nutrient input needs to be reduced to restore the lake to oxic conditions. Vollenweider’s model has been applied successfully to many lakes. However, no simple relationship of the Vollenweider type (Vollenweider 1975, 1976) is likely to apply to coastal marine areas subjected to high nutrient load-ings. Vollenweider (1992) acknowledged this by com-menting on coastal eutrophication that ‘…difficulties rest not only with the assessment of load and nutrient budgets, but with the interpretation of such figur-es…their trophodynamic significance…unless further morphometric, hydrological and other parameters of the system are also taken into consideration.’
+Examination of the areas where eutrophication ef-fects have been observed reveals that hypoxia is the critical factor affecting marine life and where anoxic events occur these are most often associated with un-usual climatic conditions. Likewise, high organic mat-ter content in the sediment will not lead to negative ef-fects if the material is difficult to breakdown (high C:N ratios) and does not enhance aerobic microbial activity and lead to hypoxia. However, where the material is of high quality (C:N < 10) and oxygen is present, micro-bial action will lead to mineralisation of the organic matter and lowering of the oxygen concentration and may lead to hypoxia. Thus it is important that coastal zone managers realise that discharges of nutrients ei-ther directly as sewage or indirectly from agricultural and forestry runoff will lead to problems in areas that are stagnant or that have limited water exchange.
+Ammonia
+Ammonia is acutely toxic to fishes and marine organ-isms at low concentrations, and unionized ammonia is considered the major toxic form in the aquatic environ-
+ment. In the environment, ammonia is in equilibrium with ammonium. The threshold concentration of total ammonia ([NH3] + [NH4
++]) resulting in unacceptable biological effects promulgated by the USEPA (1989) was 3.48 mg N l–1 at pH 6.5 and 0.25 mg N l–1 at pH 9.0. The updated criteria (USEPA 1989) sets the acute-chronic ratio at (14.4 mg N l–1, pH 8) and (1.27 mg N l–1, pH 11.3). Most of our knowledge on ammonia toxicity in the aquatic environment is based on freshwater ani-mals, and there is a paucity of data on marine animals (Handy & Poxton 1993).
+Table 4 shows the effects of unionized ammonia on marine organisms. Here the mortality studies were aimed at determining the LC50 values. For the flounder Paralichthys orbignyanus, adults showed effects at between 50 and 66 mg NH3 l–1 whereas 1 d old larvae were affected at concentrations of only 0.27 mg NH3 l–1
+and 23 d old larvae at 1.02 mgNH3 l–1 (Kim et al. 1997). Penaeid shrimps varied in their LC50 response, from 11.5 mgNH3 l–1 in P. penicillatus to ca. 50 mgNH3 l–1
+in P. chinensis. The burrowing amphipod Ampelisca abdita had a LC50 of ca. 50 mgNH3 l–1.
+The LC50 responses to unionised ammonia are re-markably uniform across species with the minnow Cyprinodon variegatus, the turbot Scophthalmus max-imus and the lobster Homarus americanus being most sensitive at 2.1 to 3.8 mgNH3 l–1, whereas nearly all other species studied ranging from mysids, shrimps, bivalves and fish (seabass, seabream, inland silverside, planehead pipefish, winter flounder) were affected at concentrations of <2 mgNH3 l–1.
+Hydrogen sulphide
+There are considerable data on the effects of hydrogen sulphide (H2S) on freshwater fish species, but relatively little on marine species (Tables 5 & 6). Again there appears to be a marked difference between mortality effects in active fishes (e.g. pike Esox lucius) with a range of 16 to 76 µgH2S l–1 (geometric mean 35) and those in benthic species (e.g. lake whitefish Coregonus clupeaformis), with a range of 2 to 13 (geometric mean 4.14) µgH2S l–1. Crayfish (Cambarus diogenes and Pro-cambarus clarki) were far more tolerant with LC50 values of 146 and 115 µgH2S l–1 respectively.
+Of the marine species for which there are data the shrimp Palaemon pugio had an LC50 of 114 and marine bottom-living foraminiferans an LC50 between 200 and 400 µgH2S l–1 .
+The polychaete Capitella capitata, which occurs in high numbers in organically highly rich sediments, has a requirement for hydrogen sulphide as a settlement clue (Cuomo 1985) and thus newly settled larvae are found in hydrogen sulphide-rich sediments.
+263
+Mar Ecol Prog Ser 238: 249–279, 2002
+Once anaerobic conditions ensue and H2S is present, mass mortalities of nearly all organisms occur (Stacho-witsch 1984). In the innermost Oslofjord (Bunnenfjord) at dephts greater than 50 m, H2S is found in the water column and no macrobenthic fauna exists (J.S.G. unpubl.). Such conditions occur naturally under the thermocline in upwelling areas off Peru, where mats of the bacterium Thioplaca sp. can attain wet weight biomass of 2 kg m–2 (Rosenberg et al. 1983, Tarazona et al. 1986).
+Interactions among factors
+The data on reduced oxygen concentrations, ammo-nia and hydrogen sulphide show that there are some general responses. In general, the sensitivity of major marine taxa is: fish > echinoderms and crustaceans > annelids > molluscs. However, within each taxon there is considerable variability, dependent on the habits of the species considered. Actively swimming fishes are more sensitive than bottom-living fishes, which in turn
+264
+Species LC50 conc. Expt Temp. Salinity pH Source (mg NH3 l–1) duration (h) (°C) (‰)
+Crustaceans Eucalamus elongatus 0.87 24–48 20.3 34 8 USEPA (1989)
+E. pileatus 0.79 24–48 20.5 34 8.2
+Latreutes fucorum 0.77 24–48 23.4 28 8.07
+Metapenaeus ensis 0.87–1.76 48–96 25 25 7.7 Nan & Chen (1991)
+Mysidopsis bahia 0.50 96 25 31 7 Miller et al. (1990) 1.70 96 25 31 8 2.87 96 25 31 9 0.048 672 25 31 ns 0.163 672 25 31 ns 0.331 672 25 31 ns 1.02 24–48 23.2 21.4 6.8–9.2 USEPA (1989)
+Palamonetes pugio 1.65 24–48 19.9 19.2 8
+Homarus americanus 2.21 24–48 21.9 33.4 8.1
+Penaeus chinensis 1.53–2.10 48–96 26 33 7.94 Chen et al. (1990 ) 3.88 24 25 30 8.12 Chen & Lin (1992)
+Molluscs Crassostrea virginica 19.10 24–48 20 27 7.7–8.0 USEPA (1989)
+Mercenaria mercenaria 5.36 24–48 20 27 7.7–8.2
+Placopecten magellanicus 1.80 96 4 ns ns Abraham et al. (1996) 1.00 96 10 ns ns
+Fishes Cyprinodon variegatus 2.10 96 13 30–32.5 8.05 Miller et al. (1990)
+2.80 96 25 30–32.5 7.25 3.51 96 32.5 30–32.5 7.75
+Dicentrarchus labrax 1.70 96 17.5 34 8.15 Person et al. (1995)
+Menidia beryllina 0.98 96 18 30–32.5 8 Miller et al. (1990) 1.77 96 25 30–32.5 8 1.70 96 32.5 30–32.5 8
+0.93–0.97 96 25 30–32.5 7 0.75 96 25 30–32.5 9 0.074 672 23.5–25 30–33 ns 0.38 672 23.5–25 30–33 ns
+Monocanthus hispidus 0.83 24–48 23.4 28 8.07 USEPA (1989)
+Pseudopleuronectes amercicanus 0.49 24–48 7.5 31 8
+Sciaenops ocellatus 0.55 24–48 25.5 29 8.1
+Scophthalmus maximus 2.96 24–48 17.9 34.3 8.15 2.55 96 17.5 34 8.15 Person et al. (1995 )
+Sparus aurata 1.93 24–48 27 40.5 8.1 Wajsbrot et al. 1991) 2.55 96 17.5 34 8.15 Person le Ruyet et al. (1995)
+Table 4. Effects of unionised ammonia (as LC50 values) on marine organisms under various environmental conditions. ns: not specified
+Gray et al.: Hypoxia and organic enrichment in coastal environment 265
+Species LC50 conc. Expt Source (µg l–1) duration (h)
+Crustaceans Asellus militaris 1070.00 96 Mance et al. (1988) Cambarus diogenes 105.00 96
+205.00 96 Geometric mean 146.71
+Crangonyx 840.00 96 richmondensis lauren Gammarus 21.00 96 pseudolimnaeus 59.00 96
+32.00 96 Geometric mean 34.10 96
+Procambarus clarki 370.00 96 121.00 96 271.00 96
+75.00 96 147.00 96
+58.00 96 34.00 96
+Geometric mean 114.86
+Baetis vagans 20.00 96 Mance et al. (1988) Ephemera simulans 316.00 96 Hexagenia limbata 111.00 96 Palaemonetes pugio 114.00 96
+Fish Coregonus 2.00 48 Fung & Bewick (1980) clupeaformis 5.00 48
+2.00 72 3.00 72 5.00 72 3.00 96
+12.00 96 2.00 96 4.00 96
+12.00 96 Geometric mean 4.15
+Esox lucius 46.00 48 Mance et al. (1988) 16.00 48 47.00 48 76.00 48 26.00 96 Smith & Oseid (1974) 37.00 96 37.00 96 Mance et al. (1988) 34.00 96 Smith & Oseid 1972 26.00 96 Mance et al. (1988)
+Geometric mean 35.19
+Ictalurus punctatus 1400.00 96 Mance et al.(1988) Lepomis 32.00 72 Smith & Oseid (1974) macrochirus 30.00 72
+9.00 72 19.00 72 Mance et al. (1988) 16.00 72 Smith & Oseid (1974) 44.80 96 Mance et al. (1988)
+8.00 96 13.10 96 30.00 96 28.00 48 32.00 48 47.80 48
+Geometric mean 22.39
+Micropterus 81 48 Fung & Bewick (1980) salmoides 30 48
+76 48 11 48 65 72 59 72 11 72 30 72 59 96 30 96
+Table 5. Effects of hydrogen sulphide (as LC50 values) on freshwater organisms
+Species LC50 conc. Expt Source (µg l–1) duration (h)
+11 96 63 96
+Geometric mean 34.8
+Oncorhynchus mykiss 26 48 Fung & Bewick (1980) 12 48 43 48 52 48 24 48 25 48 55 72 Smith & Oseid (1972) 80 72 25 72 Fung & Bewick (1980) 55 72 Smith & Oseid (1970) 43 72 Fung & Bewick (1980) 21 72 20 72 Smith & Oseid (1972) 47 72 Fung & Bewick (1980)
+7 72 23 72 12 72 20 72 Smith & Oseid (1970) 49 96 13 96 23 96 Fung & Bewick (1980)
+7 96 43 96 47 96 19 96 17 96 Smith & Oseid (1974) 49 96 12 96 Fung & Bewick (1980) 49 96 Smith & Oseid (1972) 25 96 Fung & Bewick (1980) 49 96 Smith & Oseid (1970)
+Geometric mean 26.8
+Perca flavescens 10 48 Fung & Bewick (1980) 64 48 31 48 10 48 10 72 39 72 15 72 36 96
+8 96 10 96
+Geometric mean 17.9
+Pimephales promelas 14 96 Mance et al. (1988) 26 96 49 96
+7 96 10 96 53 96
+546 96 Geometric mean 32.6
+Salmo trutta 7.0 96 Reynolds & Haines (1980)
+Salvelinus fontinalis 17 96 Mance et al. (1988) 54 96 Smith & Oseid (1974) 17 96 22 96 25 96 Mance et al. (1988) 31 96 Smith & Oseid (1974)
+Geometric mean 25.4
+Stizostedion vitreum 7 96 Smith & Oseid (1974) 52 96 52 96 20 96 18 96 Mance et al. (1988)
+Geometric mean 23.3
+Mar Ecol Prog Ser 238: 249–279, 2002266
+S p
+ec ie
+s D
+O l
+ev el
+H 2S
+l ev
+el E
+xp t
+E n
+d p
+oi n
+t C
+on d
+it io
+n s
+p H
+S ou
+rc e
+R em
+ar k
+s (m
+g l
+– 1 )
+(µ g
+l –
+1 ) d
+u ra
+ti on
+C on
+c. E
+ff ec
+t T
+im e
+(h )
+(h )
+A n
+n el
+id s
+A re
+n ic
+ol a
+m ar
+in a
+< 0.
+2 0
+5 L
+O E
+C
+M E
+T 5
+10 °C
+A b
+el e-
+O es
+ch g
+er &
+H
+ae m
+og lo
+b in
+a u
+to ox
+id at
+io n
+i n
+cr ea
+se d
+O
+es ch
+g er
+( 19
+95 )
+b y
+16 5
+% , m
+et h
+ae m
+og lo
+b in
+b y
+16 0
+% ;
+C A
+T i
+n c
+h lo
+ra g
+og en
+d ec
+re as
+ed
+b y
+40 %
+, G R
+i n
+c h
+lo ra
+g og
+en b
+y 50
+% <
+0. 2
+20 0
+µ M
+5 L
+O E
+C
+M E
+T 5
+10 °C
+H ae
+m og
+lo b
+in a
+u to
+xi d
+at io
+n i
+n cr
+ea se
+d
+b y
+16 5
+% , m
+et h
+ae m
+og lo
+b in
+b y
+90 %
+, h
+yd ro
+g en
+p er
+ox id
+e b
+y 70
+% . C
+A T
+in c
+h lo
+ra g
+og en
+d ec
+re as
+ed b
+y 70
+% H
+ed is
+te d
+iv er
+si co
+lo r
+1 µ
+m ol
+– l
+98 0
+µ m
+ol –
+l 60
+LT 50
+M O
+R T
+60 16
+°C , 1
+4 ‰
+7. 8
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+1 µ
+m ol
+– l
+0 10
+5 LT
+50 M
+O R
+T 10
+5 16
+°C , 1
+4 ‰
+7. 8
+Ju ve
+n il
+e 1
+µ m
+ol –
+l 1
+m m
+ol –
+l 72
+LT 50
+M O
+R T
+72
+Ju ve
+n il
+e 1
+µ m
+ol –
+l 0
+14 LT
+50 M
+O R
+T 14
+16 °C
+, 1 4
+‰ 7.
+8 P
+os tl
+ar va
+l st
+ag e
+1 µ
+m ol
+– l
+27 0
+µ m
+ol –
+l 10
+LT 50
+M O
+R T
+10
+P os
+tl ar
+va l
+st ag
+e H
+et er
+oc h
+ae ta
+c os
+ta ta
+1 µ
+m ol
+– l
+0 72
+N O
+E C
+M O
+R T
+72
+16 °C
+, 1 4
+‰ 7.
+8 1
+µ m
+ol –
+l 1.
+96 m
+m ol
+– l
+36 0
+LT 50
+M O
+R T
+36 0
+16 °C
+, 1 4
+‰ 1
+µ m
+ol –
+l 55
+0 µ
+m ol
+– l
+54 LT
+50 M
+O R
+T 54
+16
+°C , 1
+4 ‰
+P ar
+an ai
+s li
+to ra
+li s
+1 µ
+m ol
+– l
+0 48
+N O
+E C
+M O
+R T
+48 16
+°C , 1
+4 ‰
+7. 8
+1 µ
+m ol
+– l
+50 µ
+m ol
+– l
+7 LT
+50 M
+O R
+T 7
+T u
+b if
+ic oi
+d es
+b en
+ed ii
+0. 05
+20 0
+µ M
+24 L
+O E
+C M
+E T
+12
+D u
+b il
+ie r
+et a
+l. (
+19 97
+) S
+u cc
+in at
+e in
+cr ea
+se d
+3 -f
+ol d
+H yd
+ro b
+ia v
+en tr
+os a
+1 µ
+m ol
+– l
+0 16
+8 LT
+50 M
+O R
+T 16
+8 16
+°C , 1
+4 ‰
+7. 8
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+1 µ
+m ol
+– l
+57 0
+µ m
+ol –
+l 75
+LT 50
+M O
+R T
+75
+C ru
+st ac
+ea n
+s C
+yp ri
+d ei
+s to
+ro sa
+1 µ
+m ol
+– l
+0 66
+0 LT
+50 M
+O R
+T 66
+0 16
+°C , 1
+4 ‰
+7. 8
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+1 µ
+m ol
+– l
+1. 8
+m m
+ol –
+l 52
+8 LT
+50 M
+O R
+T 52
+8 S
+ad u
+ri a
+en to
+m on
+0. 04
+4 0
+8 L
+O E
+C R
+E P
+8 11
+°C , 1
+0 ‰
+V is
+m an
+n &
+H ag
+er m
+an (
+19 96
+) N
+or m
+al r
+es p
+ir at
+io n
+r at
+e re
+-e st
+ab li
+sh ed
+af te
+r 8
+h r
+ec ov
+er y
+0. 30
+8 41
+µ M
+8 L
+O E
+C R
+E P
+8 11
+°C , 1
+0 ‰
+N or
+m al
+r es
+p ir
+at io
+n r
+at e
+re -e
+st ab
+li sh
+ed af
+te r
+28 h
+r ec
+ov er
+y 0.
+04 0
+8 L
+O E
+C M
+E T
+8 11
+°C , 1
+0 ‰
+M et
+ab ol
+is m
+r ed
+u ce
+d b
+y 70
+% , o
+xy g
+en
+d eb
+t w
+as 0
+.5 7
+m g
+O 2
+g –
+1
+0. 30
+8 41
+µ M
+8 L
+O E
+C M
+E T
+8 11
+°C , 1
+0 ‰
+M et
+ab ol
+is m
+r ed
+u ce
+d b
+y 38
+% , o
+xy g
+en d
+eb t
+w as
+2 .7
+4 m
+g O
+2 g
+– 1
+C or
+op h
+iu m
+v ol
+u ta
+to r
+1 µ
+m ol
+– l
+0 4
+LT 50
+M O
+R T
+4 16
+°C , 1
+4 ‰
+7. 8
+G am
+en ic
+k e
+t al
+. ( 19
+96 )
+1 µ
+m ol
+– l
+90 µ
+m ol
+– l
+2 N
+O E
+C M
+O R
+T 2
+C ra
+n g
+on c
+ra n
+g on
+0. 04
+4 0
+2. 5
+LT 50
+M O
+R T
+2. 5
+18 °C
+, 3 0
+‰ H
+ag er
+m an
+& V
+is m
+an n
+( 19
+95 )
+0. 45
+0 30
+LT 50
+M O
+R T
+30
+0. 91
+0 n
+s n
+s B
+E n
+s 18
+°C , 3
+0 ‰
+O n
+ly v
+er y
+sp or
+ad ic
+m ov
+em en
+ts
+oc cu
+rr ed
+, a ct
+iv it
+y d
+ec re
+as ed
+a s
+ox yg
+en
+d ec
+re as
+ed 0.
+45 0
+1. 33
+L O
+E C
+M E
+T 1.
+33
+18 °C
+, 3 0
+‰ L
+ac ta
+te i
+n cr
+ea se
+d b
+y 4.
+6 –
+7-fo
+ld 1.
+82 5
+µ M
+1. 33
+L O
+E C
+M E
+T 1.
+33
+18 °C
+, 3 0
+‰ L
+ac ta
+te i
+n cr
+ea se
+d b
+y 16
+–2 5-
+fo ld
+M o
+ll u
+sc s
+A rc
+ti ca
+i sl
+an d
+ic a
+0 0
+24 0
+L O
+E C
+M E
+T 24
+0 9.
+5 +
+0 .5
+°C ,
+7. 6
+O es
+ch g
+er &
+S to
+re y
+(1 99
+3) T
+ot al
+g ly
+co g
+en p
+h os
+p h
+or yl
+as e
+in a
+d d
+u c-
+22 ‰
+to r
+d ec
+re as
+ed b
+y 34
+% , i
+n f
+oo t
+b y
+27 %
+0 20
+0 µ
+M 24
+0 L
+O E
+C M
+E T
+24 0
+9. 5
++ 0
+.5 °C
+, 7.
+6 T
+ot al
+g ly
+co g
+en p
+h os
+p h
+or yl
+as e
+in a
+d d
+u c-
+22 ‰
+to r
+d ec
+re as
+ed b
+y 30
+.3 %
+, i n
+f oo
+t b
+y 15
+.9 %
+Gray et al.: Hypoxia and organic enrichment in coastal environment 267
+S p
+ec ie
+s D
+O l
+ev el
+H 2S
+l ev
+el E
+xp t
+E n
+d p
+oi n
+t C
+on d
+it io
+n s
+p H
+S ou
+rc e
+R em
+ar k
+s (m
+g l
+– 1 )
+(µ g
+l –
+1 ) d
+u ra
+ti on
+C on
+c. E
+ff ec
+t T
+im e
+(h )
+(h )
+A st
+ar te
+b or
+ea li
+s <
+0. 2
+0 48
+L O
+E C
+M E
+T 48
+10 °C
+A b
+el e-
+O es
+ch g
+er &
+G
+R i
+n g
+il ls
+i n
+cr ea
+se d
+b y
+50 0
+% O
+es ch
+g er
+( 19
+95 )
+< 0.
+2 20
+0 µ
+M 48
+L O
+E C
+M E
+T 48
+10
+°C H
+yd ro
+g en
+p er
+ox id
+e in
+cr ea
+se d
+b y
+20 0
+%
+< 0.
+2 0
+24 0
+L O
+E C
+M E
+T 24
+0 10
+°C M
+et h
+ae m
+og lo
+b in
+i n
+cr ea
+se d
+b y
+26 0
+% .
+C A
+T i
+n g
+il ls
+d ec
+re as
+ed b
+y 70
+% <
+0. 2
+20 0
+µ M
+24 0
+L O
+E C
+M E
+T 24
+0 10
+°C C
+A T
+i n
+g il
+ls d
+ec re
+as ed
+b y
+40 %
+S O
+D i
+n cr
+ea se
+d b
+y 50
+% a
+n d
+G R
+in
+cr ea
+se d
+b y
+86 0
+%
+E ch
+in o
+d er
+m s
+A m
+p h
+iu ra
+f il
+if or
+m is
+< 0.
+1 0
+16 8
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 16
+8 V
+is ti
+se n
+& V
+is m
+an n
+( 19
+97 )
+29 .5
++ 1
+.4 ‰
+0. 3
+0 34
+8 LT
+50 M
+O R
+T 8.
+5 +
+1 .5
+°C ,
+34 8
+29 .5
++ 1
+.4 ‰
+0. 5
+0 78
+0 LT
+50 M
+O R
+T 8.
+5 +
+1 .5
+°C ,
+78 0
+29 .5
++ 1
+.4 ‰
+0. 1
+–1 0
+n s
+L O
+E C
+B E
+8. 5
++ 1
+.5 °C
+, n
+s A
+ll r
+os e
+to s
+ed im
+en t
+su rf
+ac e,
+l if
+te d
+29
+.5 +
+1 .4
+‰ d
+is c
+in to
+t h
+e w
+at er
+c ol
+u m
+n , a
+n d
+su
+rv iv
+ed a
+t su
+rf ac
+e fo
+r se
+ve ra
+l d
+ay s
+< 0.
+1 0
+18 0
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 18
+0 29
+.5 +
+1 .4
+‰ <
+0. 1
+2 µ
+M 12
+9. 6
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 12
+9. 6
+93 %
+c am
+e to
+s ed
+im en
+t su
+rf ac
+e w
+it h
+in 29
+.5 +
+1 .4
+‰ 2
+to 5
+d , q
+u ic
+k ly
+b ec
+am e
+in ac
+ti ve
+a n
+d
+ch an
+g ed
+f ro
+m p
+al e
+re d
+t o
+w h
+it e
+< 0.
+1 20
+µ M
+74 .4
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 74
+.4 84
+% c
+am e
+to s
+ed im
+en t
+su rf
+ac e
+w it
+h in
+29 .5
++ 1
+.4 ‰
+2
+to 5
+d , q
+u ic
+k ly
+b ec
+am e
+in ac
+ti ve
+an d
+c h
+an g
+ed f
+ro m
+p al
+e re
+d t
+o w
+h it
+e <
+0. 1
+20 0
+µ M
+40
+.8 L
+O E
+C B
+E 8.
+5 +
+1 .5
+°C ,
+40 .8
+51 %
+c am
+e to
+s ed
+im en
+t su
+rf ac
+e w
+it h
+in (T
+S )
+29 .5
++ 1
+.4 ‰
+2 to
+5 d
+, q u
+ic k
+ly b
+ec am
+e in
+ac ti
+ve an
+d c
+h an
+g ed
+f ro
+m p
+al e
+re d
+t o
+w h
+it e
+O p
+h iu
+ra a
+lb id
+a <
+0. 1
+0 60
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 60
+Q u
+ic k
+ly b
+ec am
+e in
+ac ti
+ve
+29 .5
++ 1
+.4 ‰
+an d
+m or
+ib u
+n d
+0. 3
+0 14
+4 LT
+50 M
+O R
+T 8.
+5 +
+1 .5
+°C ,
+14 4
+29 .5
++ 1
+.4 ‰
+0. 5
+0 33
+6 LT
+50 M
+O R
+T 8.
+5 +
+1 .5
+°C ,
+33 6
+29 .5
++ 1
+.4 ‰
+0. 1
+–1 0
+n s
+L O
+E C
+B E
+8. 5
++ 1
+.5 °C
+, n
+s In
+it ia
+ll y
+sh ow
+ed i
+n cr
+ea se
+d m
+ob il
+it y
+29 .5
++ 1
+.4 ‰
+(e sc
+ap e
+re sp
+on se
+) fo
+r 2
+to 4
+d , t
+h en
+ca
+m e
+to r
+es t
+w it
+h d
+is c
+ra is
+ed i
+n to
+w at
+er co
+lu m
+n <
+0. 1
+0 60
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 60
+29 .5
++ 1
+.4 ‰
+< 0.
+1 2
+µ M
+43 .2
+LT 50
+M O
+R T
+8. 5
++ 1
+.5 °C
+, 43
+.2 In
+it ia
+ll y
+li ft
+ed d
+is c
+in to
+w at
+er c
+ol u
+m n
+, 29
+.5 +
+1 .4
+‰ th
+en b
+ec am
+e p
+ar al
+ys ed
+< 0.
+1 20
+µ M
+18 LT
+50 M
+O R
+T 8.
+5 +
+1 .5
+°C ,
+18 29
+.5 +
+1 .4
+‰ B
+ec am
+e p
+ar al
+ys ed
+< 0.
+1 20
+0 µ
+M
+8 L
+O E
+C B
+E 8.
+5 +
+1 .5
+°C ,
+8 B
+ec am
+e p
+ar al
+ys ed
+(T S
+) 29
+.5 +
+1 .4
+‰
+Mar Ecol Prog Ser 238: 249–279, 2002
+are more sensitive than burrowing species such as mudskippers. Similar trends occur within the other taxa, with species that inhabit sediments being the most tolerant to low oxygen and high ammonia and hydrogen sulphide concentrations.
+Interactions between hypoxia, ammonia and hydro-gen sulphide are poorly known. Reduced oxygen lev-els increase ammonia toxicity in the marine fish Sparus auratus and the prawn Penaeus semisulcatus (Wajs-brot et al. 1990, 1991). Ammonia toxicity to the prawn was doubled when dissolved oxygen decreased from 55 to 27% saturation (Wajsbrot et al. 1990). Thurston et al. (1983), however, found no correlation between oxygen level and ammonia toxicity to fathead minnows Pimephales promelas. Hiroki (1978) demonstrated that hypoxic tolerance in 3 species of marine gastropods (Littorina ziczac, Neritina vorginea and Olivella ver-reuxii) decreased in the presence of H2S. Similarly, Kang et al. (1993) showed that H2S decreased the hy-poxic tolerance of the crab Portunus trituberculatus. The ispopod Saduria entomon is able to synthesize haemocyanin to enhance oxygen uptake during hypoxia (1.8 to 2.9 mgO2 l–1), but haemocyanin synthe-sis is inhibited when the isopod is exposed to hypoxia in the presence of H2S (150 µM l–1) (Hagerman & Vis-man 1993). Magaud et al. (1997) found that mortality of the rainbow trout Oncorhynchus mykiss exposed simultaneously to 0.5 mgNH3 l–1 un-ionized ammonia and hypoxia (1.7 mgO2 l–1) was significantly higher than that of trout Salmo trutta exposed to ammonia or hypoxia alone, suggesting a synergistic effect.
+Yet to what extent do interactions among oxygen, hydrogen sulphide and ammonia affect the fauna? Hydrogen sulphide is readily oxidised in the presence of oxygen. Only in sulphide-rich coastal sediments or salt marshes overlaid by shallow water can sulphide escape to the atmosphere (Fenchel & Blackburn 1979). In marine sediments sulphate reduction is the domi-nant microbiological process, and results in ammonia accumulation within anoxic sediments and a con-centration gradient towards the sediment surface. If the water above the sediment surface is anoxic then ammonia can be released, otherwise the ammonia is rapidly oxidised. Thus it is only under extremely poor conditions with almost no oxygen that high amounts of ammonia and hydrogen sulphide occur in bottom waters. From these considerations it is clear that hypoxia is the main contributor to faunal changes. Field studies showed that in southeastern USA all species tested (fishes and shrimp) could detect and avoid 1 mg l–1 oxygen (Wannamaker & Rice 2000). The final extreme stages of eutrophication occur when the concentration drops below 0.5 mg l–1 and hydrogen sulphide and ammonia are released into the water. In an interesting study of deep-sea fauna, Levin & Gage
+(1998) found that depth and organic matter rather than oxygen concentration limited faunal richness and biomass.
+From the foregoing it is clear that the effects that are produced are not caused by a single factor but are the interaction of a number of different factors. It is not just ‘organic enrichment’ that leads to the effects, but the interaction of sedimenting organic matter with reduced oxygen concentrations, and the presence of hydrogen sulphide and possibly ammonia.
+The role of modelling
+Visser & Kamp-Nielsen (1996) state that empirical modeling of coastal eutrophication is rare, largely due to the fact that coastal systems have complex dynam-ics. Walsh (1988) pointed out that the major advance in plankton modeling in the 1970s was the development of models that took into account physical variables such as the spatial resolution of velocity fields and turbulence. These models produce predictions of the spatio-temporal distribution of primary production.
+Walsh (1975) made an early attempt to model the phytoplankton-nutrient-oxygen system. Using a 2-layered system model he then analysed the causes of the 1976 anoxic event in the New York Bight (Walsh 1988). As state variables the model included dissolved nitrogen (ammonium and nitrate), dissolved silicon, and dissolved and particulate organic carbon (DOC and POC) phytoplankton (nanoplankton and Ceratium tripos) and zooplankton (copepods and chaetognaths) above and below the pycnocline. The sources of am-monium included microbial remineralization of organic nitrogen and macrobenthic regeneration of ammo-nium, waste inputs and zooplankton excretion. Urea is also important (Lomstein et al. 1989). Sources of POC included photosynthetic excretion and waste dis-charges. Loss terms of nitrogen included nitrification and nutrient uptake by the 2 groups of phytoplankton. Sinks of DOC and POC included consumption by bac-terial decomposition and settling POC. The forcing functions were water temperature, solar radiation and photoperiod, pycnocline depth, seasonal stratification, advection and eddy dispersion both horizontally and vertically. The model was able to produce spatial pre-dictions of oxygen concentrations, which gave reason-able approximations of the 1976 event. Walsh was further able to simulate the effects of a 10-fold increase in carbon and nitrogen loading. This led to anoxia below the pycnocline. Further he was able to show that an increase of 50 to 100 gC m–2 would induce an anoxia event.
+Gowen et al. (1988, 1994) using a similar modelling approach to that of Vollenweider (1968, 1976) applied
+268
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+to fjords (specifically 21 Scottish sea lochs) were able to estimate the yield of chlorophyll from nitrate. How-ever, this was not an ecosystem model. Such models have been developed by Tett et al. (1986), Aksnes & Lie (1990) and Ross et al. (1993, 1994). Ross et al.’s model is discussed in some detail by Visser & Kamp-Nielsen (1996). The model showed that the key nutri-ent loading came not from riverine inputs but from the open sea and internal cycling was relatively unimpor-tant. However, the size of the spring bloom was con-trolled entirely by grazing so that nutrients were never limiting for phytoplankton growth. Silvert (1994) and Doering et al. (1989) have modelled effects of organic enrichment on benthos. (See also GESAMP [1991] for an overview of general models for coastal systems.)
+In reviewing the different types of models appro-priate for managing coastal eutrophication, Visser & Kamp-Nielsen (1996) stated that ‘fully interactive physical and biological models of such coastal systems are as yet not forthcoming’. Thus we are not at the stage where we have predictive models for coastal eutrophication. This is mainly because most marine systems are unbounded (Visser & Kamp-Nielsen 1996) and describing the sources and cycling of nutrients and how turbulence and mixing control production, sedi-mentation and oxygen concentrations is a major challenge (Mann 1982, Platt et al. 1989) and a fact acknowledged by Vollenweider (1992). Visser & Kamp-Nielsen (1996) concluded by giving the sound advice that in the development of coastal eutrophication models managers should carefully define the questions being posed of scientists, establish adequate monitor-ing programs, and apply risk assessments to establish model validation criteria a priori.
+Pearson-Rosenberg (P-R) model of organic enrichment
+As mentioned in the ‘Introduction’ the P-R model is one of the most cited marine papers (over 400 citations in the Institute for Scientific Information’s list 2000). The P-R model predicts the numbers of species, the total abundance of all species, and the biomass of all species along a gradient of increasing organic enrich-ment of the sediment. Fig. 2 shows the model. The model suggests that the total biomass of organisms initially inceases gradually as organic matter load increases above background levels, and then rises sharply to a maximum. The biomass then falls, and often shows a secondary peak near to, but lower than, that of maximal abundance. The maximum number of species coincides with the biomass peak. Abundance on the other hand rises slowly at first but then in-creases rapidly to a maximum (the ‘peak of oppor-
+tunists’), before falling sharply as oxygen concentra-tion drops.
+Pearson & Rosenberg (1978) pointed out that there are considerable difficulties in comparing biomass between studies and between areas, and thus that the suggested double peak needs to be studied in more detail. In fact, due to the difficulties of defining the bio-mass of, for example, an echinoderm or a bivalve (com-pared that of a polychaete), biomass is not often mea-sured (but see Cedrwall & Elmgren 1980). Pearson & Rosenberg (1978) suggested that the secondary peak in biomass occurs when there are large amounts of organic matter but oxygen concentrations have not yet started to decrease. They documented the generality of the model by showing stylised figures (but with no quantitative axes) compiled from data from Sweden (Rosenberg 1976), Scotland (Pearson & Stanley 1979), Canada, France and Germany (Anger 1975).
+Most papers that cite the model claim that their data ‘agree’ with the model. But what does ‘agreement’ mean? At the most extreme ends of the scale an area with low organic matter input has fairly high species numbers, low abundance and moderate biomass, whereas an area with high organic matter has low or no oxygen content in the overlying water and almost no species and low biomass and abundance. Between these extremes abundance, species number and bio-mass are usually higher. Thus almost any gradient of disturbance will show a similar pattern, in accord with the intermediate disturbance hypothesis (Connell & Slatyer 1977). In most cases where the P-R model is cited there are usually no tests as to whether or not the double peak of biomass, the slight increase in species
+269
+Fig. 2. The Pearson-Rosenberg model showing Species (S), Abundance (A) and Biomass (B) – SAB curves of the effects of organic enrichment on sediment-living organisms. In the original model Pearson and Rosenberg have on the ordinate a point source of organic enrichment and a decreasing gradient from the source. We prefer an increasing gradient from the origon and so have reversed the ordinate scale to one of
+increasing organic enrichment from left to right
+Mar Ecol Prog Ser 238: 249–279, 2002
+number with slight enrichment, and the ‘peak of opportunists’ at late stages of enrichment occurs.
+In fact there are remarkable few actual tests of the model compared with studies claiming that their data fit the model. The P-R model is highly descriptive and describes the stages of change as ‘organic enrichment’ increases. But what is meant by ‘organic enrichment’? How much organic input/deposition is required to elicit biological changes? Does this refer to organic enrichment in the sediment or is it the general process of organic enrichment that occurs in the water-column? Or are the effects that are observed in fact due to other factors such as hypoxia?
+In a limited test of the P-R model, Weston (1990) examined the benthic fauna under and at distances up to 450 m from a fish farm and did not find the ‘peak of opportunists’, predicted by the model. Heip’s (1995) review likewise questions the generality of the re-sponse of opportunist species to organic enrichment and urges caution, as data on food quality and quantity and requirements is often lacking for most species. In a more extensive study, Maurer et al. (1993) tested the P-R model in an open-shelf environment off the coast of California and found that the fast long-shore cur-rents from mixed and semi-diurnal tides and storms led to high flushing rates of organic material. Thus, although input rates of organic matter were high, the characteristic P-R model did not hold for the benthic assemblages if dispersion was good and POM did not settle on the bottom.
+The P-R model was developed from studies in fjords (Saltkällefjord, Sweden, Loch Creran, Scotland), the Fraser River Estuary, Canada, and enclosed embay-ments off Marseille and Kiel Bay (Pearson & Rosenberg 1978). All these areas are characterised by limited water exchanges in their bottom waters and with predominantly silt-clay sediments, typical of sedi-mentation basins. Maurer et al. (1993) concluded that the model accurately predicts effects only in semi-enclosed waters with reduced flushing rates and net increase in sedimentation compared with open shelf areas. From the results presented by Maurer et al. (1993) and in the present analysis, it is obvious that high amounts of organic material can be produced in the water column, but if the dispersive characteristics lead to a lack of accumulation of organic matter in the sediment, then one cannot expect effects on the sedi-ment-living fauna. Thus ‘increased organic input’ is probably only a very indirect measure of the effects on the benthic fauna.
+The analysis presented here shows that organic enrichment and hypoxia lead to a wide range of changes in the water column and in sediments. Increased turbidity can cause changes in depth dis-tributions of algae and lead to changes in species com-
+position (Ramus et al. 1976a,b). The process of sedi-mentation itself may lead to direct effects on the ben-thos. The intermediate disturbance hypothesis predicts that any disturbance of a system will initially lead to an increase in the number of species. If the disturbance persists or increases, then the species number falls. Sedimentation alone may lead to an increase, whether this is accompanied by an increase in organic matter loading to the sediment or not. The P-R model does not separate disturbance from organic enrichment. Pear-son & Rosenberg (1978) suggested that there is a sec-ondary peak of increased biomass, where there are large amounts of organic matter but where oxygen concentrations have not started to fall. Whether such a peak occurs or not has rarely been tested. Following the initial ‘disturbance effect’, if organic enrichment proceeds then reduced oxygen concentrations (be-tween 4 and 2 mg l–1) can cause changes in tropho-dynamics, which in turn alter the species composition and the abundance of benthic organisms. We suggest that the main effects are caused by hypoxia in the water column rather than effects of organic matter on the benthos. When oxygen falls to below 0.5 mgO2 l–1
+sediments often become anoxic with the redox-discon-tinuity layer near the surface. Ammonia and hydrogen sulphide can be released from the sediments, and would add to the effects of hypoxia and lead to cata-strophic effects on the fauna in the water column and sediment. Thus, the P-R model does not properly re-flect the causes of the changes observed, and therefore cannot be used as a predictive tool.
+Detecting effects of hypoxia and organic enrichment
+Gray’s (1992) review presents a series of steps that indicate the progress of eutrophication. Here we com-bine data on physico-chemical variables, such as C:N ratios of POM, and oxygen concentrations, to derive a general scheme for coastal zone managers to evaluate the presence of or state of eutrophication in a given area. In this approach we include the P-R model (Pear-son & Rosenberg 1978) for benthic assemblages, as the model is perhaps best used in the context of assessing the stages of eutrophication rather than as a predictive tool.
+The assessment process begins with observations that may indicate eutrophication. These are discoloured water, changed species composition in the phytoplank-ton (McCormick & Quinn 1975, Kimor 1992) and zooplankton (Regner 1991), bottom-living algae, sea-grasses or salt marshes covered in epiphytes (Patriquin & Knowles 1972, McRoy & Goering 1974, Valiela et al. 1978, Valiela 1984), or tidal flats with large patches of Ulva, Enteromorpha or Cladophora. Discoloured water
+270
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+from algal blooms may be a perfectly natural phenom-enon so at this stage eutrophication is just 1 possible hypothesis for the observation. Often, however, early signs of eutrophication are changes in fish-catches during bottom trawling e.g. suddenly increased catches resulting from hypoxia in the bottom water-masses (Aneer 1985). Another often extremely sensitive sign is changes in species composition and/or biomass of the benthic fauna. Benthic assemblages are so sensitive because often up to 50 or more species of macrofauna (retained on a 1 mm pore-diameter sieve) occur per 1 m2 seabed. Some of these species will respond to changes in food supply, and/or sedimentation rates and/or lowered oxygen concentrations. Changes in the benthos may arise from factors other than eutrophica-tion, such as altered fishing intensity or methods, and further evidence is needed before eutrophication can be confirmed. Fig. 3 shows the assessment scheme.
+Following the detection of unusual events the oxy-gen content of the bottom water should be investi-gated. If this is above 4 mg l–1, it is unlikely that eutrophication effects will be observed in the area. Further monitoring is recommended to ensure that the concentration remains above 4. If it falls below 4 then assessment of the degree of eutrophication and its spatial extent should be made. Here 2 strategies are recommended, a rapid assessment or a more detailed study, with the use of multivariate statistics (see below). The rapid assessment builds on the P-R model and its modification using Sediment Profiling Imaging (SPI) cameras (Rhoads & Germano 1982, 1986, Rumohr & Schomann 1992, Nilsson & Rosenberg 2000).
+Pearson & Rosenberg (1998) suggested 4 major stages of change in response to organic enrichment of the benthos: normal, transitory, polluted and grossly pol-luted, along a gradient of organic enrichment (or, as we have argued, more probably a gradient of hypoxia). In reality there is a smooth transition from one stage to the next and classification into 4 stages is simply a convenient abstraction of the data. These stages can be used to assess the state of eutrophication in benthic systems, and are based on the species composition determined from grab samples and species identifica-tions: (1) Normal: characterised by the presence of large, deep-burrowing species such as decapods and echinoids, with a deep redox-potential discontinu-ity (RPD) layer. (2) Transitory: characterised by the presence of smaller organisms usually deposit-feeding bivalves, which replace the large deep-burrowing spe-cies. The RPD level is shallower than in (1). (3) Pol-luted: characterised by a very shallow RPD layer and dominance of small tube-building polychaetes; indi-cates severe eutrophication. (4) Grossly Polluted: char-acterised by sulphide patches at the sediment surface and no macrofauna, only nematodes survive. It should
+be noted that the latter are marked changes, so in the RPD layer values in the range of –100 to –150 mV indi-cate long term, heavy organic pollution (Pearson & Stanley 1979).
+Nilsson & Rosenberg (2000) have recently quantified 4 stages in a ‘Benthic Habitat Quality (BHQ) index’ classifying the normal conditions as Stage 3, transitory as Stage 2, polluted as Stage 1 and grossly polluted as Stage 0. They used a series of observations made with an SPI camera system. From our experience, it is quite possible to make similar observations using transpar-ent core samples of the sediment. The scheme in our Fig. 3 is based on Nilsson & Rosenberg’s BHQ index, but we have not calculated the index, as its utility has not been tested in many areas. In both a rapid and a full assessment, it is important that samples are taken over a large area including undisturbed control sedi-ments and their assemblages. A pilot study is recom-mended to give a rough overview, followed by more detailed sampling to assess the extent and degree of eutrophication, if any.
+We believe that a full assessment is preferable, rather than classification into subjective classes (even the P-R model shows a continuum of change). In a full-assessment approach samples should be taken with a grab or multicorer covering the area where eutrophi-cation is suspected. Data should be collected on both fauna and sediment properties (grain size variables, redox measurements, C:N at 1 cm intervals down to 10 cm, observations on tubes and tube size). Multivari-ate statistical methods should then be applied to both fauna and sediments separately, since such methods have been shown to be highly sensitive (Gray et al. 1990). The PRIMER package (Clarke & Warwick 1994) and the CANOCO package (ter Braak 1987) have been widely used with data from such surveys and both have the advantage over other methods that they can relate sediment properties to fauna. Both these pack-ages are able to integrate the physico-chemical mea-surements with the biological measurements to pro-vide a correlative explanation for possible causes of changes observed in the funa. Multivariate techniques have been shown to be highly sensitive in detecting the changes in species composition that are the earliest signs of eutrophication (Gray et al. 1990).
+The emphasis here is on the detection of the earli-est signs of eutrophication so that action may be taken to mitigate more severe effects. One reviewer of this paper suggested that ‘as unpolluted control coasts are rarely available nearby, the only way is to analyse long-term or historical data sets’. We reject this suggestion on 2 accounts. Firstly, the scheme does not rely on there being pristine conditions, as few coastal environments anywhere in the world can today be called prisitine. It is based on observations
+271
+Mar Ecol Prog Ser 238: 249–279, 2002272
+Fig. 3. Assessment scheme for suspected eutrophication
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+of changes occurring along gradients in systems that are being monitored. In areas with natural periodic anoxia, managers may be interested in monitoring the development of anoxia and the extent of the effects, and the proposed scheme will provide a basis for monitoring of areas covered by such effects. Sec-ondly, analyzing historical data is fraught with the enormous problem of detecting the eutrophication signal from the noise of natural change. It is now well known that marine systems respond to large-scale oceanographic signals such as the North Atlantic Oscillation or ENSO, whose time span varies over many years if not decades. Testing for effects against such signals is not cost-effective, as it may take a de-cade to detect that an unwanted effect has occurred. It is far better, and statistically more sound, to moni-tor multiple sites along a gradient (or gradients) of a suspected effect.
+Should eutrophication be diagnosed, then the man-agers of the coastal zone are faced with problems of remedial action. This will involve analysis of historical data for the area, preparations of mass balance bud-gets for nitrogen and phosphorus, analyses of climatic conditions over the period of the event, assessment of hydrographic conditions, and development of realistic dynamical models that take into account the key phys-ical, chemical and biological processes covered in this review. Cloern (2001) discussed these aspects in some detail. From such analyses it should be possible to devise cost-effective treatments to mitigate and hope-fully remediate the system. In this context managers of coastal zones should read Richardson’s (1996) analyses of the time perspective over which remedial action is likely to have an effect. For the Kattegat, a statistically significant detectable improvement in oxygen condi-tions, given the variability present in the system, will take 18 yr. Eutrophication is a problem of global significance which, once it has occurred, is extremely difficult to reverse.
+LITERATURE CITED
+Abele-Oeschger D, Oeschger R (1995) Hypoxia-induced autoxidation of haemoglobin in the benthic invertebrates Arenicola marina (Polychaeta) and Astarte borealis (Bivalvia) and the possible effects of sulphide. J Exp Mar Biol Ecol 187:63–80
+Abraham A, Couturier C, Parsons JA (1996) Toxicity of un-ionized ammonia to juvenile giant scallops, Placopecten magellanicus. Bull Aquac Assoc Can 96-103:68–70
+Aksnes DL, Lie U (1990) A coupled physical biological pelagic model of a shallow sill fjord. Estuar Coast Shelf Sci 31: 459–486
+Anderson SJ, Taylor AC, Atkinson RJA (1994) Anaerobic metabolism during anoxia in the burrowing shrimp Calo-caris macandreae Bell (Crustacea: Thalassinidea). Comp Biochem Physiol Part A 108:515–522
+Andersson L, Rydberg L (1988) Trends in nutrient and oxygen conditions within the Kattegat: effects of local nutrient supply. Estuar Coast Shelf Sci 26:559–579
+Aneer G (1985) Some speculations about the Baltic herring (Clupea harengus membras) in connection with the eutrophication of the Baltic Sea. Can J Fish Aquat Sci 42 (Suppl 1):83–90
+Anger K (1975) On the influence of sewage pollution on inshore benthic communities in the South of Kiel Bay. Helgol Wiss Meeresunters 27:408–438
+Ansell AD (1974) Sedimentation of organic detritus in Loch Etive and Creran, Argyll, Scotland. Mar Biol 27:263–273
+Arndt C, Schiedek D, Felbeck H (1998) Metabolic responses of the hydrothermal vent tube worm Riftia pachyptila to severe hypoxia. Mar Ecol Prog Ser 174:151–158
+Aubert M (1990) Mediators of microbiological origin and eutrophication phenomena. Mar Pollut Bull 21:24–29
+Baden SP, Loo LO, Pihl L, Rosenberg R (1990) Effects of eutrophication on benthic communities including fish: Swedish west coast. Ambio 19:113–122
+Baker MS, Mann R, (1992) Effects of hypoxia and anoxia on larval settlement, juvenile growth and juvenile survival of the oyster Crassostrea virginica. Biol Bull 182:256–269
+Baker MS, Mann R (1994) Description of metamorphic phases in the oyster Crassostrea virginica and effects of hypoxia on metamorphosis. Mar Ecol Prog Ser 104:91–99
+Bennekom AJ van, Gieskes WWC, Tijssen SB (1975) Eutroph-ication of Dutch coastal waters. Proc R Soc Lond Ser B Biol Sci 189:359–437
+Beukema JJ, Cadée GC (1986) Zoobenthos responses to eutrophication of the Dutch Wadden Sea. Ophelia 26: 55–64
+Borum J (1996) Shallow waters and land/sea boundaries. In: Jørgensen BB, Richardson K (eds) Eutrophication in coastal marine ecosystems. American Geophysical Union, Wash-ington, DC, p 179–203
+Borum J, Sand-Jensen K (1996) Is total primary production in shallow coastal marine waters stimulated by nitrogen loading? Oikos 76:406–410
+Breitburg DL, Steinburg N, DuBeau S, Cooksey C, Houde ED (1994) Effects of low dissolved oxygen on predation on estuarine fish larvae. Mar Ecol Prog Ser 104:235–246
+Cadée GC (1984) Has input of organic matter into the western part of the Dutch Wadden Sea increased during the last decades. Neth Inst Sea Res Publ 10:71–82
+Cadée GC, Hegeman J (1974) Primary production of phyto-plankton in the Dutch Wadden Sea. Neth J Sea Res 8: 240–259
+Carpenter EJ, Capone DG (eds) (1983) Nitrogen in the marine environment. Academic Press, New York
+Chabot D, Dutil J (1999) Reduced growth of Atlantic cod in non-lethal hypoxic conditions. J Fish Biol 55:472–491
+Chapman ARO, Craigie JS (1977) Seasonal growth in Laminaria longicruris: relations with dissolved inorganic nutrients and internal reserves of nitrogen. Mar Biol 40:197–205
+Chen JC, Lin JN (1992) Effects of ammonia on growth Penaeus penicillatus juveniles. Comp Biochem Physiol Part C 101:443–447
+Chen JC, Ting YY, Lin JN, Lin MN (1990) Lethal effects of ammonia and nitrate on Penaeus chinensis juveniles. Mar Biol 107:427–431
+Chew SF, Ip YK (1992a) Biochemical adaptations of the mud-skipper Boleophthalmus boddaerti to a lack of oxygen. Mar Biol 112:567–571
+Chew SF, Ip YK (1992b) Tolerance of the mudskipper, Boleophthalmus boddaerti, to a lack of oxygen. Zool Sci 9:227–230
+273
+Mar Ecol Prog Ser 238: 249–279, 2002
+Chew SF, Lim ALL, Low WP, Lee CGL, Chan KM, Ip YK (1990) Can the mudskipper, Periophthalmus chrysospilos, tolerate acute environmental hypoxic exposure? Fish Physiol Biochem 8:221–227
+Christensen H, Kanneworff E (1985) Sedimenting phyto-plankton as major food source for suspension and deposit feeders in the Øresund. Ophelia 24:223–244
+Clarke KR, Warwick RM (1994) Change in marine communi-ties: an approach to statistical analyses and interpretation. Plymouth Marine Laboratory, Plymouth
+Cloern JE (1982) Does the benthos control phytoplankton biomass in South San Francisco Bay? Mar Ecol Prog Ser 9:191–202
+Cloern JE (2001) Our evolving conceptual model of the coastal eutrophication problem. Mar Ecol Prog Ser 210: 223–253
+Connell JH, Slatyer RA (1977) Mechanisms of succession in natural communities and their role in community stability and organisation. Am Nat 111:119–144
+Cooper SR, Brush GS (1991) Long-term history of Chespeake Bay anoxia. Science 254:992–996
+Cuomo MC (1985) Sulphide as a larval settlement cue for Capitella sp. I. Biogeochemistry 1:169–181
+Dagg MJ, Turner JT (1982) The impact of copepod grazing on the phytoplankton of George’s Bank and the New York Bight. Can J Fish Aquat Sci 39:979–990
+Dalla Via J, Van den Thillart G, Cattani O, Zwaan A de (1994) Influence of long-tem hypoxia exposure on the energy metabolism of Solea solea. II. Intermediary metabolism in blood, liver and muscle. Mar Ecol Prog Ser 111:17–27
+Dalla Via J, Van den Thillart G, Cattani O, Cortesi P (1997) Environmental versus functional hypoxia/anoxia in sole Solea solea: the lactate paradox revisited. Mar Ecol Prog Ser 154:79–90
+Das T, Stickle WB (1993) Sensitivity of crabs Callinectes sapidus and C. similis and the gastropod Stramonita haemostoma to hypoxia and anoxia. Mar Ecol Prog Ser 98:263–274
+Das T, Stickle WB (1994) Detection and avoidance of hypoxic water by juvenile Callinectes sapidus and C. similis. Mar Biol 120:593–560
+Degobbis D, Smodlaka L, Pojed L, Skrivanic L, Precali R (1979) Increased eutrophication of the northern Adriatic Sea. Mar Pollut Bull 10:298–301
+de Zwaan A, Cortesi P, van den Thillart G, Brooks S and 5 oth-ers (1992) Energy metaobolism of bivalves at reduced oxy-gen tensions. In: Vollenweider RA, Marchetti R, Viviani R (eds) Marine coastal eutrophication. Elsevier Science, Amsterdam, p 1029–1039
+Diaz RJ, Rosenberg R (1995) Marine benthic hypoxia: a review of its ecological effects and the behavioural responses of benthic macrofauna. Oceanogr Mar Biol Annu Rev 33: 245–303
+Doering PH, Oviatt CA, Beatty LL, Banzon VF, Rice R, Kelly SP, Sullivan BK, Frithsen JB (1989) Structure and function in a model coastal ecosystem; silicon, the benthos and eutrophication. Mar Ecol Prog Ser 52:287–299
+Dries RR, Theede H (1974) Sauerstoffmangelresistenz mariner Bodenvertebraten aus der westlichen Ostsee. Mar Biol 25:327–333
+Dubilier N, Windoffer R, Grieshaber MK, Giere O (1997) Ultrastructure and anaerobic metabolism of mitochrondria in the marine oligochaete Tubificoides benedii: effects of hypoxia and sulfide. Mar Biol 127:637–645
+Dugdale RC, Goering JJ (1967) Uptake of new and regener-ated forms of nitrogen in primary productivity. Limnol Oceanogr 12:196–206
+Dyer MF, Pope JG, Fry PD, Law RJ, Portmann JE (1983) Changes in fish and benthos catches off the Danish coast in September 1981. J Mar Biol Assoc UK 63:767–775
+Dymond J, Fischer K, Clauson M, Cobler R, Gardner W, Richardson MJ, Berger W, Soutar A, Dunbar R (1981) A sediment trap inter-comparison study in the Santa Bar-bara Basin. Earth Planet Sci Lett 53:409–418
+Eriksson SP, Baden SP (1997) Behaviour and tolerance to hypoxia in juvenile Norway lobster (Nephrops norvegi-cus) of different ages. Mar Biol 128:49–54
+Eriksson SP, Weeks JM (1994) Effects of copper and hypoxia on two populations of the benthic amphipod Corophium volutator (Pallas). Aquat Toxicol 29:73–81
+Eriksson SP, Baden SP, Baden S, Pihl L, Stromberg JO, Svane I, Rosenberg R, Tiselius P (1998) Manganese in the hae-molymph and tissues of the Norway lobster, Nephrops norvegicus (L.), along the Swedish west coast, 1993–1995. Hydrobiol 375/376:255–264
+Falkowski PG, Hopkins TS, Walsh JJ (1980) An analysis of factors affecting oxygen depletion in the New York Bight. J Mar Res 38:479–506
+Fenchel T, Blackburn TH (1979) Bacteria and mineral cycling. Academic Press, London
+Fischer P, Rademacher K, Kils U (1992) In situ investigations on the respiration and behaviour of the eelpout Zoarces viviparus under short-term hypoxia. Mar Ecol Prog Ser 88: 181–184
+Forbes TL, Lopez GR (1990) The effect of food concentration, body size, and environmental oxygen tension on the growth of the deposit-feeding polychaete, Capitella spe-cies 1. Limnol Oceanogr 35:1535–1544
+Fung K, Bewick PH (1980) Short-term toxicity of aqueous hydrogen sulfide to representative fish species of Lake Huron. In: Eaton JG, Parrish PR Hendricks AC (eds). Aquatic Toxicology and Hazard Assessment. STP 707. ASTM, Philadelphia, PA, p 377–396
+Gamenick I, Jahn A, Vopel K, Giere O (1996) Hypoxia and sulphide as structuring factor in a macrozoobenthic com-munity on the Baltic Sea shore: Colonisation studies and tolerance experiments. Mar Ecol Prog Ser 144:73–85
+GESAMP(IMO/FAO/UNESCO/WMO/IAEA/UN/UNEP) Joint Group of Experts on the Scientific Aspects of Marine envi-ronmental Protection (1990) The state of the marine envi-ronment. United Nations Environment Programme. UNEP Regional Seas Rep Stud 115:1–111
+GESAMP (1991) Coastal modelling. GESAMP Rep Stud 43: 1–192
+GESAMP (2001) A sea of troubles. GESAMP Rep Stud 70: 1–35
+Gowen RJ, Bradbury N (1987) The ecological impacts of salmonid farming in coastal waters: a review. Oceanogr Mar Biol Annu Rev 24:563–575
+Gowen RJ, Brown JR, Bradbury NB, McClusky DS (1988) Investigations into benthic enrichment, hypernutrification and eutrophication associated with mariculture in Scottish coastal waters (1984–1988). Report to the Highlands and Islands Development Board, Crown Estate Commission-ers, Nature Conservancy Council, Countryside Commis-sion for Scotland, Scottish Salmon Growers Association, Perth 1– 289
+Gowen RJ, Smyth D, Silvert W (1994) Modelling the spatial distribution and loading of organic fish farm waste to the seabed. Can Tech Rep Fish Aquat Sci:19–30
+Graf G, Bengtsson W, Diesner W, Schulz R, Theede H (1982) Benthic response to sedimentation of a spring phytoplank-ton bloom: process and budget. Mar Biol 67:201–208
+Graneli E, Wallström K, Larsson U, Graneli W, Elmgren R
+274
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+(1990) Nutrient limitation of primary production in the Baltic Sea area. Ambio 19:142–151
+Gray JS (1982) Pollution effects on marine ecosystems. Neth J Sea Res 16:424–443
+Gray JS (1992) Eutrophication in the sea. In: Columbo G, Ferrari I, Ceccherelli VU, Rossi R (eds) Marine eutrophication and population dynamics. Olsen & Olsen, Fredensborg, p 3–15
+Gray JS, Clarke KR, Warwick RM, Hobbs G (1990) Detection of initial effects of pollution on marine benthos: an exam-ple from the Ekofisk and Eldfisk oilfields, North Sea. Mar Ecol Prog Ser 66:285–299
+Grebmeier JM, McRoy CP (1989) Pelagic-benthic coupling on the shelf of the northern Bering and Chukchi Seas. 3. Ben-thic food-supply and carbon cycling. Mar Ecol Prog Ser 53:79–91
+Grebmeier JM, McRoy CP, Feder HM (1988) Pelagic-benthic coupling on the shelf of the northern Bering and Chukchi Seas. I. Food supply source and benthic biomass. Mar Ecol Prog Ser 48:57–67
+Grebmeier JM, Feder HM, McRoy CP (1989) Pelagic-benthic coupling on the shelf of the northern Bering and Chukchi Seas 2. Benthic community structure. Mar Ecol Prog Ser 51:253–268
+Hagerman L, Vismann B (1995) Anaerobic metabolism in the shrimp Crangon crangon exposed to hypoxia, anoxia and hydrogen sulfide. Mar Biol 123:235–240
+Hagström O, Palmén LE, Håkansson N, Kästner D, Bremer-Robart H, Grygiel W, Wyszynski M (1989) Acoustic esti-mates of the herring and sprat stocks in the Baltic proper October 1988. ICES CM J:1989/J p 26
+Handy RD, Poxton MG (1993) Nitrogen pollution in maricul-ture: toxicity and excretion of nitrogenous compounds by marine fish. Rev Fish Biol Fish 3:205–241
+Hansson S, Rudstam LG (1990) Eutrophication and Baltic fish communities. Ambio 19:123–125
+Hargrave BT (1994) A benthic enrichment index. Can Tech Rep Fish Aquat Sci 1949:79–91
+Hargrave BT, Taguchi S (1978) Origin of deposited material sedimented in a marine bay. J Fish Res Board Can 35: 1604–1613
+Harper DE, McKinney LD, Nance JM, Salzer RB (1991) Recovery responses of two benthic assemblages following an acute hypoxic event on the Texas continental shelf, northwestern Gulf of Mexico. In: Tyson RV, Pearson TH (eds) Modern and ancient continental shelf anoxia. Geol Soc Lond Spec Publ 58:49–64
+Heip C (1995) Eutrophication and zoobenthos dynamics. Ophelia 41:113–136
+Henriksson R (1969) Influence of pollution on the bottom fauna of the Sound (Öresund). Oikos 20:507–523
+Hevia M, Rosenthal H, Gowen RJ (1996) Modelling benthic deposition under fish cages. J Appl Ichthyol 12:71–74
+Hildén M, Hudd R, Lehtonen H (1982) The effects of environ-mental changes on the fisheries and fish stocks in the Archipelago Sea and the Finnish part of the Gulf of Both-nia. Aqua Fenn 12:47–58
+Hill AD, Taylor AC, Strang RHC (1991) Physiological and metabolic responses of the shore crab Carcinus maenas (L.) during environmental anoxia and subsequent recov-ery. J Exp Mar Biol Ecol 150:31–50
+Hillebrand H, Sommer U (1999) The nutrient stoichiometry of benthic microalgal growth: Redfield proportions are optimal. Limnol Oceanogr 44:440–446
+Hiroki K (1978) Resistance of marine gastropods to oxygen deficiency and hydrogen sulphide. Biol Fisio Anim Sao Paulo 2:33–42
+Howell P, Simpson D (1994) Abundance of marine resources
+in relation to dissolved oxygen in Long Island Sound. Estuaries 17:394–402
+Ip YK, Low WP (1990) Rapid communication. Lactate produc-tion in the gills of the mudskipper Periophthalmondon schlosseri exposed to hypoxia. J Exp Zool 253:99–101
+Ip YK, Chew SF, Peng KW, Lim RWL (1992) Effects of envi-ronmental anoxia on concentrations of free amino acids and kinetic properties of glutamate dehydrogenase in three body parts of Phascolosoma arcuatum (Sipuncula). J Exp Mar Biol Ecol 165:125–132
+Ip YK, Chew SF, Lee CY, Wong WP, Lim DH, Murphy DH (1993) Effects of anoxia on the activities of pyruvate kinase and phosphoenolpyruvate carboxykinase, and the pro-duction of lactate and succinate in the intertidal pul-monate Onchidium tumidium. Mar Biol 116:103–107
+Ip YK, Chew SF, Randall DJ (2001) Ammonia toxicity, toler-ance and excretion. In: Hoar WS, Randall DJ, Farrell AP (eds) Fish Physiol 20:109–148
+Ishimatsu A, Aguilar NM, Ogawa J, Kougi A (1999) Arterial blood gas levels and cardiovascular function during vary-ing environmental conditions in a mudskipper, Perioph-thalmodon schlosseri. J Exp Biol 202:1753–1762
+Jobling M (1993) Bioenergetics: feed intake and energy parti-tioning. In: Rankin JC, Jensen FB (eds) Fish ecophysio-logy. Chapman and Hall, London
+Johansson B (1997) Behavioural response to gradually de-clining oxygen concentration by Baltic Sea macrobenthic crustaceans. Mar Biol 129:71–78
+Jørgensen BB (1980) Seasonal oxygen depletion in the bottom waters of a Danish fjord and its effect on the benthic com-munities. Oikos 34:68–76
+Jørgensen BB, Richardson K (eds) (1996) Eutrophication in coastal marine ecosystems. American Geophysical Union, Washington, DC
+Josefson AB (1987) Large-scale patterns of dynamics in sub-tidal macrozoobenthic assemblages in the Skagerrak: effects of a production-related factor? Mar Ecol Prog Ser 38:13–23
+Josefson AB, Jensen JN (1992) Effects of hypoxia on soft-sediment macrobenthos in southern Kattegat. In: Columbo G, Ferrari I, Ceccherelli VU, Rossi R (eds) Marine eutroph-ication and population dynamics. Olsen & Olsen, Fredens-borg, p 21–28
+Josefson AB, Widbom B (1998) Differential response of ben-thic macrofauna and meiofauna to hypoxia in the Gullmar Fjord basin. Mar Biol 100:31–40
+Justic D (1987) Long-term eutrophication of the northern Adriatic Sea. Mar Pollut Bull 18:281–284
+Justic D (1988) Trend in the transparency of the northern Adriatic Sea 1911–1982. Mar Pollut Bull 19:32–35
+Justic D, Legovic T, Rottini-Sandrini L (1987) Trends in oxy-gen content 1911-1984 and occurrence of benthic mor-tality in the Northern Adriatic Sea. Estuar Coast Shelf Sci 25:435–445
+Kang J, Matsuda O, Yamamoto T (1993) Effects of low dis-solved oxygen and hydrogen sulfide on ealrly develop-mental stages of blue crab, Portuns trituberculatus in Hiroshima Bay, Japan. J Fac Appl Biol Sci Hiroshima Univ 32:61–70
+Kautsky N, Kautsky H, Kautsky U, Waren M (1986) De-creased depth penetration of Fucus vesiculosus (L.) since the 1940s indicates eutrophication of the Baltic Sea. Mar Ecol Prog Ser 28:1–8
+Keckeis H, Bauer-Nemeschkal E, Kamler E (1996). Effects of reduced oxygen level on the mortality and hatching rate of Chondrostoma nasua embryos. J Fish Biol 49:430–440
+Kim HS, Kim HY, Chin P (1997) Effects of ammonia on sur-
+275
+Mar Ecol Prog Ser 238: 249–279, 2002
+vival and growth of the flounder larva, Paralichthys oli-vaceus. J Korean Fish Soc 30:488–495
+Kimor B (1992) Impact of eutrophication on phytoplankton composition. In: Vollenweider RA, Marchetti R, Viviani R (eds) Marine coastal eutrophication: the response of marine transitional systems to human impact: problems and perspectives for restoration. Proc Int Conf, Bologna, Italy, 21–24 March 1990. Sci Tot Env Suppl 1992:871–878
+Kiørboe T, Hansen JLS, Alldredge AL (1996) Sedimentation of phytoplankton during a diatom bloom: rates and mecha-nisms. J Mar Res 54:1123–1148
+Knauer GA, Martin JA, Bruland KW (1979) Fluxes of particu-late carbon, nitrogen and phosphorus in the upper water column of the northeast Pacific. Deep-Sea Res 26:97–108
+Kuo AY, Nielson BJ (1987) Hypoxia and salinity in Virginia estuaries. Estuaries 10:277–283
+Larsson U, Elmgren R, Wulff F (1985) Eutrophication in the Baltic Sea: causes and consequences. Ambio 14:9–14
+Levin LA, Gage JD (1998) Relationships between oxygen, organic matter and the diversity of bathyal macrofauna. Deep-Sea Res Part II 45:129–163
+Lim RWL, Ip YK (1991a) Alternation of kinetic properties of pyruvate kinase in Phascolosoma arcuatum (Sipuncula) exposed to environmental anoxia. J Exp Mar Biol Ecol 152: 123–133
+Lim RWL, Ip YK (1991b) The involvement of phosphoenol-pyruvate carboxykinase in succinate formation in Phas-colosoma arcuatum (Sipuncula) exposed to environmental anoxia. Zool Sci 8:673–679
+Lin HP, Charmantier G, Thuet P, Trilles JP (1992) Effects of turbidity on survival, osmoregulation and gill Na+-K+
+ATPase in juvenile shrimp Penaeus japonicus. Mar Ecol Prog Ser 90:31–37
+Lin HP, Thuet P, Trilles JP, Mounet Guillaume R, Charmantier G (1993) Effects of ammonia on survival and osmoregula-tion of various development stages of the shrimp Penaeus japonicus. Mar Biol 117:591–598
+Llansó RJ (1991) Tolerance of low dissolved oxygen and hydrogen sulfide by the polychaete Streblospio benedicti (Webster). J Exp Mar Biol Ecol 153:165–178
+Llansó RJ, Diaz RJ (1994) Tolerance to low dissolved oxygen by the tubicolous polychaete Loimia Medusa. J Mar Biol Assoc UK 74:143–148
+Lomstein BA, Blackburn TH, Henriksen K (1989) Aspects of nitrogen and carbon cycling in the northern Bering Shelf. Sediment: 1. The significance of urea turnover in the min-eralization NH4
++. Mar Ecol Prog Ser 57:237–247 Low WP, Peng KW, Phuan SK, Lee CY, Ip YK (1993) A com-
+parative study on the responses of the gills of two mud-skippers to hypoxia and anoxia. J Comp Physiol B 163: 487–494
+Magaud H, Migeon B, Morfin P, Garric J, Vindimian E (1997) Modeling fish mortality due to urban storm run-off: inter-acting effects of hypoxia and un-ionized ammonia. Water Res 31:211–218
+Main MB, Nelson WG (1988) Tolerance of the sabellariid polychaete Phtagmatopoma lapidosa Kinberg to burial turbidity and hydrogen sulfide. Mar Env Res 26:39–55
+Mance G, O’Donnell AR, Campbell JA (1988) Proposed envi-ronmental quality standards for List 11 substances in water: sulphide. Environmental Strategy Standards and Legislation Unit 8. Standing Committee on Analysis, Sulphide in waters and effluents. Water Research Centre, Medmenham, UK. Her Majesty’s Stationery Office, London
+Mann K (1982) Ecology of coastal waters. A systems approach. Stud Ecol 8:1–322
+Marcus NH, Lutz RV (1994) Effects of anoxia on the viability of subitaneous eggs of planktonic copepods. Mar Biol 121: 83–87
+Marshall DJ Mcquaid CD (1993) Differential physiological and behavioural responses of the intertidal mussels, Choromytilus meridionalis (Kr.) and Perna perna L., to exposure to hypoxia and air: a basis for spatial separation. J Exp Mar Biol Ecol 171:225–237
+Matthäus W (1998) On the causes of major Baltic inflows-an analysis of long time series. Cont Shelf Res 18:67–97
+Matthäus W (1999) The influence of river runoff on deep water conditions of the Baltic Sea. Hydrobiologia 393:1–10
+Maurer D, Robertson J, Gerlinger T (1993) San Pedro Shelf California: testing the Pearson-Rosenberg model (PRM) Mar Environ Res 35:304–321
+May EB (1973) Extensive oxygen depletion in Mobile Bay, Alabama. Limnol Oceanogr 18:353–366
+McCormick JM, Quinn PT (1975) Phytoplankton diversity and chlorophyll-a in a polluted estuary. Mar Pollut Bull 6: 105–106
+McRoy CP, Goering JJ (1974) Nutrient transfer between the seagrass Zostera marina and its epiphytes. Nature 248: 173–174
+Mee LD (1992) The Black Sea in crisis: a need for concerted international action. Ambio 21:278–286
+Miller DC, Poucher S, Cardin JA, Hansen D (1990) The acute and chronic toxicity of ammonia to marine fish and a mysid. Arch Env Contam Toxicol 10:40–48
+Miller DC, Poucher SL, Coiro L, Rego S, Munns W (1995) Effects of hypoxia on growth and survival of crustaceans and fishes of Long Island Sound. In: McElroy A, Zeidner J (eds) Proceedings of the Long Island Sound Research Con-ference: is the Sound getting better or worse. New York Sea Grant Institute, Stony Brook, NY, p 1–92
+Mirza FB, Gray JS (1978) The fauna of benthic sediments from the organically enriched Oslofjord, Norway. J Exp Mar Biol Ecol 54:181–207
+Nan JC, Chen FH (1991) Lethal effect of nitrite on Metape-naeus ensis larvae. J World Aquac Soc 22:51–56
+Nehring D (1979) Relationships between salinity and increas-ing nutrient concentration in the mixed winter surface layer of the Baltic from 1969 to 1978. ICES CM/C 24:1–8
+Nestlerode JA, Diaz RJ (1998) Effects of periodic environmen-tal hypoxia on predation of a tethered polychaete Glycera americana: implications for trophic dynamics. Mar Ecol Prog Ser 172:185–195
+Nielsen A, Hagerman L (1998) Effects of short-term hypoxia on metabolism and haemocyanin oxygen transport in the prawns Palaemon adspersus and Palaemonetes varians. Mar Ecol Prog Ser 167:177–183
+Niermann U, Bauerfeind E, Hickel W, von Westernhagen H (1990) The recovery of benthos following the impact of low oxygen content in the German Bight. Neth J Sea Res 25:215–226
+Nilsson HC (1999) Effects of hypoxia and organic enrichment on growth of the brittle stars Amphiura filiformis (O. F. Mueller) and Amphiura chiajei Forbes. J Exp Mar Biol Ecol 237:11–30
+Nilsson HC, Rosenberg R (1994) Hypoxic response of two marine benthic communities. Mar Ecol Prog Ser 115: 209–217
+Nilsson HC, Rosenberg R (2000) Succession in marine benthic habitats and fauna in response to oxygen deficiency: analysed by sediment profile-imaging and by grab sam-ples. Mar Ecol Prog Ser 197:139–149
+Nilsson HC, Skold M (1996) Arm regeneration and spawning in the brittle star Amphira filiformis (O. F. Muller) during hypoxia. J Exp Mar Biol Ecol 199:193–206
+276
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+Nixon SW (1990) Marine eutrophication: a growing interna-tional problem. Ambio 19:101
+Nixon SW (1995) Coastal marine eutrophication: a definition, social causes, and future concerns. Ophelia 41:199–220
+Nixon SW, Pilson MEQ (1983) Nitrogen in estuarine and coastal marine ecosystems. In: Carpenter EJ, Capone DG (eds) Nitrogen in the Marine Environment. Academic Press, New York, p 565–648
+Oeschger R, Storey KB (1993) Impact of anoxia and hydrogen sulphide on the metabolism of Arctica islandica L. (Bivalvia). J Exp Mar Biol Ecol 170:213–226
+Otsuki A, Hanya T (1972) Production of dissolved organic matter from dead green algal cells. II. Anaerobic microbial decomposition. Limnol Oceanogr 17:248–257
+Oviatt CA, Keller A, Sampou P, Laffin-Beatty L (1986) Pat-terns of productivity during eutrophication: a mesocosm experiment. Mar Ecol Prog Ser 28:69–80
+Oviatt CA, Quinn JG, Maughan JT and 6 others (1987) Fate and effects of sewage sludge in the coastal marine envi-ronment: a mesocosm experiment. Mar Ecol Prog Ser 41: 187–203
+Oviatt CA, Lane P, French F III, Donaghay P (1989) Phyto-plankton species and abundance in response to eutroph-ication in coastal marine mesocosms. J Plankton Res 11: 1223–1244
+Paasche E, Erga SR (1988) Phosphorus and nitrogen limitation of phytoplankton in the inner Oslofjord (Norway). Sarsia 73:229–243
+Patriquin DG, Knowles R (1972) Nitrogen fixation in the rhizo-sphere of marine angiosperms. Mar Biol 16:49–58
+Pearson TH (1982) The Loch Eil project: assessment and syn-thesis with a discussion of certain biological questions arising from a study of the organic pollution of sediments. J Exp Mar Biol 57:93–124
+Pearson TH, Rosenberg R (1978) Macrobenthic succession in relation to organic enrichment and pollution of the marine environment. Oceanogr Mar Biol Annu Rev 16:229–311
+Pearson TH, Stanley SO (1979) Comparative measurement of the redox potential of marine sediment as a rapid means of assessing the effects of organic pollution. Mar Biol 53: 371–379
+Pearson TH, Josefson AB, Rosenberg R (1985) Petersen’s sta-tions revisited. I. Is the Kattegat becoming eutrophic? J Exp Mar Biol Ecol 92:157–206
+Peckol P, Rivers JS (1995) Physiological responses of the opportunistic macroalgae Cladophora vagabunda (L.) van den Hoek and Gracilaria tikvahiae (McLachlan) to envi-ronmental disturbances associated with eutrophication. J Exp Mar Biol Ecol 190:1–16
+Person le Ruyet J, Chartois H, Quemener L (1995) Compara-tive acute ammonia toxicity in marine fish and plasma ammonia response. Aquaculture 136:181–194
+Pichavant K, Person le Ruyet J, Le Bayon N, Severe A and 5 others (2001) Effects of hypoxia on metabolism and growth in juvenile turbot. Aquaculture 188:103–114
+Pihl L (1989) Effects of oxygen depletion on demersal fish in coastal areas of the southeast Kattegat. In: Ryland JS, Tyler PA (eds) Reproduction, genetics and distributions of marine organisms. Olsen & Olsen, Fredensborg, p 431–439
+Pihl L, Baden SP, Diaz RJ (1992) Effects of periodic hypoxia on distribution of demersal fish and crustaceans. Mar Biol 108:349–360
+Pihl L, Baden SP, Diaz RJ, Schaffher LC (1994) Hypoxia-induced structural changes in the diet of bottom-feeding fish and crustacea. Mar Biol 112:349–361
+Platt T, Lewis WG, Lewis MR, Li WKW, Sathyendranath S, Smith RE, Vezina AF (1989) Biological production of the
+oceans: the case for a consensus. Mar Ecol Prog Ser 52: 77–88
+Rachor E (1990) Changes in the sublittoral zoobenthos in the German Bight with regard to eutrophication. Neth J Sea Res 25:209–214
+Rainer SF, Fitzhardinghe RC (1981) Benthic communities in an estuary with periodic deoxygenation. Aust J Mar Freshw Res 32:227–241
+Ramus J, Beale AI, Mauzerall D (1976) Correlation of changes in pigment content with photosynthetic capacity of sea-weeds as a function of water depth. Mar Biol 37:231–238
+Ramus J, Beale AI, Mauzerall D, Howard KL (1976) Changes in the photosynthetic pigment concentration in seaweeds as a function of water depth. Mar Biol 37:223–229
+Regner D (1991) The progressive changes of the copepod community from the eastern Adriatic coast caused by eutrophication. Toxicol Environ Chem 31-32:433–439
+Reise K, Herre E, Sturm M (1989) Historical changes in the benthos of the Wadden Sea around the island of Sylt in the North Sea. Helgol Wiss Meeresunters 43:417–433
+Reish DJ (1970) The effects of varying nutrients, chlorinity and dissolved oxygen on polychaetous annelids. Water Res 4:721–735
+Renaud ML (1986) Detecting and avoiding oxygen deficienct sea water by brown shrimp Penauus aztecus (Ives) and P. setosa (L.). J Exp Mar Biol Ecol 98:283–292
+Reynolds FA, Haines TA (1980) Effects of chronic exposure to hydrogen sulphide on newly hatched brown trout Salmo trutta L. Environ Pollut 22:1–13
+Rhoads DC, Germano JD (1982) Characterization of organ-ism-sediment relations using sediment profile imaging: an efficient method of remote ecological monitoring of the seafloor. Mar Ecol Prog Ser 8:115–128
+Rhoads DC, Germano JD (1986) Interpreting long-term changes in benthic community structure: a new protocol. Hydrobiologia 142:291–308
+Richardson K (1996) Conclusions, research and eutrophica-tion control. In: Jørgensen BB, Richardson K (eds) Eu-trophication in coastal marine ecosystems. American Geo-physical Union, Washington, DC, p 243–267
+Richardson K, Heilmann J (1995) Primary production in the Kattegat: past and present. Ophelia 41:317–328
+Ritter C, Montagna PA (1999) Seasonal hypoxia and models of benthic response in a Texas bay. Estuaries 22:7–20
+Rosas C, Martinez E, Gaxiola G, Brito R, Sanchez A, Soto LA (1999) The effect of dissolved oxygen and salinity on oxy-gen consumption, ammonia excretion and osmotic pres-sure of Penaeus setiferus (Linnaeus) juveniles. J Exp Mar Biol Ecol 234:41–57
+Rosenberg R (1972) Benthic faunal recovery in a Swedish fjord following the closure of a sulphite pulp mill. Oikos 23:92–108
+Rosenberg R (1976) Benthic faunal dynamics during succes-sion following pollution abatement in a Swedish estuary. Oikos 27:414–427
+Rosenberg R (1977) Benthic macrofaunal dynamics, produc-tion, and dispersion in an oxygen-deficient estuary of west Sweden. J Exp Mar Biol Ecol 26:107–133
+Rosenberg R (1990) Negative oxygen trends in Swedish coastal bottom waters. Mar Pollut Bull 21:335–339
+Rosenberg R, Loo LO (1988) Marine eutrophication induced oxygen deficiency: effects on soft bottom fauna, western Sweden. Ophelia 29:213–225
+Rosenberg R, Arntz W, de Flores EC, Flores LA, Carbajal G, Finger I, Tarazona J (1983) Benthos biomass and oxygen deficiency in the upwelling system off Peru. J Mar Res 41: 263–279
+277
+Mar Ecol Prog Ser 238: 249–279, 2002
+Rosenberg R, Gray JS, Josefson AB, Pearson TH (1987) Petersen’s benthic stations revisited. II. Is the Oslofjord and eastern Skagerrak enriched? J Exp Mar Biol Ecol 105:219–251
+Rosenberg R, Elmgren R, Fleischer S, Jonsson P, Persson G, Dahlin H (1990) Introduction—marine eutrophication in Sweden. Ambio 19:102–108
+Rosenberg R, Hellman B, Johansson B (1991) Hypoxic toler-ance of marine benthic fauna. Mar Ecol Prog Ser 79: 127–131
+Ross AH, Gurney WSC, Heath MR, Hay SJ, Henderson EW (1993) A strategic simulation model of a fjord ecosystem. Limnol Oceanogr 38:128–153
+Ross AH, Gurney WSC, Heath MR (1994) A comparative study of the ecosystem dynamics of four fjords. Limnol Oceanogr 39:318–343
+Rossignol-Strick M (1985) A marine anoxic event on the Brit-tany coast, July 1982. J Coast Res 1:11–20
+Rumohr H (1986) Historische Indizien für Eutrophierungser-scheinungen (1875–1939) in der Kieler Bucht (westliche Ostsee). Meeresforschung 31:115–123
+Rumohr H, Schomann H (1992) REMOTS sediment profiles around exploratory drilling rig in the southern North Sea. Mar Ecol Prog Ser 91:303–311
+Rydberg L, Edler L, Floderus S, Granéli W (1990) Interaction between supply of nutrients, primary production, sedi-mentation and oxygen consumption in SE Kattegat. Ambio 19:134–141
+Ryther JH, Dunstan WM (1971) Nitrogen, phosphorus and eutrophication in the coastal marine environment. Science 171:1008–1013
+Sandberg E (1994) Does short-term oxygen depletion affect predator-prey relationships in zoobenthos? Experiments with the isopod Saduria entomon. Mar Ecol Prog Ser 103: 73–80
+Sand-Jensen K, Borum J, Geertz-Hansen O, Jensen JN, Josef-son AB, Riemann B (1994) Resuspension and biological interactions in Roskilde Fjord. Havforskning fra Miljø-styrelsen 51. Danish Environment Protection Agency, Copenhagen (in Danish)
+Santos SL, Simon JL (1980) Response of a soft-bottom benthos to annual catastrophic disturbance in a South Florida estu-ary. Mar Ecol Prog Ser 3:347–355
+Schurmann H, Steffensen JF (1994) Spontaneous swimming activity of Atlantic cod Gadus morhua exposed to graded hypoxia at three temperatures. J Exp Biol 197:129–142
+Seliger H, Boggs JA, Biggley WH (1985) Catastrophic anoxia in the Chesapeake Bay in 1984. Science 228:70–73
+Sfriso A, Marcomini A, Pavoni B (1987) Relationships be-tween macroalgal biomass and nutrient concentrations in a hypertrophic area of the Venice Lagoon. Mar Environ Res 22:297–312
+Sfriso A, Pavoni B, Marcomini A, Orio AA (1988) Annual vari-ations of nutrients in the Lagoon of Venice. Mar Pollut Bull 19:54–60
+Silvert W (1994) Modelling the benthic impacts of organic matter loading. Can Tech Rep Fish Aqua Sci 1949:1–18
+Skeie GM (1987) Heterotrof bakteriell produksjon i sedi-mentet fra Oslofjorden. MSc thesis, University of Oslo (in Norwegian)
+Smayda T (1990) Novel and nuisance phytoplankton blooms in the sea: evidence for a global epidemic. In: Granéli E, Sundström B, Edler L (eds) Toxic marine phytoplankton. Elsevier, New York, p 29–40
+Smetacek V (1980) Annual cycle of sedimentation in relation to plankton ecology in the western Kiel Bight. Ophelia (Suppl) 1:65–76
+Smith SV (1984) Phosphorus versus nitrogen limitation in the marine environment. Limnol Oceanogr 29:1149–1169
+Smith LL, Oseid DM (1974) Effects of hydrogen sulphide on development and survival of eight freshwater species. In: Blaxter JHS (ed) The early life history of fish. Springer-Verlag, New York, p 417–430
+Söderström J (1971) The capacity of coastal waters to use nutrients in Bohuslän, Sweden. Bot Mar 14:39–52
+Spicer JI (1995) Oxygen and acid-base status of the sea urchin Psammechinus miliaris during environmental hypoxia. Mar Biol 124:71–76
+Stachowitsch M (1984) Mass mortality in the Gulf of Trieste: the course of community destruction. PSZN I: Mar Ecol 5:243–264
+Steele JH Baird I (1972) Sedimentation of organic matter in a Scottish sea loch. Mem Ist Ital Idrobiol 29 Dott Marco Marchi (Suppl):73–88
+Steffensen JF (1990) Ilt i vand, og hvor lidt fisk kan tåle. Vand Miljø 7:243–246
+Stickle WB, Kapper MA, Liu LL, Gnaiger E, Wang SY (1989) Metabolic adaptations of several species of crustaceans and molluscs to hypoxia: tolerance and microcalorimetric studies. Biol Bull 177:303–312
+Stoddard A, Walsh JJ (1986) Modelling oxygen depletion in the New York Bight: the water quality impact of a poten-tial increase of waste inputs. In: Wolfe DA, O’Connor TP (eds) Urban Wastes in Coastal Marine Environments, Krieger Publishing Company, Malabar, FL 5:92–102
+Strzyewska K (1978) Baltic herring-catches, biology, re-sources. In: Manowski W (ed) Produktwynosc ekosystemu morza Baltyckiego. Studia i Materialy Oceanologiczne Komitet Badan Morza, Polska Akad Nauk, Wroclaw, p 163–191
+Strzyewska K, Popiel J (1974) Changes in the growth of her-ring in the southern Baltic. Ber Dtsch Wiss Komm Meeres-forsch 23:268–272
+Svane I, Gröndahl F (1988) Epibiosis of Gullmarsfjorden: an underwater stereographical transect analysis in com-parison with the investigations of Gislén in 1926–1929. Ophelia 28:95–110
+Tallqvist M, Sandberg KE, Bonsdorff E (1999) Juvenile floun-der, Platichthys flesus (L.), under hypoxia: effects on toler-ance, ventilation rate and predation efficiency. J Exp Mar Biol Ecol 242:75–93
+Tarazona J, Paredes C, Igreda M (1986) Estructura del macro-bentos en las playas arenosas de la zona de Lima, Perú. Rev Cienc Universidad Nacional Mayor de San Marcos (U.N.M.S.M.) 74:103–116
+Taslakian MJ, Hardy JT (1976) Sewage nutrient enrichment and phytoplankton ecology along the central coast of Lebanon. Mar Biol 38:315–325
+Taylor DL, Eggelstone DB (2000) Effects of hypoxia on an estuarine predator-prey interaction: foraging behaviour and mutual interference in the blue crab Callinectes sapidus and the infaunal clam prey Mya arenaria. Mar Ecol Prog Ser 196:221–237
+ter Braak CJF (1987) CANOCO—a FORTRAN program for canonical community ordination by (partial) (detrended) (canonical) correspondence analysis, principal component analysis and redundancy analysis (version 2.1). Agricul-tural Mathematics Group, Wageningen
+Tett P, Edwards A, Jones K (1986) A model for the growth of shelf sea phytoplankton in summer. Estuar Coast Shelf Sci 23:641–672
+Theede H (1973) Comparative studies on the influence of oxy-gen deficiency and hydrogen sulphide on marine bottom invertebrates. Neth J Sea Res 7:244–252
+278
+Gray et al.: Hypoxia and organic enrichment in coastal environment
+Thomas WH (1971a) On nitrogen deficiency in tropical Pacific oceanic phytoplankton: photosynthetic parameters in poor and rich water. Limnol Oceanogr 15:380–385
+Thomas WH (1971b) Effect of ammonium and nitrate concen-tration on chlorophyll increases in natural tropical Pacific phytoplankton populations. Limnol Oceanogr 15:386–394
+Thurston RVMS, Russo RC, Phillips G (1983) Acute toxicity of ammonia to rainbow trout and fathead minnows. Trans Am Fish Soc 112:705–711
+Tsuji T, Seki H, Hattori A (1973) Results of red tide formation in Tokyo Bay. J Water Pollut Control Fed 46:165–172
+USEPA (United States Environmental Protection Agency) (1986) Quality criteria for water—1986. (EPA 440/5-86-001). USEPA, Washington, DC
+USEPA (United States Environmental Protection Agency) (1989) Ambient water quality criteria for ammonia (saltwater). Misc Rep Ser, USEPA, Washington, DC
+Val AL, Silva MNP, Almeida-Val VMF (1998) Hypoxia adap-tation in fish of the Amazon: a never-ending task. S Afr J Zool 33:107–114
+Valderhaug VA, Gray JS (1984) Constant structure of a macrofaunal community despite a fluctuating food supply in subtidal sediments of Oslofjord, Norway. Mar Biol 82:307–322
+Valiela I (1984) Marine ecological processes. Springer-Verlag, New York
+Valiela I, Teal JM, Volkmann S, Shafer D, Carpenter EC (1978) Nutrient and particulate fluxes in a salt marsh ecosystem: tidal exchanges and inputs by precipitation and groundwater. Limnol Oceanogr 23:798–812
+Vetter RAH, Franke HD, Buchholz F (1999) Habitat-related differences in the response to oxygen deficiencies in Idotea baltic and Idotea emarginata (Isopoda, Crustacea). J Exp Mar Biol Ecol 239:259–272
+Vismann B, Hagerman L (1996) Recovery from hypoxia with and without sulfide in Saduria entoman: oxygen debt, reduced sulfur and anaerobic metabolites. Mar Ecol Prog Ser 143:131–139
+Visser AW, Kamp Nielsen L (1996) The use of models in eutrophication studies. Coast Estuar Stud 52:221–242
+Vistisen B, Vismann B (1997) Tolerance to low oxygen and sulphide in Amphiura filiformis and Ophiura albida (Echinodermata: Ophiuroidea). Mar Biol 128:241–246
+Vollenweider RA (1968) Water Management Research. DAS/CSI, 68.27. OECD, Paris
+Vollenweider RA (1975) Input-output models. With special reference to the phosphorus loading concept in limnology. Schweiz Z Hydrol 37:53–84
+Vollenweider RA (1976) Advances in defining critical loading levels for phosphorus in lake eutrophication. Mem Ist Ital Idrobiol Dott Marco Marchi 33:53–83
+Vollenweider RA, Rinaldi R, Montanari G (1992) Eutrophica-tion, structure and dynamics of a marine coastal system: Results of ten-year monitoring along the Emilia-Romagna coast (Northwest Adriatic Sea). In: Vollenweider RA, Mar-
+chetti R, Viviani R (eds) Marine coastal eutrophication: the response of marine transitional systems to human impact: problems and perspectives for restoration. Proc Int Conf, Bologna, Italy, 21–24 March 1990. Sci Tot Env Suppl 1992: 63–106
+Wajsbrot N, Gasith A, Krom MD, Samocha TM (1990) Effect of dissolved oxygen and the molt stage on the acute toxic-ity of ammonia to juvenile green tiger prawn Penaeus semisulcatus. Environ Toxicol Chem 9:497–504
+Wajsbrot N, Gasith A, Krom MD, Popper DM (1991) Acute toxicity of ammonia to juvenile gilthead seabream Sparus aurata under reduce oxygen levels. Aquaculture 92: 277–288
+Walsh JJ (1975) Utility of systems models: A consideration of some possible feedback loops of the Peruvian upwelling ecosystem. Estuarine Research, Vol. 1: Chemistry, biology, and the estuarine system. Academic Press, New York, NY
+Walsh JJ (1988) On the nature of continental shelves. Acade-mic Press, San Francisco
+Walsh JJ, Prmuzic ET, Whitledge TE (1981) Fate of nutrient enrichment on continental shelves as indicated by the C:N of bottom sediments. In: Nihoul JCJ (ed) Ecohydrody-namics. Elsevier, Amsterdam, p 13–50
+Wang WX, Widdows J (1991) Physiological responses of mus-sel larvae Mytilus edulis to environmental hypoxia and anoxia. Mar Ecol Prog Ser 70:223–236
+Wannamaker CM, Rice JA (2000) Effects of hypoxia and behaviour of selected estuarine organisms form the south-eastern United States. J Exp Mar Biol Ecol 249:145–163
+Wassmann P (1985) Sedimentation of particulate material in Nordåsvannet, a hypertrophic, land-locked fjord in west-ern Norway. Mar Ecol Prog Ser 22:259–271
+Wassmann P (1990) Relationship between primary and export production in the boreal coastal zone of the North Atlantic. Limnol Oceanogr 35:464–471
+Weigelt M (1991) Short- and long-term changes in the benthic community of the deeper parts of Kiel Bay (Western Baltic) due to oxygen depletion and eutrophication. Meeres-forschung 33:197–224
+Weston DP (1990) Quantitative examination of macrobenthic community changes along an organic enrichment gradi-ent. Mar Ecol Prog Ser 61:233–244
+Wrezinski O (1983) Changes in the growth rate of the herring coastal spring spawners in the Gulf of Gdansk. Int Counc Explor Sea Comm Meet J 1–12
+Wu RSS (1982) Periodic defaunation and recovery in a sub-tropical epibenthic community, in relation to organic pol-lution. J Exp Mar Biol Ecol 64:253–269
+Wulff F, Ærtebjerg G, Nicolaus G, Niemi Å, Ciszevski P, Schulz S, Kaiser W (1986) The changing pelagic ecosys-tem of the Baltic Sea. Ophelia (Suppl)4:299–319
+Wulff F, Stigebrandt A, Rahm L (1990) Nutrient dynamics of the Baltic Sea. Ambio 19:126–133
+Zaitsev YP (1992) Recent changes in the tropic structure of the Black Sea. Fish Oceanogr 1:180–189
+279
+Editorial responsibility: Otto Kinne (Editor), Oldendorf/Luhe, Germany
+Submitted: July 27, 2001, Accepted: November 27, 2001 Proofs received from author(s): July 9, 2002

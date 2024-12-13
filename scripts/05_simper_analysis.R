@@ -412,3 +412,157 @@ ggsave("output/simper_temporal_changes.png", simper_plot,
        width = 12, height = 8, dpi = 300)
 
 write.csv(summary_table, "output/simper_summary_table.csv", row.names = FALSE)
+
+# New SIMPER analysis with updated data structure
+# Prepare data for SIMPER analysis
+species_data_new <- merged_data_allt %>% 
+  mutate(Density = Nfm, Year = Artal) %>%
+  select(Year, Density,
+         `Major Group`,
+         `Taxon name`,
+         `Food Source`,
+         Motility,
+         Habit,
+         `Om/Ca/He`,
+         `Food size/type`,
+         FeedMode,
+         `Feeding guild`
+  ) %>%
+  group_by(Year, `Taxon name`) %>%
+  summarise(N = sum(Density), .groups = "drop") %>%
+  pivot_wider(names_from = `Taxon name`, values_from = N, values_fill = 0)
+
+# Inspect the data
+print("First few rows of species_data_new:")
+print(head(species_data_new))
+
+# Look at data for 2016 and 2017 specifically
+print("\nData for 2016 and 2017:")
+print(species_data_new %>% filter(Year %in% c(2016, 2017)))
+
+# Check for non-zero values in each year
+print("\nNumber of non-zero species in each year:")
+species_counts <- species_data_new %>%
+  gather(species, abundance, -Year) %>%
+  group_by(Year) %>%
+  summarise(
+    total_species = n(),
+    non_zero_species = sum(abundance > 0),
+    total_abundance = sum(abundance)
+  )
+print(species_counts)
+
+# Separate environmental and species data
+env_data_new <- data.frame(
+  Year = factor(species_data_new$Year)
+)
+
+# Create species matrix (only numeric columns)
+species_matrix_new <- species_data_new %>% 
+  select(-Year) %>% 
+  as.matrix()
+
+# Perform SIMPER analysis for year-to-year comparisons
+years_new <- sort(unique(as.character(env_data_new$Year)))
+sequential_simper_new <- list()
+
+# Add error checking and debugging for the year pairs
+for(i in 1:(length(years_new)-1)) {
+  # Select data for consecutive years
+  year_pair <- years_new[i:(i+1)]
+  
+  # Debug print statements
+  cat("\nProcessing year pair:", year_pair[1], "-", year_pair[2], "\n")
+  
+  # Get data for each year
+  year1_data <- species_matrix_new[env_data_new$Year == year_pair[1], , drop = FALSE]
+  year2_data <- species_matrix_new[env_data_new$Year == year_pair[2], , drop = FALSE]
+  
+  # Combine data for SIMPER
+  year_data <- rbind(year1_data, year2_data)
+  year_groups <- factor(c(year_pair[1], year_pair[2]))
+  
+  # Check dimensions and data before SIMPER analysis
+  cat("Dimensions of year_data:", dim(year_data)[1], "x", dim(year_data)[2], "\n")
+  cat("Year groups:", paste(year_groups, collapse=", "), "\n")
+  
+  # Find species with non-zero values in either year
+  species_present <- colSums(year_data) > 0
+  
+  if(sum(species_present) > 0) {
+    # Keep only species that are present
+    year_data <- year_data[, species_present, drop = FALSE]
+    cat("Number of species included:", sum(species_present), "\n")
+    
+    # Perform SIMPER analysis
+    comparison_name <- paste(year_pair[1], year_pair[2], sep="_")
+    tryCatch({
+      sequential_simper_new[[comparison_name]] <- simper(year_data, group = year_groups, permutations = 999)
+      cat("Successfully completed SIMPER analysis for", comparison_name, "\n")
+      
+      # Print top contributing species
+      top_species <- summary(sequential_simper_new[[comparison_name]])
+      cat("\nTop contributing species:\n")
+      print(head(top_species))
+      
+    }, error = function(e) {
+      cat("Error in SIMPER analysis for", comparison_name, ":", conditionMessage(e), "\n")
+    })
+  } else {
+    cat("No species with non-zero values found between years", year_pair[1], "and", year_pair[2], "\n")
+  }
+}
+
+# Modified visualization code to work with the original data
+viz_data_new <- merged_data_allt %>%
+  filter(Artal %in% years_new) %>%
+  group_by(Artal, `Taxon name`, `Major Group`, `Feeding guild`) %>%
+  summarise(Density = sum(Nfm), .groups = 'drop') %>%
+  rename(Year = Artal)
+
+# Get the species that contributed to SIMPER analysis
+contributing_species <- unique(unlist(lapply(sequential_simper_new, function(x) {
+  if(!is.null(x)) {
+    # Get species that contribute to 70% cumulative dissimilarity
+    summary_data <- summary(x)
+    species_contrib <- rownames(summary_data)[summary_data$cumsum <= 70]
+    return(species_contrib)
+  }
+  return(NULL)
+})))
+
+# Filter visualization data for contributing species
+if(length(contributing_species) > 0) {
+  viz_data_new <- viz_data_new %>%
+    filter(`Taxon name` %in% contributing_species)
+}
+
+# Create enhanced SIMPER visualization
+if(nrow(viz_data_new) > 0) {
+  simper_plot_new <- ggplot(viz_data_new %>% 
+                             group_by(`Taxon name`) %>%
+                             filter(sum(Density) > 0), 
+                           aes(x = Year, y = Density, fill = `Feeding guild`)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    facet_wrap(~`Taxon name`, scales = "free_y") +
+    scale_fill_brewer(palette = "Set3", name = "Feeding Guild") +
+    theme_bw() +
+    labs(
+      x = "Year",
+      y = expression(paste("Density (individuals/m"^2, ")")),
+      title = "Temporal changes in species density with feeding guilds",
+      subtitle = "Species contributing to dissimilarity between years"
+    ) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "italic"),
+      legend.position = "bottom"
+    )
+  
+  # Save the new visualization
+  ggsave("output/simper_temporal_changes_ecological.png", simper_plot_new, 
+         width = 14, height = 10, dpi = 300)
+} else {
+  warning("No data available for visualization after SIMPER analysis")
+}

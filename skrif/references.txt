@@ -1,0 +1,107 @@
+References 
+
+Aloisairi, Y., Al-Ragum, A., & Al-Houti, D. (2021) Environmental mechanisms associated with fish kill in a semi-enclosed water body: An integrated numerical modeling approach. Ecotoxicology and Environmental Safety 217: 112238. 
+
+Belley, R., Archambault, P., Sundby, B., Gilbert, F., & Gagnon, J.-M. l.  (2010) Effects of hypoxia on benthic macrofauna and bioturbation in the Estuary and Gulf of St. Lawrence, Canada. Continental Shelf Research 30:  1302–1313. 
+
+Borja, Á., Dauer, D. M., Elliott, M., & Simenstad, C. A. (2010). Medium-and long-term recovery of estuarine and coastal ecosystems: patterns, rates and restoration effectiveness. Estuaries and Coasts, 33(6), 1249-1260. 
+
+Borja, A., Franco, J., & Pérez, V. (2000). A marine biotic index to establish the ecological quality of soft-bottom benthos within European estuarine and coastal environments. Marine Pollution Bulletin, 40(12), 1100-1114. 
+
+Borja, Á., Josefson, A. B., Miles, A., Muxika, I., Olsgard, F., Phillips, G., ... & Rygg, B. (2007). An approach to the intercalibration of benthic ecological status assessment in the North Atlantic ecoregion, according to the European Water Framework Directive. Marine Pollution Bulletin, 55(1-6), 42-52. 
+
+Caswell, B.A., & Frid, C. L. J. (2017) Marine ecosystem resilience during extreme deoxygenation: the Early Jurassic oceanic anoxic event. Oecologia 183: 275–290. DOI 10.1007/s00442-016-3747-6 
+
+Chamberlain S, Vanhoorne. B (2023). _worrms: World Register of Marine Species (WoRMS) Client_. https://docs.ropensci.org/worrms/, https://github.com/ropensci/worrms (devel), https://taxize.dev (user manual). 
+
+Como, S., & Magni, P. (2009) Temporal changes of a macrobenthic assemblage in harsh lagoon sediments. Estuarine, Coastal and Shelf Science 83: 638–646.  
+
+Cordier, T., Barrenechea, I., Apothéloz-Perret-Gentil, L., & Pawlowski, J. (2021). BBI: an R package for the computation of Benthic Biotic Indices from composition data. Metabarcoding and Metagenomics, 5, e58738. 
+
+Cribari-Neto F, Zeileis A (2010). “Beta Regression in R.” _Journal of Statistical Software_, *34*(2), 1-24. doi:10.18637/jss.v034.i02 <https://doi.org/10.18637/jss.v034.i02>.  
+
+Diaz, R. J., & Rosenberg, R. (2008). Spreading dead zones and consequences for marine ecosystems. Science, 321(5891), 926-929.  
+
+Diaz, R. J., & Rosenberg, R. (2011). Introduction to environmental and economic consequences of hypoxia. Water Resources Development, 27, 71-82. 
+
+Díaz-Asencio, L., Helguera, Y., Fernández-Garcés, R., Gómez-Batista, M., Rosell, G., Hernández, Y, Pulido, A., & Armenteros, A. (2015). Revista Biología Tropical 64: 177-188.  
+
+Direktoratsgruppen vanndirektivet. (2018). Veileder 02:2018 Klassifisering av miljøtilstand i vann. 
+
+Fallesen, G., Andersen, F., & Larsen, B. (2000). Life, death and revival of the hypertrophic Mariager Fjord, Denmark. Journal of Marine Systems 25: 313-321. 
+
+Gamenick, I., Vismann, B., Griehaber, M. K., & Giere, O. (1998). Ecophysiological differentiation of Capitella capitata (Polychaeta). Sibling species from different sulfidic habitats. Mar. Ecol. Prog. Ser., 175, 155-166. 
+
+Ghanavati Asl, A. ., Bagher Nabavi, S. M. ., Mohammadi Rouzbahani, M., Sabz Alipour, S. ., & Masood Monavari, S. . (2022). Ecological quality status of stressed coastal benthic ecosystems in Nayband Bay from the northern Persian Gulf, Iran using AMBI, M-AMBI, Bentix, and H´ indices. Journal of Wildlife and Biodiversity, 8(1), 279–297. https://doi.org/10.5281/zenodo.7076047  
+
+Hansen, B. W., Stenalt, E., Petersen, J. K., & Ellegaard, C. (2002) Invertebrate re-colonization in Mariager Fjord (Denmark) after severe hypoxia. I. Zooplankton and settlement. Ophelia 56: 197-213. 
+
+Heiri, O., Lotter, A. F., & Lemcke, G. (2001) Loss on ignition as a method for estimating organic and carbonate content in sediments: reproducibility and comparability of results. Journal of Paleolimnology 25: 101-110. 
+
+Ingólfsson, A. 1999. Rannsóknir á lífríki í Kolgrafafirði. Fuglar, fjörur, og sjávarbotn. [Research of biota in Kolgrafarfjörður. Birds, beaches and benthos] Institute of Biology, University of Iceland, report nr. 47 (In Icelandic). 
+
+Jones HP, Schmitz OJ (2009) Rapid Recovery of Damaged Ecosystems. PLoS ONE 4(5): e5653. https://doi.org/10.1371/journal.pone.0005653 
+
+Jónsson, S., et al. (2019). Water exchange, circulation and oxygen in a small fjord in Iceland in relation to events of massive herring mortality. Regional Studies in Marine Science 32. 
+
+Josefson, A. B., & Widbom, B. (1988) Differential response of benthic macrofauna and meiofauna to hypoxia in the Gullmar Fjord basin. Marine Biology 100, 31-40. 
+
+Komendić, I., de Moura Neves, B., Ramey‑Balci, P.A. 2024. What has Changed in 20 Years? Structure and Function of Soft-sediment Macrofauna in a Subarctic Embayment, Newfoundland (Canada). Estuaries and Coasts 47:1598–1616.  
+
+https://doi.org/10.1007/s12237-024-01377-0  
+
+La, V. T. and S. J. Cooke (2011). "Advancing the Science and Practice of Fish Kill Investigations." Reviews in Fisheries Science 19(1): 21-33. 
+
+Le Moal, M., et al. (2019). "Eutrophication: A new wine in an old bottle?" Science of the Total Environment 651: 1-11. 
+
+Leon-Morales, R., & Vargas, J. A. (1998) Macroinfauna of a tropical fjord-like embayment: Golfo Dulce, Costa Rica. Revista Biología Tropical 46 Suppl 6: 81-90. 
+
+Levin, L. A., Ekau, W., Gooday, A. J., Jorissen, F., Middelburg, J. J., Naqvi, S. W. A., Neira, C., Rabalais, N. N., & Zhang, J. (2009) Effects of natural and human-induced hypoxia on coastal benthos. Biogeosciences, 6, 2063–2098. 
+
+Liu K, Gao W, Yu Z, Hu Y, Zuo M, Sun C, Zou X and Wang L (2024) The effect of Sesuvium portulacastrum for reducing inorganic nitrogen pollution in coastal mariculture wetland. Front. Mar. Sci. 11:1460272. doi: 10.3389/fmars.2024.1460272   
+
+Malone, T. C. and A. Newton (2020). "The Globalization of Cultural Eutrophication in the Coastal Ocean: Causes and Consequences." Frontiers in Marine Science 7. 
+
+Mannvit 2011. Sjávarfallamælingar í Kolgrafafirði og Dýrafirði. A report for The Icelandic Road and Coastal Administration (IRCA). 7 pp. [In Icelandic]. 
+
+Micaroni, V., McAllen, R., Turner, J., Strano, F., Morrow, C., Picton, B., Harman, L., Bell, J.J. (2021). Vulnerability of Temperate Mesophotic Ecosystems (TMEs) to environmental impacts: Rapid ecosystemchanges at Lough Hyne Marine Nature Reserve, Ireland. Science of the total environment 789: 147708 
+
+Nilsson, H. C., & Rosenberg, R. (2000) Succession in marine benthic habitats and fauna in response to oxygen deficiency: analysed by sediment profile-imaging and by grab samples. Marine Ecology Progress Series 197: 139-149. 
+
+Oksanen J, Simpson G, Blanchet F, Kindt R, Legendre P, Minchin P, O'Hara R, Solymos P, Stevens M, Szoecs E, Wagner H, Barbour M, Bedward M, Bolker B, Borcard D, Carvalho G, Chirico M, De Caceres M, Durand S, Evangelista H, FitzJohn R, Friendly M, Furneaux B, Hannigan G, Hill M, Lahti L, McGlinn D, Ouellette M, Ribeiro Cunha E, Smith T, Stier A, Ter Braak C, Weedon J (2024). _vegan: Community Ecology Package_. R package version 2.6-8, <https://github.com/vegandevs/vegan>. 
+
+Oug, E., Lein, T. E., Küfner, R. og Falk-Petersen, I. B. (1991) Environmental effects of a herring mass mortality in northern Norway. Impact on and recovery of rockyshore and soft-bottom biotas. Sarsia, 76(3):195-207. 
+
+Óskarsson, G. J., Guðmundsdóttir, Á., & Sigurðsson, T. (2009) Variation in spatial distribution and migration of Icelandic summer-spawning herring. ICES Journal of Marine Science: Journal du Conseil, 66(8):1762-1767. 
+
+Óskarsson, G. J., Ólafsdóttir, S. R., Sigurðsson Þ., & Valdimarsson, H. (2018) Observation and quantification of two incidents of mass fish kill of Icelandic summer spawning herring Clupea harengus) in the winter 2012/2013 Fisheries Oceanography, 27: 302–311. 
+
+Pétursson, GS, Sveinn Óli Pálmarsson, Helgi Gunnar Gunnarsson (2015). Kolgrafarfjörður. Rannsókn á umhverfisaðstæðum og súrefnisbúskap við síldargöngur. Skýrsla nr. 15.11 unnin fyrir Vegagerðina. Verkfræðistofan Vatnaskil. 276 bls. (In Icelandic) 
+
+Raman, A. V., Damodaran, R., Levin, L. A., Ganesh, T., Rao, Y. K. V., Nanduri, S. & Madhusoodhanan, S. (2015) Macrobenthos relative to the oxygen minimum zone on the East Indian margin, Bay of Bengal. Marine Ecology 36 (2015) 679–700.  
+
+Rabalais,N.N.,Turner,R.E.(Eds.), 2001 Coastal hypoxia: consequences for Living Resources and Ecosystems. American Geophysical Union,Washington,pp.211–240.  
+
+Rabalais, N. N., Diaz, R. J., Levin, L. A., Turner, R. E., Gilbert, D., & Zhang, J. (2010). Dynamics and distribution of natural and human-caused hypoxia. Biogeosciences, 7, 585-619. 
+
+R Core Team (2023). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. 
+
+Rygg, B. (2006). Developing indices for quality-status classification of marine soft-bottom fauna in Norway. NIVA report, 5208, 32. 
+
+Shannon, C. E. (1948). A mathematical theory of communication. The Bell System Technical Journal, 27(3), 379-423. 
+
+Silva CF, Seixas VC, Barroso R, Di Domenico M, Amaral ACZ, Paiva PC (2017) Demystifying the Capitella capitata complex (Annelida, Capitellidae) diversity by morphological and molecular data along the Brazilian coast. PLoS ONE 12(5): e0177760. https://doi.org/10.1371/journal.pone.0177760  
+
+Stefánsson, R.A., & von Schmalensee, M. (2013). Síld og fuglar í Kolgrafafirði. [Herring and birdlife in Kolgrafarfjörður] Fuglar 9: 36-43. (In Icelandic) 
+
+Sigurðsson, V. (2015). Áhrif lífrænnar mengunar á lífríki sjávarbotns í Breiðafirði. M.S. ritgerð við Líf- og umhverfisvísindadeild Háskóla Íslands. 63 bls. http://hdl.handle.net/1946/21894. 
+
+Wijnhoven, S., Escarvage, V., Daemen, E., & Hummel, H. (2010) The Decline and Restoration of a Coastal Lagoon (Lake Veere) in the Dutch Delta. Estuaries and Coasts (2010) 33: 1261–1278. 
+
+Vaquer-Sunyer, R., & Duarte, C. M. (2008) Thresholds of hypoxia for marine biodiversity. PNAS 105: 15452–15457. 
+
+Zhang, J., Gilbert, D., Gooday, A. J., Levin, L. A., Naqvi, S. W. A., Middelburg, J. J., Scranton, M., Ekau, W., Peña, A., Dewitte, B., Oguz, T., Monteiro, P. M. S., Urban, E. R., Rabalais, N. N., Ittekkot, V., Kemp, W. M., Ulloa, O., Elmgren, R., Escobar-Briones, E., & Van der Plas, A. K. (2010). Natural and human induced hypoxia and consequences for coastal areas: synthesis and future development. Biogeosciences, 7, 1443-1467. 
+
+Ærtebjerg, G., Andersen, J. H., & Hansen, O. S. (2003). Nutrients and eutrophication in Danish marine waters. Report, Danish Environmental Protection Agency & National Environmental Research Institute. 66 pages  
+
+Yoshino, K., Hamada, T., Yamamoto, K., Hayami, Y., Yamaguch, S., & Ohgushi, K. (2010) Effects of hypoxia and organic enrichment on estuarine macrofauna in the inner part of Ariake Bay. Hydrobiologia (2010) 652:23–38. 

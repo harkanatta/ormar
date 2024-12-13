@@ -1,0 +1,771 @@
+The Decline and Restoration of a Coastal Lagoon (Lake Veere) in the Dutch Delta
+Sander Wijnhoven & Vincent Escaravage &
+Eugène Daemen & Herman Hummel
+Received: 17 June 2009 /Revised: 6 October 2009 /Accepted: 18 October 2009 /Published online: 26 November 2009 # The Author(s) 2009. This article is published with open access at Springerlink.com
+Abstract The former tidal inlet Lake Veere was turned into a stagnant brackish lake in 1961. Ever since, the system has shown a continuous degradation. The current study shows the monitoring results for the macrozoobenthic communi-ties and the abiotic conditions for the period 1990–2008. This includes the first step to remediation, the restoration of the exchange between the tidal marine Eastern Scheldt and Lake Veere in 2004. A continuous decline in water clearance co-occurring with decreasing macrofauna densi-ties and richness was observed till 2004. Water quality (e.g., secchi depth, nutrient levels, and oxygen conditions) improved significantly after the measure at a higher salinity level with less variation. But the macrofauna densities, biomass, and diversity did not improve yet. First indications of changes in the benthic communities by arrival of new and returning species are however observed and show that restoration at macrofauna level follows the improved abiotic conditions with a delay of several years.
+Keywords Macrofauna indicators . Benthic communities .
+Water quality . Restoration . Confinement .
+Oxygen conditions
+Introduction
+The Dutch Delta Plan, a response to the disastrous 1953’s flooding, resulted in the complete “reconstruction” of the Rhine–Meuse–Scheldt delta (South-western Netherlands) with a reduction of the coast line with no less than 700 km. The reconstruction reshaped former tidal marine and estuarine areas into semi- and fully stagnant basins. Some basins became freshwaters, whereas others became brackish or salt water lakes. Lake Veere, a small inlet in the center of the Dutch delta area (Fig. 1), was the first inlet to be closed and was turned into a stagnant brackish lake with the closing of the Veerse Gatdam in 1961 (Table 1). Herewith the system which used to have free communication with the North Sea was changed into a lake with limited exchange of water with the Eastern Scheldt that was transformed into a tidal marine bay. Initially Lake Veere as all other inlets in the area was planned to become a freshwater lake. With the decision in 1976 to build a storm surge barrier (designed to remain open except by extreme weather conditions) instead of a dyke in the mouth of the Eastern Scheldt (Nienhuis and Smaal 1994), Lake Veere was kept brackish. The water level in the lake was however artificially remained at an unnatural level of −0.70 m NAP (Amsterdam Ordnance Datum) in winter and around NAP between April to September (Coosen et al. 1990). The winter regime was intended to increase the drainage capacity of Lake Veere for superfluous (rain) water from the surrounding polders. The summer regime that was managed with the introduction of sea water from the Eastern Scheldt was designed to sustain the recreational function (e.g., bathing and sailing) of the lake.
+The bottom structure of Lake Veere reflects its estuarine past with a gradient from sandy to more silty bottoms from west to east (Coosen et al. 1990). Further, as indicated in
+S. Wijnhoven (*) :V. Escaravage :H. Hummel Monitor Taskforce, Netherlands Institute of Ecology, Centre for Estuarine and Marine Ecology (NIOO-CEME), Korringaweg 7, P. O. Box 140, 4401 NT( Yerseke, The Netherlands e-mail: s.wijnhoven@nioo.knaw.nl
+E. Daemen Ministry of Transport, Public Works and Water Management, RWS Directorate Zeeland, Poelendaelesingel 18, P. O. Box 5014, 4330 KA( Middelburg, The Netherlands
+Estuaries and Coasts (2010) 33:1261–1278 DOI 10.1007/s12237-009-9233-1
+Fig. 1, in the eastern part of the lake, the proportional area of shallow waters is larger than in the western part of the lake, where particularly deeper gullies are more abundant. Within the eastern part, 29%, 33%, and 38%, and in the
+western part, 61%, 17%, and 22% of the area consists of, respectively, the 0–2, 2–6, and >6 m strata.
+After the closure of the Veerse Gatdam, the salinity sharply dropped from almost 29 to 18 (Coosen et al. 1990).
+Table 1 Historic overview of important events and changes related to Lake Veere
+Date Activity
+Feb 1953 Flooding disaster south-western Netherlands (approx. 1,800 casualties)
+1955 Finalization “Delta plan” to protect the Dutch coast by compartmentalization and the building of dams and sluices; the Veerse Gat inlet should become the freshwater Lake Veere
+1960 Construction of Zandkreekdam
+1961 Construction of Veerse Gatdam
+1976 Change of Delta plan; as the Eastern Scheldt will remain a tidal salt water basin, Lake Veere will remain a brackish lake
+1989 Decision to (re-)connect Lake Veere to the Eastern Scheldt and chance the current water level regime with winter (Oct–Mar) level of −0.7 m NAP and summer (Apr–Sep) level of NAP
+2002 Start of building “Katse Heule” (2 closable tubes through the Zandkreekdam)
+June 8, 2004 Opening of Katse Heule; water level winter of −0.6 m NAP and summer of −0.1 m NAP (fluctuation range of 0.2 m)
+July 9, 2004 Katse Heule closed for adjustment works
+August 4, 2004 Katse Heule partly re-opened
+November 6, 2005 Katse Heule closed during the day for restoration of the streambed
+December 16, 2005 Katse Heule partly opened
+January 24, 2006 Katse Heule completely opened
+Oct 2008 Winter water level adjusted to −0.5 m NAP
+Planning 2009 Adjusting summer water level to −0.05 m NAP and winter water level to −0.4 m NAP
+Planning 2010 Adjusting winter water level to −0.3 m NAP
+After Prinsen et al. (2005) and Craeymeersch and De Vries (2007)
+NAP Amsterdam Ordnance Datum
+0 5 10 15 20
+25
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 Station
+D ep
+th (
+m )
+Eastern ScheldtNorth Sea
+Zandkreekdam + ‘Katse Heule’
+Veerse Gatdam
+The Netherlands
+Belgium 50 km
+Lake Veere
+Stormsurge barrier
+5 km
+‘Soelekerkepolder Oost’
+Station abiotics Depth strata
+above NAP
+0-2 m
+2-6 m
+>6 m
+1 2
+3
+4 5
+6 7
+8
+9
+10
+11 12
+13 14
+15
+16
+17 18
+19 20
+Lake Veere West
+East
+51˚36’00 N
+51˚31’00 N
+3˚ 38
+’0 0
+E
+3˚ 53
+’0 0
+E
+D ep
+th (
+m )
+3˚ 38
+’0 0
+E
+3˚ 53
+’0 0
+E
+D ep
+th (
+m )
+D ep
+th (
+m )
+3˚ 38
+’0 0
+E
+3˚ 53
+’0 0
+E
+Fig. 1 Lake Veere in the Netherlands and the positioning of stations for abiotic measurements. The dashed lines in the map indicate the borders of the for macrozoobenthos sampled western and eastern part of the lake.
+The graph indicates the depth in meters at the stations, which are situated in the main gully of the lake. Stations 18, 19, and 20 are situated outside Lake Veere in the Eastern Scheldt as indicated with a dashed line
+1262 Estuaries and Coasts (2010) 33:1261–1278
+During the 1970s and 1980s Lake Veere evolved into a eutrophied brackish lake with a salinity varying between the 14.4 and 21.7 (Seys and Meire 1988), which is largely a difference in, respectively, winter and summer salinity. Besides its functions as drainage basin and recreational area, Lake Veere also had an important nature function among others as a resting and foraging ground for water birds particularly in winter (Coosen et al. 1990; Prinsen et al. 2005).
+After a sharp decline in the number of macrozoobenthic species in the lake as a possible effect of the drop in salinity just after the closure, the number of species gradually increased during the late 1960s, 1970s, and 1980s (Coosen et al. 1990). In the mean time eutrophication gradually intensified as indicated by a dramatic decrease in water transparency (Prinsen et al. 2005) and the recurrent occurrence of anoxic conditions at the bottom (Coosen et al. 1990; Craeymeersch and De Vries 2007). Concurrently the areal of seagrass Zostera marina strongly decreased to the profit of macroalgae (predominantly Ulva lactuca; Craeymeersch and De Vries 2007) and of massive phytoplankton blooms. These developments resulted in an impoverishment of the macrozoobenthic communities with a dramatic decline in macrofauna densities, biomass, and diversity (Escaravage and Hummel 2003; Craeymeersch and De Vries 2007).
+The observed developments are also partly due to the installed artificial water level regime. Bank vegetation failed to develop at the unnatural high water level in summer, whereas such vegetation might reduce nutrient availability and therefore the occurrence of algal blooms. Therefore, more bank vegetation might have led indirectly to improved water transparency. An unnaturally low water level maintained in winter caused benthic macrofauna mortality in the shallow parts. These shallow parts are under natural conditions, the most important foraging grounds for waterfowl (Prinsen et al. 2005).
+The deterioration of the lake ecosystem has led to the decision in 1989 to reconnect Lake Veere to the Eastern Scheldt to reintroduce tidal dynamics of about 0.12 m and therefore to improve the water quality in the lake (Table 1). The communication with the Eastern Scheldt was restored in 2004 with the building of a water gate (the “Katse Heule”) through the closing dam on the eastern reach of the lake. The NIOO-CEME makes records of the macrobenthic communities of the soft substrates in Lake Veere in spring and autumn since 1990 following a standardized monitor-ing program. The current study investigates the effects of the restoration measure on the water quality and on the macrobenthic communities based on the records over the 1990–2008 period. This study gives an overview of the differences observed between both periods before and after the restoration measure. Hypotheses are made about
+the effect of water exchange on the ecosystem functioning of lagoons and the possible use of it for ecosystem management in lagoon systems.
+Materials and Methods
+Monitoring Benthic Communities
+As part of the MWTL (Dutch Water systems Monitoring Program), the NIOO-CEME monitors the macrozoobenthic communities of Lake Veere since 1990. Sampling takes place in two areas of the lake, further called the western part of Lake Veere (indicated in Fig. 1 between the Veerse Gatdam and station 10) and the eastern part of Lake Veere (between station 15 and the Zandkreekdam). Each year in spring (April/May) and autumn (September/October), 30 samples are taken in each of the two areas, at which the samples are equally distributed over three depth strata (0–2, 2–6, and >6 m), with the exception of the year 1990 in which an extra 30 samples were taken in the same way in the western part. From the onset of the monitoring till the end of 1994, macrobenthos samples were taken randomly within each area × stratum combination. Since 1995 samples are always taken at fixed locations.
+Samples from the 0–2 m stratum are taken from a small boat using a “flushing sampler” with which sediment is sucked up over a 0.020-m2 area and 30-cm depth and is sieved over a 1-mm mesh. Samples from larger water depths are taken with a Reineck box-corer from a research vessel. From the box-core a core of 0.015 m2 to an approximate depth of 30 cm is taken and sieved over a 1-mm mesh. The residues from both sampling techniques are conserved in pH-neutralized formalin and taken to the laboratory for analyses. In the laboratory, the samples are stained with Bengal Rose, after which the species are identified, specimens are counted, lengths are measured, and ash-free dry weights (ADW) are estimated after drying for 2 days at 80°C and incineration for 2 h at 570°C. The ADW is the weight difference before and after incineration. Alternatively length–weight regressions that are obtained when possible from the same species, area, and season are used to determine the ADW.
+Abiotic Parameters
+For the abiotic conditions in Lake Veere, monitoring data collected at Soelekerkepolder Oost (center of the lake, Fig. 1) made available (http://www.waterbase.nl) by the Directorate General “Rijkswaterstaat” (RWS) of the Ministry of Trans-port, Public Works and Water Management, are used. Data used in this study are (monthly and during summer twice a month) measurements of salinity, secchi depth (in dm),
+Estuaries and Coasts (2010) 33:1261–1278 1263
+dissolved nitrogen levels (in mg N/l), and dissolved phosphate levels (in mg P/l) taken between January 1988 and June 2008. As benthic macrofauna is particularly exposed to bottom salinities and those can differ from the surface values, also the salinity and oxygen (mg O2/l) conditions measured at 17 stations in Lake Veere and three stations in the Eastern Scheldt just east of the Katse Heule (Fig. 1), were used. These measurements are originating from a CTD recorder, further called the temperature– salinity–oxygen (TSO) monitoring data, monthly taken as depth profile measurements from January 1995 to July 2008. The TSO data were kindly made available by the Hydro Meteo Centre (Meetadviesdienst) of the RWS Directorate Zeeland. Measurements taken at the stations 18, 19, and 20 (just outside Lake Veere in the Eastern Scheldt) were only available from September 2000 onward. Oxygen conditions at the bottom of the lake are described by the ratio of either hypoxic or anoxic days over the total year days, respectively, Rhypox and Ranox, at which hypoxia is defined as an oxygen content below 3 mg/l and anoxia as an oxygen content below 0.5 mg/l.
+Data Analyses and Statistics
+All macrobenthic data (taxonomy, density, and biomass) are stored in the Benthos Information System database (BIS) that is owned by the Monitor Taskforce. Data extracted from BIS are aggregated within Microsoft Office Access 2003 and exported to Microsoft Office Excel 2003 for basic calculations. Statistical analyses (ANOVAs and trend analyses) are executed in Systat 11 for Windows. Calcu-lations of the macrofauna indicators Margalef richness (d) and Pielou evenness (J′) based on observed densities are executed in Primer 5.2.8 for Windows, at which d=(S−1)/ ln(n) and J′=(−sum(pi×(pi)))/ln(S) for which S is the number of species per m2, n is the number of specimens per m2, and pi is the proportion of the ith species in the total number. The proportional occurrence of, respectively, hypoxic (O2<3 mg/l) and anoxic (O2<0.5 mg/l) conditions (Coosen et al. 1990) are graphically interpolated from a line graph of oxygen concentrations over time as the periods of time when concentrations lie below the above mentioned limits. For statistical reasons we divided the research period in three to make comparison of biotic and abiotic indicators/parameters of the period before and after the change in management possible. We therefore distinguished a similar time span before the opening of the Katse Heule in June 2004 (period 2) as the period for which we have data after the opening (period 3). This leaves a longer period between either January 1988 (abiotics) or autumn 1990 (biotics) and July 2000/autumn 2000 as period 1.
+Macrozoobenthos monitoring data are also analyzed over the research period with respect to disappearing,
+reappearing, and newly observed species. Species are consid-ered to have disappeared when they are absent for at least three sequential years after that they have been frequently found. Species are considered to have reappeared when they are present for at least 2 years after they have been absent for at least three sequential years. Species are considered new when they have never been observed before and are found at least in 2 years. Species reappearing or new during the last year of observation (2007) are also considered although there is a risk that some of them will not be found in the future. The years 2005–2007 however teach us that species only observed during a single year are rare during that period. For this analysis the monitoring data from autumn 1990 and spring and autumn 1991 are used as the initial set of species. Species that are only occasionally found in low numbers every once in a while (there are several gaps of 2 or 3 years in the observations) are not taken into account for this study.
+The lists of disappearing, reappearing, and new species compiled during the period 2004–2007 (after the re-opening of the lake) are completed with the decreasing and increasing species during this period to form the lists of “losing species” and “profiting species.” Significant changes in trend after 2003 by species that have been present throughout 1990–2003 might be a response to the re-opening of the lake. The significance level of the changes is tested by comparing the linear regression models based on proportional occurrences per year for the periods 1990–2003 and 2004–2007 using co-variance analysis at general linear models in Systat 11 for Windows.
+All possible differences are considered significant at p<0.05 (*), but also significance levels p<0.01 (**) and p<0.001 (***) are indicated in certain graphs and tables.
+Results
+Developments in Water Quality
+During the years before the opening of the Katse Heule, Lake Veere can be considered a brackish lake with an average salinity of 17.8±3.2 in the surface water in the center of the lake during the period January 1988 to July 2000 and a salinity of 15.2±2.5 during the next 4 years (Fig. 2a; Table 2). These are meso- to polyhaline conditions. After the restoration measure had been taken, salinity sharply increased to 26.5±2.2 on average, which is still polyhaline, but is approaching a marine (euhaline) environment. Where the secchi depth used to be almost 3 m, the water transparency significantly decreased to less than 1 m the last years before the measure was taken (Fig. 2b) and significantly increased again thereafter (Table 2). Both levels of dissolved nitrogen and phosphate have been found to be relatively stable throughout the
+1264 Estuaries and Coasts (2010) 33:1261–1278
+period 1988–2004 and dropped significantly after the re-opening (Table 2).
+The average salinity at the bottom of the 17 stations in Lake Veere became significantly higher after the re-opening of the lake (Fig. 3; Table 3) where in general the salinity used to be slightly higher at the bottom of the lake than at the surface. Also the salinity variation as measured by the standard deviation at each station has significantly changed
+since the opening of the Katse Heule with values that are less than half of what they used to be. Salinities generally do not differ between the first two periods, except for station 2 (p<0.001), stations 3 and 4 (p < 0.01), and stations 7, 9, and 15 (p<0.05; Fig. 3). The salinity variance only differs between the first two periods at the stations 16 and 17 (p<0.001) and station 1 (p<0.05). At stations 18 to 20, where only the two last periods can be compared, the
+Table 2 Comparison of the abiotic conditions during the periods January 1988 to July 2000, July 2000 to July 2004, and July 2004 to July 2008, in the surface water as measured at station “Soelekerkepolder Oost” in the center of Lake Veere
+Period Salinity Secchi (dm) N (mg/l) PO4 (mg P/l)
+1: Jan 1988–Jul 2000 17.8±3.2 27.9±10.2 1.66±1.05 0.405±0.137
+2: Jul 2000–Jul 2004 15.2±2.5 12.0±7.4 1.65±0.85 0.385±0.125
+3: Jul 2004–Jul 2008 26.5±2.2 21.8±9.3 0.96±0.65 0.144±0.058
+Significance testing (ANOVA)
+Salinity R2=0.670 n=361 df=2 p=0.000 1>2*** 1<3*** 2<3***
+Secchi R2=0.314 n=361 df=2 p=0.000 1>2*** 1>3*** 2<3***
+Nitrogen R2=0.109 n=253 df=2 p=0.000 1>2 ns 1>3*** 2>3***
+Phosphate R2=0.409 n=350 df=2 p=0.000 1>2 ns 1>3*** 2>3***
+Average values ± standard deviations are given per period. Results of ANOVAs and pair-wise significance testing for the three periods (1, 2, and 3) are shown
+ns not significant
+***p<0.001
+0
+7
+14
+21
+28
+35
+S al
+in it
+y
+a) b)
+0
+15
+30
+45
+60
+75
+Ja n-
+88
+Ja n-
+90
+Ja n-
+92
+Ja n-
+94
+Ja n-
+96
+Ja n-
+98
+Ja n-
+00
+Ja n-
+02
+Ja n-
+04
+Ja n-
+06
+Ja n-
+08
+Ja n-
+88
+Ja n-
+90
+Ja n-
+92
+Ja n-
+94
+Ja n-
+96
+Ja n-
+98
+Ja n-
+00
+Ja n-
+02
+Ja n-
+04
+Ja n-
+06
+Ja n-
+08
+Ja n-
+88
+Ja n-
+90
+Ja n-
+92
+Ja n-
+94
+Ja n-
+96
+Ja n-
+98
+Ja n-
+00
+Ja n-
+02
+Ja n-
+04
+Ja n-
+06
+Ja n-
+08
+Ja n-
+88
+Ja n-
+90
+Ja n-
+92
+Ja n-
+94
+Ja n-
+96
+Ja n-
+98
+Ja n-
+00
+Ja n-
+02
+Ja n-
+04
+Ja n-
+06
+Ja n-
+08
+S ec
+ch i (
+d m
+)
+c)
+0
+1
+2
+3
+4
+5
+N it
+ro g
+en (
+m g
+N /l)
+d)
+0
+0.2
+0.4
+0.6
+0.8
+1
+P h
+o sp
+h at
+e (m
+g P
+/l) Fig. 2 Developments in the abiotic characteristics salinity (a), secchi depth in dm (b), nitrogen as mg N/l (c), and phosphate as mg P/l (d) of Lake Veere between January 1988 and June 2008 as measured in the surface water of the station “Soelekerkepolder Oost” in the center
+of the lake. The opening of the Katse Heule connection between the Eastern Scheldt and Lake Veere on June 8, 2004 is indicated with a dashed line
+Estuaries and Coasts (2010) 33:1261–1278 1265
+only significant difference is found in average salinity at station 20 (p<0.01). Figure 3 shows that whereas only at the stations 16 and 17 the bottom salinities were close to the salinity in the Eastern Scheldt before the measure, salinities are now almost the same in Lake Veere and the Eastern Scheldt but with a slight decreasing gradient from east to west. Salinity differences between stations for certain periods further largely follow the depth profile (Fig. 1) with the highest salinities at the deepest stations.
+The relative periods of hypoxia (O2<3 mg/l) or anoxia (O2<0.5 mg/l) is indicated, showing that especially several particularly deeper stations in the eastern half of the lake suffered hypoxia for more than half of the year and anoxia for over one fourth of the time before the restoration measure (Fig. 4). Particularly the last 4 years before the measure showed poor oxygen conditions that significantly improved after the opening of the Katse Heule (Table 4). The average period of hypoxia for Lake Veere is reduced to 7.5% of the time, and anoxic conditions are almost absent (on average 1.8% of the time). This improvement is especially present in the eastern half of the lake where oxygen conditions were poorest, and both anoxia and hypoxia events almost disappeared (Fig. 4). In the western half of the lake however the improvement is less spectacular, and poor oxygen conditions are still encountered. In the east of the Katse Heule in the Eastern Scheldt, no hypoxia has been observed before and after the opening of the connection.
+Developments in Macrofauna
+The total macrofauna densities were especially high in the early 1990s. Both the western and the eastern part of Lake Veere showed a gradual decrease of the densities which seemingly went on after the opening of the Katse Heule (Fig. 5). In the western part, recently (autumn 2004 to
+autumn 2007) measured densities are higher than in the eastern part (Table 5) but such an increase is difficult to distinguish from yearly fluctuations. Comparing the three periods (autumn 1990–spring 2000 (period 1), autumn 2000–spring 2004 (period 2), and autumn 2004–autumn 2007 (period 3)), significant differences in densities are restricted to comparisons between period 1 and the two other periods for the eastern part of the lake. Focusing on the most abundant taxonomic classes, it is found that the polychaetes are dominant in numbers throughout the research period in both parts of the lake. Particularly halfway the 1990s other classes like the Clitellata were more abundant, and also gastropods (e.g., 1993 and 2005) and bivalves (1994 and 2007) showed temporal increases with differences however between the western and the
+0
+7
+14
+21
+28
+35
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 Station
+S al
+in it
+y Jan95-Jul00
+Jul00-Jul04
+Jul04-Jul08
+* Salinities differ significantly between Jan95-Jul00 and Jul04-Jul08, and between Jul00-Jul04 and Jul04-Jul08
+at p < 0.001 at stations 1 to 17. This also accounts for the standard deviations, except for station 15 (p < 0.01) and station 16 (not significant) between the first and the last period.
+Fig. 3 Developments in salinity conditions at the bottom of Lake Veere as measured at 20 stations. Average salinity ± standard deviation is indicated, respectively, for the periods January 1995 to July 2000, July 2000 to July 2004, and July 2004 to July 2008. The distinguished periods refer to the period after the opening of the Katse
+Heule (Jul04–Jul08) and two similarly sized periods before the opening. Stations 18, 19, and 20 are situated outside Lake Veere in the Eastern Scheldt (indicated with a dashed line) and were not visited during the period January 1995 to July 2000
+Table 3 Comparison of the average salinity and salinity variation as indicated by the standard deviation (SD) as measured at the bottom of Lake Veere at 17 stations as indicated in Fig. 1, during the periods January 1995 to July 2000, July 2000 to July 2004, and July 2004 to July 2008
+Period Average salinity Salinity SD
+1: Jan 1988–Jul 2000 20.2±2.7 3.47±0.41
+2: Jul 2000–Jul 2004 19.2±3.3 3.36±0.78
+3: Jul 2004–Jul 2008 28.5±0.9 1.60±0.26
+Significance testing (ANOVA)
+Average salinity 1>2 ns 1<3*** 2<3***
+R2=0.748 n=51 df=2 p=0.000
+Salinity variation 1>2 ns 1>3*** 2>3***
+R2=0.735 n=51 df=2 p=0.000
+Results of ANOVAs and pair-wise significance testing for the three periods (1, 2, and 3) are shown
+ns not significant
+***p<0.001
+1266 Estuaries and Coasts (2010) 33:1261–1278
+eastern part of the lake. Taking the different strata into account, the above-mentioned patterns are especially present in the 0–2 and 2–6 m strata. Variation in densities through time and differences between taxonomical classes are less clear in the deepest stratum, where total densities are also much lower.
+No significant differences or trends in total macrofauna biomass are found as just a slight decrease in biomass can be observed in the period when the Katse Heule entered in function (Fig. 5c, d). The total biomass is significantly higher in the western part than in the eastern part throughout the research period (Table 5). The bivalves are by far the most dominant taxonomical class in biomass, especially in the western part of the lake. Their biomass is therefore also significantly higher in the western part than in the eastern part, which also accounts for the Gastropoda before and the Clitellata after the restoration measure. In the western part, the average biomass is much higher in the upper two strata than below 6 m of depth. In the eastern part this is less the case; but average biomass is more stable through time in the 0–2 m stratum than in the two deeper strata where more fluctuations are found. Differences is relative biomass distributions over the taxonomical classes between strata are small.
+The above-described developments lead to a continuous decrease in species richness based on species densities for both parts of Lake Veere (Fig. 6a). The species richness is significantly higher during period 1 than during period 3 in the western part and higher during period 1 than during the two other periods in the eastern part (Table 6). The species richness appears also to be higher in the west than in the east during the first and the last period. The evenness on the other hand gradually increases in both parts of Lake Veere (Fig. 6b). In the western part the evenness is significantly
+lower during period 1 than during period 2 and in the east the evenness is significantly highest during period 3 and lowest during period 1 (Table 6). Where the evenness is significantly higher in the west than in the east during period 1, the opposite is true after the restoration measure.
+Initially data were analyzed separately for each of the strata. Observed patterns through time in each of the strata were however largely the same for all the macrofauna indicators, with the only differences the average (baseline) level. Total density, total biomass, number of species, and species richness appeared to be always highest in the shallowest stratum and lowest in the deepest stratum.
+Table 4 Comparison of the average occurrences of hypoxic and anoxic conditions at the bottom of Lake Veere during the periods January 1995 to July 2000, July 2000 to July 2004, and July 2004 to July 2008, as measured at the 17 stations indicated in Fig. 1
+Period Hypoxia Anoxia
+1: Jan 1988–Jul 2000 0.236±0.217 0.136±0.145
+2: Jul 2000–Jul 2004 0.308±0.247 0.146±0.144
+3: Jul 2004–Jul 2008 0.075±0.084 0.018±0.029
+Significance testing (ANOVA)
+Hypoxia 1<2 ns 1>3 ns 2>3**
+R2=0.207 n=51 df=2 p=0.004
+Anoxia 1<2 ns 1>3* 2>3**
+R2=0.202 n=51 df=2 p=0.004
+Hypoxia and anoxia are measured as the proportional time (scale 0–1) that oxygen levels are, respectively, below 3 and 0.5 mg/l. Results of ANOVAs and pair-wise significance testing for the three periods (1, 2, and 3) are shown
+*p<0.05; **p<0.01
+ns not significant
+Hypoxia
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+Station
+Station
+R h
+yp o
+x R
+an o
+x
+a)
+Jan95-Jul00
+Jul00-Jul04
+Jul04-Jul08
+Anoxia
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0 b)
+Jan95-Jul00
+Jul00-Jul04
+Jul04-Jul08
+Fig. 4 Developments in oxygen conditions at the bottom of Lake Veere as measured at 20 stations. The ratio of hypoxia days over the total year (Rhypox) defined as oxygen contents below 3 mg/l (a) and anoxia days over the total year (Ranox) defined as oxygen contents below 0.5 mg/l (b) is indicated, respectively, for the periods January 1995 to July 2000, July 2000 to July 2004, and July 2004 to July 2008. Stations 18, 19, and 20 are situated outside Lake Veere in the Eastern Scheldt (indicated with a dashed line) and were not visited during the period January 1995 to July 2000
+Estuaries and Coasts (2010) 33:1261–1278 1267
+Diversity appeared to be similar in 0–2 and the 2–6 m strata and much lower in the deepest stratum. Evenness was highest in the deepest stratum and lowest in the shallowest stratum. As the results for the different strata did not add much extra information to our findings and the sampling effort in each of the strata is the same; the data for the strata were aggregated for the results shown (Figs. 5 and 6).
+Numbers of Species Impacted
+Whereas the number of species that cannot be found back each year (disappearing species) when compared to the preceding period is more or less stable throughout the research period (also after the opening of the Katse Heule), the numbers of reappearing and newly found species are significantly increasing after the restoration measure (Table 7; Fig. 7). It has to be taken into account that due to our definition of a reappearing species, no species can be considered as reappearing in the period before 1995 (would be seen as a new species). However, the number of reappearing species is never larger than 1 per year before the restoration measure and increases to 6.25±3.30 on average for the period after the measure. Further the year 2004, included in the “after” period consists in fact of a monitoring that occurred before and after the re-opening. Although some new species also did arrive before the restoration measure, there is a significant
+increase in their number of a factor 5.2 to 8.7 on a yearly basis after the re-opening.
+Discussion
+Deterioration of the Lake System
+As indicated in earlier studies (Coosen et al. 1990; Prinsen et al. 2005; Craeymeersch and De Vries 2007) and shown by the results of this study, the Lake Veere ecosystem continuously deteriorated until the restoration measure was taken in 2004. The water transparency was poor and decreasing, the nutrient levels were high, and anoxic conditions frequently arose due to stratification, algal blooms, and the seasonal decay of the abundant macro-algae. Part of the problem was related to the main function of the lake, serving as a drainage basin for superfluous nutrient-rich polder water and to the reduced exchange with the open sea, or with the Eastern Scheldt. The counter-balanced water level regime, maintained to support the drainage function (Prinsen et al. 2005), did worsen the situation as the yearly inlet of salt water in spring induces stratification. The stratification was permanent, and the pycnocline was rather shallow in the eastern part. In the western part, the stratification built up seasonally and mostly occurred at larger depths (Prinsen et al. 2005).
+West
+0
+9000
+18000
+27000
+36000
+45000 Bivalvia Clitellata Gastropoda Malacostraca Polychaeta
+Others
+a) East
+West East
+0
+9000
+18000
+27000
+36000
+45000
+YearYear
+YearYear A
+ve ra
+g e
+d en
+si ti
+es
+(n /m
+2 )
+(n
+/m 2 )
+A ve
+ra g
+e b
+io m
+as s
+(n /m
+2 )
+(n /m
+2 ) Bivalvia Clitellata
+Gastropoda Malacostraca
+Polychaeta Others
+19 91
+19 93
+19 95
+19 97
+19 99
+20 01
+20 03
+20 05
+20 0719
+91 19
+93 19
+95 19
+97 19
+99 20
+01 20
+03 20
+05 20
+07
+19 91
+19 93
+19 95
+19 97
+19 99
+20 01
+20 03
+20 05
+20 07
+19 91
+19 93
+19 95
+19 97
+19 99
+20 01
+20 03
+20 05
+20 07
+b)
+0
+40000
+80000
+120000
+160000
+200000 Bivalvia Clitellata
+Gastropoda Malacostraca
+Polychaeta Others
+c)
+0
+40000
+80000
+120000
+160000
+200000 Bivalvia Clitellata
+Gastropoda Malacostraca Polychaeta Others
+d)
+Fig. 5 Developments in macrozoobenthos during the period autumn 1990 to autumn 2007 in the western and the eastern part of Lake Veere. Developments in macrofauna densities in numbers per m2 for the western (a) and the eastern (b) part and developments in macrofauna biomass in mg ADW per m2 for the western (c) and
+the eastern (d) part, separated in the most abundant taxonomical classes. The opening of the Katse Heule connection between the Eastern Scheldt and Lake Veere on June 8, 2004 is indicated with a dashed line
+1268 Estuaries and Coasts (2010) 33:1261–1278
+Stratification led to hypoxic and anoxic conditions espe-cially at the bottom of the lake, generally during summer and more frequent in the deeper and the eastern areas (Fig. 4; Table 4). Further the reduction of the water level in autumn led to massive mortality of macroalgae and macro-
+fauna when they fell dry (Escaravage and Hummel 2003; Craeymeersch and De Vries 2007).
+This dramatic deterioration of the system counteracted however with the natural and recreational functions which are of growing importance for the managers and authorities
+Table 5 Comparison of the developments in densities (n/m2) and biomasses (mg ADW/m2) of the most abundant taxonomical classes and the total of the macrofauna between periods (1, autumn 1990–spring 2000; 2, autumn 2000–spring 2004; 3, autumn 2004–autumn 2007) and the two regions of Lake Veere (western and eastern part)
+Total Polychaeta Malacostraca Gastropoda Clitellata Bivalvia
+Density (n/m2)
+Average ± standard deviation
+West Period 1 14,351±8,374 6,710±5,195 1,109±870 1,960±2,160 2,846±1,854 1,439±1,341
+Period 2 7,731±1,885 4,964±1,251 525±599 386±128 1,160±729 628±194
+Period 3 7,562±5,729 4,341±4,265 294±234 1,093±1,485 732±266 1,048±969
+East Period 1 13,025±7,649 7,264±5,712 661±1,022 1,083±1,433 3,256±1,894 394±355
+Period 2 6,362±2,201 3,870±1,547 716±506 279±271 1,079±555 327±248
+Period 3 1,758±957 946±673 229±238 31±42 287±140 147±92
+Significance testing (ANOVA)
+Period 1 W–E >ns <ns >ns >ns <ns >**
+Period 2 >ns >ns <ns >ns >ns >*
+Period 3 >* >ns >ns >ns >** >*
+West 1–2 >ns >ns >ns >ns >* >ns
+1–3 >ns >ns >ns >ns >** >ns
+2–3 >ns >ns > * <ns >ns <ns
+East 1–2 >* >ns <ns >ns >** >ns
+1–3 >*** >** >ns >ns >*** >ns
+2–3 >ns >ns >ns >ns >ns >ns
+Biomass (mg/m2)
+Average ± standard deviation
+West Period 1 85,256±35,199 5,984±2,613 777±1,340 1,216±1,033 377±290 76,480±34,548
+Period 2 53,600±26,886 4,344±1,564 746±748 690±530 112±81 47,484±26,322
+Period 3 71,053±29,164 2,650±1,331 124±201 928±800 55±29 66,947±28,787
+East Period 1 29,167±17,360 6,233±2,958 1,671±6,183 574±610 427±265 19,903±15,525
+Period 2 15,647±8,616 5,669±1,514 836±564 93±61 98±48 8,876±7,790
+Period 3 17,757±9,044 2,844±1,718 1,185±2,456 290±564 20±13 12,496±7,993
+Significance testing (ANOVA)
+Period 1 W–E >*** <ns <ns >* <ns >***
+Period 2 >** <ns <ns >** >ns >***
+Period 3 >*** <ns <ns >ns >* >***
+West 1–2 >ns >ns >ns >ns >* >ns
+1–3 >ns >** >ns >ns >** >ns
+2–3 <ns >ns >ns <ns >ns <ns
+East 1–2 >ns >ns >ns >ns >** >ns
+1–3 >ns >* >ns >ns >*** >ns
+2–3 <ns >ns <ns <ns >ns <ns
+Shown are the average ± standard deviations per group and the results of ANOVAs indicating the significance level in pair-wise tests and whether the first of the two tested groups has the highest (>) or the lowest (<) value
+ns not significant
+*p<0.05; **p<0.01; ***p<0.001
+5 o parison of the developments in densities (n/m2) and biomasses ( g ADW/m2) of the m st abundant taxonomical classes and the total of th macrofauna between periods (1, autumn 1990–
+pring 2000; 2, autumn 2000–spring 2004; 3, autumn 2004– utumn 2007) and the two regions of Lake Veere (western and eastern part)
+Estuaries and Coasts (2010) 33:1261–1278 1269
+as a response to the concerns by the public at large and the Water Framework Directive (Prinsen et al. 2005). The large density of macroalgae suspended throughout the water column, floating on the water surface, and piling up as stinky mats on the shores made the lake much less attractive for, e.g., swimmers, surfers, and divers, than it used to be (Prinsen et al. 2005; Van Avesaath et al. 2008a). Parallel with the recreational value, the nature value of the
+lake was decreasing as shown by the decreasing macro-zoobenthos densities (Fig. 5a, b; Table 5) and species richness (Fig. 6; Table 6) and the exceptional low biomass that was observed just before the opening of the Katse Heule (Fig. 5c, d). Although macrofauna is not a priority target for nature management (yet minds begin to shift), the decrease in this living stock will have consequences for foraging waterfowl for which Lake Veere has a well-
+Period West East
+d J′ d J′
+1: Autumn 1990–spring 2000 0.771±0.122 0.731±0.050 0.659±0.077 0.700±0.039
+2: Autumn 2000–spring 2004 0.672±0.111 0.787±0.025 0.637±0.115 0.757±0.042
+3: Autumn 2004–autumn 2007 0.609±0.099 0.765±0.034 0.431±0.078 0.817±0.039
+Significance testing (ANOVA)
+West d R2=0.266 n=35 df=2 p=0.007
+1>2 ns 1>3** 2>3 ns
+West J′ R2=0.251 n=35 df=2 p=0.010
+1<2* 1<3 ns 2>3 ns
+East d R2=0.536 n=35 df=2 p=0.000
+1>2 ns 1>3*** 2>3***
+East J′ R2=0.603 n=35 df=2 p=0.000
+1<2** 1<3*** 2<3*
+Period 1 d R2=0.238 n=40 df=1
+West > East –***
+Period 1 J′ R2=0.112 n=40 df=1
+West > East –*
+Period 2 d R2=0.026 n=16 df=1
+West > East ns
+Period 2 J′ R2=0.180 n=16 df=1
+West > East ns
+Period 3 d R2=0.538 n=14 df=1
+West > East –**
+Period 3 J′ R2=0.373 n=14 df=1
+West < East –*
+Table 6 Comparison of the community descriptors species richness according to Margalef (d) and evenness according to Pielou (J′) for the periods autumn 1990 to spring 2000, autumn 2000 to spring 2004, and autumn 2004 to autumn 2007, and for the western and the eastern part of Lake Veere
+Average values ± standard devi-ations are given per period. Results of ANOVAs and pair-wise significance testing for the three periods (1, 2, and 3) and the two regions (West and East) are shown
+ns not significant
+*p<0.05; **p<0.01; ***p< 0.001
+a)
+1
+1.2
+0.8
+0.6
+0.4
+0.2
+0.8
+0.6
+0.4
+0.2
+0
+19 91
+19 93
+19 95
+19 97
+19 99
+20 01
+20 03
+20 05
+20 07
+19 91
+19 93
+19 95
+19 97
+19 99
+20 01
+20 03
+20 05
+20 07
+b)
+0
+1
+East Wes
+YearYear
+P ie
+lo u
+e ve
+n n
+es s
+(J )
+t East West
+Fig. 6 Developments in the macrobenthic communities of Lake Veere during the period autumn 1990 to autumn 2007. Developments in species richness according to Margalef (a) and in evenness according
+to Pielou (b) for the western and the eastern part of the lake. The opening of the Katse Heule connection between the Eastern Scheldt and Lake Veere on June 8, 2004 is indicated with a dashed line
+1270 Estuaries and Coasts (2010) 33:1261–1278
+recognized international importance (Coosen et al. 1990; Craeymeersch and De Vries 2007) and for fish (Seys and Meire 1988). Therefore it would be highly pertinent to incorporate macrofauna as a target in nature management.
+As a result of large polder water run off, as indicated by the decreased salinity (Fig. 2; Table 2), the situation was particularly bad during the last 4 years before the restoration measure was taken. During these years the salinity reached a minimum of 10.6. This salinity level was fatal for Mytilus sp., which disappeared from the lake. The decreased salinity was favorable for the development of massive and sustained blooms of green and blue-green
+algae (Craeymeersch and De Vries 2007) resulting in a further reduction of the Secchi depth (Fig. 2; Table 2). During the 1980s the communities were still characterized as rich in crustaceans and juvenile bivalves. As large filter-feeding molluscs like mussels (Mytilus sp.) in particular are not doing well at salinities below 18, salinity is often indicated as the key factor in determining the productivity of the macrobenthic communities (Coosen et al. 1990). The current study shows indeed that bivalves that still repre-sented most of the biomass in the 1990s underwent a clear reduction during the years 2002–2004 (Fig. 2; Table 2). Not only the lowered salinity levels but also the large fluctua-tions herein (low in winter, high in summer) might be problematic for a number of macrobenthic species (Craeymeersch and De Vries 2007) and might explain the decreasing densities and species richness observed here (Figs. 5 and 6; Tables 5 and 6).
+Factors that might also affect the macrobenthic commu-nities are pollutants. The concentrations of most com-pounds as heavy metals and several organic substances used to be higher in the past and are low to undetectable since the early 1990s (Craeymeersch and De Vries 2007). Only concentrations of substances as Diuron, Tributyltin, and Oestrogens might still be problematic for certain species, but for these substances also concentrations did already decrease before the opening of the Katse Heule (Craeymeersch and De Vries 2007). Another factor of potential importance for the macrobenthic communities is the disappearance of the seagrass beds. The seagrass biomass dramatically decreased during the first decades after closure of Lake Veere to about 3% of its initial level (ADW; Prinsen et al. 2005). Only 105 ha was left in 1987, which further reduced to 55 ha in 2003 (Prinsen et al.
+Table 7 Comparison of the numbers of disappearing, reappearing, and new species in Lake Veere for the periods 1992–1999, 2000– 2003, and 2004–2007
+Period Disappeared Reappeared New
+1: 1992–1999 −3.75±2.96 0.25±0.64 1.25±1.75
+2: 2000–2003 −4.25±1.89 0.50±0.58 0.75±0.96
+3: 2004–2007 −3.75±0.96 6.25±3.30 6.50±5.45
+Significance testing (ANOVA)
+Disappeared R2=0.010 n=16 df=2 p=0.937
+1>2 ns 1=3 ns 2<3 ns
+Reappeared R2=0.749 n=16 df=2 p=0.000
+1<2 ns 1<3*** 2<3***
+New R2=0.439 n=16 df=2 p=0.023
+1>2 ns 1<3* 2<3*
+Average values ± standard deviations are given per period. Results of ANOVAs and pair-wise significance testing for the three periods (1, 2, and 3) are shown
+ns not significant
+*p<0.05; ***p<0.001
+-12
+-8
+-4
+0
+4
+8
+12
+16
+20
+19 91
+19 92
+19 93
+19 94
+19 95
+19 96
+19 97
+19 98
+19 99
+20 00
+20 01
+20 02
+20 03
+20 04
+20 05
+20 06
+20 07
+Year
+new reappeared disappeared
+N u
+m b
+er o
+f sp
+ec ie
+s
+Fig. 7 Developments in newly arrived, reappeared, and disappeared species in Lake Veere. The monitoring of autumn 1990 and spring and autumn 1991 function as the initial set of species. Species are new when they have not been observed before and are found at least in 2 years or are found for the first time in 2007; species are indicated as have been disappeared when they are absent for at least the three
+following years after that they have been observed frequently before. Species are indicated as have been reappeared when they are observed at least in 2 years after an absence period of at least 3 years or reappear in the year 2007. Species only occasionally found in low numbers every once in a while are not taken into account
+Estuaries and Coasts (2010) 33:1261–1278 1271
+2005). After 2003, the seagrass completely disappeared from Lake Veere (Craeymeersch and De Vries 2007; Van Avesaath et al. 2008a). The loss of seagrass beds has been a common problem in the Netherlands (Van Katwijk et al. 2009). As a consequence of this sparse occurrence of the seagrass beds, the sampling in seagrass meadows remained rare in the present dataset, also in the early years of the MWTL program.
+Effects of the Restoration Measure on the Water Quality
+The opening of the Katse Heule immediately led to an increase of the salinity and a decrease of the salinity variation (Fig. 2; Table 2). Nutrient levels dropped rapidly, especially phosphate, and the water transparency im-proved fast especially during the first complete year after the opening, which is 2005. The development of algal bloom already initiated in the spring of 2004, preceded during that year after the opening. The improvements in water quality were not paralleled with similar trends in the macrozoobenthic parameters (Figs. 5 and 6). This delay in the response of macrofauna could be reasonably attributed to the low rates of population renewal for the mostly long-living macrofauna species and to the limited rate of immigration from the Eastern Scheldt. Whereas macro-fauna densities fast increased in the western part during the first year, probably as a result of the quick response of opportunistic species, the general trend in densities did resume the long-term decrease. The species richness did also not show an improvement during the first 4 years after the restoration measure. Just before the re-opening of the lake the total biomass strongly decreased. This was largely an effect of a strong decrease in bivalve biomass. In 2005 the bivalve populations and therefore the total biomass were restored to the level of 2002. Previous studies (Petersen et al. 2008) have shown that a large increase in filter-feeder biomass can result in a significant improvement of the water transparency. This was not the case here as the improvement in water transparency preceded the increase in bivalve biomass. Developments in bivalves might only explain a slight further improve-ment of the transparency after 2004. This in contrast to the Danish case of a brackish lagoon with an increase in salinity from average 7.9 to 10.1, where the measure was followed by a large increase in Mya arenaria biomass that resulted in a transition to a clear water state (Petersen et al. 2008). Yet, in Lake Veere where salinities were mostly above 14, M. arenaria was already a dominant species before the opening. A species that might in the future have an effect on the water transparency is the oyster Crassostrea gigas. This oyster that was originally introduced in the Netherlands for the purpose of cultivation during the 1960s might be considered nowadays as an invasive
+species, which massively colonize all kind of substrates in the Eastern Scheldt (Escaravage et al. 2006; Troost et al. 2009). This species has indeed been shown as being able to develop huge biomasses when conditions are favorable (Cardoso et al. 2007). C. gigas has been observed at several locations in Lake Veere since 1996 (Escaravage et al. 2006; Van Avesaath et al. 2008b) but the total biomass did not increase after the restoration measure in such proportions that effects on water transparency should be expected yet.
+Whereas filter feeders appeared not to be responsible for the increasing water transparency in the lake after the opening, another process might be involved. The main characteristic of Lake Veere as a water system was the combination of both large nutrient inputs and a long (about 180 days) residence time of the water in the lake (Coosen et al. 1990). With the opening of the Katse Heule, the flushing frequency increased from 1.5 times a year to about 5.5 times (Craeymeersch and De Vries 2007). As the nutrient inputs to the lake did not significantly change after the opening, the drop in nutrient levels that was observed after the opening (Fig. 2) can be explained by the dilution due to the increase in the flushing frequency. The drop in nutrient levels together with the increased salinity reduced the amplitude of the phytoplankton blooms and led together with the increased dilution of suspended matter to improved water transparency.
+Another important improvement as a result of the increased water exchange is the oxygen condition in the lake. Anoxic conditions have become rare, and also hypoxia is almost absent from the eastern part of the lake (Fig. 4) where stratification has also become very rare. This is a consequence of the decrease in the difference of salinity between the incoming Eastern Scheldt water and the water present in Lake Veere, whereby the mixing between these water masses is much improved when compared with the situation before the opening. The limited improvement of the oxygen conditions in the western area mostly results from the persistence of stratification that is induced by the floating of fresh polder water on top of the salt water. The effect of improved mixing conditions is fading toward the west.
+Effects of the Restoration Measure on the Macrozoobenthic Communities
+Why did the improvements in water quality not lead to increasing macrozoobenthic densities, biomass, and species richness? Precise species changes are difficult to predict, but hydrological modifications in either fresh- or saltwater exchange have been shown to often lead to major changes in lagoon ecosystems (Borja 2005). On the other hand, waters with a good or improved chemical status, but with a
+1272 Estuaries and Coasts (2010) 33:1261–1278
+poor or decreasing ecological status, are not uncommon (Borja 2005; Badosa et al. 2008).
+It is often shown that the response of the benthic organisms to environmental changes can generally not be reduced to increasing and/or decreasing numbers and weight. The response of communities to environmental conditions is often more a matter of differences in species composition concerning tolerant and sensitive species and changes in distribution over trophic and taxonomical levels (e.g., Lardicci et al. 2001; Munari and Mistri 2007; Pranovi et al. 2008; Como and Magni 2009). As the environmental conditions completely changed, a shift in the present communities toward others that might be better adapted to the new conditions is expected to need a certain time to take place. High densities are not always indicative for good environmental conditions, especially not when Polychaeta dominate. A gradual change into more diverse communities with a larger proportion of, e.g., Bivalvia, Gastropoda, and Malacostraca, might result in a further decrease of the densities. With respect to the biomass, improved environ-mental conditions should induce an increase in biomass in those cases when species such as bivalves, which are often dominant in biomass, were already present in the system and profit from the newly created situation. Moreover most bivalves are slowly growing and thus need several years to build up a considerable biomass. This seems to be partly the case in Lake Veere with respect to the slow rebuilding of the bivalve stock after the collapse in 2002.
+After a significant improvement in the environmental conditions a successful (re)colonization from adjacent areas is also needed for populations to actually expand. Besides the physical opportunities that are required for a species to reach a new area, also the conditions in this area might delay or prevent the successful settlement. Competition from the present communities can delay or prevent successful settlement, even if those communities are already deteriorated. Also the physical or chemical consti-tution of the environment can play a role in whether or not there is successful settlement. Montserrat et al. (2008) and Van Colen et al. (2008) showed that a plot that was artificially defaunated by asphyxia showed a different composition of the sediment in terms of cohesiveness and sediment strength due to the lack of bioturbation and biodiffusion. The communities went through a series of succession states starting with a microphytobenthic com-munity to a community of tube builders before gradually surface disruptors and pelletizers returned. After half a year, biodiffusers, predominantly bivalves generally responsible for the largest part of the biomass, were still largely lacking, and this in a small defaunated plot surrounded by plenty potential recolonizers. This might explain the lack of response of the communities in terms of densities, species richness, and especially biomass in our study, particularly
+in the eastern part although oxygen conditions did significantly improve there. The process that took at least much more than half a year in the experiment described by Montserrat et al. (2008) and Van Colen et al. (2008) might take at least more than 3.5 years in our case as recolonization in the much larger defaunated areas of Lake Veere is probably more dependent of larval recruitment instead of adult settlement. This is in line with the recordings of Beukema et al. (1999) who found no complete recovery of the biomass within 4 years after anoxia in the Wadden Sea at, compared to the current study, relatively small patches with good opportunities for recolonization from the surroundings. In an Italian lagoon specifically species richness was still reduced 6 years after two severe anoxic events, and the partial recovery of the species numbers was largely due to an increase in opportunistic species (Lardicci et al. 2001). Recovery in Lake Veere might have been easier in areas where anoxic events were short and infrequent viz. the west and where although oxygen conditions did improve much less than in the east (Fig. 4; Table 4), communities profited from other improvements like light conditions and decreased salinity fluctuations (Fig. 2; Table 2). The difference between the eastern and the western part, which is already initially present, but also results in a different response to the opening of the Katse Heule, seems to be especially the presence of bivalves including adults and higher year-classes in the west, as shown by the difference in biomass between the two parts in combination with more compara-ble densities (Fig. 5; Table 5). The initial difference in communities of the eastern and the western part of Lake Veere is the result of the combination of differences in sediment composition, more sandy in the west versus more silty in the east and the slightly better oxygen conditions in the west.
+As our analyses are based on an average for three strata, which are in reality of different importance due to the proportional distribution of area over the strata, observed patterns are in reality stronger. Highest densities and biomass but also strongest trends have been observed in the 0–2 m stratum, of which 61% of the eastern part of the lake consists. In the western part of the lake where changes were of minor importance, the deepest stratum with lowest densities and biomass is most common.
+First Signs of Changing Communities
+As large changes in the macrozoobenthic descriptors are awaited, one can wonder whether there will be positive effects of the restoration measures on the macrozoobenthic communities in the future. The first signs of changing communities are indeed already there as shown by Fig. 7. A few species that had disappeared from the samples or did
+Estuaries and Coasts (2010) 33:1261–1278 1273
+become rare for several years have returned since the opening of the Katse Heule. Also several new species have arrived, most probably entering Lake Veere from the Eastern Scheldt. This process occurs without increased mortality (Table 7). It might be expected that some of the species disappearing after the re-opening of the lake suffer from the increased salinity range and that the new species are more related to strict marine environments. The salinity range, as observed and described in the literature for the species that underwent significant changes in density around the restoration measure, is shown in Fig. 8 and
+compared to the salinity ranges found in the center of the lake during the periods before and after the measure. Four species that used to be common and abundant have completely disappeared from the samples after the measure. These species are all four typical species that can cope with a wide range of salinities. These species can be found at very low to high or in the cases of Hydrobia ventrosa and Chironomus salinarius at extremely high salinities. For each of the four species, the current salinity range on itself cannot be the problem. Among those species that signifi-cantly decreased in numbers, there might be a few
+0 1
+Former range Current range Losing species:
+Chironomus salinarius Cyathura carinata Hydrobia ventrosa Manayunkia aestuarina
+Profiting species:
+Disappeared:
+Decreased: Rhithropanopeus harrisii Ficopomatus enigmaticus Nereis diversicolor Nereis succinea Polydora ligni Pygospio elegans
+Increased:
+Reappeared:
+New:
+Capitella capitata Carcinus maenas Nephtys hombergii Tharyx marioni
+Scoloplos armiger
+Abra nitida Corbula gibba GEN-Anaitides Lanice conchilega Lepidochitona cinerea Platynereis dumerilii
+Venerupis pullastra
+Acanthocardia paucicostata Aora typica Apherusa bispinosa Ascidiella aspersa Autolytus langerhansi Gyptis rosea Janira maculosa Lepidonotus squamatus Liocarcinus depurator Nassarius nitidus Nephtys cirrosa Ophiodromus flexuosus Pholoe minuta Salvatoria limbata Spirorbis tridentatus Sthenelais boa Syllidia armata
+a,f,r b,q,r b,e,h,r b,r
+b,p b,d b,q,r b,q,r b,q,r b,q,r
+b,q,r b,q,r b,q,r b,q,r
+r b,r b,r b,q,r i,r n,r b,q,r
+r
+b,r b,r
+c,r r m,o c,r b,r g,r b,j b,q,r c,r b,q,r k,r l,r q,r c,r b,q,r
+60
+100
+63
+0 20 30 40
+Salinity *Armitage et al. 1995 (a); Barnes 1994 (b); Connor et al. 2004 (c); Eno et al. 2009 (d); Gray and Elliot 2009 (e); Hammer 1986 (f); Hill 2008 (g); Hubenov 2007 (h); Norling and Kautsky 2007 (i); Pavoni et al. 2007 (j); Ponti et al. 2007 (k); Samuelsen 1970 (l); Schroeder 2005 (m); Surugiu and Feuten 2008 (n); Tunberg and Krång 2008 (o); Wolff and Sandee 1971 (p); Wolff 1973 (q); Own data (r).
+Fig. 8 Indication of the salinity range of losing and profiting species by the opening of the Katse Heule connection between the Eastern Scheldt and Lake Veere. Salinity ranges of species extracted from literature are indicated, at which “own data” refers to observations of the NIOO-CEME in the Dutch South-western delta and the North Sea during nineteen years of monitoring (1990–2008), at which singular observations at certain salinities are not taken into account. The former (1990– 2004) and current (2004–2008) salinity range occurring in Lake Veere is indicated with, respec-tively, dashed and dotted lines. As the maximum salinity for marine species is often not well documented for Western Europe, this value is set at 40 when unknown, but might be higher in reality. Losing species can be divided in those of which the occurrence in samples de-creased (common species show-ing a significant change in trend) and species that disap-peared (always present from a certain time point before 2004, absent from a certain time point after 2004). Profiting species can be divided in those of which the occurrence in samples in-creased (common species show-ing a significant change in trend), species that reappeared (have been absent before 2004 for at least 3 years), and new species (not observed before 2004 and at least seen during 2 years after 2004 or found in 2007). Infrequently observed species are not taken into account
+1274 Estuaries and Coasts (2010) 33:1261–1278
+examples that were on the edge of their tolerance range, with Rhithropanopeus harrisii probably more tolerant to polyhaline waters than indicated here. For at least two species that decrease in their distribution, the current salinity range cannot be the problem. These species are Nereis diversicolor, although larvae are less tolerant than adults (Wolff 1973; Barnes 1994) and Ficopomatus enigmaticus.
+The observations, however, show a good match with the theory of confinement as described by Guelorget and Pertuisot (1989) whereby euryhaline species are typical for confined waters, which can be either brackish or hypersaline (Escaravage and Hummel 2009). The species N. diversicolor, C. salinarius, and the Oligochaeta, a subclass which also completely disappeared from the samples after the measure, are typical for confinement zones 4 to 5 and 5 (Guelorget and Pertuisot 1989), meaning at large relative distance from the sea. It is clear that this is exactly what happened with Lake Veere at the opening of the Katse Heule. The confined water body received an increased exchange with the tidal marine bay Eastern Scheldt, resulting in a closer connection to the sea. Most species that either increased in occurrence, reappeared or were found at first in the lake, show smaller salinity tolerance ranges than the losing species, with minimum salinities often several units above the minimum salinity of the former range for Lake Veere (Fig. 8). Except for Nassarius nitidus, all profiting species are known as real marine species (indicated in Fig. 8 with a salinity tolerance range up to 40). The increase in salinity and the decrease in salinity variability together with the improved recruitment opportunities have definitely played a role for a large number of profiting species. There are indications that euryhaline species that are typical for less confined environments are also profiting from the new situation. As the confinement theory was specifically developed on Mediterranean cases, only three of the profiting species in Lake Veere are classified in the study of Guelorget and Pertuisot (1989). These three species (Capitella capitata and Nephtys hombergii, which significantly increased in occurrence, and the returned species Corbula gibba) are all typical for confinement zone 3, an area with medium exchange with the open sea. This is well in line with the Eastern Scheldt being classified as zones 1 to 2 (Escaravage and Hummel 2010). Some species profited from the new situation with increased salinity and the absence of a salinity barrier between Eastern Scheldt and Lake Veere. For other species the increase in exchange, co-occurring with less eutrophied, better oxygenated, better mixed conditions improves their competitive position.
+Increased water exchange will also reduce pollutant concentrations by dilution and discharge to the Eastern Scheldt. Together with the nutrient status, of which it was
+shown that it has improved by a significant decrease of the concentrations (Fig. 2; Table 2), these aspects determine the environmental stress to which species are related in the Marine Biotic Index, AMBI (Borja et al. 2000). When classifying the species that disappeared or significantly decreased due to the restoration measure (losing species) and the species that did profit from the measure over the five ecological classes defined by Borja et al. (2000), it appears that the losing species are on average typical for groups 3 to 4 (Fig. 9), which means characteristic for mainly polluted environments or a benthic community from healthy in transition to pollution. Indeed in Lake Veere some potentially toxic substances transgressed the Environmental Quality Standards of the EU (Prinsen et al. 2005). This results in the lake being classified as “at risk” according to the EU Water Framework Directive (Prinsen et al. 2005; Craeymeersch and De Vries 2007). However, the profiting species are on average typical for group 2, and although there were also several species typical for group 3, the same number of species were typical for group 1. On basis of these species, the lake would be classified according to Borja et al. (2000) as unpolluted to slightly polluted with a benthic “community-health” indicated as generally impoverished, ranging from normal to unbalanced.
+It has to be noticed that when the selection of the profiting and losing species is solely based on occurrences in samples, the heterogeneity of the lake is not taken into account. The first sightings of species might occur in good quality or significantly improved areas of the lake, whereas other zones might still be deteriorated. However, as mixing and exchange have improved in the entire lake, which also accounts for oxygen conditions and salinity fluctuations, it is reasonable to assume that the developments in species
+0
+3
+6
+9
+12
+1 2 3 4 5
+Ecological group (AMBI)
+N u
+m b
+er o
+f sp
+ec ie
+s
+Profiting species
+Losing species
+Fig. 9 The distribution of the losing and profiting species as indicated in Fig. 8 over the five ecological classes as described by Borja et al. (2000). Only species assigned in the study of Borja et al. (2000) are taken into account. The distribution over the ecological groups differs significantly (t test) with an average value of 2.23±1.02 for the profiting and a value of 3.38±0.92 for the losing species
+Estuaries and Coasts (2010) 33:1261–1278 1275
+composition are not responding to local conditions but are representative for the whole system. The observed delay in macrozoobenthic communities responding to improved water quality conditions after the restoration measure can also be the effect of less improvement of quality in the sediment. Moreover improved mixing and an increase of bottom currents can result in resuspension or uncovering of sediments, nutrients, and pollutants (e.g., Lardicci et al. 2001; Gikas et al. 2006; Flower et al. 2009). Such processes might have worsened the situation, particularly in the eastern part of Lake Veere. On basis of the significant changes in the macrozoobenthic communities that were consistent with the confinement and AMBI classifications, it can however be concluded that water quality improve-ments are also gradually becoming visible in the macro-fauna assemblages. The first new species are arriving, and it is probably a matter of time before densities, species richness, and especially the biomass will increase. It can be expected that in the future the benthic communities in the eastern area will become richer and reach higher biomasses, which could exceed those of the western area as it appears that particularly the deeper parts in the west remain stagnant and anoxic and might not recover at all.
+Conclusions
+The current study shows that after a long period of deterioration as reflected in water quality and macro-zoobenthic parameters, the restoration of the exchange of water between an enclosed brackish lagoon and a marine bay can immediately lead to improved water quality conditions. Although the continuous nutrient input did not change, the improved water exchange leads to a lowering of the nutrient concentrations by dilution and nutrient export. This results together with increased salinity levels in an improvement of the water transparency by a reduction of the occurrences of algal blooms. As for the nutrient conditions, also the pollution status of the water body will improve in a similar way as a result of a higher flushing. Nevertheless the density, biomass, and species richness of the total macrozoobenthos do not directly follow the increasing water quality. Still some changes in the macro-zoobenthos and transition of species can be found, with some species decreasing and others arriving new or reappearing. The transition described here is that of a confined lagoon turned into a water body with more communication with the open sea. Following the water quality improvements also the macrozoobenthic communi-ties will gradually change. Species typical for confined waters will gradually be replaced by those typical for water bodies with more communication with the open sea, whereas concurrently species typical for polluted environ-
+ments are replaced by species which are indicators for good ecosystem health. In the current stage, 3.5 years after the opening, the first indications of changes of the macro-zoobenthic communities along the confinement scale and the AMBI classification are found, particularly in the proportion between the number of disappearing/decreasing species and the number of newly arriving/reappearing/ increasing species.
+An important characteristic that was changed with the restoration measure was the increase in salinity and the decrease in the salinity fluctuations leading to improved oxygen conditions as a result of decreased occurrences of stratification. It is expected that these improvements will on the longer term lead to changes in the macrozoobenthic assemblages, viz. from communities with high polychaete numbers (low individual biomass) to high biomass bivalve dominated communities. It should be kept in mind however that these developments can be seriously delayed in large areas, which used to have severe anoxic conditions. Such areas have to undergo a series of successional stages before the desired bivalve species can settle successfully. Recol-onization might also be seriously hampered by the lack of especially larger sized (adult) recruits in the vicinity. Communities that are impoverished by hypoxia but that still contain a more diverse fauna with bivalves are shown to restore more quickly. Further, also resuspension and uncovering of pollutants and nutrients due to changed currents at the bottom can delay the response of the macrozoobenthic communities. The current study shows that water exchange management is important for the ecological functioning of lagoons, especially when nutri-ent inputs are high. Whereas restoration measures improving the water exchange can have direct effects on water quality parameters, the large effects on macro-zoobenthic communities might take years to decades to occur.
+Acknowledgments The authors would like to thank the research assistants of the Monitor Taskforce (NIOO-CEME) for the collection and determination of macrozoobenthic samples. We are grateful to Rijkswaterstaat (RWS) who funded the sampling program used for this study. Thanks to the Hydro Meteo Centre (Meetadviesdienst) of RWS Zeeland and Piet Lievense in particular who kindly made available the TSO measurements. Thanks to the organization of the ASLO meeting 2009 (Nice) and the organizers of the “Medium and long-term recovery of marine and estuarine systems” session in particular for inviting us to present the current study in their special session. This is publication 4643 of the Netherlands Institute of Ecology (NIOO-KNAW) and Monitor Taskforce Publication Series 2009-10.
+Open Access This article is distributed under the terms of the Creative Commons Attribution Noncommercial License which per-mits any noncommercial use, distribution, and reproduction in any medium, provided the original author(s) and source are credited.
+1276 Estuaries and Coasts (2010) 33:1261–1278
+References
+Armitage, P.D., P.S. Cranston, and L.C.V. Pinder. 1995. The Chironomidae: Biology and ecology of non-biting midges. Dordrecht: Springer.
+Badosa, A., D. Boix, S. Brucet, R. López-Flores, and X.D. Quintana. 2008. Short-term variation in the ecological status of a Mediterranean Coastal Lagoon (NE Iberian Peninsula) after a man-made change of hydrological regime. Aquatic Conservation: Marine and Freshwater Ecosystems 18: 1078–1090.
+Barnes, R.S.K. 1994. The brackish-water fauna of Northwestern Europe. Cambridge University Press, Cambridge.
+Beukema, J.J., E.C. Flach, R. Dekker, and M. Starink. 1999. A long-term study of the recovery of the macrozoobenthos on large defaunated plots on a tidal flat in the Wadden Sea. Journal of Sea Research 42: 235–254.
+Borja, A. 2005. The European Water Framework Directive: a challenge for nearshore, coastal and continental shelf research. Continental Shelf Research 25: 1768–1783.
+Borja, A., J. Franco, and V. Pérez. 2000. A marine biotic index to establish the ecological quality of soft-bottom benthos within European estuarine and coastal environments. Marine Pollution Bulletin 40: 1100–1114.
+Cardoso, J.F.M.F., D. Langlet, J.F. Loff, A.R. Martins, J.I.J. Witte, P.T. Santos, and H.W. Van der Veer. 2007. Spatial variability in growth and reproduction of the pacific oyster Crassostrea gigas (Thunberg, 1793) along the west European coast. Journal of Sea Research 57: 303–315.
+Como, S., and P. Magni. 2009. Temporal changes of a macrobenthic assemblage in harsh lagoon sediments. Estuarine, Coastal and Shelf Science 83: 638–646.
+Connor, D.W., J.H. Allen, N. Golding, K.L. Howell, L.M. Lieberknecht, K.O. Northern, and J.B. Reker. 2004. The marine habitat classification for Britain and Ireland, version 04.05. Peterborough: JNCC.
+Coosen, J., P. Meire, J.J. Stuart, and J. Seys. 1990. Trophic relationships in brackish Lake Veere: the role of macrophytes. In Trophic relationships in the marine environment; Proceedings of the 24th European Marine Biology Symposium, ed. M. Barnes, and R.N. Gibson, 404–423. Aberdeen: Aberdeen University Press.
+Craeymeersch, J., and I. De Vries. 2007. Waterkwaliteit en ecologie Veerse Meer: het tij is gekeerd. Middelburg: Rijkswaterstaat Rijksinstituut voor Kust en Zee, Rapport RIKZ/2007.008.
+Eno, N.C., R.A. Clarke, and W.G. Sanderson. 2009. Directory of non-native marine species in British waters [on-line]. Peterborough: JNCC. http://www.jncc.gov.uk/page-1700. Accessed 30 March 2009.
+Escaravage, V., and H. Hummel. 2003. Macrobenthos dynamiek Veerse Meer (periode 1990–2003). Yerseke: NIOO-CEME Rapport 2003-03.
+Escaravage, V., and H. Hummel. 2010. Macrobenthic community structure along a marine gradient in man-shaped water bodies (South West Netherland); a typology for confined brackish waters. Marine Ecology Progress Series (in revision).
+Escaravage, V., P. Van Avesaath, M. Dubbeldam and J. Craeymeersch. 2006. Onderzoek naar de ontwikkeling van de Japanse oester in het Veerse Meer onder verschillende peilalternatieven. Yerseke: NIOO-CEME Rapport 2006-02.
+Flower, R.J., P.G. Appleby, J.R. Thompson, M.H. Ahmed, M. Ramdani, L. Chouba, N. Rose, R. Rochester, F. Ayache, M.M. Kraiem, N. Elkhiati, S. El Kafrawy, H. Yang, and E.K. Rasmussen. 2009. Sediment distribution and accumulation in lagoons of the Southern Mediterranean Region (the MELMAR-
+INA Project) with special reference to environmental change and aquatic ecosystems. Hydrobiologia 622: 85–112.
+Gikas, G.D., T. Yiannakopoulou, and V.A. Tsihrintzis. 2006. Water quality trends in a coastal lagoon impacted by non-point source pollution after implementation of protective measures. Hydro-biologia 563: 385–406.
+Gray, J.S., and M. Elliott. 2009. Ecology of marine sediments. From science to management, 2nd ed. Oxford: Oxford University Press.
+Guelorget, O., and J.-P. Pertuisot. 1989. The paralic realm. Geolog-ical, biological and Economic expressions of confinement. Rome: Food and Agriculture Organization of the United Nations.
+Hammer, U.T. 1986. Saline lake ecosystems of the world. Monogra-phiae Biologicae. Dordrecht: Dr W. Junk.
+Hill, J.M. 2008. Liocarcinus depurator. Harbour crab. Marine Life Information Network: biology and sensitivity key information sub-programme [on-line]. Plymouth: Marine Biological Associ-ation of the United Kingdom. http://www.marlin.ac.uk/species/ Liocarcinusdepurator.htm. Accessed 30 March 2009.
+Hubenov, Z. 2007. Fauna and zoogeography of marine, freshwater, and terrestrial mollusks (Mollusca) in Bulgaria. In Biogeography and ecology of Bulgaria, ed. V. Fet, and A. Popov, 141–198. Dordrecht: Springer.
+Lardicci, C., S. Como, S. Corti, and F. Rossi. 2001. Changes and recovery of macrozoobenthic communities after restoration measures of the Orbetello Lagoon (Tyrrhenian coast, Italy). Aquatic Conservation: Marine and Freshwater Ecosystems 11: 281–287.
+Montserrat, F., C. VanColen, S. Degraer, T. Ysebaert, and P.M.J. Herman. 2008. Benthic community-mediated sediment dynamics. Marine Ecology Progress Series 372: 43–59.
+Munari, C., and M. Mistri. 2007. Evaluation of the applicability of a fuzzy index of ecosystem integrity (FINE) to characterize the status of Tyrrhenian lagoons. Marine Environmental Research 64: 629–638.
+Nienhuis, P.H., and A.C. Smaal. 1994. The Oosterschelde estuary, a case-study of a changing ecosystem: An introduction. Hydro-biologia 282/283: 1–14.
+Norling, P., and N. Kautsky. 2007. Structural and functional effects of Mytilus edulis on diversity of associated species and ecosystem functioning. Marine Ecology Progress Series 351: 163–175.
+Pavoni, B., E. Centanni, S. Valcanover, M. Fasolato, S. Ceccato, and D. Tagliapietra. 2007. Imposex levels and concentrations of organotin compounds (TBT and its metabolites) in Nassarius nitidus from the Lagoon of Venice. Marine Pollution Bulletin 55: 505–511.
+Petersen, J.K., J.W. Hansen, M.B. Laursen, P. Clausen, J. Carstensen, and D.J. Conley. 2008. Regime shift in a coastal marine ecosystem. Ecological Applications 18: 497–510.
+Ponti, M., M.A. Colangelo, and V.U. Ceccherelli. 2007. Composition, biomass and secondary production of the macrobenthic inverte-brate assemblages in a coastal lagoon exploited for extensive aquaculture: Valle Smarlacca (northern Adriatic Sea). Estuarine, Coastal and Shelf Science 75: 79–89.
+Pranovi, F., F. Da Ponte, and P. Torricelli. 2008. Historical changes in the structure and functioning of the benthic community in the Lagoon of Venice. Estuarine, Coastal and Shelf Science 76: 753– 764.
+Prinsen, H.A.M., P. Schouten, and T.J. Boudewijn. 2005. Haalbaarheid VHR/KRW doelstellingen bij verschillende peilalternatieven voor het Veerse Meer. Culemborg: Bureau Waardenburg bv, Rapport nr. 05-237.
+Samuelsen, T.J. 1970. The biology of six species of Anomura (Crustacea, Decapoda) from Raunefjorden, Western Norway. Sarsia 45: 25–52.
+Estuaries and Coasts (2010) 33:1261–1278 1277
+Schroeder, A. 2005. Community dynamics and development of soft bottom macrozoobenthos in the German Bight (North Sea) 1969– 2000. Bremerhaven: Alfred-Wegener-Institut für Polar- und Meeresforschung, Dissertation 494.
+Seys, J., and P. Meire. 1988. Macrobenthos van het Veerse Meer. Gent: Rijksuniversiteit Gent, Rapport W.W.E. 4.
+Surugiu, V., and M. Feunteun. 2008. The structure and distribution of polychaete populations influenced by sewage from the Romanian Coast of the Black Sea. Analele Ştiinţifice ale Universităţii “Al. I. Cuza” Iaşi, s. Biologie animală 54: 177–184.
+Troost, K., E. Gelderman, P. Kamermans, A.C. Smaal, and W.J. Wolff. 2009. Effects of an increasing filter feeder stock on larval abundance in the Oosterschelde estuary (SW Netherlands). Journal of Sea Research 61: 153–164.
+Tunberg, B.G., and D. Krång. 2008. Composition and temporal change of the macrofauna in a shallow, sandy bottom in the Lysekil archipelago, Western Sweden. Marine Biology Research 4: 458–469.
+Van Avesaath, P.H., A. Engelberts, M. Bergmeijer, O.A. Van Hoesel, and H. Hummel. 2008a. Verspreiding van abundante macro-algen
+in het Veerse Meer 2008. Yerseke: NIOO-CEME, Report, Monitor Taskforce Publication Series 2008-9.
+Van Avesaath, P.H., A. Engelberts, M. Bergmeijer, O.A. Van Hoesel, and H. Hummel. 2008b. Verspreiding van Japanse oesters in het Veerse Meer 2008. Yerseke: NIOO-CEME, Report, Monitor Taskforce Publication Series 2008-8.
+VanColen, C., F.Montserrat,M. Vincx, P.M.J. Herman, T. Ysebaert, and S. Degraer. 2008. Macrobenthic recovery from hypoxia in an estuarine tidal mudflat.Marine Ecology Progress Series 372: 31–42.
+Van Katwijk, M.M., A.R. Bos, V.N. de Jonge, L.S.A.M. Hanssen, D. C.R. Hermus, and D.J. de Jong. 2009. Guidelines for seagrass restoration: Importance of habitat selection and donor population, spreading of risks, and ecosystem engineering effects. Marine Pollution Bulletin 58: 179–188.
+Wolff, W.J. 1973. The estuary as a habitat: An analysis of data on the soft-bottom macrofauna of the estuarine area of the rivers Rhine, Meuse, and Scheldt. Zoologische Verhandelingen 126: 1–242.
+Wolff, W.J., and A.J.J. Sandee. 1971. Distribution and ecology of the Decapoda Reptantia of the estuarine area of the rivers Rhine,Meuse, and Scheldt. Netherlands Journal of Sea Research 5: 197–226.
+1278 Estuaries and Coasts (2010) 33:1261–1278

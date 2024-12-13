@@ -1,1 +1,2 @@
+data/traits_data/*.csv filter=lfs diff=lfs merge=lfs -text
 .local/**/* filter=lfs diff=lfs merge=lfs -text

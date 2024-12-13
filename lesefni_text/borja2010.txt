@@ -1,0 +1,367 @@
+Medium- and Long-term Recovery of Estuarine and Coastal Ecosystems: Patterns, Rates and Restoration Effectiveness
+Ángel Borja & Daniel M. Dauer & Michael Elliott & Charles A. Simenstad
+Received: 4 March 2010 /Revised: 26 June 2010 /Accepted: 8 September 2010 /Published online: 24 September 2010 # Coastal and Estuarine Research Federation 2010
+Abstract Many estuarine and coastal marine ecosystems have increasingly experienced degradation caused by multiple stressors. Anthropogenic pressures alter natural ecosystems and the ecosystems are not considered to have recovered unless secondary succession has returned the ecosystem to the pre-existing condition or state. However, depending upon the scales of time, space and intensity of anthropogenic disturbance, return along the historic trajec-tory of the ecosystem may: (1) follow natural restoration though secondary succession; (2) be re-directed through ecological restoration, or (3) be unattainable. In order to address the gaps in knowledge about restoration and recovery of estuarine and coastal ecosystems, this special feature includes the present overview and other contribu-tions to provide a synthesis of our knowledge about recovery patterns, rates and restoration effectiveness. From the 51 examples collated in this contribution, we refine the recovery from the list of stressors into six recovery mechanisms: (1) recovery from sediment modification,
+which includes all aspects of dredging and disposal; (2) recovery by complete removal of stressors limiting natural ecosystem processes, which includes tidal marsh and inundation restoration; (3) recovery by speed of organic degradation, which includes oil discharge, fish farm wastes, sewage disposal, and paper mill waste; (4) recovery from persistent pollutants, which includes chemical discharges, such as TBT; (5) recovery from excessive biological removal, related to fisheries and (6) recovery from hydrological and morphological modification. Drawing upon experience both from these many examples and from an example of one comprehensive study, we show that although in some cases recovery can take <5 years, especially for the short-lived and high-turnover biological components, full recovery of coastal marine and estuarine ecosystems from over a century of degradation can take a minimum of 15–25 years for attainment of the original biotic composition and diversity may lag far beyond that period.
+Keywords Restoration . Recovery . Long-term data series .
+Ecological integrity . Marine and estuarine ecosystems
+Introduction
+The coastal zone is subject to many and varied changes resulting from human activities and natural processes (Aubry and Elliott 2006), which can impair the health and fitness of resident biota (Adams 2005) as well as the ability of the coastal zone to deliver ecosystem functions and the goods and services for human well-being (Beaumont et al. 2007; Costanza et al. 1997). In recent times, many estuarine and coastal marine ecosystems have experienced increasing degradation (Halpern et al. 2008a). This degradation can be
+Á. Borja (*) Marine Research Division, AZTI—Tecnalia, Herrera Kaia Portualdea s/n, 20110 Pasaia, Spain e-mail: aborja@pas.azti.es
+D. M. Dauer Department of Biological Sciences, Old Dominion University, Norfolk, VA 23529, USA
+M. Elliott Institute of Estuarine and Coastal Studies, University of Hull, Hull HU6 7RX, UK
+C. A. Simenstad School of Aquatic and Fishery Sciences, University of Washington, 1122N.E. Boat Street, Box 355020, Seattle, WA 98195-5020, USA
+Estuaries and Coasts (2010) 33:1249–1260 DOI 10.1007/s12237-010-9347-5
+caused by multiple stressors, including hydromorphological and sediment barriers (e.g. dams), toxic chemical pollu-tants, excess nutrient inputs, hypoxia, turbidity, suspended sediments and other ecosystem alterations, which can impact resources through single, cumulative or synergistic processes (Adams 2005; McLusky and Elliott 2004). Ecosystem degradation and pollution problems are corre-lated with increases in population density (Dauer et al. 2000) and significant efforts to monitor estuaries have been developed to assess their status (Latimer et al. 2003). However, within monitoring networks there is the need to separate catchment and diffuse stressors from localised and point-source problems. As an underlying philosophy, the DPSIR (drivers–pressures–state change–impact–response) approach (adapted from OECD 1993) has been widely used and accepted (see Borja and Dauer 2008) wherein each of the main drivers of change create a set of pressures; in turn, each pressure creates a set of state changes in the natural environment, which leads to impacts on the human system; these then require a set of responses, often involving legislative or economic instruments, which can control the excesses and thus lead to the adoption of the ecosystem approach stricto sensu (e.g. Mee et al. 2008). Through monitoring networks, establishing the relationships between drivers, their pressures (stressors) and impacts (effects) provides managers with a scientific basis upon which to build a consensus on solutions to problems (Latimer et al. 2003).
+Anthropogenic pressures altering natural ecosystems are largely the result of societal and economic develop-ment (Borja and Dauer 2008). Natural ecosystems may recover from anthropogenic perturbations when secondary succession returns the ecosystem to the pre-existing condition or state. However, depending upon the scales of time, space and intensity of perturbations (sensu Connell and Slatyer 1977), return along the historic trajectory of the ecosystem may: (1) follow natural restoration though secondary succession; (2) be re-directed through ecological restoration (sensu SER 2002), where secondary succession is assisted by anthro-pogenic intervention (Aronson and Le Floc’h 1996b; Elliott et al. 2007; Halpern et al. 2008b; Simenstad et al. 2006; Stein and Cadien 2009) to produce ecosystems that are resilient to normal periodic stress and are as self-sustaining as reference ecosystems; or (3) be unattainable (Duarte et al. 2009). Despite this, ecological engineering may be used, for example by rehabilitating wetlands, to produce a sustainable ecosystem (i.e. one that maintains ecosystem processes while at the same time maintaining ecosystem services to deliver societal benefits such as producing fisheries or improving water quality).
+In the latter case, through ecological engineering, a sustainable ecosystem may be developed that integrates
+human society with its natural environment for the benefit of both (Bergen et al. 2001; Lewis 2005). However, such a mutually beneficial and sustainable ecosystem will be inherently different from the historic ecosystem and the historic environmental homeostasis, defined as the inherent variability and resilience in the ecosystem required to mitigate or buffer anthropogenic change (see Elliott and Quintino 2007), will never be re-attained. Hence, legisla-tion worldwide, such as the Clean Water Act, in the USA, or the Water Framework Directive (WFD) and the Marine Strategy Framework Directive, in Europe, includes restora-tion of degraded aquatic habitats as one of the primary goals (Apitz et al. 2006; Borja et al. 2008a). One of the most innovative aspects of this legislation is to base management decisions on the ecological effects of pres-sures, acknowledging that sensitivity and resilience vary substantially across ecosystems. This presents the challenge to translate data on the structure and dynamics of biotic communities into information for designing effective restoration (Hering et al. 2010). The rate of ecosystem recovery and the associated controlling factors are partic-ularly difficult to identify, as exemplified by the paucity of literature on this topic. Without long-term data from the analysis of biological and chemical indicators, and an understanding of historical human activities, it is difficult to assess where an ecosystem is positioned along a trajectory to recovery (Latimer et al. 2003).
+Although the response of different organisms to restora-tion activities is well known in some cases (Elliott et al. 2007), there is a lack of empirical data on relevant spatial and temporal scales over which restoration occurs (Connell and Slatyer 1977) and on the relationships among the patterns and rates of biotic and physico-chemical changes. For example, Jones and Schmitz (2009) developed a broad overview of time scales required for recovery across both terrestrial and aquatic ecosystems and found average recovery times of 10 to 20 years for brackish and marine systems. However, these authors emphasised that pre-disturbance data were available for only 20% of the reviewed studies, a factor that rendered the assessment of recovery in 80% of the studies subjective. While the literature shows that there are few studies which show the trajectory for decline, even fewer provide descriptions and mechanisms for the recovery.
+There are very few examples of long-term monitoring data, including different biological elements (i.e. plankton, benthos, fishes, etc.) together with physico-chemical data from waters and sediments, showing the recovery trajecto-ries after remediation or restoration processes in marine environments (see examples in Borja et al. 2009a; Elliott et al. 2007; Jones and Schmitz 2009; Lotze et al. 2006; Simenstad et al. 2006; Stein and Cadien 2009; and Yuksek et al. 2006).
+1250 Estuaries and Coasts (2010) 33:1249–1260
+To address this fundamental gap in our knowledge about recovery patterns and rates in estuarine and coastal ecosystems, in January 2009, we organised a session on “Medium and long-term recovery of marine and estuarine systems—a guide to providing useful information in new scenarios to restore ecological integrity” for the American Society of Limnology and Oceanography (ASLO) Confer-ence in Nice (France). This special feature includes some of the presentations in this session, with the purpose of providing a useful synthesis for systematising the state of knowledge about recovery patterns, rates and effectiveness after restoration. Moreover, we include an example of an estuarine ecosystem, summarising our knowledge in long-term recovery of aquatic systems, of multiple biological and physico-chemical elements. Our ultimate goal, both in the meeting and this publication, is to provide data and opportunities to model scenarios of the assessment of ecological potential and give lessons for recovery.
+Recovery of Marine Ecosystems After Removing Different Human Pressures
+We surveyed the current literature and identified 51 long-term cases (Table 1) where (1) actions were taken to remove or reduce human pressure effects; (2) information on the responses of biological elements was available, and (3) medium or long-term monitoring of the recovery occurred. These case studies are from 23 different anthro-pogenic pressures upon various biological elements (macro-invertebrates, meiofauna, macroalgae, fishes and angiosperms) and include different geographical regions (19 countries from all continents), as well as different substrata and tidal levels. The time span of recovery after removal of the pressure is highly variable, extending from several months (in the case of meiofauna) to more than 22 years (in hard-bottom macroalgae and some sea grass species).
+Severe impacts, whether acute, such as large oil spills, chronic (low level inputs) or persistent over time and space (such as sewage sludge disposal, extensive wastewater discharge or mine tailings), require periods up to 10– 25 years for complete recovery (see Table 2, derived from Table 1). Conversely, restoration after physical disturbance (including dredging and restoration of tidal inundation) that does not leave a “legacy” stressor such as a persistent contaminant can take 1.5–10 years for recovery, although some sensitive organisms (such as angiosperms) may take over 20 years to recover (Table 2). Fish assemblages appear to recover from most pressures in less than 10 years, although it may take several decades to acquire a full species complement after starting from a state without any fish community, as was observed in the 1960s in the
+Thames River estuary, London, UK (McLusky and Elliott 2004). Although the data on speed of recovery need further interrogation, current analyses indicate that, if the physico-chemical system is restored, then colonisation, and hence recovery, will occur if there are sufficient recruits available. Again we need to determine whether the rate and pattern of recovery can be linked to the turnover and/or life span of the organisms (e.g. meiofaunal recovery is faster than macrofaunal) and also to the relationship between the timing of the cessation of the stressor and the recruitment and influx of organisms. For example, if sediment disturbance ceases before the spring–summer influx of recruits in temperate zones, then restoration of the commu-nity may be faster than if the influx occurred in other seasons. Similarly, there is the need to assess whether there are differences in the speed of recovery by organisms with planktonic dispersal (e.g. many macrobenthic species) from those with vegetative reproduction (e.g. sea grasses; Mazik et al. 2007).
+In a few cases, recovery was not at all evident. From four well-studied coastal ecosystems, Duarte et al. (2009) did not observe a return in simple biological variables (such as chlorophyll a concentration) following the assumed reduction of nutrient loads during two decades. In the Chesapeake Bay, despite extensive restoration efforts (including point-source reductions, fisheries management, sea grass plantings and oyster bed restoration), nutrient concentrations and associated ecological health-related water quality and biotic metrics have generally shown little improvement and, in some cases, large decreases since 1986 (Williams et al. this issue), keeping the submersed aquatic vegetation coverage below restoration targets (Orth et al. 2010). This may be reflected by the hysteresis term in the model proposed by Elliott et al. (2007) which indicates that the trajectory of degradation may be different from the trajectory of recovery; that difference can be regarded as a degree of ‘memory’ in the system (Peterson 2002) which may be related to the type of stressor and the ability of it to be assimilated (see below).
+The data collated in Table 1 do not indicate geographical patterns in recovery. For the same pressure, the response is similar in most locations and small differences are related to the turnover time in the system or in the dominant and bio-engineering species. Consequently, we would not expect a geographical pattern if the mechanisms of recovery are generic and relate to the functioning of the systems rather than the species identities which may vary geographically.
+When the restoration examples are organised by the type of stressor and the organisms studied during the recovery (Table 2), we find the stressors can be associated with one of six recovery mechanisms (Table 3): (1) recovery from sediment modification, which includes all aspects of dredging and disposal; (2) recovery by habitat creation,
+Estuaries and Coasts (2010) 33:1249–1260 1251
+Table 1 Long-term monitoring of different anthropogenic pressures, worldwide, in different substrata and tidal levels, using different biological elements, showing the time span of recovery after restoration or removing pressure
+Pressure Location Substrata Intertidal/ subtidal
+Biological elements Time for recovery
+Authors
+Sewage sludge disposal
+Northumberland coast (UK) Soft Subtidal Macroinvertebrates >3 years Birchenough and Frid 2009
+Sewage sludge disposal
+Garroch Head (Firth of Clyde, Scotland)
+Soft Subtidal Macroinvertebrates Incomplete after 14 years
+Moore and Rodger 1991
+Sewage sludge disposal
+Liverpool Bay (UK) Soft Subtidal Macroinvertebrates Incomplete after 5 years
+Whomersley et al. 2007
+Wastewater discharge California (USA) Soft Subtidal Macroinvertebrates 18 years Stein and Cadien 2009
+Wastewater discharge Boston harbour (USA) Soft Subtidal Macroinvertebrates 10–15 years Diaz et al. 2008
+Wastewater discharge Basque estuaries (Spain) Soft Subtidal Macroinvertebrates 10–15 years Borja et al. 2006, 2009b
+Wastewater discharge Marseille (France) Soft Subtidal Macroinvertebrates >7 years Bellan et al. 1999
+Wastewater discharge Basque coast (Spain) Soft/hard Subtidal Invertebrates and algae >6 years Borja et al. 2009b
+Wastewater discharge Abra of Bilbao (Spain) Hard Intertidal Macroalgae Incomplete after 22 years
+Díez et al. 2009
+Wastewater discharge Basque estuaries (Spain) Soft Subtidal Fishes 3–10 years Uriarte and Borja 2009
+Wastewater discharge Tagus estuary (Portugal) Soft Intertidal/ subtidal
+Macroinvertebrates Incomplete after 12 years
+Chainho et al. this issue
+Eutrophication Victoria Harbour, Hong Kong Soft Subtidal Macroinvertebrates >3 years Shin et al. 2008
+Eutrophication Orbetello lagoon (Italy) Soft Subtidal Macroinvertebrates >6 years Lardicci et al. 2001
+Eutrophication Mondego estuary (Portugal) Soft Intertidal Zostera noltii and macroinvertebrates
+>4 years Dolbeth et al. 2007; Neto et al. this issue
+Eutrophication Tampa Bay (Florida, USA) Soft Subtidal Sea grasses Incomplete after 20 years
+Greening and Janicki 2006
+Oxygen depletion Gullmarsfjord (Sweden) Soft Subtidal Macroinvertebrates 2 years Rosenberg et al. 2002
+Oil spill Various Soft/hard Intertidal/ subtidal
+Various 2–10 years Kingston 2002
+Oil-refinery discharge Barbadun estuary (Spain) Soft Intertidal Macroinvertebrates 2–3 years Borja et al. 2009b
+Oil-refinery discharge Milford Haven (UK) Hard Intertidal Macroinvertebrates 2–3 years Wake 2005
+Oil-refinery discharge Barbadun estuary (Spain) Soft Subtidal Fishes 2–3 years Uriarte and Borja 2009
+Fish farm Archipelago Sea (Finland) Soft Subtidal Macroinvertebrates Incomplete after 7 years
+Kraufvelin et al. 2001
+Fish farm Hornillo Cove (Mediterranean, Spain)
+Soft Subtidal Macroinvertebrates 2–3 years Sanz-Lázaro and Marín 2006
+Fish farm Tasmania (Australia) Soft Subtidal Macroinvertebrates >2.5 years Macleod et al. 2008
+TBT Crouch Estuary, Essex (UK) Soft Subtidal Macroinvertebrates 3–5 years Smith et al. 2008
+Mine tailings Rupert Inlet, British Columbia (Canada)
+Soft Subtidal Macroinvertebrates 4–15 years Burd 2002
+Mine tailings Affarlikassa and Quaamarujuk (Greenland)
+Soft Subtidal Macroinvertebrates >15 years Josefson et al. 2008
+Pulp mill Swedish fjord Soft Subtidal Macroinvertebrates 6–8 years Rosenberg 1972, 1976
+Physical disturbance South Africa Hard Intertidal Macroinvertebrates 3 years Dye 1998
+Physical disturbance Peru Basin Soft/hard Deep sea Megafauna Incomplete after 7 years
+Bluhm 2001
+Land claim Bidasoa estuary (Spain) Soft Intertidal Macroinvertebrates 2 years Marquiegui and Aguirrezabalaga 2009
+Land claim Nakdong River estuary (Korea)
+Soft Subtidal Zostera marina Incomplete after 20 years
+Park et al. 2009
+Marsh restoration Delaware Bay (USA) Soft Subtidal Fishes 1–2 years Able et al. 2008
+Marsh and tidal restoration
+Long Island Sound (USA) Soft Intertidal/ subtidal
+Vegetation, macroinvertebrates, fishes, birds
+5–20 years Warren et al. 2002
+Realignment of coastal defences
+Tollesbury, Essex (UK) Soft Intertidal Marshes and macroinvertebrates
+>6 years Garbutt et al. 2006
+Lagoon isolation East Harbor, Massachusetts (USA)
+Soft Subtidal Molluscs Incomplete after 3 years
+Thelen and Thiet 2009
+Lagoon isolation Lake Veere (Netherlands) Soft Intertidal/ subtidal
+Macroinvertebrates Incomplete alter 4 years
+Wijnhoven et al. this issue
+Dyke and marina construction
+Oria estuary (Spain) Soft Intertidal Macroinvertebrates 2 years Borja et al. 2009b
+Dyke and marina construction
+Oria estuary (Spain) Soft Subtidal Fishes 2–3 years Uriarte and Borja 2009
+Dredging and sediment disposal
+Basque coast and estuaries (Spain)
+Soft Subtidal Macroinvertebrates 2–3 years Borja et al. 2009b
+1252 Estuaries and Coasts (2010) 33:1249–1260
+Table 1 (continued)
+Pressure Location Substrata Intertidal/ subtidal
+Biological elements Time for recovery
+Authors
+Dredging and sediment disposal
+Mecklenburg Bay (western Baltic Sea)
+Soft Subtidal Macroinvertebrates 2 years Powilleit et al. 2006
+Dredging and sediment disposal
+Mississippi sound (USA) Soft Subtidal Macroinvertebrates 2 years Wilber et al. 2007
+Dredging Worldwide Soft Intertidal/ subtidal
+Sea grasses 2–>5 years Erftemeijer and Robin Lewis 2006
+Dredging Basque estuaries (Spain) Soft Subtidal Fishes 2–3 years Uriarte and Borja 2009
+Aggregate dredging Hastings Shingle Bank (UK) Soft Subtidal Macroinvertebrates 3–4 years Cooper et al. 2008
+Aggregate dredging South East England (UK) Soft Subtidal Epifauna 2–3 years Smith et al. 2006
+Sand extraction Coast of Ravenna (Adriatic Sea, Italy)
+Soft Subtidal Macroinvertebrates 2–4 years Simonini et al. 2007
+Sediment disposal Hamford Water, Essex (UK) Soft Intertidal Meio and macrofauna 3–18 months Bolam et al. 2006
+Sediment disposal Laguna Madre, Texas (USA) Soft Subtidal Sea grass, Macroinv., Fishes >5 years Sheridan 2004
+Sediment disposal Chesapeake Bay (USA) Soft Subtidal Macroinvertebrates 1.5 years Schaffner this issue
+Fish trawling North Sea Sand-gravel
+Subtidal Macroinvertebrates 2.5–7 years Hiddink et al. 2006
+Fish trawling North Sea Sand– gravel
+Subtidal Fishes 5–10 years Maxwell and Jennings 2005
+Table 2 Summary of time for recovery, for different biological elements and substrata, under different pressures
+Pressure Substrata Intertidal/subtidal Biological elements Time for recovery
+Sediment disposal Soft Intertidal Meio and macrofauna 3–18 months
+Marsh restoration Soft Subtidal Fishes 1–2 years
+Oxygen depletion Soft Subtidal Macroinvertebrates 2 years
+Land claim Soft Intertidal Macroinvertebrates 2 years
+Oil-refinery discharge Soft/hard Intertidal/subtidal Macroinvertebrates, fishes 2–3 years
+Dyke and marina construction Soft Intertidal/subtidal Macroinvertebrates, fishes 2–3 years
+Lagoon isolation Soft Subtidal Molluscs >3 years
+Aggregate dredging Soft Subtidal Macroinvertebrates, epifauna 2–4 years
+TBT Soft Subtidal Macroinvertebrates 3–5 years
+Dredging Soft Intertidal/subtidal Sea grasses, macroinvertebrates, fishes 2–>5 years
+Sediment disposal Soft Subtidal Sea grass, macroinvertebrates, fishes >5 years
+Eutrophication Soft Subtidal Macroinvertebrates >3–>6 years
+Realignment of coastal defences Soft Intertidal Marshes and macroinvertebrates >6 years
+Fish farm Soft Subtidal Macroinvertebrates 2–>7 years
+Physical disturbance Soft/hard Intertidal/deep sea Macroinvertebrates, megafauna 3–>7 years
+Pulp mill Soft Subtidal Macroinvertebrates 6–8 years
+Oil spill Soft/hard Intertidal/subtidal Various 2–10 years
+Fish trawling Sand–gravel Subtidal Macroinvertebrates, fishes 2.5–10 years
+Wastewater discharge Soft Subtidal Fishes 3–10 years
+Sewage sludge disposal Soft Subtidal Macroinvertebrates 3–>14 years
+Mine tailings Soft Subtidal Macroinvertebrates 4–>15 years
+Marsh and tidal restoration Soft Intertidal/subtidal Vegetation, fishes, birds 5–20 years
+Wastewater discharge Soft Subtidal Macroinvertebrates, sea grasses 7–20 years
+Land claim Soft Subtidal Zostera marina >20 years
+Wastewater discharge Hard Intertidal Macroalgae >6–>22 years
+Estuaries and Coasts (2010) 33:1249–1260 1253
+which includes marsh restoration, restoration of tidal inunda-tion, etc.; (3) recovery by speed of organic degradation and reduction of nutrient load, which includes oil discharges and oil spillages, fish farms, sewage disposal, paper mill waste, etc.; (4) recovery from persistent pollutants, which includes chemical discharges, TBT, etc.; (5) recovery from excessive biological removal, which relates to fisheries and (6) excessive water abstraction had occurred and so required recovery from hydrological and morphological modification, which refers to all cases where physical barriers were in place (which also affects the salinity balance) and habitats previ-ously were isolated. Hence, we emphasise that the pattern of the recovery (Table 3) is often a function of anthropogenic interference to the physical system and then allowing either natural sediment influx or the influx of recruits to start re-building the community structure. Once the community structure has been created (due to organisms colonising available or created niches) the community functioning (including inter- and intra-specific interactions such as predator–prey relationships and competition) will develop (Gray and Elliott 2009). In many instances (Tables 1 and 2) the studies focus on an initial reappearance of particular biological elements but we caution that the presence of a biological element following colonisation is not necessarily an indication that a fully functioning ecosystem has been created (Mander et al. 2007; Mazik et al. 2007). For example, the recolonisation by one group of organisms (e.g. predators), will not create a sustainable ecosystem if the conditions are not suitable for the recolonisation by interacting species (e.g. their prey).
+Long-term Recovery in an Estuarine System: the Nervión River Estuary as Example
+Very few of the studies indicated above consider more than one ecological component. Therefore to better illustrate the way in which the restoration of ecosystem integrity has been determined by an effective monitoring programme we present an exemplary case study of a long-term physico-chemical and biological (i.e. plankton, benthos, fishes, seabirds) data set, together with information on historical human activities from the Nervión estuary (Basque Coun-try, northern Spain). The hydrogeomorphology of the estuary was modified dramatically by urban, industrial and port settlement; these modifications include almost the whole of the original estuary, during the last 150 years (Cearreta et al. 2004). Exploitation of locally abundant iron ore led to the early industrial development of the area in the mid-nineteenth century, coincident with an increase in the density of the population (to c. 2,250 inhabitants per square kilometre and the present total of 1 million inhabitants) (Belzunce et al. 2004). As a consequence, over the last 150 years the estuary has received wastes from many sources (e.g. mineral sluicing, industrial wastes and urban effluents) that have significantly degraded its environmental quality (Belzunce et al. 2001, 2004; Borja et al. 2008b). Before treatment in 1984, the estuary received some 250,000 m3 per day of urban wastewaters and 67,000 m3
+per day of industrial waters (produced mainly by the chemical, iron–steel and paper sectors) that were highly contaminated with toxic products (cyanide, heavy metals,
+Table 3 Mechanisms of recovery and for recovery
+Mechanisms for recovery
+Recovery features Recovery
+From sediment modification
+Usually in areas of high sediment turnover and sediment influx, with or without organisms colonising
+A function of the ease of sediment influx and the organism influx
+By habitat creation Create the appropriate physical environment and then allow organisms to colonise
+A function of the ease of creating the suitable space and the ease of influx of organisms
+By organic matter degradation and reduction of nutrient load
+Recovery occurs once the excess organic matter is broken down (in the case of sewage and oil), any toxic pollutants have evaporated (from oil spills), and the excess of nutrients is removed; this is more difficult in fine sediments than coarse sediments and in low-energy areas than in high energy areas
+A function of the original amount of organic matter stored in the system and the conditions for its breakdown; shown by an absence of symptoms of eutrophication (algal blooms, oxygen depletion, etc.)
+From persistent pollutants
+The ability of the system to sequester/bury the persistent pollutants or disperse them to reach low background levels
+A function of the original amount and toxicity of the pollutants, their degradation potential by physical, chemical or biological methods and thus the speed of sequestration
+From excessive biological removal
+The ability of the system either to replenish stocks naturally or with human interference through restocking
+A function of the severity of the biological removal (over-fishing) and the rate of recolonisation/recruitment and reproduction
+From hydrological– morphological modification
+The ability to remove barriers and restore water flow, current patterns, salinity balance, etc.
+A function of the ease with which these hydromorphological conditions can be restored naturally or with human interventions
+1254 Estuaries and Coasts (2010) 33:1249–1260
+fluorides and phenols (Borja et al. 2006)). This produced extremely low concentrations of dissolved oxygen (even anoxia) in the water column and a high content and concentration of organic matter and heavy metals in the sediments (Belzunce et al. 2001, 2004) as well as deteriorating benthic communities (Gorostiaga et al. 2004).
+In a major initiative to reverse this situation of poor environmental quality, in 1979 the Consorcio de Aguas Bilbao-Bizkaia, the Local Authority responsible for water supply and wastewater treatment, approved a sewage treat-ment project that initiated an estuary-scale recovery (Fig. 1). Diversion of discharges to a water treatment plant began in the late 1980s and the physico-chemical water treatment began in 1990 (Franco et al. 2004); in 1995, the company causing most pollution in the estuary (the iron and steel industry, Altos Hornos de Vizcaya), was closed and, in 2001, a secondary treatment plant came into operation (Borja et al. 2006; Fig. 1). This has resulted in a progressive improvement in the physico-chemical properties (García-Barcina et al. 2006), benthic (Borja et al. 2006, 2009b; Bustamante et al. 2007; Díez et al. 2009) and fish assemblages (Uriarte and Borja 2009; Fig. 1).
+However, although oxygen conditions have increased significantly during the clean-up process (Borja et al. 2006, 2009b), the estuary continues to be moderately polluted by priority substances (i.e. metals and organic compounds) in waters (Fernández et al. 2008), sediments (Bartolomé et al. 2006; Belzunce et al. 2001; Prieto et al. 2008) and biota
+(Besada et al. 2008; Franco et al. 2002; Fig. 1). Although the concentrations have decreased in recent years both in waters and sediments (Leorri et al. 2008; Tueros et al. 2009), the presence of these substances can affect biolog-ical elements when they recolonise previous azoic areas (Borja et al. 2006).
+From this published information, the history of the recovery within the Nervión River estuary can be recon-structed following the main restoration milestones (Fig. 1). We identify a sequence of four phases:
+1. When the physics and chemistry of the system were restored, there was a progressive increase of dissolved oxygen and a reduction of pollutants in waters and sediments.
+2. The biological elements colonised the inner part of the estuary, probably initially through the plankton and then by mobile soft-bottom macroinvertebrates coinci-dent with a progressive increase in richness and diversity and a decrease in AMBI values (AZTI’s Marine Biotic Index, an indicator of the proportion of sensitive/opportunistic species; Borja et al. 2000). This recovery of soft-bottom macroinvertebrates has pro-gressed over at least 15 years. In coastal waters, although apparently less affected by pollution, recovery of hard-bottom macroalgae took at least 14 years, showing that recovery of structural species was much slower than the remainder of species.
+Phases of Years Actuation Clean-up Sediment pollution recovery progress (metals, organics) Hard-bottom
+1989 Azoic (AMBI: 7) Cover <50% 1990 Richness <10 sp
+Phase (1) 1991 H' <1.3 bit 1992 1993 1994 1995 Highly pollutant company closes Cover 80-100% 1996 Richness 10-20 sp
+Phase (2) 1997 H' 1.3-1.8 bit 1998 1999 2000 2001 Biological treatment starts 2002
+Phase (3) 2003 Cover >120% 2004 Richness >20 sp
+Phase (4) 2005 H' >1.8 bit 2006 2007 Moderate pollution 2008
+Demersal fishes
+Seabirds (breeding pairs)
+Oxygen saturation Soft-bottom
+Benthic communities
+Water treatment starts
+<100
+100-200
+>400
+Without fishes
+Richness:0-7 sp
+Richness:7-18 sp
+Richness:15-20 sp
+Heavy pollution
+Moderate pollution
+AMBI:6 Taxa<5 sp
+AMBI:4-6 Taxa:5-15 sp
+AMBI:3-6 Taxa:15-25 sp
+AMBI:2-3 Taxa>25 sp
+Hypoxia
+<60%
+60-70%
+70-80%
+0 0.5 1.0Inhabitants served (millions)
+Very degraded Degraded
+Nearly recovered Moderately degradedSudden changes Stability Increase Decrease
+Situation
+Fig. 1 Recovery patterns and recovery phases (see text) of the quality within the Nervión estuary (Basque Country, northern Spain), during a period of water treatment progression. Data source: clean-up progress (García-Barcina et al. 2006), oxygen and sediment (Borja et al. 2006, 2009b; Tueros et al. 2009; Javier Franco (AZTI-Tecnalia), personal communication), estuarine soft-bottom macroinvertebrates (Borja et
+al. 2006, 2009b), coastal macroalgae from hard-bottom substrata (Díez et al. 2009), demersal fishes (Uriarte and Borja 2009), seabirds (as breeding pairs of Phalacrocorax carbo, Javier Franco (AZTI-Tecnalia) personal communication). AMBI AZTI’s Marine Biotic Index (Borja et al. 2000), H′ Shannon–Wiener diversity index
+Estuaries and Coasts (2010) 33:1249–1260 1255
+3. More complex biological interactions and functions began developing, as indicated by the demersal fishes which started to colonise the inner part of the estuary at least 4 years after the initial recovery of soft-bottom macroinvertebrates. Although this pattern of recovery is probably related to the changes in oxygen concentra-tion in bottom layers, it also coincides with sufficient food availability to support permanent colonisation of these inner estuary locations. After the start of colonisation, however, the near complete recovery was achieved in 10 years, probably due to the well-known contribution of marine species to the total species richness within the estuaries (Nicolas et al. 2010). We emphasise that recovery from temporary ecosystem loss, such as water quality problems (in-cluding anoxia), may take less time than recovery from permanent ecosystem loss (such as land claim), where the appropriate lost ecosystem needs to be created (also see Elliott et al. (2007) and references therein). Finally, seabirds (in this particular case, the number of breeding pairs of the cormorant Phalacrocorax carbo) started to increase in number 2 years after the initial recovery of fishes in the inner part of the estuary. These seabirds,
+which feed on fishes, showed a rapid recovery after completion of the clean-up.
+4. Recovering biological communities will start influenc-ing the physico-chemical system through bioturbation, biosedimentation, vegetative growth, etc. (see Gray and Elliott 2009).
+In spite of this recovery, vigilance and monitoring is necessary, given the continued increase in population that may counterbalance the management efforts in the longer term, thereby constituting an additional trajectory to the three presented in the previous section.
+The case study of the Nervión River estuary conforms to the conceptual model of changes to the system status described by Bricker et al. (2007) and Elliott et al. (2007) commensurate with the increasing and relocated wastewater discharge volume and decreasing pressure due to improved wastewater treatment (Fig. 2). Although the available information is somewhat incomplete, foraminiferal and sediment data (Cearreta et al. 2004) show that before mid-nineteenth century the estuary was in good status (sensu the WFD, see Borja et al. 2009b). In the second half of the nineteenth century, after land claim, dredging and industri-
+<19th Good status 19th-1900 Moderately degraded
+2000-2009 Near good status 1900-1950 Degraded status
+New state
+1995-2000 Moderately degraded
+1950-1989 Very degraded status
+1989-1995 Degraded status
+Resistance (amount of pressure that can be applied
+without major deterioration in status)
+Inherent variability and ability to change without collapse ( due to resistance)
+Pressure increasinghysteresis
+(type I) Amount system is disturbed (deterioration in status)
+May be zero
+Resilience
+(b)(a)
+hysteresis (type II)
+Pressure decreasing
+System status (*)
+Pressure
+Fig. 2 A conceptual model of changes to the state of Nervión estuary (Basque Country, northern Spain) with increasing (increasing waste-water discharge volume) and decreasing (wastewater treatment
+improvement) pressure (adapted from Elliott et al. (2007)). (a) Complete resilience; (b) incomplete resilience
+1256 Estuaries and Coasts (2010) 33:1249–1260
+alisation, the estuary rapidly degraded through the first half of the twentieth century and until the end of the 1980s (Fig. 2). Recovery does occur with decreasing pressures, in part by wastewater treatment, but it is uncertain whether it will be complete because many ecosystems have been reduced or lost (e.g. intertidal areas, salt-marshes, etc.). The net result will probably lead to a decreased abundance, richness and biomass of some biological taxa. Hence, as shown by Elliott et al. (2007) and Tett et al. (2007), an inherent hysteresis in the system may be unquantified (see Fig. 2), providing a new state for the Nervión estuary, whose designation was changed to a Highly Modified Water Body (i.e. a water body with strong geomorpholog-ical changes, such as a harbour), after the WFD (Borja and Elliott 2007). Such hysteric trajectories can also be referred to as ecological regime shifts (sensu Carpenter and Brock 2006; Contamin and Ellison 2009) that could ultimately return to the ‘alternative steady state’ or remain on a trajectory toward ‘modified’ or entirely ‘new’ ecosystems (Aronson and Le Floc’h 1996a; Hobbs and Norton 1996). The analysis of this case study reinforces the conclusion that effective efforts at recovery require an a priori understanding that recovery rates will vary based upon the interaction of the type of anthropogenic pressure and specific biotic components, as well as post-hoc measure-ment of the trajectory of change.
+Conclusions
+The analysis here shows that although in some cases recovery can take <5 years, the full recovery of many coastal marine and estuarine ecosystems can take a minimum of 15–25 years from over a century of degrada-tion and attainment of the original biotic composition and diversity and complete functioning may lag far beyond that, possibly at least another 25 years. Some ecosystems may never attain the technical definition of being restored, but end up irreversibly in an alternative state, as shown in the Nervión estuary. The recovery may achieve ecosystem structure, as indicated by the presence of appropriate organisms, but this does not necessarily mean that ecosystem functioning has been regained. Where restora-tion measures can be implemented rapidly, and natural processes fully recovered, there will in many cases be significant improvements of ecological status within this time span, although not necessarily to reach the original historical state (Hering et al. 2010). We also emphasise that we need to agree upon the restoration goals for the system and also what criteria will be used to determine attainment of the desired system (Simenstad et al. 2006). For example, we must question whether the system restored merely contains the structural elements, i.e. the appropriate species
+complement, or whether we are sufficiently competent in restoration to achieve a fully functioning system with the appropriate amount of primary production, predator–prey relationships and competition between species. Secondly, we need to determine whether dynamic marine systems, i.e. of highly variable hydrodynamics in open systems, recover more quickly than non-dynamic low-energy ones, such as accreting mudflat areas. We also emphasise that open systems cannot be restored other than by removing the stressor and allowing natural processes to aid the recovery. In contrast, we now have a large amount of experience in estuarine and coastal areas of helping systems recover some significant degree of functioning, even if this is not the same as the original system under pre-anthropogenic influences.
+Acknowledgements This study is part of the European project WISER (Water bodies in Europe: Integrative Systems to assess Ecological status and Recovery) (Grant Agreement 226273, 7th Framework Programme). Javier Franco (AZTI-Tecnalia) is thanked for providing some unpublished data from the Nervión estuary. This is contribution number 506 from AZTI-Tecnalia (Marine Research Division).
+References
+Able, K.W., T.M. Grothues, S.M. Hagan, M.E. Kimball, D.M. Nemerson, and G.L. Taghon. 2008. Long-term response of fishes and other fauna to restoration of former salt hay farms: Multiple measures of restoration success. Reviews in Fish Biology and Fisheries 18(1): 65–97.
+Adams, S.M. 2005. Assessing cause and effect of multiple stressors on marine systems. Marine Pollution Bulletin 51: 649–657.
+Apitz, S.E., M. Elliott, M. Fountain, and T.S. Galloway. 2006. European environmental management: Moving to an ecosystem approach. Integrated Environmental Assessment and Manage-ment 2(1): 80–85.
+Aronson, J., and E. Le Floc’h. 1996a. Hierarchies and landscape history: Dialoguing with Hobbs and Norton. Restoration Ecology 4: 327–333.
+Aronson, J., and E. Le Floc’h. 1996b. Vital landscape attributes: Missing tools for restoration ecology. Restoration Ecology 4: 377–387.
+Aubry, A., and M. Elliott. 2006. The use of environmental integrative indicators to assess seabed disturbance in estuaries and coasts: Application to the Humber Estuary, UK. Marine Pollution Bulletin 53: 175–185.
+Bartolomé, L., I. Tueros, E. Cortazar, J.C. Raposo, J. Sanz, O. Zuloaga, A. de Diego, N. Etxebarria, L.A. Fernández, and J.M. Madariaga. 2006. Distribution of trace organic contaminants and total mercury in sediments from the Bilbao and Urdaibai Estuaries (Bay of Biscay). Marine Pollution Bulletin 52: 1111– 1117.
+Beaumont, N.J., M.C. Austen, J.P. Atkins, D. Burdon, S. Degraer, T.P. Dentinho, S. Derous, P. Holm, T. Horton, E. van Ierland, A.H. Marboe, D.J. Starkey, M. Townsend, and T. Zarzycki. 2007. Identification, definition and quantification of goods and services provided by marine biodiversity: Implications for the ecosystem approach. Marine Pollution Bulletin 54: 253–265.
+Bellan, G., M. Bourcier, C. Salen-Picard, A. Arnoux, and S. Casserley. 1999. Benthic ecosystem changes associated with wastewater
+Estuaries and Coasts (2010) 33:1249–1260 1257
+treatment at Marseille: Implications for the protection and restoration of the Mediterranean coastal shelf ecosystems. Water Environment Research 71(4): 483–493.
+Belzunce, M.J., O. Solaun, J. Franco, V. Valencia, and A. Borja. 2001. Accumulation of organic matter, heavy metals and organic compounds in surface sediments along the Nervion estuary (Northern Spain). Marine Pollution Bulletin 42: 1407–1411.
+Belzunce, M.J., O. Solaun, J.A. González-Oreja, E. Millán, and V. Pérez. 2004. Contaminants in sediments. In Oceanography and Marine Environment of the Basque Country Series 70, ed. A. Borja and M. Collins, 283–315. Amsterdam: Elsevier Oceanography.
+Bergen, S.D., S.M. Bolton, and J.L. Fridley. 2001. Design principles for ecological engineering. Ecological Engineering 18: 201–210.
+Besada, V., J.M. Andrade, F. Schultze, J. Fumega, B. Cambeiro, and J. J. González. 2008. Statistical comparison of trace metal concen-trations in wild mussels (Mytilus galloprovincialis) in selected sites of Galicia and Gulf of Biscay (Spain). Journal of Marine Systems 72: 320–331.
+Birchenough, S.N.R., and C.L.J. Frid. 2009. Macrobenthic succession following the cessation of sewage sludge disposal. Journal of Sea Research 62: 258–267.
+Bluhm, H. 2001. Re-establishment of an abyssal megabenthic community after experimental physical disturbance of the seafloor. Deep Sea Research. Part II: Topical Studies in Oceanography 48: 3841–3868.
+Bolam, S.G., M. Schratzberger, and P. Whomersley. 2006. Macro- and meiofaunal recolonisation of dredged material used for habitat enhancement: Temporal patterns in community development. Marine Pollution Bulletin 52: 1746–1755.
+Borja, A., and M. Elliott. 2007. What does ‘good ecological potential’ mean, within the European water framework directive? Marine Pollution Bulletin 54: 1559–1564.
+Borja, A., and D.M. Dauer. 2008. Assessing the environmental quality status in estuarine and coastal systems: Comparing methodolo-gies and indices. Ecological Indicators 8: 331–337.
+Borja, A., J. Franco, and V. Pérez. 2000. A marine biotic index to establish the ecological quality of soft-bottom benthos within European estuarine and coastal environments. Marine Pollution Bulletin 40: 1100–1114.
+Borja, A., I. Muxika, and J. Franco. 2006. Long-term recovery of soft-bottom benthos following urban and industrial sewage treatment in the Nervión estuary (southern Bay of Biscay). Marine Ecology Progress Series 313: 43–55.
+Borja, A., S.B. Bricker, D.M. Dauer, N.T. Demetriades, J.G. Ferreira, A.T. Forbes, P. Hutchings, X. Jia, R. Kenchington, J.C. Marques, and C. Zhu. 2008a. Overview of integrative tools and methods in assessing ecological integrity in estuarine and coastal systems worldwide. Marine Pollution Bulletin 56: 1519–1537.
+Borja, A., I. Tueros, M.J. Belzunce, I. Galparsoro, J.M. Garmendia, M. Revilla, O. Solaun, and V. Valencia. 2008b. Investigative monitoring within the European Water Framework Directive: A coastal blast furnace slag disposal, as an example. Journal of Environmental Monitoring 10: 453–462.
+Borja, A., J. Bald, J. Franco, J. Larreta, I. Muxika, M. Revilla, J.G. Rodríguez, O. Solaun, A. Uriarte, and V. Valencia. 2009a. Using multiple ecosystem components, in assessing ecological status in Spanish (Basque Country) Atlantic marine waters. Marine Pollution Bulletin 59: 54–64.
+Borja, A., I. Muxika, and J.G. Rodríguez. 2009b. Paradigmatic responses of marine benthic communities to different anthropo-genic pressures, using M-AMBI, within the European Water Framework Directive. Marine Ecology 30: 214–227.
+Bricker, S., B. Longstaff, W. Dennison, A. Jones, K. Boicourt, C. Wicks and J. Woerner. 2007. Effects of nutrient enrichment in the Nation’s Estuaries: A decade of change. NOAA Coastal Ocean Program Decision Analysis, 328 pp.
+Burd, B.J. 2002. Evaluation of mine tailings effects on a benthic marine infaunal community over 29 years. Marine Environmen-tal Research 53: 481–519.
+Bustamante, M., F.J. Tajadura-Martín, and J.I. Sáiz Salinas. 2007. Intertidal macrofaunal communities in an intensely polluted estuary. Environmental Monitoring and Assessment 134: 397– 410.
+Carpenter, S.R., and W.A. Brock. 2006. Rising variance: A leading indicator of ecological transition. Ecology Letters 9: 311–318.
+Cearreta, A., M.J. Irabien, and A. Pascual. 2004. Human activities along the Basque coast during the last two centuries: Geological perspective of recent anthropogenic impact on the coast and its environmental consequences. In Oceanography and Marine Environment of the Basque Country Series 70, 27–50, ed. A. Borja and M. Collins. Elsevier Oceanography: Amsterdam.
+Chainho, P., G. Silva, M.F. Lane, J.L. Costa, T. Pereira, C. Azeda, P.R. Almeida, I. Metelo and M.J. Costa. This issue. Long-term trends in intertidal and subtidal benthic communities in response to water quality improvement measures. Estuaries and Coasts. doi:10.1007/s12237-010-9321-2
+Connell, J.H., and R.O. Slatyer. 1977. Mechanisms of succession in natural communities and their role in community stability and organization. The American Naturalist 111: 1119–1144.
+Contamin, R., and A.M. Ellison. 2009. Indicators of regime shifts in ecological systems: What do we need to know and when do we need to know it? Ecological Applications 19: 799–816.
+Cooper, K.M., C.R.S. Barrio Froján, E. Defew, M. Curtis, A. Fleddum, L. Brooks, and D.M. Paterson. 2008. Assessment of ecosystem function following marine aggregate dredging. Jour-nal of Experimental Marine Biology and Ecology 366: 82–91.
+Costanza, R., R. d’Arge, R. de Groot, S. Farber, M. Grasso, B. Hannon, K. Limburg, S. Naeem, R.V. O’Neill, J. Paruelo, R.G. Raskin, P. Sutton, and M. van den Belt. 1997. The value of the world’s ecosystem services and natural capital. Nature 387: 253–260.
+Dauer, D.M., J.A. Ranasinghe, and S.B. Weisberg. 2000. Relationships between benthic community condition, water quality, sediment quality, nutrient loads, and land use patterns in Chesapeake Bay. Estuaries 23: 80–96.
+Diaz, R., D. Rhoads, J. Blake, R. Kropp, and K. Keay. 2008. Long-term trends of benthic habitats related to reduction in wastewater discharge to Boston Harbor. Estuaries and Coasts 31: 1184–1197.
+Díez, I., A. Santolaria, A. Secilla, and J.M. Gorostiaga. 2009. Recovery stages over long-term monitoring of the intertidal vegetation in the Abra de Bilbao area and on the adjacent coast (N. Spain). European Journal of Phycology 44: 1–14.
+Dolbeth, M., P.G. Cardoso, S.M. Ferreira, T. Verdelhos, D. Raffaelli, and M.A. Pardal. 2007. Anthropogenic and natural disturbance effects on a macrobenthic estuarine community over a 10-year period. Marine Pollution Bulletin 54: 576–585.
+Duarte, C., D. Conley, J. Carstensen, and M. Sánchez-Camacho. 2009. Return to Neverland: Shifting baselines affect eutrophication restoration targets. Estuaries and Coasts 32: 29–36.
+Dye, A.H. 1998. Dynamics of rocky intertidal communities: Analyses of long time series from South African shores. Estuarine, Coastal and Shelf Science 46: 287–305.
+Elliott, M., and V. Quintino. 2007. The estuarine quality paradox, environmental homeostasis and the difficulty of detecting anthropogenic stress in naturally stressed areas. Marine Pollution Bulletin 54: 640–645.
+Elliott, M., D. Burdon, K.L. Hemingway, and S.E. Apitz. 2007. Estuarine, coastal and marine ecosystem restoration: Confusing management and science—A revision of concepts. Estuarine, Coastal and Shelf Science 74: 349–366.
+Erftemeijer, P.L.A., and R.R. Robin Lewis III. 2006. Environmental impacts of dredging on seagrasses: A review. Marine Pollution Bulletin 52: 1553–1572.
+1258 Estuaries and Coasts (2010) 33:1249–1260
+Fernández, S., U. Villanueva, A. De Diego, G. Arana, and J.M. Madariaga. 2008. Monitoring trace elements (Al, As, Cr, Cu, Fe, Mn, Ni and Zn) in deep and surface waters of the estuary of the Nerbioi-Ibaizabal River (Bay of Biscay, Basque Country). Journal of Marine Systems 72: 332–341.
+Franco, J., A. Borja, O. Solaun, and V. Pérez. 2002. Heavy metals in molluscs from the Basque Coast (Northern Spain): Results from an 11-year monitoring programme. Marine Pollution Bulletin 44: 973–976.
+Franco, J., A. Borja, and V. Valencia. 2004. Overall assessment— Human impacts and quality status. In Oceanography and Marine Environment of the Basque Country Series 70, 581–597, ed. A. Borja and M. Collins. Amsterdam: Elsevier Oceanography.
+Garbutt, R.A., C.J. Reading, M. Wolters, A.J. Gray, and P. Rothery. 2006. Monitoring the development of intertidal habitats on former agricultural land after the managed realignment of coastal defences at Tollesbury, Essex, UK. Marine Pollution Bulletin 53: 155–164.
+García-Barcina, J.M., J.A. González-Oreja, and A. De la Sota. 2006. Assessing the improvement of the Bilbao estuary water quality in response to pollution abatement measures. Water Research 40: 951–960.
+Gorostiaga, J.M., A. Borja, I. Díez, G. Francés, S. Pagola-Carte, and J. I. Sáiz Salinas. 2004. Recovery of benthic communities, in polluted systems. In Oceanography and Marine Environment of the Basque Country Series 70, 549–578, ed. A. Borja and M. Collins. Elsevier Oceanography: Amsterdam.
+Gray, J.S., and M. Elliott. 2009. Ecology of Marine Sediments: Science to management, 260. Oxford: OUP.
+Greening, H., and A. Janicki. 2006. Toward reversal of eutrophic conditions in a subtropical estuary: Water quality and seagrass response to nitrogen loading reductions in Tampa Bay, Florida, USA. Environmental Management 38: 163–178.
+Halpern, B.S., S. Walbridge, K.A. Selkoe, C.V. Kappel, F. Micheli, C. D’Agrosa, J.F. Bruno, K.S. Casey, C. Ebert, H.E. Fox, R. Fujita, D. Heinemann, H.S. Lenihan, E.M.P. Madin, M.T. Perry, E.R. Selig, M. Spalding, R. Steneck, and R. Watson. 2008a. A global map of human impact on marine ecosystems. Science 319: 948–952.
+Halpern, B.S., K.L. McLeod, A.A. Rosenberg, and L.B. Crowder. 2008b. Managing for cumulative impacts in ecosystem-based management through ocean zoning. Ocean and Coastal Man-agement 51: 203–211.
+Hering, D., A. Borja, J. Carstensen, L. Carvalho, M. Elliott, C.K. Feld, A.S. Heiskanen, R.K. Johnson, J. Moe, D. Pont, A.L. Solheim, and W. van de Bund. 2010. The European water framework directive at the age of 10: A critical review of the achievements with recommendations for the future. The Science of the Total Environment 408: 4007–4019.
+Hiddink, J.G., S. Jennings, and M.J. Kaiser. 2006. Indicators of the ecological impact of bottom-trawl disturbance on seabed com-munities. Ecosystems 9: 1190–1199.
+Hobbs, R.J., and D.A. Norton. 1996. Towards a conceptual framework for restoration ecology. Restoration Ecology 4: 93–110.
+Jones, H.P., and O.J. Schmitz. 2009. Rapid recovery of damaged ecosystems. PLoS ONE 4(5): e5653. doi:5610.1371/journal. pone.0005653.
+Josefson, A.B., J.L.S. Hansen, G. Asmund, and P. Johansen. 2008. Threshold response of benthic macrofauna integrity to metal contamination in West Greenland. Marine Pollution Bulletin 56: 1265–1274.
+Kingston, P.F. 2002. Long-term environmental impact of oil spills. Spill Science and Technology Bulletin 7: 53–61.
+Kraufvelin, P., B. Sinisalo, E. Leppäkoski, J. Mattila, and E. Bonsdorff. 2001. Changes in zoobenthic community structure after pollution abatement from fish farms in the archipelago sea (N. Baltic Sea). Marine Environmental Research 51: 229–245.
+Lardicci, C., S. Como, S. Corti, and F. Rossi. 2001. Changes and recovery of macrozoobenthic communities after restoration measures of the Orbetello Lagoon (Tyrrhenian coast, Italy). Aquatic Conservation: Marine and Freshwater Ecosystems 11 (4): 281–287.
+Latimer, J.S., W.S. Boothman, C.E. Pesch, G.L. Chmura, V. Pospelova, and S. Jayaraman. 2003. Environmental stress and recovery: The geochemical record of human disturbance in New Bedford Harbor and Apponagansett Bay, Massachusetts (USA). The Science of the Total Environment 313: 153–176.
+Leorri, E., A. Cearreta, M.J. Irabien, and I. Yusta. 2008. Geochemical and microfaunal proxies to assess environmental quality con-ditions during the recovery process of a heavily polluted estuary: The Bilbao estuary case (N. Spain). Science of The Total Environment 396: 12–27.
+Lewis, R.R. 2005. Ecological engineering for successful management and restoration of mangrove forests. Ecological Engineering 24: 403–418.
+Lotze, H.K., H.S. Lenihan, B.J. Bourque, R.H. Bradbury, R.G. Cooke, M.C. Kay, S.M. Kidwell, M.X. Kirby, C.H. Peterson, and J.B.C. Jackson. 2006. Depletion, degradation, and recovery potential of estuaries and coastal seas. Science 312: 1806–1809.
+Macleod, C.K., N.A. Moltschaniwskyj, and C.M. Crawford. 2008. Ecological and functional changes associated with long-term recovery from organic enrichment. Marine Ecology Progress Series 365: 17–24.
+Mander, L., N.D. Cutts, J. Allen, and K. Mazik. 2007. Assessing the development of newly created habitat for wintering estuarine birds. Estuarine, Coastal and Shelf Science 75: 163–174.
+Marquiegui, M.A., and F. Aguirrezabalaga. 2009. Colonization process by macrobenthic infauna after a managed coastal realignment in the Bidasoa estuary (Bay of Biscay, NE Atlantic). Estuarine, Coastal and Shelf Science 84: 598–604.
+Maxwell, D., and S. Jennings. 2005. Power of monitoring pro-grammes to detect decline and recovery of rare and vulnerable fish. Journal of Applied Ecology 42: 25–37.
+Mazik, K., J.E. Smith, A. Leighton, and M. Elliott. 2007. Physical and biological development of a newly breached managed realign-ment site, Humber estuary, UK. Marine Pollution Bulletin 55: 564–578.
+McLusky, D.S., and M. Elliott. 2004. The estuarine ecosystem: Ecology, threats and management. New York: Oxford University Press. 224.
+Mee, L.D., R.L. Jefferson, D. d’A Laffoley, and M. Elliott. 2008. How good is good? Human values and Europe’s proposed marine strategy directive. Marine Pollution Bulletin 56: 187–204.
+Moore, D.C., and G.K. Rodger. 1991. Recovery of a sewage sludge dumping ground. Marine Ecology Progress Series 75: 301–308.
+Neto, J.M., H. Teixeira, J. Patrício, A. Baeta, H. Veríssimo, R. Pinto and J.C. Marques. This issue. The response of estuarine macrobenthic communities to natural- and human-induced changes: Dynamics and ecological quality. Estuaries and Coasts. doi:10.1007/s12237-010-9326-x
+Nicolas, D., J. Lobry, M. Lepage, B. Sautour, O. Le Pape, H. Cabral, A. Uriarte, and P. Boët. 2010. Fish under influence: A macro-ecological analysis of relations between fish species richness and environmental gradients among European tidal estuaries. Estua-rine, Coastal and Shelf Science 86: 137–147.
+OECD 1993. Organisation for Economic Co-operation and Develop-ment (OECD) core set of indicators for environmental perfor-mance reviews. OECD Environment Monographs No. 83, Paris. Retrieved on 13 March, 2005 from www.oecd.org/dataoecd/32/ 20/31558547.pdf.
+Orth, R., M. Williams, S. Marion, D. Wilcox, T. Carruthers, K. Moore, W. Kemp, W. Dennison, N. Rybicki, P. Bergstrom, and R. Batiuk. 2010. Long-term trends in Submersed Aquatic Vegetation
+Estuaries and Coasts (2010) 33:1249–1260 1259
+(SAV) in Chesapeake Bay, USA, related to water quality. Estuaries and Coasts 33: 1144–1163.
+Park, S.R., J.-H. Kim, C.-K. Kang, S. An, I.K. Chung, J.H. Kim, and K.-S. Lee. 2009. Current status and ecological roles of Zostera marina after recovery from large-scale reclamation in the Nakdong River estuary, Korea. Estuarine, Coastal and Shelf Science 81: 38–48.
+Peterson, G.D. 2002. Contagious disturbance, ecological memory, and the emergence of landscape pattern. Ecosystems 5: 329–338.
+Powilleit, M., J. Kleine, and H. Leuchs. 2006. Impacts of experimental dredged material disposal on a shallow, sublittoral macrofauna community in Mecklenburg Bay (western Baltic Sea). Marine Pollution Bulletin 52: 386–396.
+Prieto, A., O. Zuloaga, A. Usobiaga, L. Bartolomé, L.A. Fernández, N. Etxebarria, E. Ciprain, and A. Alonso. 2008. Levels and spatial distribution of inorganic and organic contaminants in sediments along the Bilbao estuary. Marine Pollution Bulletin 56: 2094–2099.
+Rosenberg, R. 1972. Benthic faunal recovery in a Swedish fjord following the closure of a sulphite pulp mill. Oikos 23: 92–108.
+Rosenberg, R. 1976. Benthic faunal dynamics during succession following pollution abatement in a Swedish estuary. Oikos 27(3): 414–427.
+Rosenberg, R., S. Agrenius, B. Hellman, H.C. Nilsson, and K. Norling. 2002. Recovery of marine benthic habitats and fauna in a Swedish fjord following improved oxygen conditions. Marine Ecology Progress Series 234: 43–53.
+Sanz-Lázaro, C., and A. Marín. 2006. Benthic recovery during open sea fish farming abatement in Western Mediterranean, Spain. Marine Environmental Research 62: 374–387.
+Schaffner, L.C. This issue. Patterns and rates of recovery of macro-benthic communities in a polyhaline temperate estuary following sediment disturbance: Effects of disturbance severity and potential importance of non-local processes. Estuaries and Coasts. doi:10.1007/s12237-010-9301-6
+SER 2002. Society for Ecological Restoration International Science & Policy Working Group. 2004. The SER International Primer on Ecological Restoration. www.ser.org & Tucson: Society for Ecological Restoration International.
+Sheridan, P. 2004. Recovery of floral and faunal communities after placement of dredged material on seagrasses in Laguna Madre, Texas. Estuarine, Coastal and Shelf Science 59: 441–458.
+Shin, P.K.S., N.W.Y. Lam, R.S.S. Wu, P.Y. Qian, and S.G. Cheung. 2008. Spatio-temporal changes of marine macrobenthic commu-nity in sub-tropical waters upon recovery from eutrophication. I. Sediment quality and community structure. Marine Pollution Bulletin 56: 282–296.
+Simenstad, C., D. Reed, and M. Ford. 2006. When is restoration not? incorporating landscape-scale processes to restore self-sustaining ecosystems in coastal wetland restoration. Ecological Engineer-ing 26: 27–39.
+Simonini, R., I. Ansaloni, P. Bonini, V. Grandi, F. Graziosi, M. Iotti, G. Massamba-N’Siala, M. Mauri, G. Montanari, M. Preti, N. De Nigris, and D. Prevedelli. 2007. Recolonization and recovery dynamics of the macrozoobenthos after sand extraction in relict sand bottoms of the Northern Adriatic Sea. Marine Environmen-tal Research 64: 574–589.
+Smith, R., S.E. Boyd, H.L. Rees, M.P. Dearnaley, and J.R. Stevenson. 2006. Effects of dredging activity on epifaunal communities— Surveys following cessation of dredging. Estuarine, Coastal and Shelf Science 70: 207–223.
+Smith, R., S.G. Bolam, H.L. Rees, and C. Mason. 2008. Macrofaunal recovery following TBT ban. Long-term recovery of subtidal macrofaunal communities in relation to declining levels of TBT contamination. Environmental Monitoring and Assessment 136: 245–256.
+Stein, E.D., and D.B. Cadien. 2009. Ecosystem response to regulatory and management actions: The southern California experience in long-term monitoring. Marine Pollution Bulletin 59: 91–100.
+Tett, P., R. Gowen, D. Mills, T. Fernandes, L. Gilpin, M. Huxham, K. Kennington, P. Read, M. Service, M. Wilkinson, and S. Malcolm. 2007. Defining and detecting undesirable disturbance in the context of marine eutrophication. Marine Pollution Bulletin 55: 282–297.
+Thelen, B.A., and R.K. Thiet. 2009. Molluscan community recovery following partial tidal restoration of a New England Estuary, U.S. A. Restoration Ecology 17(5): 695–703.
+Tueros, I., Á. Borja, J. Larreta, J.G. Rodríguez, V. Valencia, and E. Millán. 2009. Integrating long-term water and sediment pollution data, in assessing chemical status within the European water framework directive. Marine Pollution Bulletin 58: 1389–1400.
+Uriarte, A., and A. Borja. 2009. Assessing fish quality status in transitional waters, within the European water framework directive: Setting boundary classes and responding to anthropo-genic pressures. Estuarine, Coastal and Shelf Science 82: 214– 224.
+Wake, H. 2005. Oil refineries: A review of their ecological impacts on the aquatic environment. Estuarine, Coastal and Shelf Science 62: 131–140.
+Warren, R.S., P.E. Fell, R. Rozsa, A.H. Brawley, A.C. Orsted, E.T. Olson, V. Swamy, and W.A. Niering. 2002. Salt marsh restoration in Connecticut: 20 years of science and management. Restoration Ecology 10(3): 497–513.
+Whomersley, P., M. Schratzberger, M. Huxham, H. Bates, and H. Rees. 2007. The use of time-series data in the assessment of macrobenthic community change after the cessation of sewage-sludge disposal in Liverpool Bay (UK). Marine Pollution Bulletin 54: 32–41.
+Wijnhoven, S., V. Escaravage, E. Daemen, and H. Hummel. This issue. The decline and restoration of a coastal lagoon (Lake Veere) in the Dutch Delta. Estuaries and Coasts. doi:10.1007/ s12237-009-9233-1
+Wilber, D.H., D.G. Clarke, and S.I. Rees. 2007. Responses of benthic macroinvertebrates to thin-layer disposal of dredged material in Mississippi Sound, USA. Marine Pollution Bulletin 54: 42–52.
+Williams, M., S. Filoso, B.J. Longstaff, and W.C. Dennison. This issue. Long-term trends of water quality and biotic metrics in Chesapeake Bay: 1986 to 2008. Estuaries and Coasts. doi:10.1007/s12237-010-9333-y
+Yuksek, A., E. Okus, I.N. Yilmaz, A. Aslan-Yilmaz, and S. Tas. 2006. Changes in biodiversity of the extremely polluted Golden Horn Estuary following the improvements in water quality. Marine Pollution Bulletin 52: 1209–1218.
+1260 Estuaries and Coasts (2010) 33:1249–1260
