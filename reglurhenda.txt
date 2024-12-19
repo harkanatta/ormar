@@ -1,0 +1,116 @@
+
+<StudyRules>
+    <StudyOverview>
+        <Description>
+            This study investigates the long-term changes in the benthic communities and sediment characteristics in Kolgrafarfjörður, Iceland, from 2013 to 2017, with a comparative reference to a 1999 baseline survey.
+        </Description>
+        <Methodology>
+            <Component>Sampling design aligned with 1999 stations for long-term comparison</Component>
+            <Component>Protocols for invertebrate sampling and identification</Component>
+            <Component>Sediment analysis for grain size and organic content</Component>
+            <Component>Data processing and statistical analyses</Component>
+        </Methodology>
+        <Scope>
+            We examined spatial and temporal patterns in polychaete communities and sediment characteristics from 2013-2017, providing context for potential long-term changes since 1999.
+        </Scope>
+    </StudyOverview>
+
+    <EditingGuidelines>
+        <PeerReview>
+            <Rule>Focus on clarity and precision when editing the draft</Rule>
+            <Rule>Ensure each section logically follows from the previous one</Rule>
+            <Rule>Results must be clearly explained and linked back to research questions</Rule>
+        </PeerReview>
+        
+        <Proofreading>
+            <Rule>Thoroughly proofread all sections for consistency in terminology, formatting, and citation style</Rule>
+            <Rule>Ensure all figures and tables are properly referenced in the text</Rule>
+        </Proofreading>
+
+        <Writing>
+            <ScientificAccuracy>
+                <Rule>Ensure all references are correctly cited using the same citation style as in `henda.txt`</Rule>
+                <Rule>Verify all data points against raw datasets or established sources</Rule>
+            </ScientificAccuracy>
+            <Language>
+                <Rule>Contribute concise and focused text that supports main arguments</Rule>
+                <Rule>Avoid jargon that might be unclear to readers from related disciplines</Rule>
+            </Language>
+        </Writing>
+
+        <Collaboration>
+            <Structure>
+                <Rule>Ensure additions and changes are consistent with existing document structure</Rule>
+                <Rule>Follow logical flow as outlined in original manuscript</Rule>
+            </Structure>
+            <Style>
+                <Rule>Maintain consistency with established tone and style</Rule>
+                <Rule>Use clear, concise language aligned with Marine Biology journal requirements</Rule>
+            </Style>
+        </Collaboration>
+    </EditingGuidelines>
+
+    <StudySpecificGuidelines>
+        <DataAnalysis>
+            <BenthicAnalysis>
+                <Rule>Use standardized methods for benthic community analysis including AMBI and NQI1 indices</Rule>
+                <Rule>Apply consistent taxonomic harmonization using WoRMS database</Rule>
+                <Rule>Calculate diversity indices (Shannon-Wiener) consistently across all samples</Rule>
+            </BenthicAnalysis>
+            
+            <StatisticalApproach>
+                <Rule>Use multivariate analyses (PERMANOVA, NMDS, SIMPER) for community composition</Rule>
+                <Rule>Apply beta regression for grain size analysis</Rule>
+                <Rule>Use non-parametric tests (Kruskal-Wallis, Dunn's test) for organic matter analysis</Rule>
+            </StatisticalApproach>
+            
+            <QualityControl>
+                <Rule>Maintain consistency in species identification methods across samples</Rule>
+                <Rule>Document any deviations from 1999 baseline sampling methodology</Rule>
+                <Rule>Ensure proper sub-sampling procedures are documented and accounted for in analyses</Rule>
+            </QualityControl>
+        </DataAnalysis>
+
+        <MethodologicalStandards>
+            <SamplingProtocols>
+                <Rule>Document exact specifications for Shipek grab sampling (0.04 m²)</Rule>
+                <Rule>Maintain consistent preservation methods (5% formaldehyde, 70% ethanol)</Rule>
+                <Rule>Follow standardized sieving protocols (0.5 mm mesh)</Rule>
+            </SamplingProtocols>
+            
+            <SedimentAnalysis>
+                <Rule>Use consistent grain size categories (4000, 2000, 1000, 250, 125, 63 µm)</Rule>
+                <Rule>Follow standard loss on ignition protocols at 475°C for organic matter</Rule>
+                <Rule>Document all sediment processing steps including drying times and temperatures</Rule>
+            </SedimentAnalysis>
+        </MethodologicalStandards>
+
+        <DataManagement>
+            <Organization>
+                <Rule>Maintain separate directories for raw data, processed data, and analysis outputs</Rule>
+                <Rule>Use consistent file naming conventions across all datasets</Rule>
+                <Rule>Document all data transformations and cleaning steps</Rule>
+            </Organization>
+            
+            <Reproducibility>
+                <Rule>Provide R scripts for all analyses with clear documentation</Rule>
+                <Rule>Include version information for all software packages used</Rule>
+                <Rule>Document any manual data corrections or special cases</Rule>
+            </Reproducibility>
+        </DataManagement>
+
+        <ReportingStandards>
+            <Figures>
+                <Rule>Create publication-quality figures using ggplot2 with consistent styling</Rule>
+                <Rule>Use white backgrounds for all plots</Rule>
+                <Rule>Maintain consistent color schemes across related visualizations</Rule>
+            </Figures>
+            
+            <Tables>
+                <Rule>Follow Marine Biology journal formatting guidelines for tables</Rule>
+                <Rule>Include appropriate units and precision levels for all measurements</Rule>
+                <Rule>Provide clear footnotes explaining any data transformations or special cases</Rule>
+            </Tables>
+        </ReportingStandards>
+    </StudySpecificGuidelines>
+</StudyRules>

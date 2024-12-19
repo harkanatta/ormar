@@ -67,6 +67,15 @@ create_year_pca <- function(year, data = henda) {
   # Calculate variance explained
   var_explained <- round(summary(species_pca)$cont$importance[2,1:2] * 100, 1)
   
+  # Define title and subtitle
+  plot_title <- paste("PCA of benthic community composition -", year)
+  plot_subtitle <- paste0("Species shown as points (>1% abundance labeled, n=", 
+                          sum(site_scores$is_dominant), "), stations as arrows")
+  
+  # Print title and subtitle
+  print(plot_title)
+  print(plot_subtitle)
+  
   # Create PCA plot
   pca_plot <- ggplot() +
     # Add points for all species
@@ -105,13 +114,13 @@ create_year_pca <- function(year, data = henda) {
       plot.title = element_text(size = 12, face = "bold"),
       plot.subtitle = element_text(size = 10)
     ) +
-    labs(
-      title = paste("PCA of benthic community composition -", year),
-      subtitle = paste0("Species shown as points (>1% abundance labeled, n=", 
-                       sum(site_scores$is_dominant), "), stations as arrows"),
-      x = paste0("PC1 (", var_explained[1], "%)"),
-      y = paste0("PC2 (", var_explained[2], "%)")
-    )
+    # Comment out title and subtitle in the plot
+     labs(
+    #   title = plot_title,
+    #   subtitle = plot_subtitle,
+       x = paste0("PC1 (", var_explained[1], "%)"),
+       y = paste0("PC2 (", var_explained[2], "%)")
+     )
   
   return(pca_plot)
 }
@@ -133,8 +142,9 @@ for(year in years) {
   )
 }
 
-# Combine all plots
+# Combine all plots with a layout that stretches them evenly
 combined_plot <- wrap_plots(pca_plots, ncol = 2) +
+  plot_layout(guides = "collect") +  # Ensure legends are collected and aligned
   plot_annotation(
     title = "Temporal changes in community composition (1999, 2013-2017)",
     subtitle = "Species shown as points, stations as arrows",
@@ -148,10 +158,10 @@ combined_plot <- wrap_plots(pca_plots, ncol = 2) +
     )
   )
 
-# Save combined plot
+# Save combined plot with A4 dimensions
 ggsave("output/pca_biplots_all_years.png", 
        combined_plot, 
-       width = 20, height = 15, 
+       width = 8.27, height = 11.69,  # A4 dimensions in inches
        dpi = 300, 
        bg = "white")
 

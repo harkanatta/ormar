@@ -144,13 +144,13 @@ env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
    geom_point(data = site_scores, 
               aes(x = NMDS1, y = NMDS2, color = Station, shape = Year),
               size = 4) +
-   # Add smaller ellipses around years with solid lines
-    # stat_ellipse(data = site_scores,
-    #              aes(x = NMDS1, y = NMDS2, group = Year),
-    #              type = "norm",
-    #              level = 0.7,
-    #              linetype = 1,
-    #              size = 0.5) +
+    #Add smaller ellipses around years with solid lines
+    stat_ellipse(data = site_scores,
+                  aes(x = NMDS1, y = NMDS2, group = Year),
+                  type = "norm",
+                  level = 0.7,
+                  linetype = 1,
+                  size = 0.5) +
    # Add significant environmental vectors
    # geom_segment(data = sig_env_vectors,
    #              aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
@@ -169,13 +169,14 @@ env_data <- readRDS("data/raw/sediment_env_data.rds") %>%
      plot.title = element_text(size = 20, face = "bold"),      # Increased from 16
      legend.position = "right"
    ) +
-   labs(title = "NMDS of Community Composition (1999 and 2013-2017)",
+   labs(#title = "NMDS of Community Composition (1999 and 2013-2017)",
         caption = "") +
    guides(color = guide_legend("Station"),
-          shape = guide_legend("Year"))
+          shape = guide_legend("Year"))+
+   coord_fixed(ratio = 1.5)  # Wide layout with aspect ratio adjustment
  
  # Save with higher resolution and size
- ggsave("output/nmds_plot_1999_an-hringja.png", 
+ ggsave("output/nmds_plot_med-1999-og-hringjum.png", 
         nmds_plot, 
         width = 12,      # Increased width
         height = 10,     # Increased height

@@ -6,6 +6,23 @@ library(tidyr)
 library(ggrepel)
 library(patchwork)
 
+# Add the decode_feeding_guild function here as well
+decode_feeding_guild <- function(guild) {
+  # Create a lookup table for feeding guild components
+  guild_lookup <- list(
+    "EP" = "Epibenthic",
+    "Pr" = "Predator",
+    "zoo" = "Zooplankton",
+    # Add other components as needed
+  )
+  
+  # Split the guild code by dashes
+  components <- strsplit(guild, "-")[[1]]
+  
+  # Look up each component and join with spaces
+  decoded <- sapply(components, function(x) guild_lookup[[x]] %||% x)
+  paste(decoded, collapse = " ")
+}
 
 merged_data_clean <- merged_data_allt %>%
   select(Flokkun, `Food Source`, Motility, Habit, 
@@ -59,7 +76,8 @@ guild_centroids <- species_scores %>%
   summarise(
     NMDS1 = mean(NMDS1),
     NMDS2 = mean(NMDS2),
-    n = n()
+    n = n(),
+    decoded_guild = decode_feeding_guild(`Feeding guild`[1])  # Add decoded name
   ) %>%
   filter(!is.na(`Feeding guild`))
 
@@ -72,7 +90,7 @@ nmds_guild_plot <- ggplot() +
   # Add feeding guild centroids
   geom_label(data = guild_centroids,
             aes(x = NMDS1, y = NMDS2, 
-                label = paste0(`Feeding guild`, "\n(n=", n, ")")),
+                label = paste0(decoded_guild, "\n(n=", n, ")")),
             alpha = 0.7,
             size = 3) +
   theme_bw() +

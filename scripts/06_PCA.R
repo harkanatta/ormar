@@ -3,7 +3,22 @@ library(patchwork)
 
 # Load cleaned data
 #df_result <- result # just so this won't be accidentally changed
-df <- df_result
+#df <- df_result
+
+#nota df frá skissur.R
+species_matrix_all <- df %>%
+  group_by(station, year, species) %>%
+  summarise(adjusted_density = sum(adjusted_density, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(
+    names_from = species,
+    values_from = adjusted_density,
+    values_fill = 0
+  ) %>%
+  mutate(
+    station_temp = station,
+    year_temp = year
+  ) %>%
+  select(-station, -year)
 
 # Prepare data including 1999
 species_matrix_all <- df %>%
@@ -147,7 +162,9 @@ create_year_pca <- function(year_data, year, important_species) {
       subtitle = "Stations shown as points, species as arrows",
       x = paste0("PC1 (", var_explained[1], "%)"),
       y = paste0("PC2 (", var_explained[2], "%)")
-    )
+    )+
+    coord_fixed(ratio = 1.5)  # Wide layout with aspect ratio adjustment
+  
   
   return(pca_plot)
 }

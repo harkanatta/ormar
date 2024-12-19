@@ -13,6 +13,119 @@ library(tidyr)
 library(vegan)
 library(kableExtra)
 library(ggplot2)
+library(stringr)
+
+#-------------------------------------------------------------------------------
+# Helper Functions
+#-------------------------------------------------------------------------------
+# Read and parse trait descriptions from text.csv
+parse_trait_descriptions <- function() {
+  text <- read.csv("data/traits_data/text.csv")
+  
+  # Extract feeding guild descriptions (contains all components)
+  feeding_guild_text <- text$text[text$find_name == "feeding_guild"]
+  
+  # Parse position components from feeding guild text
+  position_matches <- stringr::str_extract_all(
+    feeding_guild_text,
+    "\\((\\w+)\\s*\\((\\w+)\\)(?=[,;])"
+  )[[1]]
+  position_lookup <- setNames(
+    c("Epibenthic", "Surface", "Subsurface"),
+    c("EP", "SR", "SS")
+  )
+  
+  # Parse feeding type components from feeding guild text
+  feeding_type_matches <- stringr::str_extract_all(
+    feeding_guild_text,
+    "([^,;(]+?)\\s*\\(([^)]+?)\\s*;\\s*([^)]+?)\\)"
+  )[[1]]
+  feeding_type_lookup <- setNames(
+    sapply(stringr::str_match_all(feeding_type_matches, "([^(]+)\\s*\\(([^;]+);\\s*([^)]+)\\)"), 
+           function(x) trimws(x[1])),
+    sapply(stringr::str_match_all(feeding_type_matches, "\\(([^;)]+)\\)"), 
+           function(x) trimws(x[2]))
+  )
+  
+  # Parse size/type components from feeding guild text
+  size_matches <- stringr::str_extract_all(
+    feeding_guild_text,
+    "([^,(]+?)\\s*\\((?:e\\.g\\.)?\\s*[^,(]*?([^,)]+?)\\)"
+  )[[1]]
+  size_lookup <- setNames(
+    sapply(stringr::str_match_all(size_matches, "([^(]+)\\s*\\("), 
+           function(x) trimws(x[2])),
+    sapply(stringr::str_match_all(size_matches, "\\(([^)]+)\\)"), 
+           function(x) trimws(x[2]))
+  )
+  
+  # Print parsed values for verification
+  cat("\nParsed from text.csv:\n")
+  cat("\nPosition components:\n")
+  str(position_lookup)
+  cat("\nFeeding type components:\n")
+  str(feeding_type_lookup)
+  cat("\nSize/type components:\n")
+  str(size_lookup)
+  
+  list(
+    position = position_lookup,
+    feeding_type = feeding_type_lookup,
+    size = size_lookup
+  )
+}
+
+# Get lookup tables from text.csv
+trait_lookups <- parse_trait_descriptions()
+
+# Decode feeding guild abbreviations
+decode_feeding_guild <- function(guild) {
+  # Use parsed lookup tables
+  position_lookup <- trait_lookups$position
+  feeding_type_lookup <- trait_lookups$feeding_type
+  size_lookup <- trait_lookups$size
+  
+  # Function to decode a single guild
+  decode_single_guild <- function(single_guild) {
+    if (is.na(single_guild)) return(NA)
+    
+    # Handle compound feeding modes (e.g., "Br/Gr")
+    if (!grepl("-", single_guild)) {
+      # For feed_mode column that uses "/" separator
+      components <- strsplit(single_guild, "/")[[1]]
+      decoded <- sapply(components, function(x) feeding_type_lookup[[x]] %||% x)
+      return(paste(decoded, collapse = "/"))
+    }
+    
+    # For feeding_guild column that uses "-" separator
+    components <- strsplit(single_guild, "-")[[1]]
+    
+    # Decode each component based on its position
+    decoded <- character(length(components))
+    
+    for (i in seq_along(components)) {
+      component <- components[i]
+      # Strip any whitespace
+      component <- trimws(component)
+      if (i == 1) {
+        # First component is usually position
+        decoded[i] <- position_lookup[[component]] %||% component
+      } else if (i == length(components)) {
+        # Last component is usually size
+        decoded[i] <- size_lookup[[component]] %||% component
+      } else {
+        # Middle components are usually feeding type
+        decoded[i] <- feeding_type_lookup[[component]] %||% component
+      }
+    }
+    
+    # Join with spaces
+    paste(decoded, collapse = " ")
+  }
+  
+  # Apply the decoding function to each guild in the input vector
+  sapply(guild, decode_single_guild)
+}
 
 #-------------------------------------------------------------------------------
 # Data Import and Preprocessing
@@ -277,9 +390,9 @@ yearly_guild_summary <- merged_data %>%
 
 # Create temporal plot (this should work regardless of SIMPER results)
 temporal_plot <- ggplot(yearly_guild_summary, 
-                        aes(x = factor(artal), 
-                            y = relative_abundance, 
-                            fill = feeding_guild)) +
+                       aes(x = factor(artal), 
+                           y = relative_abundance, 
+                           fill = decode_feeding_guild(`feeding_guild`))) +
   geom_bar(stat = "identity", position = "stack") +
   theme_minimal() +
   labs(
@@ -290,14 +403,15 @@ temporal_plot <- ggplot(yearly_guild_summary,
   ) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "right"
+    legend.position = "right",
+    legend.text = element_text(size = 8)  # Smaller text to fit decoded names
   )
 
 # Display the temporal plot
 print(temporal_plot)
 
 # Save the temporal plot
-ggsave("output/feeding_guild_temporal_changes.png", 
+ggsave("output/feeding_guild_temporal_change.png", 
        temporal_plot, 
        width = 12, 
        height = 8,
@@ -515,8 +629,8 @@ print(guild_stats)
 #-------------------------------------------------------------------------------
 perform_trait_analysis <- function(data, trait_column) {
   # Validate input trait column
-  valid_traits <- c("food_source", "motility", "habit", "om_ca_he", 
-                    "food_size_type", "feed_mode", "feeding_guild")
+  valid_traits <- c("food_source", "motility", "habit", 
+                    "om_ca_he", "food_size_type", "feed_mode", "feeding_guild")
   
   if (!trait_column %in% valid_traits) {
     stop("Invalid trait column. Must be one of: ", paste(valid_traits, collapse = ", "))

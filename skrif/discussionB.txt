@@ -1,0 +1,46 @@
+Initial Impact and Immediate Response
+
+The herring event in Kolgrafarfjörður provided an exceptional opportunity to study the effects of a natural, single-event hypoxia on a fully marine benthic ecosystem. Immediately following the 2013 event, the number of species declined sharply to an all-time low of 21. Among these, Capitella capitata emerged as the dominant species, thriving as a specialist in hypoxic, organic-rich environments. Exploiting the nutrient-laden conditions created by the disturbance, C. capitata persisted into 2014, dominating at 4 of the 6 stations. By 2015, its densities had dropped significantly, and the species was absent from samples by 2017.
+
+Principal Component Analysis (PCA) for 2013 reflected the disturbance-driven simplification of community structure, showing much uniformity across stations. This highlighted the adaptability of C. capitata, which relied on a combination of surface and subsurface deposit feeding, tolerance for high organic loads, and lecithotrophic larvae to outcompete other species during this period of environmental stress.
+
+Pre-Disturbance Community Structure and Baseline Conditions (1999)
+
+The benthic communities in Kolgrafarfjörður during 1999 exhibited distinct spatial patterns that reflected local hydrodynamic regimes and sedimentary conditions, providing crucial baseline data for understanding long-term ecosystem changes. Two functional zones were observed:
+
+Western Dynamic Zone (Stations E3, E4):
+
+Dominated by opportunistic species adapted to high-energy environments, these stations supported Polydora sp. and Spio sp.. The success of these species stemmed from their adaptations to dynamic conditions, including tube-dwelling capabilities, surface deposit feeding, and planktonic larval dispersal. These traits allowed rapid colonization and stability in areas with frequent physical disturbances.
+
+Eastern/Southern Stable Zone:
+
+In contrast, the eastern and southern stations were characterized by greater functional diversity and deeper resource utilization. Key species, such as Macoma calcarea, Scalibregma inflatum, and Ophelina acuminata, exhibited traits like suspension and deposit feeding, bioturbation, and vertical resource partitioning. These traits aligned with the stable sedimentary conditions of these zones, promoting efficient resource utilization and niche diversification.
+
+Ecosystem Integration:
+
+The 1999 community structure demonstrated clear niche partitioning, with feeding guilds distributed across sediment depths. Surface deposit feeders dominated, with subsurface deposit and suspension feeders contributing to a stable, mature community. Physical factors, rather than biological interactions, appeared to be the primary drivers of community structure, underscoring the importance of hydrodynamics and sediment stability in shaping these patterns.
+
+Recovery Phases and Temporal Patterns
+
+The immediate aftermath of the herring event temporarily erased the spatial patterns observed in 1999. By 2013, the community was dominated by C. capitata, resulting in low functional diversity. However, between 2014 and 2017, PCA showed a gradual increase in functional diversity, indicating recovery. Spatial differentiation re-emerged, influenced by hydrodynamics and sediment characteristics.
+
+By 2015–2017, the community began to resemble the patterns observed in 1999. Western stations (E3, E4) were dominated by opportunistic taxa like Polydora sp., while other stations supported species such as Chaetozone setosa and Scalibregma inflatum. Although 1999 served as a reference year, natural fluctuations in weather and sediment conditions likely influenced community composition prior to the herring event. Nonetheless, 2013 and 2014 highlight the fragility and resilience of these benthic communities in response to episodic hypoxic disturbances.
+
+The recovery trajectory aligns with established patterns of succession following hypoxic events. Initial dominance by opportunistic species was followed by transitional species and, eventually, a re-establishment of a diverse community. The disappearance of C. capitata by 2017 marked a significant step towards ecosystem restoration, as its role in processing organic matter was completed. Predators such as Eteone increased in abundance during this period, suggesting trophic interactions contributed to the recovery process.
+
+Taxonomic Recovery and Functional Traits
+
+The hypoxic event in 2013 disproportionately affected mollusks and arthropods, groups highly sensitive to low oxygen conditions. In 1999, Kolgrafarfjörður supported diverse mollusk and arthropod populations, which were reduced to just a few species in 2013. Recovery was evident by 2014, with mollusk diversity increasing and arthropods beginning to reappear. By 2017, both groups had returned to pre-disturbance levels, mirroring broader community recovery trends.
+
+Sediment Characteristics and Environmental Drivers
+
+Sediment analyses revealed distinct spatial patterns in particle size and organic content. Southern stations (A7, B5, B8) had coarser sediments, while northern stations (E3, E4) were characterized by finer particles and showed the most pronounced temporal changes. Organic matter content peaked in 2013 due to the herring mass decomposition but declined sharply thereafter, stabilizing from 2014 onward.
+
+Tidal dynamics played a crucial role in shaping recovery trajectories, particularly at western stations, where stronger currents facilitated organic matter removal but created challenging conditions for recolonization. These findings align with studies emphasizing the importance of local conditions in recovery outcomes.
+
+Long-Term Recovery and Monitoring Implications
+
+The relatively rapid recovery observed in Kolgrafarfjörður compared to similar events documented in the literature reflects advantageous factors, including the system’s pristine baseline condition, the discrete nature of the disturbance, and the presence of healthy adjacent communities. While the benthic community largely returned to pre-disturbance levels by 2017, differences between 1999 and 2017 suggest that full recovery may still be ongoing.
+
+Long-term monitoring is essential for deeper insights into ecosystem resilience and the interplay between episodic disturbances and natural variability. Kolgrafarfjörður demonstrates that even severe hypoxic events can be mitigated by optimal environmental conditions, offering valuable lessons for managing other marine ecosystems.
+

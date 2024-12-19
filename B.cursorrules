@@ -1,28 +1,52 @@
-General Principles for Commenting
-Clarity Above All: Ensure the writing communicates ideas clearly to its intended audience. Suggest revisions where technical jargon or complex phrasing might confuse readers.
-Focus on the Research Goals: Check that each section of the writing aligns with the study's objectives and contributes to answering the research questions.
-Conciseness: Encourage elimination of unnecessary words or repetitive content.
-Reproducibility: Highlight whether methods and results are described in a way that others could replicate the study without ambiguity.
-Constructive Feedback: Offer specific suggestions for improvement instead of just pointing out issues.
-Professional Tone: Maintain a neutral and professional tone in all feedback. Avoid personal biases.
-Commenting on Structure and Flow
-Logical Organization: Verify that the manuscript follows a logical structure (Introduction, Methods, Results, Discussion). Suggest reordering if necessary.
-Smooth Transitions: Point out abrupt shifts between ideas or sections and suggest ways to improve coherence.
-Clear Headings: Ensure headings are descriptive and reflect the content of each section.
-Commenting on Language
-Precision: Check for ambiguous terms or statements and recommend more precise language where needed.
-Grammar and Syntax: Highlight grammatical errors, awkward phrasing, or typographical errors, but avoid nitpicking unless it affects readability.
-Consistency: Ensure consistent use of terms, abbreviations, and symbols throughout the text.
-Commenting on Content
-Scientific Rigor: Evaluate whether methods are adequately detailed and appropriate for the research questions.
-Data Representation: Ensure that figures, tables, and graphs are clear, correctly labeled, and appropriately referenced in the text.
-Interpretation of Results: Comment on whether the conclusions are well-supported by the data and analysis.
-Citations and References: Check for proper citation of sources and alignment with the journal’s style guide.
-Reviewing Figures and Tables
-Clarity and Accessibility: Verify that visual elements are easy to understand without extensive explanation.
-Relevance: Ensure that each figure or table contributes to the narrative and is referenced in the text.
-Consistency: Check that formatting, scales, and labels are uniform across figures and tables.
-Final Considerations
-Audience Perspective: Assess whether the manuscript is accessible to the target readership of the journal.
-Focus on Strengthening: Identify strengths and commend well-written sections, balancing criticism with positive feedback.
-Review Readiness: Recommend final checks for formatting, citation style, and compliance with submission guidelines.
+<?xml version="1.0" encoding="UTF-8"?>
+<StudyRules>
+    <StudyOverview>
+        <Description>
+            This study investigates the long-term changes in the benthic communities and sediment characteristics in Kolgrafarfjörður, Iceland, from 2013 to 2017, with a comparative reference to a 1999 baseline survey.
+        </Description>
+        <Methodology>
+            <Component>Sampling design aligned with 1999 stations for long-term comparison</Component>
+            <Component>Protocols for invertebrate sampling and identification</Component>
+            <Component>Sediment analysis for grain size and organic content</Component>
+            <Component>Data processing and statistical analyses</Component>
+        </Methodology>
+        <Scope>
+            We examined spatial and temporal patterns in polychaete communities and sediment characteristics from 2013-2017, providing context for potential long-term changes since 1999.
+        </Scope>
+    </StudyOverview>
+
+    <EditingGuidelines>
+        <PeerReview>
+            <Rule>Focus on clarity and precision when editing the draft</Rule>
+            <Rule>Ensure each section logically follows from the previous one</Rule>
+            <Rule>Results must be clearly explained and linked back to research questions</Rule>
+        </PeerReview>
+        
+        <Proofreading>
+            <Rule>Thoroughly proofread all sections for consistency in terminology, formatting, and citation style</Rule>
+            <Rule>Ensure all figures and tables are properly referenced in the text</Rule>
+        </Proofreading>
+
+        <Writing>
+            <ScientificAccuracy>
+                <Rule>Ensure all references are correctly cited using the same citation style as in `henda.txt`</Rule>
+                <Rule>Verify all data points against raw datasets or established sources</Rule>
+            </ScientificAccuracy>
+            <Language>
+                <Rule>Contribute concise and focused text that supports main arguments</Rule>
+                <Rule>Avoid jargon that might be unclear to readers from related disciplines</Rule>
+            </Language>
+        </Writing>
+
+        <Collaboration>
+            <Structure>
+                <Rule>Ensure additions and changes are consistent with existing document structure</Rule>
+                <Rule>Follow logical flow as outlined in original manuscript</Rule>
+            </Structure>
+            <Style>
+                <Rule>Maintain consistency with established tone and style</Rule>
+                <Rule>Use clear, concise language aligned with Marine Biology journal requirements</Rule>
+            </Style>
+        </Collaboration>
+    </EditingGuidelines>
+</StudyRules>

@@ -82,8 +82,6 @@ SIMPER analysis identified species contributing most to dissimilarity between ea
 
 2.4.4 Sediment statistical analysis 
 
- 
-
 2.4.4.1 Grain size 
 
 To analyse the temporal and spatial patterns in sediment grain size distribution, we employed beta regression models using the betareg package in R (Cribari-Neto & Zeileis, 2010). Beta regression is appropriate for analysing proportional data that are bounded between 0 and 1. Separate models were fitted for each grain size category (20 μm, 63 μm, 125 μm, 250 μm, and 1000 μm), with sampling year and station as predictors. 
@@ -93,3 +91,7 @@ To analyse the temporal and spatial patterns in sediment grain size distribution
 2.4.4.2 Organic Matter 
 
 Due to non-normal distribution of organic content data, we employed the non-parametric Kruskal-Wallis test to examine temporal differences across the five-year study period. This approach is robust against violations of normality and appropriate for comparing multiple independent groups with continuous response variables. Following significant Kruskal-Wallis results, Dunn's test with Bonferroni correction was used for post-hoc pairwise comparisons between years and stations. 
+
+2.4.5 Functional Traits and Community Adaptation
+
+To assess temporal shifts in community adaptation to hydrodynamic conditions, we calculated dynamic adaptation scores for each station across sampling years (1999 and 2013-2017). These scores (taken from Clare et al (2022)) were derived from weighted combinations of key functional traits: tube dwelling ability (30%), surface deposit feeding (20%), planktonic larval development (20%), and free-living mobility (30%). The scores were weighted by species' adjusted densities to reflect community-level adaptations, allowing us to track changes in the functional composition of benthic assemblages over time. This approach enabled quantification of how communities' capacity to cope with dynamic sedimentary conditions evolved throughout the study period, particularly in response to environmental perturbations.
