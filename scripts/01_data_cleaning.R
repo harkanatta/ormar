@@ -17,11 +17,6 @@ df <- df %>%
 df <- df %>%
   mutate(gamalt = Flokkun)
 
-# Clean the 'Flokkun' column by removing specific patterns
-df <- df %>%
-  mutate(Flokkun = str_remove_all(Flokkun, 
-    " kemur líka Heteromastus filiformis| Sipunculidea/|\\.| TUNICATA EÐA FLEIRI?| nýsestir| ungviði| ungv\\.| ungv| juv| sp\\.| sp| ath"
-  ))
 
 # Standardize species names
 df <- df %>% mutate(Flokkun = case_when(
@@ -72,8 +67,18 @@ df <- df %>% mutate(Flokkun = case_when(
   TRUE ~ Flokkun
 ))
 
+
+
+
+# Clean the 'Flokkun' column by removing specific patterns
+df <- df %>%
+  mutate(Flokkun = str_remove_all(Flokkun, 
+                                  " kemur líka Heteromastus filiformis| Sipunculidea/|\\.| TUNICATA EÐA FLEIRI?| nýsestir| ungviði| ungv\\.| ungv| juv| sp\\.| sp| ath"
+  ))
+
+
 # Remove unwanted species
-remove_list <- paste(c("—Ssekkt", "—ßekkt", "Foraminifera", "Götungar", "Harpacticoida", "Hydrozoa", "Lirfur", "lirfur", "lirfa", "Skordýr", "Ranaormur", "Lirfurogdrasl", "Bandormur", "Lirfa", "egg", "Óþekkt", "Nematoda", "Nemertea", "Möttuldýr?", "Porifera", "Plerugoniumnosissum", "Terebellides benedi", "Plergoniumnosum", "egg/lirfur", "Ostracoda", "Copepoda", "Collembola", "Cyclopterus lumpus"), collapse = '|')
+remove_list <- paste(c("Campanulariidae sp", "—Ssekkt", "—ßekkt", "Foraminifera", "Götungar", "Harpacticoida", "Hydrozoa", "Lirfur", "lirfur", "lirfa", "Skordýr", "Ranaormur", "Lirfurogdrasl", "Bandormur", "Lirfa", "egg", "Óþekkt", "Nematoda", "Nemertea", "Möttuldýr?", "Porifera", "Plerugoniumnosissum", "Terebellides benedi", "Plergoniumnosum", "egg/lirfur", "Ostracoda", "Copepoda", "Collembola", "Cyclopterus lumpus"), collapse = '|')
 
 remove_ind <- lapply(strsplit(remove_list, "\\|")[[1]], \(x) grep(x, df$Flokkun, fixed = TRUE)) |> 
   unlist() |> 

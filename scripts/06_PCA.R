@@ -6,6 +6,10 @@ library(patchwork)
 #df <- df_result
 
 #nota df frá skissur.R
+
+#nota henda_long_cleanedúr supplementary.R:
+df <- henda_long_cleaned 
+
 species_matrix_all <- df %>%
   group_by(station, year, species) %>%
   summarise(adjusted_density = sum(adjusted_density, na.rm = TRUE), .groups = "drop") %>%
